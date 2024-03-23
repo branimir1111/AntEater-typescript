@@ -37,8 +37,8 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 
 app.use('/api/v1', AuthRouter);
-app.use('/api/v1/user', authenticateUser, UserRouter);
-app.use('/api/v1/project', authenticateUser, ProjectRouter);
+app.use('/api/v1', authenticateUser, UserRouter);
+app.use('/api/v1', authenticateUser, ProjectRouter);
 
 app.use('*', (req, res) => {
   res.status(404).json({ msg: 'Route Not Found' });

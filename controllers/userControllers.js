@@ -1,8 +1,8 @@
-import UserModel from "../models/userModel.js";
-import { StatusCodes } from "http-status-codes";
+import UserModel from '../models/userModel.js';
+import { StatusCodes } from 'http-status-codes';
 // import { promises as fs } from "fs";
-import { formatImage } from "../middleware/multerMiddleware.js";
-import cloudinary from "cloudinary";
+import { formatImage } from '../middleware/multerMiddleware.js';
+import cloudinary from 'cloudinary';
 
 const updateUser = async (req, res) => {
   const newUser = { ...req.body };
@@ -25,7 +25,7 @@ const updateUser = async (req, res) => {
     await cloudinary.v2.uploader.destroy(updateUser.avatarPublicId);
   }
 
-  res.status(StatusCodes.CREATED).json({ msg: "User successfully updated" });
+  res.status(StatusCodes.CREATED).json({ msg: 'User successfully updated' });
 };
 
 const getAllUsers = async (req, res) => {
@@ -33,11 +33,10 @@ const getAllUsers = async (req, res) => {
   const limit = Number(req.query.limit) || 5;
   const skip = (page - 1) * limit;
 
-  const countPM = await UserModel.count({ role: "projectmanager" });
-  const countDevs = await UserModel.count({ role: "developer" });
-
-  const allPM = await UserModel.find({ role: "projectmanager" });
-  const allDevs = await UserModel.find({ role: "developer" });
+  const allPM = await UserModel.find({ role: 'projectmanager' });
+  const allDevs = await UserModel.find({ role: 'developer' });
+  const countPM = allPM.length;
+  const countDevs = allDevs.length;
 
   const numOfPages = Math.ceil(countDevs / limit);
 
@@ -59,7 +58,7 @@ const getCurrentUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   await UserModel.findByIdAndDelete(req.user.userId);
-  res.status(StatusCodes.OK).json({ msg: "User successfully deleted!" });
+  res.status(StatusCodes.OK).json({ msg: 'User successfully deleted!' });
 };
 
 export { getAllUsers, getCurrentUser, updateUser, deleteUser };
