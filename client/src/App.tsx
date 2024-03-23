@@ -9,6 +9,12 @@ import {
   ErrorPage,
   DashboardLayout,
   StatisticsPage,
+  ProjectsPage,
+  TasksAndActivitiesPage,
+  TicketsPage,
+  BugCategorizationPage,
+  ProjectManagerPage,
+  AdminPage,
 } from './pages';
 import { ErrorElement } from './components';
 
@@ -44,6 +50,36 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <StatisticsPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'projects',
+        element: <ProjectsPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'tasks',
+        element: <TasksAndActivitiesPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'tickets',
+        element: <TicketsPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'bugs',
+        element: <BugCategorizationPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'manager',
+        element: <ProjectManagerPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'admin',
+        element: <AdminPage />,
         errorElement: <ErrorElement />,
       },
     ],

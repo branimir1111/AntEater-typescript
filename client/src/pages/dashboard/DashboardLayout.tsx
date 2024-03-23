@@ -1,4 +1,5 @@
 import { Navbar, SmallSidebar, BigSidebar } from '@/components';
+import { Outlet } from 'react-router-dom';
 
 const DashboardLayout = () => {
   return (
@@ -6,7 +7,7 @@ const DashboardLayout = () => {
       <Navbar />
       <SmallSidebar />
       <BigSidebar />
-      <h1 className="text-5xl">DashboardLayout</h1>
+      <Outlet />
     </>
   );
 };
