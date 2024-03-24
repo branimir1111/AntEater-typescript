@@ -7,3 +7,10 @@ export type User = {
   avatar?: string;
   avatarPublicId?: string;
 };
+
+export type MainLink = {
+  id: number;
+  text: string;
+  path: string;
+  icon: React.ReactNode;
+};
