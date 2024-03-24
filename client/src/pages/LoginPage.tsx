@@ -1,10 +1,58 @@
-import { Link, Form } from 'react-router-dom';
+import {
+  Link,
+  Form,
+  useNavigate,
+  type ActionFunction,
+  redirect,
+} from 'react-router-dom';
 import logo from '../images/anteater.svg';
 import { FormInput, SubmitBtn } from '@/components';
+import { customFetch } from '@/utils';
+import { toast } from '@/components/ui/use-toast';
+import { type ReduxStore } from '@/features/store';
+import { loginUser } from '@/features/user/userSlice';
+import { AxiosResponse } from 'axios';
+import { Button } from '@/components/ui/button';
+import { useAppDispatch } from '@/utils';
+import { type QueryClient } from '@tanstack/react-query';
 
-export const action = () => {};
+export const action =
+  (store: ReduxStore, queryClient: QueryClient): ActionFunction =>
+  async ({ request }): Promise<Response | null> => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    try {
+      const response: AxiosResponse = await customFetch.post('/login', data);
+      const loggedUser = response.data.user;
+      queryClient.invalidateQueries();
+      store.dispatch(loginUser(loggedUser));
+      toast({ description: response.data.msg });
+      return redirect('/dashboard');
+    } catch (error) {
+      // console.log(error?.response?.data?.msg);
+      toast({ description: 'Login Failed' });
+      return null;
+    }
+  };
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const handleDemoUser = async (
+    email: string,
+    password: string
+  ): Promise<void> => {
+    const response = await customFetch.post('/login', {
+      email,
+      password,
+    });
+    const user = response.data.user;
+    toast({ description: response.data.msg });
+    dispatch(loginUser(user));
+    navigate('/dashboard');
+  };
+
   return (
     <main className="w-full min-h-screen grid place-items-center bg-[url('./images/WorldMap.svg')] bg-no-repeat bg-cover lg:grid-cols-2">
       <div className="w-11/12 bg-cyan-950 drop-shadow-2xl p-6 grid place-items-center rounded-[5px] sm:w-[400px]">
@@ -34,44 +82,6 @@ const LoginPage = () => {
             text="Login"
             className="bg-cyan-200 w-full text-cyan-700 mt-4 hover:bg-yellow-300 transition-all duration-300 md:text-xl"
           />
-          {/* <FormRow
-            labelText={'Email'}
-            labelClassName={'text-white'}
-            type={'email'}
-            name={'email'}
-            className={'px-2 py-2 rounded-[3px] bg-slate-50 text-black'}
-            placeholder={'Your email'}
-            refElement={refElement}
-          /> */}
-          {/* <FormRow
-            layout={'relative mt-4'}
-            labelText={'password'}
-            labelClassName={'text-white'}
-            type={`${viewPass ? 'text' : 'password'}`}
-            name={'password'}
-            className={'px-2 py-2 rounded-[3px] bg-slate-50 text-black'}
-            placeholder={'Your password'}
-            viewIcon={
-              viewPass ? (
-                <PiEyeClosedBold
-                  onClick={handleViewPass}
-                  className="absolute text-[1.3rem] text-[#08334496] hover:text-[#083344] right-[1rem] bottom-[0.6rem] cursor-pointer transition-all duration-300"
-                />
-              ) : (
-                <PiEyeBold
-                  onClick={handleViewPass}
-                  className="absolute text-[1.3rem] text-[#08334496] hover:text-[#083344] right-[1rem] bottom-[0.6rem] cursor-pointer transition-all duration-300"
-                />
-              )
-            }
-          /> */}
-          {/* <button
-            type="submit"
-            className="bg-cyan-200 w-full  text-cyan-700 text-xl mt-4 py-1 px-2 rounded-[3px] hover:bg-yellow-300 transition-all duration-300 md:text-xl"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Submitting...' : 'Login'}
-          </button> */}
           <h1 className="text-white mt-[1rem]">
             Don't have account?{' '}
             <span className="text-yellow-300 hover:text-yellow-500 transition-all duration-200">
@@ -80,38 +90,35 @@ const LoginPage = () => {
           </h1>
           <h1 className="text-white text-center mt-[1rem]">OR</h1>
         </Form>
-        {/* <div className="w-full">
-          <div className="flex gap-[1rem]">
-            <button
-              type="button"
+        <div className="w-full">
+          <div className="grid place-items-center break4:flex break4:gap-[1rem]">
+            <Button
+              className="bg-cyan-500 text-cyan-700 w-full mt-4 hover:bg-yellow-300 md:text-xl"
               onClick={() => handleDemoUser('admin@gmail.com', 'admin1288809')}
-              className="bg-cyan-500 text-cyan-700 w-full text-xl mt-4 py-1 px-2 rounded-[3px] hover:bg-yellow-300 transition-all duration-300 md:text-xl"
             >
               <span className="text-cyan-900">Demo</span> Admin
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
+              className="bg-cyan-500 text-cyan-700 w-full mt-4 hover:bg-yellow-300 md:text-xl"
               onClick={() =>
                 handleDemoUser(
                   'projectmanager@gmail.com',
                   'projectmanager1288809'
                 )
               }
-              className="bg-cyan-500 w-full text-cyan-700 text-xl mt-4 py-1 px-2 rounded-[3px] hover:bg-yellow-300 transition-all duration-300 md:text-xl"
             >
               <span className="text-cyan-900">Demo</span> PM
-            </button>
+            </Button>
           </div>
-          <button
-            type="button"
+          <Button
+            className="bg-cyan-500 text-cyan-700 w-full mt-4 hover:bg-yellow-300 md:text-xl"
             onClick={() =>
               handleDemoUser('developer@gmail.com', 'developer1288809')
             }
-            className="bg-cyan-500 w-full text-cyan-700 text-xl mt-4 py-1 px-2 rounded-[3px] hover:bg-yellow-300 transition-all duration-300 md:text-xl"
           >
             <span className="text-cyan-900">Demo</span> Developer
-          </button>
-        </div> */}
+          </Button>
+        </div>
       </div>
       <div className="hidden lg:block"></div>
     </main>
