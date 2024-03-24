@@ -19,31 +19,31 @@ export const mainLinks: MainLink[] = [
   {
     id: 2,
     text: 'Projects',
-    path: 'allprojects',
+    path: 'projects',
     icon: <SquareKanban />,
   },
   {
     id: 3,
-    text: 'Tasks and activites',
-    path: 'alltasks',
+    text: 'Tasks and activities',
+    path: 'tasks',
     icon: <ListChecks />,
   },
   {
     id: 4,
     text: 'Tickets',
-    path: 'alltickets',
+    path: 'tickets',
     icon: <TicketCheck />,
   },
   {
     id: 5,
     text: 'Bug categorization',
-    path: 'bug-cat',
+    path: 'bugs',
     icon: <Bug />,
   },
   {
     id: 6,
     text: 'PM Panel',
-    path: 'project-manager',
+    path: 'manager',
     icon: <UserRoundCog />,
   },
   {

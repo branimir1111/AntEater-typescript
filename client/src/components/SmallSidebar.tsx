@@ -1,8 +1,7 @@
 import { CircleX } from 'lucide-react';
 import logo from '../images/anteater.svg';
-import { mainLinks } from '@/utils';
+import { mainLinks, useAppSelector } from '@/utils';
 import { NavLink } from 'react-router-dom';
-import { useAppSelector } from '@/utils';
 
 type SmallSidebarProps = {
   setOpenSmallSidebar: React.Dispatch<React.SetStateAction<boolean>>;
@@ -36,8 +35,15 @@ const SmallSidebar = ({ setOpenSmallSidebar }: SmallSidebarProps) => {
               <NavLink
                 to={path}
                 key={id}
-                onClick={() => setOpenSmallSidebar((prev: boolean) => !prev)}
-                className="py-3 flex gap-4 text-[1.2rem] opacity-50 hover:opacity-70 text-base-content items-center"
+                onClick={() => setOpenSmallSidebar((prev) => !prev)}
+                // className="py-3 flex gap-4 text-[1.2rem] opacity-50 hover:opacity-70 text-base-content items-center"
+                className={({ isActive }) => {
+                  return `w-full py-3 flex gap-4 text-[1rem] hover:opacity-70 items-center justify-start text-base-content ${
+                    isActive
+                      ? 'opacity-100 translate-x-2 transition-all'
+                      : 'opacity-50'
+                  }`;
+                }}
                 end
               >
                 {icon}

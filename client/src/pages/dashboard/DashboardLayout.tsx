@@ -3,15 +3,25 @@ import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 
 const DashboardLayout = () => {
-  const [openSmallSidebar, setOpenSmallSidebar] = useState(true);
+  const [openBigSidebar, setOpenBigSidebar] = useState(true);
+  const [openSmallSidebar, setOpenSmallSidebar] = useState(false);
+
   return (
     <main className="w-full">
       {openSmallSidebar ? (
         <SmallSidebar setOpenSmallSidebar={setOpenSmallSidebar} />
       ) : null}
-      <Navbar />
-      <BigSidebar />
-      <Outlet />
+      <div className="w-full flex">
+        <BigSidebar openBigSidebar={openBigSidebar} />
+        <div className="w-full">
+          <Navbar
+            openBigSidebar={openBigSidebar}
+            setOpenBigSidebar={setOpenBigSidebar}
+            setOpenSmallSidebar={setOpenSmallSidebar}
+          />
+          <Outlet />
+        </div>
+      </div>
     </main>
   );
 };
