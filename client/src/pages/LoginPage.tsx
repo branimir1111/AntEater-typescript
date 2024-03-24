@@ -5,15 +5,13 @@ import {
   type ActionFunction,
   redirect,
 } from 'react-router-dom';
-import logo from '../images/anteater.svg';
-import { FormInput, SubmitBtn } from '@/components';
-import { customFetch } from '@/utils';
+import { FormInput, SubmitBtn, LogoForAuth } from '@/components';
+import { customFetch, useAppDispatch } from '@/utils';
 import { toast } from '@/components/ui/use-toast';
 import { type ReduxStore } from '@/features/store';
 import { loginUser } from '@/features/user/userSlice';
-import { AxiosResponse } from 'axios';
+import { AxiosResponse, AxiosError } from 'axios';
 import { Button } from '@/components/ui/button';
-import { useAppDispatch } from '@/utils';
 import { type QueryClient } from '@tanstack/react-query';
 
 export const action =
@@ -29,8 +27,9 @@ export const action =
       toast({ description: response.data.msg });
       return redirect('/dashboard');
     } catch (error) {
-      // console.log(error?.response?.data?.msg);
-      toast({ description: 'Login Failed' });
+      const errorMsg =
+        error instanceof AxiosError ? error.response?.data.msg : 'Login Failed';
+      toast({ description: errorMsg });
       return null;
     }
   };
@@ -56,15 +55,7 @@ const LoginPage = () => {
   return (
     <main className="w-full min-h-screen grid place-items-center bg-[url('./images/WorldMap.svg')] bg-no-repeat bg-cover lg:grid-cols-2">
       <div className="w-11/12 bg-cyan-950 drop-shadow-2xl p-6 grid place-items-center rounded-[5px] sm:w-[400px]">
-        <div className="w-[60px] h-[60px] mb-4 p-1 bg-cyan-50 hover:bg-yellow-200 transition-all duration-300 rounded-full md:w-[70px]  md:h-[70px]">
-          <Link to="/">
-            <img src={logo} alt="logo" />
-          </Link>
-        </div>
-        <h1 className="text-3xl mt-2 mb-2 text-white md:text-4xl">
-          Ant<span className="text-yellow-400">E</span>ater
-        </h1>
-        <h1 className="mb-4 text-white text-2xl">Login</h1>
+        <LogoForAuth text="login" />
         <Form method="post" className="w-full grid place-items-center">
           <FormInput
             name="email"
@@ -96,7 +87,7 @@ const LoginPage = () => {
               className="bg-cyan-500 text-cyan-700 w-full mt-4 hover:bg-yellow-300 md:text-xl"
               onClick={() => handleDemoUser('admin@gmail.com', 'admin1288809')}
             >
-              <span className="text-cyan-900">Demo</span> Admin
+              Demo <span className="text-cyan-900">Admin</span>
             </Button>
             <Button
               className="bg-cyan-500 text-cyan-700 w-full mt-4 hover:bg-yellow-300 md:text-xl"
@@ -107,7 +98,7 @@ const LoginPage = () => {
                 )
               }
             >
-              <span className="text-cyan-900">Demo</span> PM
+              Demo <span className="text-cyan-900">PM</span>
             </Button>
           </div>
           <Button
@@ -116,7 +107,7 @@ const LoginPage = () => {
               handleDemoUser('developer@gmail.com', 'developer1288809')
             }
           >
-            <span className="text-cyan-900">Demo</span> Developer
+            Demo <span className="text-cyan-900">Developer</span>
           </Button>
         </div>
       </div>

@@ -20,6 +20,7 @@ import {
 import { ErrorElement } from './components';
 
 import { action as loginAction } from './pages/LoginPage';
+import { action as registerAction } from './pages/RegisterPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
     path: 'register',
     element: <RegisterPage />,
     errorElement: <ErrorPage />,
+    action: registerAction,
   },
   {
     path: 'login',
