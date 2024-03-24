@@ -36,12 +36,14 @@ const ErrorPage = () => {
         <h1 className="text-xl sm:text-4xl text-white mb-8 font-bold">
           Something went wrong...
         </h1>
-        <Link
-          to="/"
-          className="btn hover:bg-[#FDE047] transition-all duration-200 px-10 uppercase text-[0.8rem] sm:text-[1rem]"
+        <Button
+          asChild
+          size="lg"
+          variant="secondary"
+          className="hover:bg-[#FDE047] transition-all duration-200 px-10 uppercase text-[0.8rem] sm:text-[1rem]"
         >
-          Go Back
-        </Link>
+          <Link to="/">Go back</Link>
+        </Button>
       </div>
     </main>
   );
