@@ -1,5 +1,5 @@
 import { PanelLeftClose, PanelLeftOpen, Menu } from 'lucide-react';
-import { useAppSelector } from '@/utils';
+import { ProfileLogoutDropdown } from '@/components';
 
 type NavBarProps = {
   openBigSidebar: boolean;
@@ -12,7 +12,6 @@ const Navbar = ({
   setOpenBigSidebar,
   setOpenSmallSidebar,
 }: NavBarProps) => {
-  const user = useAppSelector((state) => state.userState.user);
   const handleBigSidebar = () => {
     setOpenBigSidebar((prev) => !prev);
   };
@@ -65,48 +64,7 @@ const Navbar = ({
         </label> */}
         {/* THEME END */}
         {/* DROPDOWN START */}
-        {/* <div className="dropdown dropdown-end">
-          <label
-            tabIndex={0}
-            className="btn capitalize bg-accent rounded-md font-poppins font-bold text-base text-accent-content hover:text-teal-600"
-          >
-            {avatar ? (
-              <img
-                src={avatar}
-                alt="avatar"
-                className="w-7 h-7 rounded-full object-cover"
-              />
-            ) : (
-              <img src={avatarLocal} alt="avatar" className="w-7" />
-            )}
-            {firstName}
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu dropdown-content z-[1] px-4 bg-accent shadow rounded-md w-52 mt-4"
-          >
-            <li className="py-4 text-accent-content">
-              <Link
-                to="profile"
-                className="flex text-base-content font-poppins font-semibold"
-              >
-                <RxAvatar className="text-[1.5rem]" />
-                My Profile
-              </Link>
-            </li>
-            <hr />
-            <li className="py-4 text-accent-content">
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="flex text-base-content font-poppins font-semibold"
-              >
-                <RiLogoutCircleLine className="text-[1.5rem]" />
-                Sign out
-              </button>
-            </li>
-          </ul>
-        </div> */}
+        <ProfileLogoutDropdown />
         {/* DROPDOWN END */}
       </div>
     </nav>

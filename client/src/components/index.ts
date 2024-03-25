@@ -5,3 +5,4 @@ export { default as BigSidebar } from './BigSidebar';
 export { default as FormInput } from './FormInput';
 export { default as SubmitBtn } from './SubmitBtn';
 export { default as LogoForAuth } from './LogoForAuth';
+export { default as ProfileLogoutDropdown } from './ProfileLogoutDropdown';

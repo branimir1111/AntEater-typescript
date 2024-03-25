@@ -16,6 +16,7 @@ import {
   BugCategorizationPage,
   ProjectManagerPage,
   AdminPage,
+  ProfilePage,
 } from './pages';
 import { ErrorElement } from './components';
 
@@ -86,6 +87,11 @@ const router = createBrowserRouter([
       {
         path: 'admin',
         element: <AdminPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'profile',
+        element: <ProfilePage />,
         errorElement: <ErrorElement />,
       },
     ],

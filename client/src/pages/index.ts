@@ -10,3 +10,4 @@ export { default as TicketsPage } from './dashboard/Tickets/TicketsPage';
 export { default as BugCategorizationPage } from './dashboard/BugCategorization/BugCategorizationPage';
 export { default as ProjectManagerPage } from './dashboard/ProjectManager/ProjectManagerPage';
 export { default as AdminPage } from './dashboard/Admin/AdminPage';
+export { default as ProfilePage } from './dashboard/Profile/ProfilePage';
