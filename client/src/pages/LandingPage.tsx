@@ -19,8 +19,8 @@ const LandingPage = () => {
           className="bg-cyan-100 text-cyan-600 text-xl py-1 px-2 rounded-[3px] hover:bg-yellow-300 transition-all duration-300 md:text-xl"
         >
           <Link to="login">
-            <span className="text-cyan-800">Try</span> AntEater{' '}
-            <span className="text-cyan-800">Now!</span>
+            <span className="text-cyan-800">Try </span>AntEater{' '}
+            <span className="text-cyan-800"> Now!</span>
           </Link>
         </Button>
       </div>

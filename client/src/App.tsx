@@ -19,9 +19,20 @@ import {
   ProfilePage,
 } from './pages';
 import { ErrorElement } from './components';
+// import { customFetch } from './utils';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
+
+// customFetch.interceptors.request.use(
+//   (request) => {
+//     request.headers.authorization = localStorage.getItem('token');
+//     return request;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );
 
 const queryClient = new QueryClient({
   defaultOptions: {

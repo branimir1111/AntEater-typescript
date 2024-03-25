@@ -12,7 +12,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { customFetch } from '@/utils';
 import { toast } from './ui/use-toast';
 import { logoutUser } from '@/features/user/userSlice';
-import { User, LogOut, CircleUserRound } from 'lucide-react';
+import { User, LogOut, CircleUserRound, ArrowDownUp } from 'lucide-react';
 
 const ProfileLogoutDropdown = () => {
   const user = useAppSelector((state) => state.userState.user);
@@ -35,6 +35,7 @@ const ProfileLogoutDropdown = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className="py-2">
           {user?.firstName}
+          <ArrowDownUp className="w-4 ml-2" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

@@ -21,7 +21,10 @@ export const action =
     const data = Object.fromEntries(formData);
     try {
       const response: AxiosResponse = await customFetch.post('/login', data);
-      const loggedUser = response.data.user;
+      // const loggedUser = response.data.user;
+      const loggedUser = response.data;
+      console.log(loggedUser);
+
       queryClient.invalidateQueries();
       store.dispatch(loginUser(loggedUser));
       toast({ description: response.data.msg });
