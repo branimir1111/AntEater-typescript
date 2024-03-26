@@ -63,9 +63,7 @@ const Navbar = ({
           </svg>
         </label> */}
         {/* THEME END */}
-        {/* DROPDOWN START */}
         <ProfileLogoutDropdown />
-        {/* DROPDOWN END */}
       </div>
     </nav>
   );

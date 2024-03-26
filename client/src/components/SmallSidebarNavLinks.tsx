@@ -8,7 +8,7 @@ type SmallSidebarProps = {
 const SmallSidebarNavLinks = ({ setOpenSmallSidebar }: SmallSidebarProps) => {
   const user = useAppSelector((state) => state.userState.user);
   return (
-    <div className="py-2 px-8 grid items-center justify-start">
+    <div className="py-2 px-8 grid items-center justify-start bg-[#0E2C49] rounded-md bg-opacity-50">
       <nav id="main-nav-links">
         {mainLinks.map((link) => {
           const { id, text, path, icon } = link;
@@ -23,10 +23,10 @@ const SmallSidebarNavLinks = ({ setOpenSmallSidebar }: SmallSidebarProps) => {
               key={id}
               onClick={() => setOpenSmallSidebar((prev) => !prev)}
               className={({ isActive }) => {
-                return `w-full py-3 flex gap-4 text-[1rem] hover:opacity-70 items-center justify-start text-base-content ${
+                return `w-full py-3 flex gap-4 text-[1rem] hover:opacity-70 items-center justify-start text-white ${
                   isActive
                     ? 'opacity-100 translate-x-2 transition-all'
-                    : 'opacity-50'
+                    : 'opacity-60'
                 }`;
               }}
               end

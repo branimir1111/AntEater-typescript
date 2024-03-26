@@ -11,7 +11,7 @@ const LogoForAuth = ({ text }: { text: string }) => {
       <h1 className="text-3xl mt-2 mb-2 text-white md:text-4xl">
         Ant<span className="text-yellow-400">E</span>ater
       </h1>
-      <h1 className="mb-4 text-white text-2xl capitalize">{text}</h1>
+      <h1 className="mb-4 text-yellow-400 text-2xl capitalize">{text}</h1>
     </>
   );
 };

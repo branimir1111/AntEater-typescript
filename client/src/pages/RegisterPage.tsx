@@ -62,7 +62,9 @@ const RegisterPage = () => {
         <h1 className="text-white mt-[1rem]">
           Already have account?{' '}
           <span className="text-yellow-300 hover:text-yellow-500 transition-all duration-200">
-            <Link to="/login">Login</Link>
+            <Link to="/login" className="underline underline-offset-2">
+              Login
+            </Link>
           </span>
         </h1>
       </div>

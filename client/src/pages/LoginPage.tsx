@@ -79,7 +79,9 @@ const LoginPage = () => {
           <h1 className="text-white mt-[1rem]">
             Don't have account?{' '}
             <span className="text-yellow-300 hover:text-yellow-500 transition-all duration-200">
-              <Link to="/register">Register</Link>
+              <Link to="/register" className="underline underline-offset-2">
+                Register
+              </Link>
             </span>
           </h1>
           <h1 className="text-white text-center mt-[1rem]">OR</h1>

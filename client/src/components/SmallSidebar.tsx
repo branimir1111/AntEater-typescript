@@ -1,6 +1,7 @@
 import { CircleX } from 'lucide-react';
-import logo from '../images/anteater.svg';
 import { SmallSidebarNavLinks } from '.';
+import BigSidebarLogo from './BigSidebarLogo';
+import { Button } from './ui/button';
 
 type SmallSidebarProps = {
   setOpenSmallSidebar: React.Dispatch<React.SetStateAction<boolean>>;
@@ -8,16 +9,18 @@ type SmallSidebarProps = {
 
 const SmallSidebar = ({ setOpenSmallSidebar }: SmallSidebarProps) => {
   return (
-    <section className="bg-base-100 w-full absolute flex flex-col items-center top-0 min-h-screen z-20 p-8 lg:hidden">
+    <section className="bg-[url('./images/SmallSidebarBG.svg')] w-full absolute flex flex-col items-center top-0 min-h-screen z-20 p-8 lg:hidden">
       <header className="w-full flex items-center text-[2rem] text-base-content justify-end">
-        <button
+        <Button
           type="button"
+          size="icon"
           onClick={() => setOpenSmallSidebar((prev) => !prev)}
+          className="bg-transparent"
         >
           <CircleX />
-        </button>
+        </Button>
       </header>
-      <img src={logo} alt="logo" className="bg-white w-16 rounded-full" />
+      <BigSidebarLogo classIcon="w-16" classText="text-white" />
       <SmallSidebarNavLinks setOpenSmallSidebar={setOpenSmallSidebar} />
     </section>
   );

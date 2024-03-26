@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 
 const LandingPage = () => {
   return (
-    <main className="w-full h-screen grid place-items-center bg-[url('./images/PolygonLuminary.svg')] bg-no-repeat bg-cover md:relative">
-      <div className="w-11/12 bg-cyan-950 drop-shadow-2xl p-6 grid place-items-center rounded-[5px] sm:w-[400px] md:absolute md:top-[20%] md:left-[20%]">
+    <main className="w-full min-h-screen grid place-items-center bg-[url('./images/PolygonLuminary.svg')] bg-no-repeat bg-cover lg:grid-cols-2">
+      <div className="w-11/12 bg-cyan-950 drop-shadow-2xl p-6 grid place-items-center rounded-[5px] sm:w-[400px] lg:mb-[30%]">
         <div className="w-[60px] h-[60px] mb-4 p-1 bg-cyan-50 rounded-full md:w-[70px]  md:h-[70px]">
           <img src={logo} alt="logo" className="" />
         </div>
@@ -24,6 +24,7 @@ const LandingPage = () => {
           </Link>
         </Button>
       </div>
+      <div className="hidden lg:block"></div>
     </main>
   );
 };

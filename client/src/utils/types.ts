@@ -14,3 +14,5 @@ export type MainLink = {
   path: string;
   icon: React.ReactNode;
 };
+
+export type Theme = 'dark' | 'light' | 'system';

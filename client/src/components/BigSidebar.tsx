@@ -4,10 +4,15 @@ import { BigSidebarLogo, BigSidebar3DModel, BigSidebarNavLinks } from '.';
 const BigSidebar = ({ openBigSidebar }: { openBigSidebar: boolean }) => {
   return (
     <aside
+      // className={twMerge(
+      //   `-ml-80 lg:ml-0 border-r-[1px] border-r-base-300 ${
+      //     openBigSidebar ? 'lg:ml-0' : 'lg:-ml-80'
+      //   } w-80 transition-all duration-300 min-h-screen bg-base-200`
+      // )}
       className={twMerge(
-        `-ml-80 lg:ml-0 border-r-[1px] border-r-base-300 ${
+        `-ml-80 lg:ml-0 border-r-[1px] ${
           openBigSidebar ? 'lg:ml-0' : 'lg:-ml-80'
-        } w-80 transition-all duration-300 min-h-screen bg-base-200`
+        } w-80 transition-all duration-300 min-h-screen`
       )}
     >
       <BigSidebarLogo />
