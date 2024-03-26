@@ -35,24 +35,28 @@ const RegisterPage = () => {
             type="text"
             label="First Name"
             labelClass="text-white"
+            inputClass="bg-white text-black"
           />
           <FormInput
             name="lastName"
             type="text"
             label="Last Name"
             labelClass="text-white"
+            inputClass="bg-white text-black"
           />
           <FormInput
             name="email"
             type="email"
             label="E-mail"
             labelClass="text-white"
+            inputClass="bg-white text-black"
           />
           <FormInput
             name="password"
             type="password"
             label="password"
             labelClass="text-white"
+            inputClass="bg-white text-black"
           />
           <SubmitBtn
             text="Register"

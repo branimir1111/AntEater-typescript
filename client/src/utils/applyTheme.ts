@@ -1,6 +1,6 @@
 import { type Theme } from '@/utils';
 
-export const setTheme = (theme: Theme) => {
+export const applyTheme = (theme: Theme) => {
   const root = window.document.documentElement;
 
   root.classList.remove('light', 'dark');

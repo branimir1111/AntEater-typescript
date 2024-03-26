@@ -21,10 +21,7 @@ export const action =
     const data = Object.fromEntries(formData);
     try {
       const response: AxiosResponse = await customFetch.post('/login', data);
-      // const loggedUser = response.data.user;
-      const loggedUser = response.data;
-      console.log(loggedUser);
-
+      const loggedUser = response.data.user;
       queryClient.invalidateQueries();
       store.dispatch(loginUser(loggedUser));
       toast({ description: response.data.msg });
@@ -65,12 +62,14 @@ const LoginPage = () => {
             type="email"
             label="E-mail"
             labelClass="text-white"
+            inputClass="bg-white text-black"
           />
           <FormInput
             name="password"
             type="password"
             label="password"
             labelClass="text-white"
+            inputClass="bg-white text-black"
           />
           <SubmitBtn
             text="Login"

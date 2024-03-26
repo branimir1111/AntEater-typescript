@@ -20,12 +20,13 @@ const updateUser = async (req, res) => {
     req.user.userId,
     newUser
   );
-
   if (req.file && updateUser.avatarPublicId) {
     await cloudinary.v2.uploader.destroy(updateUser.avatarPublicId);
   }
 
-  res.status(StatusCodes.CREATED).json({ msg: 'User successfully updated' });
+  res
+    .status(StatusCodes.CREATED)
+    .json({ user: updateUser, msg: 'User successfully updated' });
 };
 
 const getAllUsers = async (req, res) => {

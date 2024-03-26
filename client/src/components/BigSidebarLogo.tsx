@@ -12,7 +12,9 @@ const BigSidebarLogo = ({ classIcon, classText }: BigSidebarLogoProps) => {
       <img
         src={logo}
         alt="anteater"
-        className={twMerge(`w-8 rounded-full ${classIcon}`)}
+        className={twMerge(
+          `w-8 rounded-full bg-slate-50 border border-yellow-400 ${classIcon}`
+        )}
       />
       <h1 className={twMerge(`text-2xl self-end ${classText}`)}>
         Ant<span className="text-yellow-400">E</span>ater

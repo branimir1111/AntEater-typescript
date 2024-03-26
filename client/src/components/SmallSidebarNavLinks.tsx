@@ -13,7 +13,7 @@ const SmallSidebarNavLinks = ({ setOpenSmallSidebar }: SmallSidebarProps) => {
         {mainLinks.map((link) => {
           const { id, text, path, icon } = link;
 
-          if (path === 'project-manager' && user?.role === 'developer') return;
+          if (path === 'manager' && user?.role === 'developer') return;
           if (path === 'admin' && user?.role === 'developer') return;
           if (path === 'admin' && user?.role === 'projectmanager') return;
 

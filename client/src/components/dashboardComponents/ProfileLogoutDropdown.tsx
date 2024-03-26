@@ -33,7 +33,7 @@ const ProfileLogoutDropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="py-2">
+        <Button variant="secondary" className="py-2">
           {user?.firstName}
           <ArrowDownUp className="w-4 ml-2" />
         </Button>
@@ -41,7 +41,11 @@ const ProfileLogoutDropdown = () => {
       <DropdownMenuContent>
         <DropdownMenuItem className="grid place-items-center">
           <Avatar>
-            <AvatarImage src={user?.avatar} alt="" className="object-cover" />
+            <AvatarImage
+              src={user?.avatar}
+              alt="ant"
+              className="object-cover"
+            />
             <AvatarFallback>
               <CircleUserRound />
             </AvatarFallback>

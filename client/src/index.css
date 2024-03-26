@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Delete this START */
+.lightTheme {
+  --background-light: hsl(0, 0%, 100%);
+  --background-darky: hsl(224, 71.4%, 4.1%);
+  --foreground-light: hsl(224, 71.4%, 4.1%);
+  --foreground-darky: hsl(210, 20%, 98%);
+  --card-light: hsl(0, 0%, 100%);
+  --card-darky: hsl(224, 71.4%, 4.1%);
+  --card-foreground-light: hsl(224, 71.4%, 4.1%);
+  --card-foreground-darky: hsl(210, 20%, 98%);
+  --popover-light: hsl(0, 0%, 100%);
+  --popover-darky: hsl(224, 71.4%, 4.1%);
+  --popover-foreground-light: hsl(224, 71.4%, 4.1%);
+  --popover-foreground-darky: hsl(210, 20%, 98%);
+  --primary-light: hsl(262.1, 83.3%, 57.8%);
+  --primary-darky: hsl(263.4, 70%, 50.4%);
+  --primary-foreground-light: hsl(210, 20%, 98%);
+  --primary-foreground-darky: hsl(210, 20%, 98%);
+  --secondary-light: hsl(220, 14.3%, 95.9%);
+  --secondary-darky: hsl(215, 27.9%, 16.9%);
+  --secondary-foreground-light: hsl(220.9, 39.3%, 11%);
+  --secondary-foreground-darky: hsl(210, 20%, 98%);
+  --muted-light: hsl(220, 14.3%, 95.9%);
+  --muted-darky: hsl(215, 27.9%, 16.9%);
+  --muted-foreground-light: hsl(220, 8.9%, 46.1%);
+  --muted-foreground-darky: hsl(217.9, 10.6%, 64.9%);
+  --accent-light: hsl(220, 14.3%, 95.9%);
+  --accent-darky: hsl(215, 27.9%, 16.9%);
+  --accent-foreground-light: hsl(220.9, 39.3%, 11%);
+  --accent-foreground-darky: hsl(210, 20%, 98%);
+  --destructive-light: hsl(0, 84.2%, 60.2%);
+  --destructive-darky: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground-light: hsl(210, 20%, 98%);
+  --destructive-foreground-darky: hsl(210, 20%, 98%);
+  --border-light: hsl(220, 13%, 91%);
+  --border-darky: hsl(215, 27.9%, 16.9%);
+  --input-light: hsl(220, 13%, 91%);
+  --input-darky: hsl(215, 27.9%, 16.9%);
+  --ring-light: hsl(262.1, 83.3%, 57.8%);
+  --ring-darky: hsl(263.4, 70%, 50.4%);
+}
+/* Delete this END */
+
 @layer base {
   :root {
     --background: 0 0% 100%;

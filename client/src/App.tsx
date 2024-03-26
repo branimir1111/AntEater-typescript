@@ -24,6 +24,7 @@ import { loader as dashboardLayoutLoader } from './pages/dashboard/DashboardLayo
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
+import { action as editProfileAction } from './pages/dashboard/Profile/ProfilePage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
     path: 'dashboard',
     element: <DashboardLayout />,
     errorElement: <ErrorPage />,
-    loader: dashboardLayoutLoader(queryClient),
+    loader: dashboardLayoutLoader(store, queryClient),
     children: [
       {
         index: true,
@@ -96,6 +97,7 @@ const router = createBrowserRouter([
         path: 'profile',
         element: <ProfilePage />,
         errorElement: <ErrorElement />,
+        action: editProfileAction,
       },
     ],
   },
