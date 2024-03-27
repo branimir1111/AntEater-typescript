@@ -10,35 +10,37 @@ import { toast } from '@/components/ui/use-toast';
 import { AxiosError, AxiosResponse } from 'axios';
 import { ProfileOldInfo, FormInput, SubmitBtn } from '@/components';
 import { Button } from '@/components/ui/button';
+import { ReduxStore } from '@/features/store';
+import { updateUser } from '@/features/user/userSlice';
 
-export const action: ActionFunction = async ({
-  request,
-}): Promise<Response | null> => {
-  const formData = await request.formData();
-
-  const file = formData.get('avatar') as FormDataEntryValue & {
-    size: number;
+export const action =
+  (store: ReduxStore): ActionFunction =>
+  async ({ request }): Promise<Response | null> => {
+    const formData = await request.formData();
+    const file = formData.get('avatar') as FormDataEntryValue & {
+      size: number;
+    };
+    if (file && file.size > 1000000) {
+      toast({ description: 'Image too large' });
+      return null;
+    }
+    try {
+      const response: AxiosResponse = await customFetch.patch(
+        '/update-user',
+        formData
+      );
+      store.dispatch(updateUser(response.data.user));
+      toast({ description: response.data.msg });
+      return redirect('/dashboard/profile');
+    } catch (error) {
+      const errorMsg =
+        error instanceof AxiosError
+          ? error.response?.data.msg
+          : 'Update Failed';
+      toast({ description: errorMsg });
+      return null;
+    }
   };
-
-  if (file && file.size > 1000000) {
-    toast({ description: 'Image too large' });
-    return null;
-  }
-
-  try {
-    const response: AxiosResponse = await customFetch.patch(
-      '/update-user',
-      formData
-    );
-    toast({ description: response.data.msg });
-    return redirect('/dashboard/profile');
-  } catch (error) {
-    const errorMsg =
-      error instanceof AxiosError ? error.response?.data.msg : 'Update Failed';
-    toast({ description: errorMsg });
-    return null;
-  }
-};
 
 const ProfilePage = () => {
   const [showModal, setShowModal] = useState(false);

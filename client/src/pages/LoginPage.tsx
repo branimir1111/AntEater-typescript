@@ -12,17 +12,15 @@ import { type ReduxStore } from '@/features/store';
 import { loginUser } from '@/features/user/userSlice';
 import { AxiosResponse, AxiosError } from 'axios';
 import { Button } from '@/components/ui/button';
-import { type QueryClient } from '@tanstack/react-query';
 
 export const action =
-  (store: ReduxStore, queryClient: QueryClient): ActionFunction =>
+  (store: ReduxStore): ActionFunction =>
   async ({ request }): Promise<Response | null> => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     try {
       const response: AxiosResponse = await customFetch.post('/login', data);
       const loggedUser = response.data.user;
-      queryClient.invalidateQueries();
       store.dispatch(loginUser(loggedUser));
       toast({ description: response.data.msg });
       return redirect('/dashboard');
@@ -47,8 +45,8 @@ const LoginPage = () => {
       password,
     });
     const user = response.data.user;
-    toast({ description: response.data.msg });
     dispatch(loginUser(user));
+    toast({ description: response.data.msg });
     navigate('/dashboard');
   };
 

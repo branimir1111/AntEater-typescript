@@ -2,28 +2,19 @@ import { Navbar, SmallSidebar, BigSidebar } from '@/components';
 import { Outlet, redirect } from 'react-router-dom';
 import { useState } from 'react';
 import { customFetch } from '@/utils';
-import { type QueryClient } from '@tanstack/react-query';
 import { ReduxStore } from '@/features/store';
 import { updateUser } from '@/features/user/userSlice';
 
-const userQuery = {
-  queryKey: ['user'],
-  queryFn: async () => {
+export const loader = (store: ReduxStore) => async () => {
+  try {
     const { data } = await customFetch.get('/current-user');
-    return data;
-  },
+    const currentUser = data.currentUser;
+    store.dispatch(updateUser(currentUser));
+    return currentUser;
+  } catch (error) {
+    return redirect('/');
+  }
 };
-
-export const loader =
-  (store: ReduxStore, queryClient: QueryClient) => async () => {
-    try {
-      const user = await queryClient.ensureQueryData(userQuery);
-      store.dispatch(updateUser(user.currentUser));
-      return user.currentUser;
-    } catch (error) {
-      return redirect('/');
-    }
-  };
 
 const DashboardLayout = () => {
   const [openBigSidebar, setOpenBigSidebar] = useState(true);

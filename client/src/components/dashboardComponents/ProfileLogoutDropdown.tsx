@@ -12,6 +12,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { customFetch } from '@/utils';
 import { toast } from '../ui/use-toast';
 import { logoutUser } from '@/features/user/userSlice';
+import { unsetTheme } from '@/features/theme/themeSlice';
 import { User, LogOut, CircleUserRound, ArrowDownUp } from 'lucide-react';
 
 const ProfileLogoutDropdown = () => {
@@ -23,6 +24,7 @@ const ProfileLogoutDropdown = () => {
     try {
       await customFetch.get('/logout');
       dispatch(logoutUser());
+      dispatch(unsetTheme());
       toast({ description: 'Successfully logged out' });
       navigate('/');
     } catch (error) {

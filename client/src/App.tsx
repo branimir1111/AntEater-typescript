@@ -50,13 +50,14 @@ const router = createBrowserRouter([
     path: 'login',
     element: <LoginPage />,
     errorElement: <ErrorPage />,
-    action: loginAction(store, queryClient),
+    action: loginAction(store),
+    // action: loginAction(store),
   },
   {
     path: 'dashboard',
     element: <DashboardLayout />,
     errorElement: <ErrorPage />,
-    loader: dashboardLayoutLoader(store, queryClient),
+    loader: dashboardLayoutLoader(store),
     children: [
       {
         index: true,
@@ -97,7 +98,7 @@ const router = createBrowserRouter([
         path: 'profile',
         element: <ProfilePage />,
         errorElement: <ErrorElement />,
-        action: editProfileAction,
+        action: editProfileAction(store),
       },
     ],
   },

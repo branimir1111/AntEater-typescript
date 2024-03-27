@@ -26,8 +26,8 @@ const userSlice = createSlice({
     updateUser: (state, action: PayloadAction<User>) => {
       const user = action.payload;
       state.user = user;
+      localStorage.removeItem('user');
       localStorage.setItem('user', JSON.stringify(user));
-      toast({ description: 'Update successful' });
     },
     logoutUser: (state) => {
       state.user = null;

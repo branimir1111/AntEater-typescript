@@ -24,7 +24,12 @@ const themeSlice = createSlice({
       applyTheme(action.payload);
       localStorage.setItem('theme', action.payload);
     },
+    unsetTheme: (state) => {
+      localStorage.removeItem('theme');
+      applyTheme('system');
+      state.theme = 'system';
+    },
   },
 });
-export const { setTheme } = themeSlice.actions;
+export const { setTheme, unsetTheme } = themeSlice.actions;
 export default themeSlice.reducer;

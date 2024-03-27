@@ -52,7 +52,7 @@ const getAllUsers = async (req, res) => {
 };
 
 const getCurrentUser = async (req, res) => {
-  const user = await UserModel.findOne({ _id: req.user.userId });
+  const user = await UserModel.findById({ _id: req.user.userId });
   const userWithoutPassword = user.toJSON();
   res.status(StatusCodes.OK).json({ currentUser: userWithoutPassword });
 };
