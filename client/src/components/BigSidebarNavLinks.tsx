@@ -15,13 +15,6 @@ const BigSidebarNavLinks = () => {
           <NavLink
             to={path}
             key={id}
-            // className={({ isActive }) => {
-            //   return `w-full py-3 flex gap-4 text-[1rem] hover:opacity-70 items-center justify-start text-base-content ${
-            //     isActive
-            //       ? 'opacity-100 font-medium translate-x-1 transition-all'
-            //       : 'opacity-50'
-            //   }`;
-            // }}
             className={({ isActive }) => {
               return `w-full py-3 flex gap-4 text-[1rem] hover:opacity-70 items-center justify-start ${
                 isActive

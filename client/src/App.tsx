@@ -20,6 +20,9 @@ import {
 } from './pages';
 import { ErrorElement } from './components';
 
+//! DELETE this page when you finished!!!
+import ColorPalettePage from './pages/ColorPalletePage';
+
 import { loader as dashboardLayoutLoader } from './pages/dashboard/DashboardLayout';
 
 import { action as loginAction } from './pages/LoginPage';
@@ -99,6 +102,11 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
         errorElement: <ErrorElement />,
         action: editProfileAction(store),
+      },
+      {
+        path: 'colors',
+        element: <ColorPalettePage />,
+        errorElement: <ErrorElement />,
       },
     ],
   },

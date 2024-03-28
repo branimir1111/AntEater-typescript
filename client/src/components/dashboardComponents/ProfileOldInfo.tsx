@@ -15,13 +15,13 @@ const ProfileOldInfo = () => {
       >
         {user?.avatar ? (
           <img
-            className="w-60 h-60 rounded-full object-cover"
+            className="w-40 h-40 md:w-60 md:h-60 max-md:mb-4 rounded-full object-cover"
             src={user?.avatar}
             alt="user picture"
           />
         ) : (
           <img
-            className="w-60 h-60 rounded-full object-cover"
+            className="w-40 h-40 md:w-60 md:h-60 max-md:mb-4 rounded-full object-cover"
             src={avatarLocale}
             alt="user picture"
           />
@@ -29,50 +29,55 @@ const ProfileOldInfo = () => {
       </div>
       {/* Info */}
       <div id="user-information" className="sm:pl-4">
-        <h1 className="text-5xl font-bold font-poppins mb-4">Welcome</h1>
+        <h1 className="text-4xl max-md:text-center md:text-5xl font-bold font-poppins mb-4">
+          Welcome
+        </h1>
         <label
           htmlFor="firstName"
-          className="font-poppins font-semibold text-xl text-base-content"
+          className="mb-3 font-poppins font-light text-base-content"
         >
           Your first name:
         </label>
         <h3
           id="lastName"
-          className="mb-3 font-poppins font-light text-base-content"
+          className="font-poppins font-semibold text-xl text-base-content mb-1"
         >
           {user?.firstName}
         </h3>
         <label
           htmlFor="lastName"
-          className="font-poppins font-semibold text-xl text-base-content"
+          className="mb-3 font-poppins font-light text-base-content"
         >
           Your last name:
         </label>
         <h3
           id="lastName"
-          className="mb-3 font-poppins font-light text-base-content"
+          className="font-poppins font-semibold text-xl text-base-content mb-1"
         >
           {user?.lastName}
         </h3>
         <label
           htmlFor="email"
-          className="font-poppins font-semibold text-xl text-base-content"
+          className="mb-3 font-poppins font-light text-base-content"
         >
           Your email:
         </label>
         <h3
           id="email"
-          className="mb-3 font-poppins font-light text-base-content"
+          className="font-poppins font-semibold text-xl text-base-content mb-1"
         >
           {user?.email}
         </h3>
         <label
           htmlFor="role"
-          className="font-poppins font-semibold text-xl text-base-content"
+          className="font-poppins font-light text-base-content"
         >
           Your role:
         </label>
-        <h3 id="role" className="font-poppins font-light text-base-content">
+        <h3
+          id="role"
+          className="font-poppins font-semibold text-xl text-base-content"
+        >
           {user?.role}
         </h3>
       </div>

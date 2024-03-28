@@ -45,6 +45,10 @@
 }
 /* Delete this END */
 
+.outlet-hight {
+  min-height: calc(100vh - 73px);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -70,8 +74,7 @@
   }
 
   .dark {
-    /* --background: 224 71.4% 4.1%;(OR) */
-    --background: 200 17% 20%;
+    --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
     --card: 224 71.4% 4.1%;
     --card-foreground: 210 20% 98%;

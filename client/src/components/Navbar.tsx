@@ -25,18 +25,20 @@ const Navbar = ({
     <nav className="w-full flex justify-between items-center px-4 py-4 md:px-12 bg-base-200 border-b-[1px] border-b-base-300">
       <div>
         {openBigSidebar ? (
-          <Button variant="secondary" size="icon">
-            <PanelLeftClose
-              onClick={handleBigSidebar}
-              className="text-4xl cursor-pointer max-lg:hidden text-base-content"
-            />
+          <Button
+            variant="secondary"
+            size="icon"
+            className="text-4xl cursor-pointer max-lg:hidden"
+          >
+            <PanelLeftClose onClick={handleBigSidebar} />
           </Button>
         ) : (
-          <Button variant="secondary" size="icon">
-            <PanelLeftOpen
-              onClick={handleBigSidebar}
-              className="text-4xl cursor-pointer max-lg:hidden text-base-content"
-            />
+          <Button
+            variant="secondary"
+            size="icon"
+            className="text-4xl cursor-pointer max-lg:hidden"
+          >
+            <PanelLeftOpen onClick={handleBigSidebar} />
           </Button>
         )}
         <Menu
@@ -45,7 +47,7 @@ const Navbar = ({
         />
       </div>
       <div className="hidden sm:block">
-        <h1 className="font-poppins font-medium text-base-content text-3xl">
+        <h1 className="font-poppins font-medium text-3xl">
           <span className="text-muted-foreground font-bold">D</span>ashboard
         </h1>
       </div>

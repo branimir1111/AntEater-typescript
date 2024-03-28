@@ -65,10 +65,10 @@ const ProfilePage = () => {
 
   return (
     <>
-      <section className="w-full p-4 grid place-items-center">
+      <section className="w-full outlet-hight p-4 grid place-items-center">
         <div
           id="main-container"
-          className="w-full max-w-5xl p-8 pb-4 rounded-md border-[1px]"
+          className="w-full max-w-5xl bg-background p-8 pb-4 rounded-md border-[1px]"
         >
           <ProfileOldInfo />
           {/* EDIT profile */}
@@ -76,7 +76,7 @@ const ProfilePage = () => {
             id="edit-profile"
             className="w-full grid place-items-center border-b-[1px] pb-4 border-b-base-300"
           >
-            <h1 className="w-full max-sm:text-center self-start text-5xl font-bold font-poppins my-4">
+            <h1 className="w-full max-sm:text-center self-start text-4xl md:text-5xl font-bold font-poppins my-4">
               Edit your profile
             </h1>
             <Form
@@ -132,7 +132,7 @@ const ProfilePage = () => {
             </Form>
           </div>
           {/* DELETE profile START*/}
-          <div className="w-full pt-4">
+          <div className="w-full grid max-md:place-items-center place-items-start pt-4">
             <Button
               type="button"
               variant="destructive"

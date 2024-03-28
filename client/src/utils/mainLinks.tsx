@@ -6,6 +6,7 @@ import {
   TicketCheck,
   UserRoundCog,
   Shield,
+  Palette,
 } from 'lucide-react';
 import { type MainLink } from '.';
 
@@ -51,5 +52,11 @@ export const mainLinks: MainLink[] = [
     text: 'Admin Panel',
     path: 'admin',
     icon: <Shield />,
+  },
+  {
+    id: 7,
+    text: 'Colors Pallete',
+    path: 'colors',
+    icon: <Palette />,
   },
 ];
