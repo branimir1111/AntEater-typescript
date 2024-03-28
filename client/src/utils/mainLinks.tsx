@@ -54,7 +54,7 @@ export const mainLinks: MainLink[] = [
     icon: <Shield />,
   },
   {
-    id: 7,
+    id: 8,
     text: 'Colors Pallete',
     path: 'colors',
     icon: <Palette />,
