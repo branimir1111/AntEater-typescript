@@ -2,8 +2,7 @@ import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
 import { Separator } from '@/components/ui/separator';
 import { shadcnColors } from '@/colorPallete/shadcnColors';
-// import { numOfPallete, primary, neutrals, supporting, image } from './pallete1';
-import { numOfPallete, primary, neutrals, supporting, image } from './pallete2';
+import { numOfPallete, primary, neutrals, supporting, image } from './pallete6';
 
 const ColorPalettePage = () => {
   const copyToClipboard = (text: string) => {
@@ -18,27 +17,25 @@ const ColorPalettePage = () => {
       <div className="w-full grid place-items-center break5:grid-cols-2 break9:grid-cols-3 2xl:grid-cols-4 break16:grid-cols-5 gap-2">
         {shadcnColors.map((singleColor) => {
           const { id, color } = singleColor;
-          const toastMessage = color + ' ' + 'COPIED';
-          const backgroundColor = 'bg-' + color;
+          const copyColor = color.slice(3);
+          const toastMessage = 'Copied to clipboard';
           return (
             <Button
               key={id}
               variant="outline"
               onClick={() => {
-                copyToClipboard(color);
+                copyToClipboard(copyColor);
                 toast({ description: toastMessage });
               }}
-              className={`w-full border ${textBtnColor} ${backgroundColor}`}
+              className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${color} ${textBtnColor} hover:${textBtnColor} ${color}`}
             >
-              {color}
+              {copyColor}
             </Button>
           );
         })}
       </div>
       <Separator className="my-8" />
-      <h1 className="text-center text-2xl">
-        Custom Color <span className="uppercase">{numOfPallete}</span>
-      </h1>
+      <h1 className="text-center text-3xl uppercase">{numOfPallete}</h1>
       <div className="w-full grid place-items-center mt-4">
         <img src={image} alt="pallete image" className="w-[600px]" />
       </div>
@@ -50,19 +47,18 @@ const ColorPalettePage = () => {
         accent borders, or text you want to emphasize.
       </p>
       <div className="w-full grid place-items-center break5:grid-cols-2 break9:grid-cols-3 2xl:grid-cols-4 break16:grid-cols-5 gap-2">
-        {primary.map((singleColor) => {
-          const { name, value } = singleColor;
-          const toastMessage = name + ' ' + 'COPIED';
-          const copyColor = value.slice(3);
+        {primary.map((singleColor, index) => {
+          const copyColor = singleColor.slice(3);
+          const toastMessage = 'Copied to clipboard';
           return (
             <Button
-              key={name}
+              key={index}
               variant="outline"
               onClick={() => {
                 copyToClipboard(copyColor);
                 toast({ description: toastMessage });
               }}
-              className={`w-full border ${textBtnColor} ${value}`}
+              className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
             >
               {copyColor}
             </Button>
@@ -77,19 +73,18 @@ const ColorPalettePage = () => {
         well as for things like secondary buttons and links.
       </p>
       <div className="w-full grid place-items-center break5:grid-cols-2 break9:grid-cols-3 2xl:grid-cols-4 break16:grid-cols-5 gap-2">
-        {neutrals.map((singleColor) => {
-          const { name, value } = singleColor;
-          const toastMessage = name + ' ' + 'COPIED';
-          const copyColor = value.slice(3);
+        {neutrals.map((singleColor, index) => {
+          const copyColor = singleColor.slice(3);
+          const toastMessage = 'Copied to clipboard';
           return (
             <Button
-              key={name}
+              key={index}
               variant="outline"
               onClick={() => {
                 copyToClipboard(copyColor);
                 toast({ description: toastMessage });
               }}
-              className={`w-full border ${textBtnColor} ${value}`}
+              className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
             >
               {copyColor}
             </Button>
@@ -105,19 +100,18 @@ const ColorPalettePage = () => {
         positive trends with the appropriate semantic color.
       </p>
       <div className="w-full grid place-items-center break5:grid-cols-2 break9:grid-cols-3 2xl:grid-cols-4 break16:grid-cols-5 gap-2">
-        {supporting.map((singleColor) => {
-          const { name, value } = singleColor;
-          const toastMessage = name + ' ' + 'COPIED';
-          const copyColor = value.slice(3);
+        {supporting.map((singleColor, index) => {
+          const copyColor = singleColor.slice(3);
+          const toastMessage = 'Copied to clipboard';
           return (
             <Button
-              key={name}
+              key={index}
               variant="outline"
               onClick={() => {
                 copyToClipboard(copyColor);
                 toast({ description: toastMessage });
               }}
-              className={`w-full border ${textBtnColor} ${value}`}
+              className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
             >
               {copyColor}
             </Button>

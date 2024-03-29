@@ -6,78 +6,78 @@ type Colors = {
 export const shadcnColors: Colors[] = [
   {
     id: 1,
-    color: 'background',
+    color: 'bg-background',
   },
   {
     id: 2,
-    color: 'foreground',
+    color: 'bg-foreground',
   },
   {
     id: 3,
-    color: 'card',
+    color: 'bg-card',
   },
   {
     id: 4,
-    color: 'card-foreground',
+    color: 'bg-card-foreground',
   },
   {
     id: 5,
-    color: 'popover',
+    color: 'bg-popover',
   },
   {
     id: 6,
-    color: 'popover-foreground',
+    color: 'bg-popover-foreground',
   },
   {
     id: 7,
-    color: 'primary',
+    color: 'bg-primary',
   },
   {
     id: 8,
-    color: 'primary-foreground',
+    color: 'bg-primary-foreground',
   },
   {
     id: 9,
-    color: 'secondary',
+    color: 'bg-secondary',
   },
   {
     id: 10,
-    color: 'secondary-foreground',
+    color: 'bg-secondary-foreground',
   },
   {
     id: 11,
-    color: 'muted',
+    color: 'bg-muted',
   },
   {
     id: 12,
-    color: 'muted-foreground',
+    color: 'bg-muted-foreground',
   },
   {
     id: 13,
-    color: 'accent',
+    color: 'bg-accent',
   },
   {
     id: 14,
-    color: 'accent-foreground',
+    color: 'bg-accent-foreground',
   },
   {
     id: 15,
-    color: 'destructive',
+    color: 'bg-destructive',
   },
   {
     id: 16,
-    color: 'destructive-foreground',
+    color: 'bg-destructive-foreground',
   },
   {
     id: 17,
-    color: 'border',
+    color: 'bg-border',
   },
   {
     id: 18,
-    color: 'input',
+    color: 'bg-input',
   },
   {
     id: 19,
-    color: 'ring',
+    color: 'bg-ring',
   },
 ];
