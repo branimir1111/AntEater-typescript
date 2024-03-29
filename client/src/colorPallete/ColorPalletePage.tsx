@@ -2,7 +2,13 @@ import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
 import { Separator } from '@/components/ui/separator';
 import { shadcnColors } from '@/colorPallete/shadcnColors';
-import { numOfPallete, primary, neutrals, supporting, image } from './pallete6';
+import {
+  numOfPallete,
+  primary,
+  neutrals,
+  supporting,
+  image,
+} from './pallete16';
 
 const ColorPalettePage = () => {
   const copyToClipboard = (text: string) => {
@@ -13,7 +19,9 @@ const ColorPalettePage = () => {
 
   return (
     <section className="w-full p-4">
-      <h1 className="text-center text-2xl py-4">Color palette - shadcn/ui</h1>
+      <h1 className="text-center font-semibold text-2xl py-4">
+        Color palette - shadcn/ui
+      </h1>
       <div className="w-full grid place-items-center break5:grid-cols-2 break9:grid-cols-3 2xl:grid-cols-4 break16:grid-cols-5 gap-2">
         {shadcnColors.map((singleColor) => {
           const { id, color } = singleColor;
@@ -35,11 +43,19 @@ const ColorPalettePage = () => {
         })}
       </div>
       <Separator className="my-8" />
-      <h1 className="text-center text-3xl uppercase">{numOfPallete}</h1>
-      <div className="w-full grid place-items-center mt-4">
+      <h1 className="text-center text-4xl uppercase font-semibold">
+        {numOfPallete}
+      </h1>
+      <div className="w-full grid place-items-center">
+        <div
+          id="underline"
+          className="w-[200px] rounded-sm h-1 mt-2 bg-slate-400"
+        ></div>
+      </div>
+      <div className="w-full grid place-items-center mt-8">
         <img src={image} alt="pallete image" className="w-[600px]" />
       </div>
-      <h1 className="text-xl py-4">Primary</h1>
+      <h1 className="text-2xl font-semibold py-4">Primary</h1>
       <p className="py-4">
         These are the splashes of color that should appear the most in your UI,
         and are the ones that determine the overall "look" of the site. Use
@@ -66,7 +82,7 @@ const ColorPalettePage = () => {
         })}
       </div>
       <Separator className="my-8" />
-      <h1 className="text-xl py-4">Neutrals</h1>
+      <h1 className="text-2xl font-semibold py-4">Neutrals</h1>
       <p className="py-4">
         These are the colors you will use the most and will make up the majority
         of your UI. Use them for most of your text, backgrounds, and borders, as
@@ -92,7 +108,7 @@ const ColorPalettePage = () => {
         })}
       </div>
       <Separator className="my-8" />
-      <h1 className="text-xl py-4">Supporting</h1>
+      <h1 className="text-2xl font-semibold py-4">Supporting</h1>
       <p className="py-4">
         These colors should be used fairly conservatively throughout your UI to
         avoid overpowering your primary colors. Use them when you need an
