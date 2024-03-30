@@ -21,7 +21,7 @@ import {
 import { ErrorElement } from './components';
 
 //! DELETE this page when you finished!!!
-import ColorPalettePage from './colorPallete/ColorPalletePage';
+import ColorPalettePage from './colorPalette/ColorPalettePage';
 
 import { loader as dashboardLayoutLoader } from './pages/dashboard/DashboardLayout';
 

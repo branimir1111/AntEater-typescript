@@ -1,18 +1,18 @@
-import palleteImage from './images/pallete10.png';
-export const image = palleteImage;
-export const numOfPallete = 'Pallete 10';
+import paletteImage from './images/palette9.png';
+export const image = paletteImage;
+export const numOfPalette = 'Palette 9';
 
 export const primary = [
-  'bg-indigo-050',
-  'bg-indigo-100',
-  'bg-indigo-200',
-  'bg-indigo-300',
-  'bg-indigo-400',
-  'bg-indigo-500',
-  'bg-indigo-600',
-  'bg-indigo-700',
-  'bg-indigo-800',
-  'bg-indigo-900',
+  'bg-[#E3F8FF]',
+  'bg-[#B3ECFF]',
+  'bg-[#81DEFD]',
+  'bg-[#5ED0FA]',
+  'bg-[#40C3F7]',
+  'bg-[#2BB0ED]',
+  'bg-[#1992D4]',
+  'bg-[#127FBF]',
+  'bg-[#0B69A3]',
+  'bg-[#035388]',
 ];
 
 export const neutrals = [
@@ -29,16 +29,16 @@ export const neutrals = [
 ];
 
 export const supporting = [
-  'bg-[#E3F8FF]',
-  'bg-[#B3ECFF]',
-  'bg-[#81DEFD]',
-  'bg-[#5ED0FA]',
-  'bg-[#40C3F7]',
-  'bg-[#2BB0ED]',
-  'bg-[#1992D4]',
-  'bg-[#127FBF]',
-  'bg-[#0B69A3]',
-  'bg-[#035388]',
+  'bg-[#FFE3EC]',
+  'bg-[#FFB8D2]',
+  'bg-[#FF8CBA]',
+  'bg-[#F364A2]',
+  'bg-[#E8368F]',
+  'bg-[#DA127D]',
+  'bg-[#BC0A6F]',
+  'bg-[#A30664]',
+  'bg-[#870557]',
+  'bg-[#620042]',
   'bg-[#FFE3E3]',
   'bg-[#FFBDBD]',
   'bg-[#FF9B9B]',

@@ -1,14 +1,14 @@
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
 import { Separator } from '@/components/ui/separator';
-import { shadcnColors } from '@/colorPallete/shadcnColors';
+import { shadcnColors } from '@/colorPalette/shadcnColors';
 import {
-  numOfPallete,
+  numOfPalette,
   primary,
   neutrals,
   supporting,
   image,
-} from './pallete16';
+} from './palette16';
 
 const ColorPalettePage = () => {
   const copyToClipboard = (text: string) => {
@@ -44,7 +44,7 @@ const ColorPalettePage = () => {
       </div>
       <Separator className="my-8" />
       <h1 className="text-center text-4xl uppercase font-semibold">
-        {numOfPallete}
+        {numOfPalette}
       </h1>
       <div className="w-full grid place-items-center">
         <div

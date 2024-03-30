@@ -1,6 +1,6 @@
-import palleteImage from './images/pallete14.png';
-export const image = palleteImage;
-export const numOfPallete = 'Pallete 14';
+import paletteImage from './images/palette14.png';
+export const image = paletteImage;
+export const numOfPalette = 'Palette 14';
 
 export const primary = [
   'bg-orange-050',
