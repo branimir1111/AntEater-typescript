@@ -5,13 +5,23 @@ import {
   type ActionFunction,
 } from 'react-router-dom';
 import { useAppSelector, customFetch } from '@/utils';
-import { useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
 import { AxiosError, AxiosResponse } from 'axios';
 import { ProfileOldInfo, FormInput, SubmitBtn } from '@/components';
 import { Button } from '@/components/ui/button';
 import { ReduxStore } from '@/features/store';
 import { updateUser } from '@/features/user/userSlice';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 
 export const action =
   (store: ReduxStore): ActionFunction =>
@@ -43,7 +53,6 @@ export const action =
   };
 
 const ProfilePage = () => {
-  const [showModal, setShowModal] = useState(false);
   const user = useAppSelector((state) => state.userState.user);
   const navigate = useNavigate();
 
@@ -51,7 +60,6 @@ const ProfilePage = () => {
     try {
       const response: AxiosResponse = await customFetch.delete('/delete-user');
       toast({ description: response.data.msg });
-      setShowModal(false);
       navigate('/');
     } catch (error) {
       const errorMsg =
@@ -133,53 +141,37 @@ const ProfilePage = () => {
           </div>
           {/* DELETE profile START*/}
           <div className="w-full grid max-md:place-items-center place-items-start pt-4">
-            <Button
-              type="button"
-              variant="destructive"
-              size="lg"
-              className="uppercase"
-              onClick={() => {
-                setShowModal(true);
-              }}
-            >
-              delete profile
-            </Button>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button
+                  type="button"
+                  variant="destructive"
+                  size="lg"
+                  className="uppercase"
+                >
+                  delete profile
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete
+                    your account and remove your data from our servers.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={handleDeleteUser}>
+                    Confirm
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
           {/* DELETE profile END*/}
         </div>
       </section>
-      {/* Modal START */}
-      <section
-        className={`${
-          showModal ? '' : 'hidden'
-        } absolute top-0 left-0 w-full h-full bg-black bg-opacity-30 backdrop-blur-md grid place-items-center px-4`}
-      >
-        <article className="w-full max-w-lg bg-base-100 p-6 rounded-xl shadow-2xl">
-          <h1 className="text-base-content text-3xl mb-4">
-            Hello {user?.firstName}
-          </h1>
-          <p className="text-base-content text-base mb-8">
-            Are you sure you want to delete your profile?
-          </p>
-          <div className="w-full flex justify-between">
-            <button
-              type="button"
-              className="btn btn-outline"
-              onClick={() => setShowModal(false)}
-            >
-              Cancel
-            </button>
-            <button
-              type="button"
-              className="btn btn-success"
-              onClick={handleDeleteUser}
-            >
-              Confirm
-            </button>
-          </div>
-        </article>
-      </section>
-      {/* Modal END */}
     </>
   );
 };
