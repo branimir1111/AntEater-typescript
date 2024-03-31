@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { palettes } from './palettes';
 import { swatches } from './swatches';
+import { tailwindCSSColors } from './tailwindCSSColors';
 
 const ColorPalettePage = () => {
   const [palette, setPalette] = useState('palette1');
@@ -23,9 +24,10 @@ const ColorPalettePage = () => {
   const primary = currentPalette.primary;
   const neutrals = currentPalette.neutrals;
   const supporting = currentPalette.supporting;
-  const textBtnColor: string = 'text-teal-500';
+  const textBtnColor = 'text-[#334E68]';
 
   const swatchesColors = Object.values(swatches);
+  const tailwindColors = Object.keys(tailwindCSSColors);
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -51,7 +53,9 @@ const ColorPalettePage = () => {
               }}
               className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${color} ${textBtnColor} hover:${textBtnColor} ${color}`}
             >
-              {copyColor}
+              <span className="bg-slate-300 px-[2px] rounded-sm">
+                {copyColor}
+              </span>
             </Button>
           );
         })}
@@ -70,7 +74,7 @@ const ColorPalettePage = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
-            <ScrollArea className="h-48 w-48 rounded-md">
+            <ScrollArea className="h-96 w-48 rounded-md">
               {paletteList.map((singlePalette, index) => {
                 return (
                   <DropdownMenuItem
@@ -135,7 +139,9 @@ const ColorPalettePage = () => {
               }}
               className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
             >
-              {copyColor}
+              <span className="bg-slate-300 px-[2px] rounded-sm">
+                {copyColor}
+              </span>
             </Button>
           );
         })}
@@ -169,7 +175,9 @@ const ColorPalettePage = () => {
               }}
               className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
             >
-              {copyColor}
+              <span className="bg-slate-300 px-[2px] rounded-sm">
+                {copyColor}
+              </span>
             </Button>
           );
         })}
@@ -204,7 +212,9 @@ const ColorPalettePage = () => {
               }}
               className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
             >
-              {copyColor}
+              <span className="bg-slate-300 px-[2px] rounded-sm">
+                {copyColor}
+              </span>
             </Button>
           );
         })}
@@ -237,7 +247,67 @@ const ColorPalettePage = () => {
               }}
               className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
             >
-              {copyColor}
+              <span className="bg-slate-300 px-[2px] rounded-sm">
+                {copyColor}
+              </span>
+            </Button>
+          );
+        })}
+      </div>
+      {/* TailwindCSSColors */}
+      <h1 className="text-2xl font-semibold py-4">TailwindCSS Colors</h1>
+      <p className="py-4">
+        Tailwind includes an expertly-crafted default color palette
+        out-of-the-box that is a great starting point if you don’t have your own
+        specific branding in mind.
+      </p>
+      <div className="w-full grid place-items-center gap-2 break4:grid-cols-2 break5:grid-cols-4 break7:grid-cols-5 break9:grid-cols-6 break12:grid-cols-7 break14:grid-cols-8 2xl:grid-cols-9 break16:grid-cols-10 break17:grid-cols-12">
+        {tailwindColors.map((singleColor, index) => {
+          if (
+            singleColor === 'slate' ||
+            singleColor === 'gray' ||
+            singleColor === 'zinc' ||
+            singleColor === 'neutral' ||
+            singleColor === 'stone' ||
+            singleColor === 'red' ||
+            singleColor === 'orange' ||
+            singleColor === 'amber' ||
+            singleColor === 'yellow' ||
+            singleColor === 'lime' ||
+            singleColor === 'green' ||
+            singleColor === 'emerald' ||
+            singleColor === 'teal' ||
+            singleColor === 'cyan' ||
+            singleColor === 'sky' ||
+            singleColor === 'blue' ||
+            singleColor === 'indigo' ||
+            singleColor === 'violet' ||
+            singleColor === 'purple' ||
+            singleColor === 'fuchsia' ||
+            singleColor === 'pink'
+          ) {
+            return (
+              <div
+                key={index}
+                className="w-full h-[1px] rounded-sm bg-slate-200 my-1 break4:col-span-2 break5:col-span-4 break7:col-span-5 break9:col-span-6 break12:col-span-7 break14:col-span-8 2xl:col-span-9 break16:col-span-10 break17:col-span-12"
+              ></div>
+            );
+          }
+          const toastMessage = 'Copied to clipboard';
+          const copyColor = singleColor.slice(3);
+          return (
+            <Button
+              key={index}
+              variant="outline"
+              onClick={() => {
+                copyToClipboard(copyColor);
+                toast({ description: toastMessage });
+              }}
+              className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
+            >
+              <span className="bg-slate-300 bg-opacity-80 px-[2px] rounded-sm">
+                {copyColor}
+              </span>
             </Button>
           );
         })}
