@@ -254,6 +254,7 @@ const ColorPalettePage = () => {
           );
         })}
       </div>
+      <div className="w-full h-[1px] my-8 bg-slate-300"></div>
       {/* TailwindCSSColors */}
       <h1 className="text-2xl font-semibold py-4">TailwindCSS Colors</h1>
       <p className="py-4">
