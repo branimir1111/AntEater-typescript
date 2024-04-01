@@ -72,6 +72,7 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       screens: {
+        break3: '300px',
         break4: '400px',
         break5: '500px',
         break6: '600px',

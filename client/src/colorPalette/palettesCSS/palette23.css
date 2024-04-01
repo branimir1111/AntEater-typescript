@@ -1,0 +1,50 @@
+.paletta23 {
+  /* primary teal-vivid */
+  color: #f0fcf9;
+  color: #c6f7e9;
+  color: #8eedd1;
+  color: #5fe3c0;
+  color: #2dcca7;
+  color: #17b897;
+  color: #079a82;
+  color: #048271;
+  color: #016457;
+  color: #004440;
+
+  /* neutrals gray */
+  color: #f9fafb;
+  color: #f3f4f6;
+  color: #e5e7eb;
+  color: #d1d5db;
+  color: #9ca3af;
+  color: #6b7280;
+  color: #4b5563;
+  color: #374151;
+  color: #1f2937;
+  color: #111827;
+  color: #030712;
+
+  /* supporting yellow-vivid */
+  color: #fffbea;
+  color: #fff3c4;
+  color: #fce588;
+  color: #fadb5f;
+  color: #f7c948;
+  color: #f0b429;
+  color: #de911d;
+  color: #cb6e17;
+  color: #b44d12;
+  color: #8d2b0b;
+
+  /* supporting red-vivid */
+  color: #ffe3e3;
+  color: #ffbdbd;
+  color: #ff9b9b;
+  color: #f86a6a;
+  color: #ef4e4e;
+  color: #e12d39;
+  color: #cf1124;
+  color: #ab091e;
+  color: #8a041a;
+  color: #610316;
+}

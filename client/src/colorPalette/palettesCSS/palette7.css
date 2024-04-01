@@ -1,0 +1,78 @@
+.palette7 {
+  /* primary cyan*/
+  color: #ecfeff;
+  color: #cffafe;
+  color: #a5f3fc;
+  color: #67e8f9;
+  color: #22d3ee;
+  color: #06b6d4;
+  color: #0891b2;
+  color: #0e7490;
+  color: #155e75;
+  color: #164e63;
+  color: #083344;
+
+  /* neutrals warm-gray*/
+  color: #faf9f7;
+  color: #e8e6e1;
+  color: #d3cec4;
+  color: #b8b2a7;
+  color: #a39e93;
+  color: #857f72;
+  color: #625d52;
+  color: #504a40;
+  color: #423d33;
+  color: #27241d;
+
+  /* supporting blue */
+  color: #eff6ff;
+  color: #dbeafe;
+  color: #bfdbfe;
+  color: #93c5fd;
+  color: #60a5fa;
+  color: #3b82f6;
+  color: #2563eb;
+  color: #1d4ed8;
+  color: #1e40af;
+  color: #1e3a8a;
+  color: #172554;
+
+  /* supporting red */
+  color: #fef2f2;
+  color: #fee2e2;
+  color: #fecaca;
+  color: #fca5a5;
+  color: #f87171;
+  color: #ef4444;
+  color: #dc2626;
+  color: #b91c1c;
+  color: #991b1b;
+  color: #7f1d1d;
+  color: #450a0a;
+
+  /* supporting yellow */
+  color: #fefce8;
+  color: #fef9c3;
+  color: #fef08a;
+  color: #fde047;
+  color: #facc15;
+  color: #eab308;
+  color: #ca8a04;
+  color: #a16207;
+  color: #854d0e;
+  color: #713f12;
+  color: #422006;
+
+  /* supporting teal */
+  color: #f0fdfa;
+  color: #ccfbf1;
+  color: #99f6e4;
+  color: #5eead4;
+  color: #2dd4bf;
+  color: #14b8a6;
+  color: #0d9488;
+  color: #0f766e;
+  color: #115e59;
+  color: #134e4a;
+  color: #042f2e;
+}

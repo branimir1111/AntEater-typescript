@@ -1,0 +1,73 @@
+.palette11 {
+  /* primary pink-vivid */
+  color: #ffe3ec;
+  color: #ffb8d2;
+  color: #ff8cba;
+  color: #f364a2;
+  color: #e8368f;
+  color: #da127d;
+  color: #bc0a6f;
+  color: #a30664;
+  color: #870557;
+  color: #620042;
+
+  /* neutrals cool-grey */
+  color: #f5f7fa;
+  color: #e4e7eb;
+  color: #cbd2d9;
+  color: #9aa5b1;
+  color: #7b8794;
+  color: #616e7c;
+  color: #52606d;
+  color: #3e4c59;
+  color: #323f4b;
+  color: #1f2933;
+
+  /* supporting purple-vivid */
+  color: #f2ebfe;
+  color: #dac4ff;
+  color: #b990ff;
+  color: #a368fc;
+  color: #9446ed;
+  color: #8719e0;
+  color: #7a0ecc;
+  color: #690cb0;
+  color: #580a94;
+  color: #44056e;
+
+  /* supporting cyan-vivid */
+  color: #e1fcf8;
+  color: #c1fef6;
+  color: #92fdf2;
+  color: #62f4eb;
+  color: #3ae7e1;
+  color: #1cd4d4;
+  color: #0fb5ba;
+  color: #099aa4;
+  color: #07818f;
+  color: #05606e;
+
+  /* supporting red-vivid */
+  color: #ffe3e3;
+  color: #ffbdbd;
+  color: #ff9b9b;
+  color: #f86a6a;
+  color: #ef4e4e;
+  color: #e12d39;
+  color: #cf1124;
+  color: #ab091e;
+  color: #8a041a;
+  color: #610316;
+
+  /* supporting yellow-vivid */
+  color: #fffbea;
+  color: #fff3c4;
+  color: #fce588;
+  color: #fadb5f;
+  color: #f7c948;
+  color: #f0b429;
+  color: #de911d;
+  color: #cb6e17;
+  color: #b44d12;
+  color: #8d2b0b;
+}

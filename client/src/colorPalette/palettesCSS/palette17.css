@@ -1,0 +1,73 @@
+.palette17 {
+  /* primary magenta */
+  color: #f5e1f7;
+  color: #ecbdf2;
+  color: #ce80d9;
+  color: #bb61c7;
+  color: #ad4bb8;
+  color: #a23dad;
+  color: #90279c;
+  color: #7c1a87;
+  color: #671270;
+  color: #4e0754;
+
+  /* primary orange-vivid */
+  color: #ffe8d9;
+  color: #ffd0b5;
+  color: #ffb088;
+  color: #ff9466;
+  color: #f9703e;
+  color: #f35627;
+  color: #de3a11;
+  color: #c52707;
+  color: #ad1d07;
+  color: #841003;
+
+  /* neutrals blue-grey */
+  color: #f0f4f8;
+  color: #d9e2ec;
+  color: #bcccdc;
+  color: #9fb3c8;
+  color: #829ab1;
+  color: #627d98;
+  color: #486581;
+  color: #334e68;
+  color: #243b53;
+  color: #102a43;
+
+  /* supporting yellow-vivid */
+  color: #fffbea;
+  color: #fff3c4;
+  color: #fce588;
+  color: #fadb5f;
+  color: #f7c948;
+  color: #f0b429;
+  color: #de911d;
+  color: #cb6e17;
+  color: #b44d12;
+  color: #8d2b0b;
+
+  /* supporting red-vivid */
+  color: #ffe3e3;
+  color: #ffbdbd;
+  color: #ff9b9b;
+  color: #f86a6a;
+  color: #ef4e4e;
+  color: #e12d39;
+  color: #cf1124;
+  color: #ab091e;
+  color: #8a041a;
+  color: #610316;
+
+  /* supporting green-vivid */
+  color: #e3f9e5;
+  color: #c1f2c7;
+  color: #91e697;
+  color: #51ca58;
+  color: #31b237;
+  color: #18981d;
+  color: #0f8613;
+  color: #0e7817;
+  color: #07600e;
+  color: #014807;
+}
