@@ -1,86 +1,86 @@
 .palette22 {
   /* primary indigo */
-  color: #eef2ff;
-  color: #e0e7ff;
-  color: #c7d2fe;
-  color: #a5b4fc;
-  color: #818cf8;
-  color: #6366f1;
-  color: #4f46e5;
-  color: #4338ca;
-  color: #3730a3;
-  color: #312e81;
-  color: #1e1b4b;
+  color: hsl(226, 100%, 97%); /*  50 */
+  color: hsl(226, 100%, 94%); /* 100 */
+  color: hsl(228, 96%, 89%); /* 200 */
+  color: hsl(230, 94%, 82%); /* 300 */
+  color: #818cf8; /* 400 */
+  color: #6366f1; /* 500 */
+  color: #4f46e5; /* 600 */
+  color: #4338ca; /* 700 */
+  color: hsl(244, 55%, 41%); /* 800 */
+  color: hsl(242, 47%, 34%); /* 900 */
+  color: hsl(244, 47%, 20%); /* 950 */
 
   /* primary cyan-vivid */
-  color: #e1fcf8;
-  color: #c1fef6;
-  color: #92fdf2;
-  color: #62f4eb;
-  color: #3ae7e1;
-  color: #1cd4d4;
-  color: #0fb5ba;
-  color: #099aa4;
-  color: #07818f;
-  color: #05606e;
+  color: #e1fcf8; /*  50 */
+  color: hsl(172, 97%, 88%); /* 100 */
+  color: hsl(174, 96%, 78%); /* 200 */
+  color: hsl(176, 87%, 67%); /* 300 */
+  color: hsl(178, 78%, 57%); /* 400 */
+  color: #1cd4d4; /* 500 */
+  color: #0fb5ba; /* 600 */
+  color: #099aa4; /* 700 */
+  color: #07818f; /* 800 */
+  color: #05606e; /* 900 */
 
   /* neutrals cool-grey */
-  color: #f5f7fa;
-  color: #e4e7eb;
-  color: #cbd2d9;
-  color: #9aa5b1;
-  color: #7b8794;
-  color: #616e7c;
-  color: #52606d;
-  color: #3e4c59;
-  color: #323f4b;
-  color: #1f2933;
+  color: #f5f7fa; /*  50 */
+  color: hsl(214, 15%, 91%); /* 100 */
+  color: #cbd2d9; /* 200 */
+  color: #9aa5b1; /* 300 */
+  color: #7b8794; /* 400 */
+  color: #616e7c; /* 500 */
+  color: #52606d; /* 600 */
+  color: #3e4c59; /* 700 */
+  color: #323f4b; /* 800 */
+  color: #1f2933; /* 900 */
 
   /* supporting pink-vivid */
-  color: #ffe3ec;
-  color: #ffb8d2;
-  color: #ff8cba;
-  color: #f364a2;
-  color: #e8368f;
-  color: #da127d;
-  color: #bc0a6f;
-  color: #a30664;
-  color: #870557;
-  color: #620042;
+  color: #ffe3ec; /*  50 */
+  color: #ffb8d2; /* 100 */
+  color: #ff8cba; /* 200 */
+  color: #f364a2; /* 300 */
+  color: #e8368f; /* 400 */
+  color: #da127d; /* 500 */
+  color: #bc0a6f; /* 600 */
+  color: #a30664; /* 700 */
+  color: #870557; /* 800 */
+  color: #620042; /* 900 */
 
   /* supporting red-vivid */
-  color: #ffe3e3;
-  color: #ffbdbd;
-  color: #ff9b9b;
-  color: #f86a6a;
-  color: #ef4e4e;
-  color: #e12d39;
-  color: #cf1124;
-  color: #ab091e;
-  color: #8a041a;
-  color: #610316;
+  color: #ffe3e3; /*  50 */
+  color: #ffbdbd; /* 100 */
+  color: #ff9b9b; /* 200 */
+  color: #f86a6a; /* 300 */
+  color: #ef4e4e; /* 400 */
+  color: #e12d39; /* 500 */
+  color: #cf1124; /* 600 */
+  color: #ab091e; /* 700 */
+  color: #8a041a; /* 800 */
+  color: #610316; /* 900 */
 
   /* supporting yellow-vivid */
-  color: #fffbea;
-  color: #fff3c4;
-  color: #fce588;
-  color: #fadb5f;
-  color: #f7c948;
-  color: #f0b429;
-  color: #de911d;
-  color: #cb6e17;
-  color: #b44d12;
-  color: #8d2b0b;
+  color: #fffbea; /*  50 */
+  color: #fff3c4; /* 100 */
+  color: #fce588; /* 200 */
+  color: #fadb5f; /* 300 */
+  color: #f7c948; /* 400 */
+  color: #f0b429; /* 500 */
+  color: #de911d; /* 600 */
+  color: #cb6e17; /* 700 */
+  color: #b44d12; /* 800 */
+  color: #8d2b0b; /* 900 */
 
   /* supporting green-vivid */
-  color: #e3f9e5;
-  color: #c1f2c7;
-  color: #91e697;
-  color: #51ca58;
-  color: #31b237;
-  color: #18981d;
-  color: #0f8613;
-  color: #0e7817;
-  color: #07600e;
-  color: #014807;
+  color: #e3f9e5; /*  50 */
+  color: #c1f2c7; /* 100 */
+  color: #91e697; /* 200 */
+  color: #51ca58; /* 300 */
+  color: #31b237; /* 400 */
+  color: #18981d; /* 500 */
+  color: #0f8613; /* 600 */
+  color: #0e7817; /* 700 */
+  color: #07600e; /* 800 */
+  color: #014807; /* 900 */
 }

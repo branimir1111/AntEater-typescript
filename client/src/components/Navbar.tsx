@@ -22,7 +22,7 @@ const Navbar = ({
     setOpenSmallSidebar((prev) => !prev);
   };
   return (
-    <nav className="w-full flex justify-between items-center px-4 py-4 md:px-12 bg-base-200 border-b-[1px] border-b-base-300">
+    <nav className="w-full flex justify-between items-center px-4 py-4 md:px-12 border-b-[1px]">
       <div>
         {openBigSidebar ? (
           <Button
