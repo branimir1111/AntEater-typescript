@@ -15,3 +15,4 @@ export { default as ProfileOldInfo } from './dashboardComponents/ProfileOldInfo'
 export { default as AllProjectsFilter } from './dashboardComponents/AllProjectsFilter';
 export { default as AllProjectsContainer } from './dashboardComponents/AllProjectsContainer';
 export { default as ComplexPagination } from './dashboardComponents/ComplexPagination';
+export { default as FormSelect } from './FormSelect';
