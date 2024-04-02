@@ -12,3 +12,6 @@ export { default as BigSidebarNavLinks } from './BigSidebarNavLinks';
 export { default as SmallSidebarNavLinks } from './SmallSidebarNavLinks';
 export { default as ThemeToggle } from './ThemeToggle';
 export { default as ProfileOldInfo } from './dashboardComponents/ProfileOldInfo';
+export { default as AllProjectsFilter } from './dashboardComponents/AllProjectsFilter';
+export { default as AllProjectsContainer } from './dashboardComponents/AllProjectsContainer';
+export { default as ComplexPagination } from './dashboardComponents/ComplexPagination';
