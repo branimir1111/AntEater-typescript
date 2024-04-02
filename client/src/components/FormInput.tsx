@@ -1,11 +1,13 @@
 import { Input } from './ui/input';
 import { Label } from './ui/label';
+import { twMerge } from 'tailwind-merge';
 
 type FormInputProps = {
   name: string;
   type: string;
   label?: string;
   defaultValue?: string;
+  layoutClass?: string;
   labelClass?: string;
   inputClass?: string;
 };
@@ -15,11 +17,12 @@ const FormInput = ({
   type,
   label,
   defaultValue,
+  layoutClass,
   labelClass,
   inputClass,
 }: FormInputProps) => {
   return (
-    <div className="w-full mb-2">
+    <div className={twMerge(`w-full mb-2 ${layoutClass}`)}>
       <Label htmlFor={name} className={`capitalize ${labelClass}`}>
         {label || name}
       </Label>

@@ -8,6 +8,11 @@ export type User = {
   avatarPublicId?: string;
 };
 
+export type AllUsersResponse = {
+  currentDevs: User[];
+  pms: User[];
+};
+
 export type MainLink = {
   id: number;
   text: string;

@@ -29,6 +29,7 @@ import { loader as AddNewProjectLoader } from './pages/dashboard/Projects/pages/
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
 import { action as editProfileAction } from './pages/dashboard/Profile/ProfilePage';
+import { action as AddNewProjectAction } from './pages/dashboard/Projects/pages/AddNewProjectForm';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -73,6 +74,7 @@ const router = createBrowserRouter([
         element: <ProjectsPage />,
         errorElement: <ErrorElement />,
         loader: AddNewProjectLoader(queryClient),
+        action: AddNewProjectAction,
       },
       {
         path: 'tasks',

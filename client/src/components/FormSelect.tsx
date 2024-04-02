@@ -6,12 +6,14 @@ import {
   SelectValue,
 } from './ui/select';
 import { Label } from './ui/label';
+import { twMerge } from 'tailwind-merge';
 
 type SelectInputProps = {
   name: string;
   label?: string;
   defaultValue?: string;
   options: string[];
+  layoutClass?: string;
 };
 
 const FormSelect = ({
@@ -19,9 +21,10 @@ const FormSelect = ({
   label,
   defaultValue,
   options,
+  layoutClass,
 }: SelectInputProps) => {
   return (
-    <div className="mb-2">
+    <div className={twMerge(`mb-2 ${layoutClass}`)}>
       <Label htmlFor={name} className="capitalize">
         {label || name}
       </Label>
