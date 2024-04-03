@@ -36,10 +36,10 @@ const FormSelectManagers = ({
         {label || name}
       </Label>
       <Select defaultValue={firstPms} name={name}>
-        <SelectTrigger id={name}>
+        <SelectTrigger id={name} className="bg-input">
           <SelectValue />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="bg-input">
           {options.map((item) => {
             const { _id, firstName, lastName } = item;
             const pmsName = firstName + ' ' + lastName;

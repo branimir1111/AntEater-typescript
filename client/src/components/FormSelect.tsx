@@ -29,10 +29,10 @@ const FormSelect = ({
         {label || name}
       </Label>
       <Select defaultValue={defaultValue || options[0]} name={name}>
-        <SelectTrigger id={name}>
+        <SelectTrigger id={name} className="bg-input">
           <SelectValue />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="bg-input">
           {options.map((item) => {
             return (
               <SelectItem key={item} value={item}>

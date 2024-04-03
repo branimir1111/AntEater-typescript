@@ -106,28 +106,46 @@ const AddNewProjectForm = () => {
 
   return (
     <div className="w-full p-4">
+      {/* Heading */}
+      <div className="w-full flex flex-col items-start sm:flex-row sm:items-end gap-4">
+        <img src={createProject} alt="create project" className="w-12" />
+        <h1 className="text-3xl font-bold capitalize max-sm:text-center">
+          create new project
+        </h1>
+      </div>
+      <hr className="my-4" />
       <Form method="post" className="w-full grid place-items-center">
         <div className="w-full grid place-items-start max-w-3xl">
+          <p className="w-full self-start my-4">
+            All fields below are <strong>required</strong>.
+          </p>
           <div className="w-full grid place-items-start break6:grid-cols-2 max-w-3xl gap-4">
             {/* left side form */}
             <div className="w-full h-full flex flex-col justify-between">
-              <FormInput type="text" name="projectName" label="Project Name" />
+              <FormInput
+                type="text"
+                name="projectName"
+                label="Project Name"
+                inputClass="bg-input"
+                placeholder="Type here..."
+              />
               <FormSelectManagers
                 name="projectManager"
                 label={`Project Manager ( ${numOfPms} available )`}
                 options={firstNamePmsArray}
+                layoutClass="mt-4"
               />
               <FormSelect
                 name="status"
                 label="Project Status"
                 options={projectStatus}
-                layoutClass="mb-0"
+                layoutClass="mb-0 mt-4"
               />
             </div>
             {/* right side form */}
             <div className="w-full">
               <Label>Developers ( {numOfDevs} available )</Label>
-              <ScrollArea className="h-48 w-full rounded-md border pr-16">
+              <ScrollArea className="w-full h-60 rounded-md border pr-16">
                 {firstNameDevsArray.map((developer) => {
                   const { _id, firstName, lastName } = developer;
                   const name = 'teamMembers' + _id;
@@ -145,8 +163,12 @@ const AddNewProjectForm = () => {
             </div>
           </div>
           {/* description */}
-          <Label className="mt-4">Description</Label>
-          <Textarea name="description" className="mt-1" />
+          <Label className="mt-6">Description</Label>
+          <Textarea
+            name="description"
+            className="mt-1 bg-input"
+            placeholder="Type here..."
+          />
           <SubmitBtn text="Create Project" className="w-full mt-4" />
         </div>
       </Form>

@@ -10,6 +10,7 @@ type FormInputProps = {
   layoutClass?: string;
   labelClass?: string;
   inputClass?: string;
+  placeholder?: string;
 };
 
 const FormInput = ({
@@ -20,6 +21,7 @@ const FormInput = ({
   layoutClass,
   labelClass,
   inputClass,
+  placeholder,
 }: FormInputProps) => {
   return (
     <div className={twMerge(`w-full mb-2 ${layoutClass}`)}>
@@ -32,6 +34,7 @@ const FormInput = ({
         type={type}
         defaultValue={defaultValue}
         className={`${inputClass}`}
+        placeholder={placeholder}
       />
     </div>
   );

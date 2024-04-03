@@ -29,7 +29,7 @@ const FormCheckboxDevelopers = ({
         name={name}
         defaultChecked={defaultChecked}
         value={devData}
-        className="border-border bg-slate-100 text-foreground"
+        className="border-border bg-input text-foreground"
       />
       <Label htmlFor={name} className="capitalize">
         {label || devName}
