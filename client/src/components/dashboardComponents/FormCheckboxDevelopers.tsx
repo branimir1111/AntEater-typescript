@@ -2,12 +2,24 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 
 type FormCheckboxProps = {
+  _id: string;
+  firstName: string;
+  lastName: string;
   name: string;
   label?: string;
   defaultValue?: string;
 };
 
-const FormCheckbox = ({ name, label, defaultValue }: FormCheckboxProps) => {
+const FormCheckboxDevelopers = ({
+  _id,
+  firstName,
+  lastName,
+  name,
+  label,
+  defaultValue,
+}: FormCheckboxProps) => {
+  const devData = JSON.stringify({ _id, firstName, lastName });
+  const devName = firstName + ' ' + lastName;
   const defaultChecked = defaultValue === 'on' ? true : false;
 
   return (
@@ -16,12 +28,13 @@ const FormCheckbox = ({ name, label, defaultValue }: FormCheckboxProps) => {
         id={name}
         name={name}
         defaultChecked={defaultChecked}
+        value={devData}
         className="border-border bg-slate-100 text-foreground"
       />
       <Label htmlFor={name} className="capitalize">
-        {label || name}
+        {label || devName}
       </Label>
     </div>
   );
 };
-export default FormCheckbox;
+export default FormCheckboxDevelopers;

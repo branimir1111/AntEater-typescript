@@ -16,4 +16,5 @@ export { default as AllProjectsFilter } from './dashboardComponents/AllProjectsF
 export { default as AllProjectsContainer } from './dashboardComponents/AllProjectsContainer';
 export { default as ComplexPagination } from './dashboardComponents/ComplexPagination';
 export { default as FormSelect } from './FormSelect';
-export { default as FormCheckbox } from './FormCheckbox';
+export { default as FormCheckboxDevelopers } from './dashboardComponents/FormCheckboxDevelopers';
+export { default as FormSelectManagers } from './dashboardComponents/FormSelectManagers';
