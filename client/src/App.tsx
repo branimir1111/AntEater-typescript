@@ -24,7 +24,7 @@ import { ErrorElement } from './components';
 import ColorPalettePage from './colorPalette/ColorPalettePage';
 
 import { loader as dashboardLayoutLoader } from './pages/dashboard/DashboardLayout';
-import { loader as AddNewProjectLoader } from './pages/dashboard/Projects/pages/AddNewProjectForm';
+import { loader as ProjectPageLoader } from '@/pages/dashboard/Projects/ProjectsPage';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -56,7 +56,6 @@ const router = createBrowserRouter([
     element: <LoginPage />,
     errorElement: <ErrorPage />,
     action: loginAction(store),
-    // action: loginAction(store),
   },
   {
     path: 'dashboard',
@@ -73,7 +72,7 @@ const router = createBrowserRouter([
         path: 'projects',
         element: <ProjectsPage />,
         errorElement: <ErrorElement />,
-        loader: AddNewProjectLoader(queryClient),
+        loader: ProjectPageLoader(queryClient),
         action: AddNewProjectAction,
       },
       {

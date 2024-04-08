@@ -13,6 +13,41 @@ export type AllUsersResponse = {
   pms: User[];
 };
 
+//TODO basic type setup - need refactoring
+export type ProjectBugs = [];
+
+//TODO basic type setup - need refactoring
+export type ProjectTasks = [];
+
+export type ProjectUser = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+};
+
+export type ProjectResponse = {
+  _id: string;
+  createdAt: string;
+  createdBy: ProjectUser;
+  description: string;
+  projectBugs: ProjectBugs;
+  projectManager: ProjectUser;
+  projectName: string;
+  projectTasks: ProjectTasks;
+  status: string;
+  teamMembers: ProjectUser[];
+  updatedAt: string;
+};
+
+export type AllProjectsAndUsersResponse = {
+  currentDevs: User[];
+  pms: User[];
+  countAllProjects: number;
+  currentPage: number;
+  numOfPages: number;
+  projectList: ProjectResponse[];
+};
+
 export type MainLink = {
   id: number;
   text: string;

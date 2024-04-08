@@ -1,7 +1,6 @@
 import {
   ActionFunction,
   Form,
-  LoaderFunction,
   useLoaderData,
   redirect,
 } from 'react-router-dom';
@@ -12,7 +11,6 @@ import {
   FormCheckboxDevelopers,
   SubmitBtn,
 } from '@/components';
-import { type QueryClient } from '@tanstack/react-query';
 import {
   User,
   customFetch,
@@ -25,22 +23,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/components/ui/use-toast';
 import { AxiosError, AxiosResponse } from 'axios';
 import createProject from '@/images/createProject.svg';
-
-const allDevsQuery = () => {
-  return {
-    queryKey: ['developer'],
-    queryFn: () => customFetch('/all-users'),
-  };
-};
-
-export const loader =
-  (queryClient: QueryClient): LoaderFunction =>
-  async (): Promise<Response | AllUsersResponse | null> => {
-    const response = await queryClient.ensureQueryData(allDevsQuery());
-    const currentDevs = response.data.devs;
-    const pms = response.data.pms;
-    return { currentDevs, pms };
-  };
 
 export const action =
   (): ActionFunction =>
