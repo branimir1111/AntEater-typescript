@@ -1,7 +1,7 @@
 import { CircleX } from 'lucide-react';
-import { SmallSidebarNavLinks } from '.';
-import BigSidebarLogo from './BigSidebarLogo';
-import { Button } from './ui/button';
+import { SmallSidebarNavLinks } from '..';
+import BigSidebarLogo from '../dashboardComponents/BigSidebar/BigSidebarLogo';
+import { Button } from '../ui/button';
 
 type SmallSidebarProps = {
   setOpenSmallSidebar: React.Dispatch<React.SetStateAction<boolean>>;

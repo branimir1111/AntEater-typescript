@@ -4,13 +4,13 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { Button } from '../ui/button';
+} from '../../ui/dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '../../ui/avatar';
+import { Button } from '../../ui/button';
 import { useAppSelector, useAppDispatch } from '@/utils';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { customFetch } from '@/utils';
-import { toast } from '../ui/use-toast';
+import { toast } from '../../ui/use-toast';
 import { logoutUser } from '@/features/user/userSlice';
 import { unsetTheme } from '@/features/theme/themeSlice';
 import { User, LogOut, CircleUserRound, ArrowDownUp } from 'lucide-react';

@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/utils';
-import avatarLocale from '../../images/avatar.svg';
+import avatarLocale from '@/images/avatar.svg';
 
 const ProfileOldInfo = () => {
   const user = useAppSelector((state) => state.userState.user);

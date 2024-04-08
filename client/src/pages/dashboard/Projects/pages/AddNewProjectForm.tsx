@@ -23,7 +23,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/components/ui/use-toast';
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import createProject from '../../../../images/createProject.svg';
 
 const allDevsQuery = () => {
@@ -71,7 +71,10 @@ export const action =
       data['teamMembers'] = newTeamMembers;
 
       try {
-        const response = await customFetch.post('/create-project', data);
+        const response: AxiosResponse = await customFetch.post(
+          '/create-project',
+          data
+        );
         // const createdProject = response.data.project;
         // store.dispatch(storeProject(createdProject));
         // queryClient.invalidateQueries(['project']);
@@ -126,7 +129,7 @@ const AddNewProjectForm = () => {
                 type="text"
                 name="projectName"
                 label="Project Name"
-                inputClass="bg-input"
+                inputClass="bg-input mt-1"
                 placeholder="Type here..."
               />
               <FormSelectManagers
@@ -139,13 +142,13 @@ const AddNewProjectForm = () => {
                 name="status"
                 label="Project Status"
                 options={projectStatus}
-                layoutClass="mb-0 mt-4"
+                layoutClass="mt-4"
               />
             </div>
             {/* right side form */}
             <div className="w-full">
               <Label>Developers ( {numOfDevs} available )</Label>
-              <ScrollArea className="w-full h-60 rounded-md border pr-16">
+              <ScrollArea className="w-full h-60 rounded-md border pr-16 mt-1">
                 {firstNameDevsArray.map((developer) => {
                   const { _id, firstName, lastName } = developer;
                   const name = 'teamMembers' + _id;
@@ -163,7 +166,7 @@ const AddNewProjectForm = () => {
             </div>
           </div>
           {/* description */}
-          <Label className="mt-6">Description</Label>
+          <Label className="mt-6 mb-1">Description</Label>
           <Textarea
             name="description"
             className="mt-1 bg-input"

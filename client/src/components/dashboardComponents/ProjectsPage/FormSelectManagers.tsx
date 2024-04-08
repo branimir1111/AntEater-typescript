@@ -4,8 +4,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../ui/select';
-import { Label } from '../ui/label';
+} from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
 import { twMerge } from 'tailwind-merge';
 
 type PMS = {
@@ -36,7 +36,7 @@ const FormSelectManagers = ({
         {label || name}
       </Label>
       <Select defaultValue={firstPms} name={name}>
-        <SelectTrigger id={name} className="bg-input">
+        <SelectTrigger id={name} className="bg-input mt-1">
           <SelectValue />
         </SelectTrigger>
         <SelectContent className="bg-input">

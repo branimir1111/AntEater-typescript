@@ -1,4 +1,4 @@
-import logo from '../images/anteater.svg';
+import logo from '@/images/anteater.svg';
 import { twMerge } from 'tailwind-merge';
 
 type BigSidebarLogoProps = {

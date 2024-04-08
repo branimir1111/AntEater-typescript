@@ -14,6 +14,7 @@ type SelectInputProps = {
   defaultValue?: string;
   options: string[];
   layoutClass?: string;
+  labelClass?: string;
 };
 
 const FormSelect = ({
@@ -22,14 +23,15 @@ const FormSelect = ({
   defaultValue,
   options,
   layoutClass,
+  labelClass,
 }: SelectInputProps) => {
   return (
     <div className={twMerge(`mb-2 ${layoutClass}`)}>
-      <Label htmlFor={name} className="capitalize">
+      <Label htmlFor={name} className={twMerge(`capitalize ${labelClass}`)}>
         {label || name}
       </Label>
       <Select defaultValue={defaultValue || options[0]} name={name}>
-        <SelectTrigger id={name} className="bg-input">
+        <SelectTrigger id={name} className="bg-input mt-1">
           <SelectValue />
         </SelectTrigger>
         <SelectContent className="bg-input">

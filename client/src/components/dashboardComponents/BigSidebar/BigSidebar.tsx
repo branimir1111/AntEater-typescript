@@ -1,5 +1,9 @@
 import { twMerge } from 'tailwind-merge';
-import { BigSidebarLogo, BigSidebar3DModel, BigSidebarNavLinks } from '.';
+import {
+  BigSidebarLogo,
+  BigSidebar3DModel,
+  BigSidebarNavLinks,
+} from '@/components';
 
 const BigSidebar = ({ openBigSidebar }: { openBigSidebar: boolean }) => {
   return (
