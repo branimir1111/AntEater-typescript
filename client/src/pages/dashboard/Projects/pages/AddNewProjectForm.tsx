@@ -24,7 +24,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/components/ui/use-toast';
 import { AxiosError, AxiosResponse } from 'axios';
-import createProject from '../../../../images/createProject.svg';
+import createProject from '@/images/createProject.svg';
 
 const allDevsQuery = () => {
   return {
@@ -32,12 +32,6 @@ const allDevsQuery = () => {
     queryFn: () => customFetch('/all-users'),
   };
 };
-// const createProjectQuery = () => {
-//   return {
-//     queryKey: ['project'],
-//     queryFn: () => customFetch('/create-project'),
-//   };
-// };
 
 export const loader =
   (queryClient: QueryClient): LoaderFunction =>
@@ -49,47 +43,40 @@ export const loader =
   };
 
 export const action =
-  // (queryClient: QueryClient): ActionFunction =>
-
-
-    (): ActionFunction =>
-    async ({ request }) => {
-      type EntryData = {
-        [k: string]: FormDataEntryValue | string[];
-      };
-      const formData = await request.formData();
-      const data: EntryData = Object.fromEntries(formData);
-
-      let newTeamMembers: string[] = [];
-      for (const propertyName in data) {
-        if (propertyName.startsWith('teamMembers')) {
-          newTeamMembers = [...newTeamMembers, data[propertyName] as string];
-          delete data[propertyName];
-        }
-      }
-
-      data['teamMembers'] = newTeamMembers;
-
-      try {
-        const response: AxiosResponse = await customFetch.post(
-          '/create-project',
-          data
-        );
-        // const createdProject = response.data.project;
-        // store.dispatch(storeProject(createdProject));
-        // queryClient.invalidateQueries(['project']);
-        toast({ description: response.data.msg });
-        return redirect('/dashboard/projects');
-      } catch (error) {
-        // toast.error(error?.response?.data?.msg);
-        const errorMsg =
-          error instanceof AxiosError
-            ? error.response?.data.msg
-            : 'Registration Failed';
-        toast({ description: errorMsg });
-        return error;
-      }
+  (): ActionFunction =>
+  async ({ request }) => {
+    type EntryData = {
+      [k: string]: FormDataEntryValue | string[];
     };
+    const formData = await request.formData();
+    const data: EntryData = Object.fromEntries(formData);
+
+    let newTeamMembers: string[] = [];
+    for (const propertyName in data) {
+      if (propertyName.startsWith('teamMembers')) {
+        newTeamMembers = [...newTeamMembers, data[propertyName] as string];
+        delete data[propertyName];
+      }
+    }
+
+    data['teamMembers'] = newTeamMembers;
+
+    try {
+      const response: AxiosResponse = await customFetch.post(
+        '/create-project',
+        data
+      );
+      toast({ description: response.data.msg });
+      return redirect('/dashboard/projects');
+    } catch (error) {
+      const errorMsg =
+        error instanceof AxiosError
+          ? error.response?.data.msg
+          : 'Registration Failed';
+      toast({ description: errorMsg });
+      return error;
+    }
+  };
 
 const AddNewProjectForm = () => {
   const { currentDevs, pms } = useLoaderData() as AllUsersResponse;

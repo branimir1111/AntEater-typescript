@@ -74,7 +74,7 @@ const router = createBrowserRouter([
         element: <ProjectsPage />,
         errorElement: <ErrorElement />,
         loader: AddNewProjectLoader(queryClient),
-        action: AddNewProjectAction(queryClient),
+        action: AddNewProjectAction,
       },
       {
         path: 'tasks',
