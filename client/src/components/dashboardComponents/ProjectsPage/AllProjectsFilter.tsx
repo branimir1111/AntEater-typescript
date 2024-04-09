@@ -4,7 +4,7 @@ import { type AllProjectsAndUsersResponse } from '@/utils';
 const AllProjectsFilter = () => {
   const { countAllProjects } = useLoaderData() as AllProjectsAndUsersResponse;
   return (
-    <div className="w-full bg-teal-400">
+    <div className="w-full">
       <h1>{countAllProjects} projects found</h1>AllProjectsFilter
     </div>
   );

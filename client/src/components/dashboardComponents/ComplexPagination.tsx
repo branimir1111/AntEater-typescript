@@ -1,4 +1,4 @@
 const ComplexPagination = () => {
-  return <div className="bg-teal-400">ComplexPagination</div>;
+  return <div>ComplexPagination</div>;
 };
 export default ComplexPagination;

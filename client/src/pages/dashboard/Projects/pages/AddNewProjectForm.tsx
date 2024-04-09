@@ -21,6 +21,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/components/ui/use-toast';
+import { Badge } from '@/components/ui/badge';
 import { AxiosError, AxiosResponse } from 'axios';
 import createProject from '@/images/createProject.svg';
 
@@ -88,8 +89,11 @@ const AddNewProjectForm = () => {
       <hr className="my-4" />
       <Form method="post" className="w-full grid place-items-center">
         <div className="w-full grid place-items-start max-w-3xl">
-          <p className="w-full self-start my-4">
-            All fields below are <strong>required</strong>.
+          <p className="w-full font-semibold self-start my-4">
+            All fields below are{' '}
+            <Badge className="bg-yellow-100 hover:bg-yellow-100 text-yellow-600 text-sm">
+              required !
+            </Badge>
           </p>
           <div className="w-full grid place-items-start break6:grid-cols-2 max-w-3xl gap-4">
             {/* left side form */}

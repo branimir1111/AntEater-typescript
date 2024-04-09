@@ -8,6 +8,7 @@ const getAllProjects = async (req, res) => {
   const skip = (page - 1) * limit;
 
   const allProjects = await projectModel.find({}).limit(limit).skip(skip);
+  // const allProjects = await projectModel.find({});
   const numOfProjects = allProjects.length;
   const findAllProjects = await projectModel.find({});
   const countAllProjects = findAllProjects.length;

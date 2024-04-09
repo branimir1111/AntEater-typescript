@@ -61,7 +61,9 @@ const ProjectsPage = () => {
           </Button>
         )}
       </div>
-      <div>{allProjects ? <AllProjectsPage /> : <AddNewProjectForm />}</div>
+      <div className="w-full">
+        {allProjects ? <AllProjectsPage /> : <AddNewProjectForm />}
+      </div>
     </section>
   );
 };

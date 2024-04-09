@@ -40,7 +40,7 @@ const ProfileOldInfo = () => {
         </label>
         <h3
           id="lastName"
-          className="font-poppins font-semibold text-xl text-base-content mb-1"
+          className="font-poppins font-semibold text-xl text-base-content mb-4"
         >
           {user?.firstName}
         </h3>
@@ -52,7 +52,7 @@ const ProfileOldInfo = () => {
         </label>
         <h3
           id="lastName"
-          className="font-poppins font-semibold text-xl text-base-content mb-1"
+          className="font-poppins font-semibold text-xl text-base-content mb-4"
         >
           {user?.lastName}
         </h3>
@@ -64,7 +64,7 @@ const ProfileOldInfo = () => {
         </label>
         <h3
           id="email"
-          className="font-poppins font-semibold text-xl text-base-content mb-1"
+          className="font-poppins font-semibold text-xl text-base-content mb-4"
         >
           {user?.email}
         </h3>

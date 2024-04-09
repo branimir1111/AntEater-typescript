@@ -18,3 +18,4 @@ export { default as ComplexPagination } from './dashboardComponents/ComplexPagin
 export { default as FormSelect } from './FormSelect';
 export { default as FormCheckboxDevelopers } from './dashboardComponents/ProjectsPage/FormCheckboxDevelopers';
 export { default as FormSelectManagers } from './dashboardComponents/ProjectsPage/FormSelectManagers';
+export { default as ProjectCart } from './dashboardComponents/ProjectsPage/ProjectCart';
