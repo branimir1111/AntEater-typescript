@@ -53,6 +53,9 @@
   :root {
     /* shadcn colors */
     --background: 0 0% 100%;
+    --background-first: 210, 20%, 98%;
+    --background-second: 220, 14%, 96%;
+    --background-third: 220, 13%, 91%;
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
     --card-foreground: 224 71.4% 4.1%;
@@ -77,6 +80,9 @@
   .dark {
     /* shadcn colors */
     --background: 224 71.4% 4.1%;
+    --background-first: 221, 39%, 11%;
+    --background-second: 215, 28%, 17%;
+    --background-third: 217, 19%, 27%;
     --foreground: 210 20% 98%;
     --card: 224 71.4% 4.1%;
     --card-foreground: 210 20% 98%;

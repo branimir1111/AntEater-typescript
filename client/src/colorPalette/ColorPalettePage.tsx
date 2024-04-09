@@ -13,6 +13,8 @@ import { palettes } from './palettes';
 import { swatches } from './swatches';
 import { tailwindCSSColors } from './tailwindCSSColors';
 
+import { AntEaterColorPalette } from './AntEaterColorPalette';
+
 const ColorPalettePage = () => {
   const [palette, setPalette] = useState('palette1');
 
@@ -35,6 +37,100 @@ const ColorPalettePage = () => {
 
   return (
     <section className="w-full p-4">
+      <h1 className="text-center font-semibold text-2xl py-4">
+        AntEater Color palette
+      </h1>
+      <h1 className="text-2xl font-semibold py-4">Neutrals</h1>
+      <div className="w-full grid place-items-center gap-2 break4:grid-cols-2 break5:grid-cols-4 break7:grid-cols-5 break9:grid-cols-6 break12:grid-cols-7 break14:grid-cols-8 2xl:grid-cols-9 break16:grid-cols-10 break17:grid-cols-12">
+        {AntEaterColorPalette.neutrals.map((singleColor, index) => {
+          if (singleColor === 'break') {
+            return (
+              <div
+                key={index}
+                className="w-full h-[1px] rounded-sm bg-slate-200 my-1 break4:col-span-2 break5:col-span-4 break7:col-span-5 break9:col-span-6 break12:col-span-7 break14:col-span-8 2xl:col-span-9 break16:col-span-10 break17:col-span-12"
+              ></div>
+            );
+          }
+          const copyColor = singleColor.slice(3);
+          const toastMessage = 'Copied to clipboard';
+          return (
+            <Button
+              key={index}
+              variant="outline"
+              onClick={() => {
+                copyToClipboard(copyColor);
+                toast({ description: toastMessage });
+              }}
+              className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
+            >
+              <span className="bg-slate-300 px-[2px] rounded-sm">
+                {copyColor}
+              </span>
+            </Button>
+          );
+        })}
+      </div>
+      <h1 className="text-2xl font-semibold py-4">Primary</h1>
+      <div className="w-full grid place-items-center gap-2 break4:grid-cols-2 break5:grid-cols-4 break7:grid-cols-5 break9:grid-cols-6 break12:grid-cols-7 break14:grid-cols-8 2xl:grid-cols-9 break16:grid-cols-10 break17:grid-cols-12">
+        {AntEaterColorPalette.primary.map((singleColor, index) => {
+          if (singleColor === 'break') {
+            return (
+              <div
+                key={index}
+                className="w-full h-[1px] rounded-sm bg-slate-200 my-1 break4:col-span-2 break5:col-span-4 break7:col-span-5 break9:col-span-6 break12:col-span-7 break14:col-span-8 2xl:col-span-9 break16:col-span-10 break17:col-span-12"
+              ></div>
+            );
+          }
+          const copyColor = singleColor.slice(3);
+          const toastMessage = 'Copied to clipboard';
+          return (
+            <Button
+              key={index}
+              variant="outline"
+              onClick={() => {
+                copyToClipboard(copyColor);
+                toast({ description: toastMessage });
+              }}
+              className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
+            >
+              <span className="bg-slate-300 px-[2px] rounded-sm">
+                {copyColor}
+              </span>
+            </Button>
+          );
+        })}
+      </div>
+      <h1 className="text-2xl font-semibold py-4">Supporting</h1>
+      <div className="w-full grid place-items-center gap-2 break4:grid-cols-2 break5:grid-cols-4 break7:grid-cols-5 break9:grid-cols-6 break12:grid-cols-7 break14:grid-cols-8 2xl:grid-cols-9 break16:grid-cols-10 break17:grid-cols-12">
+        {AntEaterColorPalette.supporting.map((singleColor, index) => {
+          if (singleColor === 'break') {
+            return (
+              <div
+                key={index}
+                className="w-full h-[1px] rounded-sm bg-slate-200 my-1 break4:col-span-2 break5:col-span-4 break7:col-span-5 break9:col-span-6 break12:col-span-7 break14:col-span-8 2xl:col-span-9 break16:col-span-10 break17:col-span-12"
+              ></div>
+            );
+          }
+          const copyColor = singleColor.slice(3);
+          const toastMessage = 'Copied to clipboard';
+          return (
+            <Button
+              key={index}
+              variant="outline"
+              onClick={() => {
+                copyToClipboard(copyColor);
+                toast({ description: toastMessage });
+              }}
+              className={`w-full border hover:-translate-y-1 transition-all duration-200 hover:shadow-lg hover:${textBtnColor} ${textBtnColor} hover:${singleColor} ${singleColor}`}
+            >
+              <span className="bg-slate-300 px-[2px] rounded-sm">
+                {copyColor}
+              </span>
+            </Button>
+          );
+        })}
+      </div>
+      <div className="w-full h-[1px] my-8 bg-slate-300"></div>
       <h1 className="text-center font-semibold text-2xl py-4">
         Color palette - shadcn/ui
       </h1>

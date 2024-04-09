@@ -47,7 +47,7 @@ export const loader =
 const ProjectsPage = () => {
   const [allProjects, setAllProjects] = useState(true);
   return (
-    <section className="w-full outlet-hight p-4">
+    <section className="w-full outlet-hight p-4 bg-background-first">
       <div className="w-full p-4">
         {allProjects ? (
           <Button variant="secondary" onClick={() => setAllProjects(false)}>

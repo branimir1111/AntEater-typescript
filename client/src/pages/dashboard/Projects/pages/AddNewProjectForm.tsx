@@ -87,9 +87,12 @@ const AddNewProjectForm = () => {
         </h1>
       </div>
       <hr className="my-4" />
-      <Form method="post" className="w-full grid place-items-center">
+      <Form
+        method="post"
+        className="w-full grid place-items-center rounded-md bg-background px-2 py-8 border"
+      >
         <div className="w-full grid place-items-start max-w-3xl">
-          <p className="w-full font-semibold self-start my-4">
+          <p className="w-full font-semibold self-start mb-4">
             All fields below are{' '}
             <Badge className="bg-yellow-100 hover:bg-yellow-100 text-yellow-600 text-sm">
               required !

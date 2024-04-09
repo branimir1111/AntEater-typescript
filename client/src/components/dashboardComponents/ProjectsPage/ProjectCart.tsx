@@ -58,7 +58,7 @@ const ProjectCart = ({
   const date = day(createdAt).format('D MMM YYYY');
 
   return (
-    <article className="w-full p-4 rounded-md shadow-sm border">
+    <article className="w-full p-4 rounded-md shadow-sm border bg-background">
       <header className="w-full flex items-center gap-4 text-base-content">
         <div className="w-16 h-16 text-3xl rounded-md bg-slate-600 text-slate-100 grid place-items-center uppercase">
           {projectName.charAt(0)}

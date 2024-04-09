@@ -72,107 +72,105 @@ const ProfilePage = () => {
   };
 
   return (
-    <>
-      <section className="w-full outlet-hight p-4 grid place-items-center">
+    <section className="w-full outlet-hight p-4 bg-background-first grid place-items-center">
+      <div
+        id="main-container"
+        className="w-full max-w-5xl bg-background p-8 pb-4 rounded-md border-[1px]"
+      >
+        <ProfileOldInfo />
+        {/* EDIT profile */}
         <div
-          id="main-container"
-          className="w-full max-w-5xl bg-background p-8 pb-4 rounded-md border-[1px]"
+          id="edit-profile"
+          className="w-full grid place-items-center border-b-[1px] pb-4 border-b-base-300"
         >
-          <ProfileOldInfo />
-          {/* EDIT profile */}
-          <div
-            id="edit-profile"
-            className="w-full grid place-items-center border-b-[1px] pb-4 border-b-base-300"
+          <h1 className="w-full max-sm:text-center self-start text-4xl md:text-5xl font-bold font-poppins my-4">
+            Edit your profile
+          </h1>
+          <Form
+            method="post"
+            className="w-full grid place-items-center"
+            encType="multipart/form-data"
           >
-            <h1 className="w-full max-sm:text-center self-start text-4xl md:text-5xl font-bold font-poppins my-4">
-              Edit your profile
-            </h1>
-            <Form
-              method="post"
-              className="w-full grid place-items-center"
-              encType="multipart/form-data"
-            >
-              {/* firstName & lastName */}
-              <div className="grid gap-4 sm:grid-cols-2 w-full">
-                {/* firstName */}
-                <FormInput
-                  type="text"
-                  name="firstName"
-                  label="Edit your first name"
-                  defaultValue={user?.firstName}
-                  inputClass="w-full max-w-xs bg-input"
-                />
-                {/* lastName */}
-                <FormInput
-                  type="text"
-                  name="lastName"
-                  label="Edit your last name"
-                  defaultValue={user?.lastName}
-                  inputClass="w-full max-w-xs bg-input"
-                />
-              </div>
-              {/* email & picture */}
-              <div className="grid gap-4 sm:grid-cols-2 w-full pt-4">
-                {/* email */}
-                <FormInput
-                  type="email"
-                  name="email"
-                  label="Edit your email"
-                  defaultValue={user?.email}
-                  inputClass="w-full max-w-xs bg-input"
-                />
-                {/* picture */}
-                <FormInput
-                  type="file"
-                  name="avatar"
-                  label="Select picture ( max 1 MB )"
-                  inputClass="w-full max-w-xs bg-input"
-                />
-              </div>
-              {/* submit button */}
-              <div className="w-full grid gap-4 sm:grid-cols-2">
-                <div></div>
-                <SubmitBtn
-                  text="Confirm"
-                  className="w-full max-w-xs uppercase sm:mt-2"
-                />
-              </div>
-            </Form>
-          </div>
-          {/* DELETE profile START*/}
-          <div className="w-full grid max-md:place-items-center place-items-start pt-4">
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button
-                  type="button"
-                  variant="destructive"
-                  size="lg"
-                  className="uppercase"
-                >
-                  delete profile
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleDeleteUser}>
-                    Confirm
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-          </div>
-          {/* DELETE profile END*/}
+            {/* firstName & lastName */}
+            <div className="grid gap-4 sm:grid-cols-2 w-full">
+              {/* firstName */}
+              <FormInput
+                type="text"
+                name="firstName"
+                label="Edit your first name"
+                defaultValue={user?.firstName}
+                inputClass="w-full max-w-xs bg-input"
+              />
+              {/* lastName */}
+              <FormInput
+                type="text"
+                name="lastName"
+                label="Edit your last name"
+                defaultValue={user?.lastName}
+                inputClass="w-full max-w-xs bg-input"
+              />
+            </div>
+            {/* email & picture */}
+            <div className="grid gap-4 sm:grid-cols-2 w-full pt-4">
+              {/* email */}
+              <FormInput
+                type="email"
+                name="email"
+                label="Edit your email"
+                defaultValue={user?.email}
+                inputClass="w-full max-w-xs bg-input"
+              />
+              {/* picture */}
+              <FormInput
+                type="file"
+                name="avatar"
+                label="Select picture ( max 1 MB )"
+                inputClass="w-full max-w-xs bg-input"
+              />
+            </div>
+            {/* submit button */}
+            <div className="w-full grid gap-4 sm:grid-cols-2">
+              <div></div>
+              <SubmitBtn
+                text="Confirm"
+                className="w-full max-w-xs uppercase sm:mt-2"
+              />
+            </div>
+          </Form>
         </div>
-      </section>
-    </>
+        {/* DELETE profile START*/}
+        <div className="w-full grid max-md:place-items-center place-items-start pt-4">
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                type="button"
+                variant="destructive"
+                size="lg"
+                className="uppercase"
+              >
+                delete profile
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={handleDeleteUser}>
+                  Confirm
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
+        {/* DELETE profile END*/}
+      </div>
+    </section>
   );
 };
 export default ProfilePage;
