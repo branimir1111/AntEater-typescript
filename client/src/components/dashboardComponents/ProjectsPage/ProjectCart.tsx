@@ -1,8 +1,9 @@
 import day from 'dayjs';
-import { Link, Form } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { type ProjectUser } from '@/utils';
 import { UserCog, CalendarPlus, CalendarDays } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
 type ProjectCartState = {
   _id: string;
@@ -60,7 +61,7 @@ const ProjectCart = ({
   return (
     <article className="w-full p-4 rounded-md shadow-sm border bg-background">
       <header className="w-full flex items-center gap-4 text-base-content">
-        <div className="w-16 h-16 text-3xl rounded-md bg-slate-600 text-slate-100 grid place-items-center uppercase">
+        <div className="w-16 h-16 text-3xl rounded-md bg-green-vivid-100 text-green-vivid-600 grid place-items-center uppercase border border-green-vivid-400 font-bold">
           {projectName.charAt(0)}
         </div>
         <div className="text-2xl capitalize">
@@ -95,20 +96,18 @@ const ProjectCart = ({
 
       <hr className="w-full border-t-[1px] my-2 border-base-300" />
       <footer className="w-full flex gap-4 justify-end mt-4">
-        <Link
-          to={'/dashboard/allprojects'}
-          className="btn btn-sm btn-secondary text-secondary-content rounded-md"
+        <Button
+          asChild
+          variant="outline"
+          className="bg-gray-500 text-white hover:bg-gray-600 hover:text-white"
         >
-          Edit
-        </Link>
-        <Form method="post" action={`./delete-project/${_id}`}>
-          <button
-            type="submit"
-            className="btn btn-sm btn-error text-error-content rounded-md"
+          <Link
+            to={'/dashboard/projects'}
+            className="btn btn-sm btn-secondary text-secondary-content rounded-md"
           >
-            Delete
-          </button>
-        </Form>
+            Details
+          </Link>
+        </Button>
       </footer>
     </article>
   );

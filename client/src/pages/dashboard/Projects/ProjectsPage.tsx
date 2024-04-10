@@ -50,12 +50,20 @@ const ProjectsPage = () => {
     <section className="w-full outlet-hight p-4 bg-background-first">
       <div className="w-full p-4">
         {allProjects ? (
-          <Button variant="secondary" onClick={() => setAllProjects(false)}>
+          <Button
+            variant="secondary"
+            className="bg-btn-primary hover:bg-btn-primary-hover text-white"
+            onClick={() => setAllProjects(false)}
+          >
             <Plus className="w-5 mr-2" />
             Add New Project
           </Button>
         ) : (
-          <Button variant="secondary" onClick={() => setAllProjects(true)}>
+          <Button
+            variant="secondary"
+            className="bg-btn-primary hover:bg-btn-primary-hover text-white"
+            onClick={() => setAllProjects(true)}
+          >
             <ChevronsLeft className="w-5 mr-2" />
             Back To All Projects
           </Button>

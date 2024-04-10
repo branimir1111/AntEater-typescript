@@ -25,41 +25,41 @@ import { Badge } from '@/components/ui/badge';
 import { AxiosError, AxiosResponse } from 'axios';
 import createProject from '@/images/createProject.svg';
 
-export const action =
-  (): ActionFunction =>
-  async ({ request }) => {
-    type EntryData = {
-      [k: string]: FormDataEntryValue | string[];
-    };
-    const formData = await request.formData();
-    const data: EntryData = Object.fromEntries(formData);
-
-    let newTeamMembers: string[] = [];
-    for (const propertyName in data) {
-      if (propertyName.startsWith('teamMembers')) {
-        newTeamMembers = [...newTeamMembers, data[propertyName] as string];
-        delete data[propertyName];
-      }
-    }
-
-    data['teamMembers'] = newTeamMembers;
-
-    try {
-      const response: AxiosResponse = await customFetch.post(
-        '/create-project',
-        data
-      );
-      toast({ description: response.data.msg });
-      return redirect('/dashboard/projects');
-    } catch (error) {
-      const errorMsg =
-        error instanceof AxiosError
-          ? error.response?.data.msg
-          : 'Registration Failed';
-      toast({ description: errorMsg });
-      return error;
-    }
+export const action: ActionFunction = async ({
+  request,
+}): Promise<Response | null> => {
+  type EntryData = {
+    [k: string]: FormDataEntryValue | string[];
   };
+  const formData = await request.formData();
+  const data: EntryData = Object.fromEntries(formData);
+
+  let newTeamMembers: string[] = [];
+  for (const propertyName in data) {
+    if (propertyName.startsWith('teamMembers')) {
+      newTeamMembers = [...newTeamMembers, data[propertyName] as string];
+      delete data[propertyName];
+    }
+  }
+
+  data['teamMembers'] = newTeamMembers;
+
+  try {
+    const response: AxiosResponse = await customFetch.post(
+      '/create-project',
+      data
+    );
+    toast({ description: response.data.msg });
+    return redirect('/dashboard/projects');
+  } catch (error) {
+    const errorMsg =
+      error instanceof AxiosError
+        ? error.response?.data.msg
+        : 'Create Project Failed';
+    toast({ description: errorMsg });
+    return error;
+  }
+};
 
 const AddNewProjectForm = () => {
   const { currentDevs, pms } = useLoaderData() as AllUsersResponse;
@@ -78,7 +78,7 @@ const AddNewProjectForm = () => {
   const numOfDevs = firstNameDevsArray.length;
 
   return (
-    <div className="w-full p-4">
+    <div className="w-full p-4 border rounded-md bg-background">
       {/* Heading */}
       <div className="w-full flex flex-col items-start sm:flex-row sm:items-end gap-4">
         <img src={createProject} alt="create project" className="w-12" />
@@ -87,17 +87,14 @@ const AddNewProjectForm = () => {
         </h1>
       </div>
       <hr className="my-4" />
-      <Form
-        method="post"
-        className="w-full grid place-items-center rounded-md bg-background px-2 py-8 border"
-      >
+      <Form method="post" className="w-full grid place-items-center px-2 py-8">
         <div className="w-full grid place-items-start max-w-3xl">
-          <p className="w-full font-semibold self-start mb-4">
-            All fields below are{' '}
-            <Badge className="bg-yellow-100 hover:bg-yellow-100 text-yellow-600 text-sm">
-              required !
+          <div className="flex items-center mb-4">
+            <p className="w-full font-semibold">All fields below are </p>
+            <Badge className="bg-yellow-100 hover:bg-yellow-100 text-yellow-600 text-sm ml-2">
+              required!
             </Badge>
-          </p>
+          </div>
           <div className="w-full grid place-items-start break6:grid-cols-2 max-w-3xl gap-4">
             {/* left side form */}
             <div className="w-full h-full flex flex-col justify-between">
@@ -148,7 +145,10 @@ const AddNewProjectForm = () => {
             className="mt-1 bg-input"
             placeholder="Type here..."
           />
-          <SubmitBtn text="Create Project" className="w-full mt-4" />
+          <SubmitBtn
+            text="Create Project"
+            className="w-full mt-4 bg-btn-secondary hover:bg-btn-secondary-hover text-white"
+          />
         </div>
       </Form>
     </div>
