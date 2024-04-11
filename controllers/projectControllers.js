@@ -3,26 +3,28 @@ import { StatusCodes } from 'http-status-codes';
 import { BadRequest } from '../errors/customErrors.js';
 
 const getAllProjects = async (req, res) => {
-  const page = Number(req.query.page) || 1;
-  const limit = Number(req.query.limit) || 3;
-  const skip = (page - 1) * limit;
-
-  const allProjects = await projectModel.find({}).limit(limit).skip(skip);
-  // const allProjects = await projectModel.find({});
-  const numOfProjects = allProjects.length;
-  const findAllProjects = await projectModel.find({});
-  const countAllProjects = findAllProjects.length;
-
-  const numOfPages = Math.ceil(numOfProjects / limit);
-
-  res.status(StatusCodes.OK).json({
-    countAllProjects,
-    numOfProjects,
-    allProjects,
-    numOfPages,
-    currentPage: page,
-  });
+  // Sorting
+  const { search, status, sort, limit } = req.query;
+  // Pagination
+  res.status(StatusCodes.OK).json({ msg: 'Yeah baby!!!' });
 };
+
+// const page = Number(req.query.page) || 1;
+// const limit = Number(req.query.limit) || 3;
+// const skip = (page - 1) * limit;
+// const allProjects = await projectModel.find({}).limit(limit).skip(skip);
+// // const allProjects = await projectModel.find({});
+// const numOfProjects = allProjects.length;
+// const findAllProjects = await projectModel.find({});
+// const countAllProjects = findAllProjects.length;
+// const numOfPages = Math.ceil(numOfProjects / limit);
+// res.status(StatusCodes.OK).json({
+//   countAllProjects,
+//   numOfProjects,
+//   allProjects,
+//   numOfPages,
+//   currentPage: page,
+// });
 
 const getSingleProject = async (req, res) => {
   const singleProjectId = req.params;

@@ -102,7 +102,7 @@ const ProjectCart = ({
           className="bg-gray-500 text-white hover:bg-gray-600 hover:text-white"
         >
           <Link
-            to={'/dashboard/projects'}
+            to="/dashboard/projects"
             className="btn btn-sm btn-secondary text-secondary-content rounded-md"
           >
             Details
