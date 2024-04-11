@@ -5,8 +5,15 @@ import { BadRequest } from '../errors/customErrors.js';
 const getAllProjects = async (req, res) => {
   // Sorting
   const { search, status, sort, limit } = req.query;
+  const queryObject = {};
+
+  if (search) {
+    queryObject.$or = [{ projectName: { $regex: search, $options: 'i' } }];
+  }
   // Pagination
-  res.status(StatusCodes.OK).json({ msg: 'Yeah baby!!!' });
+  const projects = await projectModel.find(queryObject);
+  // const projects = await projectModel.find();
+  res.status(StatusCodes.OK).json({ msg: 'Yeah baby!!!', projects });
 };
 
 // const page = Number(req.query.page) || 1;
