@@ -4,34 +4,51 @@ import { BadRequest } from '../errors/customErrors.js';
 
 const getAllProjects = async (req, res) => {
   // Sorting
-  const { search, status, sort, limit } = req.query;
+  const { search, status, sort } = req.query;
   const queryObject = {};
 
   if (search) {
     queryObject.$or = [{ projectName: { $regex: search, $options: 'i' } }];
   }
-  // Pagination
-  const projects = await projectModel.find(queryObject);
-  // const projects = await projectModel.find();
-  res.status(StatusCodes.OK).json({ msg: 'Yeah baby!!!', projects });
-};
 
-// const page = Number(req.query.page) || 1;
-// const limit = Number(req.query.limit) || 3;
-// const skip = (page - 1) * limit;
-// const allProjects = await projectModel.find({}).limit(limit).skip(skip);
-// // const allProjects = await projectModel.find({});
-// const numOfProjects = allProjects.length;
-// const findAllProjects = await projectModel.find({});
-// const countAllProjects = findAllProjects.length;
-// const numOfPages = Math.ceil(numOfProjects / limit);
-// res.status(StatusCodes.OK).json({
-//   countAllProjects,
-//   numOfProjects,
-//   allProjects,
-//   numOfPages,
-//   currentPage: page,
-// });
+  if (status && status !== 'all') {
+    queryObject.status = status;
+  }
+
+  const sortOptions = {
+    newest: '-createdAt',
+    oldest: 'createdAt',
+    'a-z': 'projectName',
+    'z-a': '-projectName',
+  };
+
+  const sortKey = sortOptions[sort] || sortOptions.newest;
+
+  // Pagination
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 3;
+  const skip = (page - 1) * limit;
+
+  const allProjects = await projectModel
+    .find(queryObject)
+    .sort(sortKey)
+    .skip(skip)
+    .limit(limit);
+
+  const filteredProjects = await projectModel.find(queryObject);
+  const numOfProjects = filteredProjects.length;
+  const numOfPages = Math.ceil(numOfProjects / limit);
+
+  const findAllProjects = await projectModel.find({});
+  const countAllProjects = findAllProjects.length;
+  res.status(StatusCodes.OK).json({
+    countAllProjects,
+    numOfProjects,
+    numOfPages,
+    currentPage: page,
+    allProjects,
+  });
+};
 
 const getSingleProject = async (req, res) => {
   const singleProjectId = req.params;
