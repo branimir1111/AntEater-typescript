@@ -22,6 +22,7 @@ export const action =
       const response: AxiosResponse = await customFetch.post('/login', data);
       const loggedUser = response.data.user;
       store.dispatch(loginUser(loggedUser));
+
       toast({ description: response.data.msg });
       return redirect('/dashboard');
     } catch (error) {

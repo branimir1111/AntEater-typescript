@@ -23,43 +23,49 @@ import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/components/ui/use-toast';
 import { Badge } from '@/components/ui/badge';
 import { AxiosError, AxiosResponse } from 'axios';
-import createProject from '@/images/createProject.svg';
+import createProjects from '@/images/createProject.svg';
+import { ReduxStore } from '@/features/store';
+import { createProject } from '@/features/project/projectSlice';
 
-export const action: ActionFunction = async ({
-  request,
-}): Promise<Response | null> => {
-  type EntryData = {
-    [k: string]: FormDataEntryValue | string[];
-  };
-  const formData = await request.formData();
-  const data: EntryData = Object.fromEntries(formData);
+export const action =
+  (store: ReduxStore): ActionFunction =>
+  async ({ request }): Promise<Response | null> => {
+    type EntryData = {
+      [k: string]: FormDataEntryValue | string[];
+    };
+    const formData = await request.formData();
+    const data: EntryData = Object.fromEntries(formData);
 
-  let newTeamMembers: string[] = [];
-  for (const propertyName in data) {
-    if (propertyName.startsWith('teamMembers')) {
-      newTeamMembers = [...newTeamMembers, data[propertyName] as string];
-      delete data[propertyName];
+    let newTeamMembers: string[] = [];
+    for (const propertyName in data) {
+      if (propertyName.startsWith('teamMembers')) {
+        newTeamMembers = [...newTeamMembers, data[propertyName] as string];
+        delete data[propertyName];
+      }
     }
-  }
 
-  data['teamMembers'] = newTeamMembers;
+    data['teamMembers'] = newTeamMembers;
 
-  try {
-    const response: AxiosResponse = await customFetch.post(
-      '/create-project',
-      data
-    );
-    toast({ description: response.data.msg });
-    return redirect('/dashboard/projects');
-  } catch (error) {
-    const errorMsg =
-      error instanceof AxiosError
-        ? error.response?.data.msg
-        : 'Create Project Failed';
-    toast({ description: errorMsg });
-    return error;
-  }
-};
+    try {
+      const response: AxiosResponse = await customFetch.post(
+        '/create-project',
+        data
+      );
+      const createdProject = response.data.project;
+      store.dispatch(createProject(createdProject));
+      console.log(createdProject);
+
+      toast({ description: response.data.msg });
+      return redirect('/dashboard/projects');
+    } catch (error) {
+      const errorMsg =
+        error instanceof AxiosError
+          ? error.response?.data.msg
+          : 'Create Project Failed';
+      toast({ description: errorMsg });
+      return errorMsg;
+    }
+  };
 
 const AddNewProjectForm = () => {
   const { currentDevs, pms } = useLoaderData() as AllUsersResponse;
@@ -81,7 +87,7 @@ const AddNewProjectForm = () => {
     <div className="w-full p-4 border rounded-md bg-background">
       {/* Heading */}
       <div className="w-full flex flex-col items-start sm:flex-row sm:items-end gap-4">
-        <img src={createProject} alt="create project" className="w-12" />
+        <img src={createProjects} alt="create project" className="w-12" />
         <h1 className="text-3xl font-bold capitalize max-sm:text-center">
           create new project
         </h1>

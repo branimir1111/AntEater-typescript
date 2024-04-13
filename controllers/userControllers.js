@@ -20,6 +20,7 @@ const updateUser = async (req, res) => {
     req.user.userId,
     newUser
   );
+
   if (req.file && updateUser.avatarPublicId) {
     await cloudinary.v2.uploader.destroy(updateUser.avatarPublicId);
   }

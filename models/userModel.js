@@ -1,4 +1,5 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from 'mongoose';
+import projectModel from './projectModel.js';
 
 const UserModel = new Schema({
   firstName: String,
@@ -7,8 +8,8 @@ const UserModel = new Schema({
   password: String,
   role: {
     type: String,
-    enum: ["admin", "projectmanager", "developer"],
-    default: "developer",
+    enum: ['admin', 'projectmanager', 'developer'],
+    default: 'developer',
   },
   avatar: String,
   avatarPublicId: String,
@@ -20,4 +21,4 @@ UserModel.methods.toJSON = function () {
   return obj;
 };
 
-export default mongoose.model("User", UserModel);
+export default mongoose.model('User', UserModel);

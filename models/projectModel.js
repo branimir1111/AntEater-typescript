@@ -10,13 +10,13 @@ const ProjectModel = new Schema(
       lastName: { type: String, required: true },
     },
     projectManager: {
-      _id: { type: mongoose.Types.ObjectId, required: true },
+      _id: { type: mongoose.Types.ObjectId, ref: 'User' },
       firstName: { type: String, required: true },
       lastName: { type: String, required: true },
     },
     teamMembers: [
       {
-        _id: { type: mongoose.Types.ObjectId, required: true },
+        _id: { type: mongoose.Types.ObjectId, ref: 'User' },
         firstName: { type: String, required: true },
         lastName: { type: String, required: true },
       },
