@@ -11,3 +11,6 @@ export { default as BugCategorizationPage } from './dashboard/BugCategorization/
 export { default as ProjectManagerPage } from './dashboard/ProjectManager/ProjectManagerPage';
 export { default as AdminPage } from './dashboard/Admin/AdminPage';
 export { default as ProfilePage } from './dashboard/Profile/ProfilePage';
+export { default as AllProjectPage } from './dashboard/Projects/pages/AllProjectsPage';
+export { default as AddNewProjectForm } from './dashboard/Projects/pages/AddNewProjectForm';
+export { default as SingleProjectInfo } from './dashboard/Projects/pages/SingleProjectInfo';

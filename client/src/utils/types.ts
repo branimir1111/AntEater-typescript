@@ -8,11 +8,6 @@ export type User = {
   avatarPublicId?: string;
 };
 
-export type AllUsersResponse = {
-  currentDevs: User[];
-  pms: User[];
-};
-
 //TODO basic type setup - need refactoring
 export type ProjectBugs = [];
 
@@ -37,6 +32,18 @@ export type ProjectResponse = {
   status: string;
   teamMembers: ProjectUser[];
   updatedAt: string;
+};
+
+export type AllUsersResponse = {
+  currentDevs: User[];
+  pms: User[];
+};
+
+export type AllProjectsResponse = {
+  countAllProjects: number;
+  currentPage: number;
+  numOfPages: number;
+  allProjects: ProjectResponse[];
 };
 
 export type AllProjectsAndUsersResponse = {

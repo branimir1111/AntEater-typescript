@@ -1,23 +1,33 @@
-import { useLoaderData } from 'react-router-dom';
-import { type AllProjectsAndUsersResponse, customFetch } from '@/utils';
+import {
+  type ProjectResponse,
+  type AllProjectsAndUsersResponse,
+} from '@/utils';
 import { ProjectCart } from '@/components';
-import { useQuery } from '@tanstack/react-query';
-
-const allProjectsQuery = () => {
-  return {
-    queryKey: ['projects'],
-    queryFn: () => customFetch.get('/all-projects'),
-  };
-};
+import { useOutletContext } from 'react-router-dom';
+// import { customFetch } from '@/utils';
+// import { useQuery } from '@tanstack/react-query';
 
 const AllProjectsContainer = () => {
-  const data = useQuery(allProjectsQuery());
+  const { projectList } = useOutletContext() as AllProjectsAndUsersResponse;
+  // const { data, isPending, isError } = useQuery({
+  //   queryKey: ['projects'],
+  //   queryFn: async () => {
+  //     const { data } = await customFetch.get('/all-projects');
+  //     return data;
+  //   },
+  // });
+  // if (isPending) {
+  //   return <h1>Loading...</h1>;
+  // }
+  // if (isError) {
+  //   return <h1>Error...</h1>;
+  // }
 
-  const { projectList } = useLoaderData() as AllProjectsAndUsersResponse;
+  // const { allProjects } = data;
 
   return (
     <div className="w-full grid place-items-center gap-4 md:grid-cols-2 2xl:grid-cols-3">
-      {projectList.map((project) => {
+      {projectList.map((project: ProjectResponse) => {
         const {
           _id,
           projectName,

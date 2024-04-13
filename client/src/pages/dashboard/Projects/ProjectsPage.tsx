@@ -1,11 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { Plus, ChevronsLeft } from 'lucide-react';
-import { useState } from 'react';
-import AllProjectsPage from './pages/AllProjectsPage';
-import AddNewProjectForm from './pages/AddNewProjectForm';
-import { LoaderFunction } from 'react-router-dom';
+import { Outlet, LoaderFunction, useLoaderData } from 'react-router-dom';
+import { useQuery, type QueryClient } from '@tanstack/react-query';
 import { customFetch, type AllProjectsAndUsersResponse } from '@/utils';
-import { type QueryClient } from '@tanstack/react-query';
 
 const allDevsQuery = () => {
   return {
@@ -43,35 +38,39 @@ export const loader =
       projectList,
     };
   };
-
 const ProjectsPage = () => {
-  const [allProjects, setAllProjects] = useState(true);
+  const { currentDevs, pms, countAllProjects, currentPage, numOfPages } =
+    useLoaderData() as AllProjectsAndUsersResponse;
+
+  const { data, isPending, isError } = useQuery({
+    queryKey: ['projects'],
+    queryFn: async () => {
+      const data = await customFetch.get('/all-projects');
+      return data;
+    },
+  });
+  if (isPending) {
+    return <h1>Loading...</h1>;
+  }
+  if (isError) {
+    return <h1>Error...</h1>;
+  }
+
+  const { allProjects: projectList } = data.data;
+  console.log(projectList);
+
   return (
     <section className="w-full outlet-hight p-4 bg-background-first">
-      <div className="w-full p-4">
-        {allProjects ? (
-          <Button
-            variant="secondary"
-            className="bg-btn-primary hover:bg-btn-primary-hover text-white"
-            onClick={() => setAllProjects(false)}
-          >
-            <Plus className="w-5 mr-2" />
-            Add New Project
-          </Button>
-        ) : (
-          <Button
-            variant="secondary"
-            className="bg-btn-primary hover:bg-btn-primary-hover text-white"
-            onClick={() => setAllProjects(true)}
-          >
-            <ChevronsLeft className="w-5 mr-2" />
-            Back To All Projects
-          </Button>
-        )}
-      </div>
-      <div className="w-full">
-        {allProjects ? <AllProjectsPage /> : <AddNewProjectForm />}
-      </div>
+      <Outlet
+        context={{
+          currentDevs,
+          pms,
+          countAllProjects,
+          currentPage,
+          numOfPages,
+          projectList,
+        }}
+      />
     </section>
   );
 };

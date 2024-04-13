@@ -17,6 +17,9 @@ import {
   ProjectManagerPage,
   AdminPage,
   ProfilePage,
+  AllProjectPage,
+  AddNewProjectForm,
+  SingleProjectInfo,
 } from './pages';
 import { ErrorElement } from './components';
 
@@ -24,7 +27,8 @@ import { ErrorElement } from './components';
 import ColorPalettePage from './colorPalette/ColorPalettePage';
 
 import { loader as dashboardLayoutLoader } from './pages/dashboard/DashboardLayout';
-import { loader as ProjectPageLoader } from '@/pages/dashboard/Projects/ProjectsPage';
+import { loader as AllUsersAndProjectsLoader } from './pages/dashboard/Projects/ProjectsPage';
+// import { loader as AllUsersLoader } from '@/pages/dashboard/Projects/pages/AddNewProjectForm';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -38,6 +42,7 @@ const queryClient = new QueryClient({
     },
   },
 });
+// const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -72,8 +77,22 @@ const router = createBrowserRouter([
         path: 'projects',
         element: <ProjectsPage />,
         errorElement: <ErrorElement />,
-        loader: ProjectPageLoader(queryClient),
-        action: AddNewProjectAction(store),
+        loader: AllUsersAndProjectsLoader(queryClient),
+        children: [
+          {
+            index: true,
+            element: <AllProjectPage />,
+          },
+          {
+            path: 'create',
+            element: <AddNewProjectForm />,
+            action: AddNewProjectAction(store, queryClient),
+          },
+          {
+            path: 'single-project',
+            element: <SingleProjectInfo />,
+          },
+        ],
       },
       {
         path: 'tasks',

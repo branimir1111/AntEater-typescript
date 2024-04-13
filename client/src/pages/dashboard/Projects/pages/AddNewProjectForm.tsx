@@ -1,8 +1,11 @@
 import {
   ActionFunction,
   Form,
-  useLoaderData,
+  // useLoaderData,
   redirect,
+  Link,
+  // LoaderFunction,
+  useOutletContext,
 } from 'react-router-dom';
 import {
   FormInput,
@@ -14,7 +17,7 @@ import {
 import {
   User,
   customFetch,
-  type AllUsersResponse,
+  type AllProjectsAndUsersResponse,
   projectStatus,
 } from '@/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -26,9 +29,32 @@ import { AxiosError, AxiosResponse } from 'axios';
 import createProjects from '@/images/createProject.svg';
 import { ReduxStore } from '@/features/store';
 import { createProject } from '@/features/project/projectSlice';
+import { Button } from '@/components/ui/button';
+import { ChevronsLeft } from 'lucide-react';
+import { type QueryClient } from '@tanstack/react-query';
+
+// const allDevsQuery = () => {
+//   return {
+//     queryKey: ['developer'],
+//     queryFn: () => customFetch('/all-users'),
+//   };
+// };
+
+// export const loader =
+//   (queryClient: QueryClient): LoaderFunction =>
+//   async (): Promise<Response | AllUsersResponse | null> => {
+//     const allDevelopers = await queryClient.ensureQueryData(allDevsQuery());
+//     const currentDevs = allDevelopers.data.devs;
+//     const pms = allDevelopers.data.pms;
+
+//     return {
+//       currentDevs,
+//       pms,
+//     };
+//   };
 
 export const action =
-  (store: ReduxStore): ActionFunction =>
+  (store: ReduxStore, queryClient: QueryClient): ActionFunction =>
   async ({ request }): Promise<Response | null> => {
     type EntryData = {
       [k: string]: FormDataEntryValue | string[];
@@ -51,10 +77,9 @@ export const action =
         '/create-project',
         data
       );
+      queryClient.invalidateQueries({ queryKey: ['projects'] });
       const createdProject = response.data.project;
       store.dispatch(createProject(createdProject));
-      console.log(createdProject);
-
       toast({ description: response.data.msg });
       return redirect('/dashboard/projects');
     } catch (error) {
@@ -68,7 +93,9 @@ export const action =
   };
 
 const AddNewProjectForm = () => {
-  const { currentDevs, pms } = useLoaderData() as AllUsersResponse;
+  // const { currentDevs, pms } = useLoaderData() as AllUsersResponse;
+  const { currentDevs, pms } =
+    useOutletContext() as AllProjectsAndUsersResponse;
 
   const firstNamePmsArray = pms.map((item: User) => {
     const { _id, firstName, lastName } = item;
@@ -84,7 +111,17 @@ const AddNewProjectForm = () => {
   const numOfDevs = firstNameDevsArray.length;
 
   return (
-    <div className="w-full p-4 border rounded-md bg-background">
+    <div className="w-full p-4 rounded-md bg-background">
+      <Button
+        variant="secondary"
+        className="bg-btn-primary hover:bg-btn-primary-hover text-white mb-8"
+        asChild
+      >
+        <Link to="/dashboard/projects">
+          <ChevronsLeft className="w-5 mr-2" />
+          Back To All Projects
+        </Link>
+      </Button>
       {/* Heading */}
       <div className="w-full flex flex-col items-start sm:flex-row sm:items-end gap-4">
         <img src={createProjects} alt="create project" className="w-12" />
