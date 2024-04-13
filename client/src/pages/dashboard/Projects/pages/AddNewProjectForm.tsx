@@ -1,10 +1,8 @@
 import {
   ActionFunction,
   Form,
-  // useLoaderData,
   redirect,
   Link,
-  // LoaderFunction,
   useOutletContext,
 } from 'react-router-dom';
 import {
@@ -17,7 +15,7 @@ import {
 import {
   User,
   customFetch,
-  type AllProjectsAndUsersResponse,
+  type AllUsersResponse,
   projectStatus,
 } from '@/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -32,26 +30,6 @@ import { createProject } from '@/features/project/projectSlice';
 import { Button } from '@/components/ui/button';
 import { ChevronsLeft } from 'lucide-react';
 import { type QueryClient } from '@tanstack/react-query';
-
-// const allDevsQuery = () => {
-//   return {
-//     queryKey: ['developer'],
-//     queryFn: () => customFetch('/all-users'),
-//   };
-// };
-
-// export const loader =
-//   (queryClient: QueryClient): LoaderFunction =>
-//   async (): Promise<Response | AllUsersResponse | null> => {
-//     const allDevelopers = await queryClient.ensureQueryData(allDevsQuery());
-//     const currentDevs = allDevelopers.data.devs;
-//     const pms = allDevelopers.data.pms;
-
-//     return {
-//       currentDevs,
-//       pms,
-//     };
-//   };
 
 export const action =
   (store: ReduxStore, queryClient: QueryClient): ActionFunction =>
@@ -93,9 +71,7 @@ export const action =
   };
 
 const AddNewProjectForm = () => {
-  // const { currentDevs, pms } = useLoaderData() as AllUsersResponse;
-  const { currentDevs, pms } =
-    useOutletContext() as AllProjectsAndUsersResponse;
+  const { currentDevs, pms } = useOutletContext() as AllUsersResponse;
 
   const firstNamePmsArray = pms.map((item: User) => {
     const { _id, firstName, lastName } = item;

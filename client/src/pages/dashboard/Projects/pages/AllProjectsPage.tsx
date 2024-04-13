@@ -6,8 +6,31 @@ import {
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { customFetch, AllProjectsResponse } from '@/utils';
+import { useQuery } from '@tanstack/react-query';
 
 const AllProjectsPage = () => {
+  const { data, isPending, isError } = useQuery({
+    queryKey: ['projects'],
+    queryFn: async () => {
+      const { data } = await customFetch.get('/all-projects');
+      return data;
+    },
+  });
+  if (isPending) {
+    return <h1>Loading...</h1>;
+  }
+  if (isError) {
+    return <h1>Error...</h1>;
+  }
+
+  const {
+    countAllProjects,
+    // currentPage,
+    // numOfPages,
+    allProjects,
+  } = data as AllProjectsResponse;
+
   return (
     <div className="w-full p-4">
       <Button
@@ -21,8 +44,8 @@ const AllProjectsPage = () => {
         </Link>
       </Button>
 
-      <AllProjectsFilter />
-      <AllProjectsContainer />
+      <AllProjectsFilter countAllProjects={countAllProjects} />
+      <AllProjectsContainer allProjects={allProjects} />
       <ComplexPagination />
     </div>
   );
