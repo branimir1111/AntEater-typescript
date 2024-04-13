@@ -15,7 +15,7 @@ type ProjectCartState = {
 };
 
 const ProjectCart = ({
-  _id,
+  // _id,
   projectName,
   projectManager,
   createdBy,

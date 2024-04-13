@@ -8,6 +8,7 @@ import { Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { customFetch, AllProjectsResponse } from '@/utils';
 import { useQuery } from '@tanstack/react-query';
+import { AllProjectsLoader } from '@/components';
 
 const AllProjectsPage = () => {
   const { data, isPending, isError } = useQuery({
@@ -18,10 +19,10 @@ const AllProjectsPage = () => {
     },
   });
   if (isPending) {
-    return <h1>Loading...</h1>;
+    return <AllProjectsLoader />;
   }
   if (isError) {
-    return <h1>Error...</h1>;
+    return <h1>Somthing went wrong...</h1>;
   }
 
   const {
