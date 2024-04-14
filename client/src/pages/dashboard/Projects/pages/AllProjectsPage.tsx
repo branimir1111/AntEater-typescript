@@ -35,6 +35,8 @@ export const loader =
       ...new URL(request.url).searchParams.entries(),
     ]);
     await queryClient.ensureQueryData(allProjectsQuery(params));
+    console.log(params);
+
     return { params };
   };
 
