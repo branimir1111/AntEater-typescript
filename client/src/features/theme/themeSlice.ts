@@ -6,7 +6,7 @@ type ThemeState = {
 };
 
 const initialTheme = (): Theme => {
-  const theme = (localStorage.getItem('theme') as Theme) || 'system';
+  const theme = (localStorage.getItem('theme') as Theme) || 'dark';
   applyTheme(theme);
   return theme;
 };
