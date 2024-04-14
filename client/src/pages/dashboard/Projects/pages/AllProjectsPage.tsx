@@ -5,30 +5,58 @@ import {
 } from '@/components';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { customFetch, AllProjectsResponse } from '@/utils';
-import { useQuery } from '@tanstack/react-query';
+import { Link, LoaderFunction, useLoaderData } from 'react-router-dom';
+import { customFetch, AllProjectsResponse, type ParamsData } from '@/utils';
+import { useQuery, type QueryClient } from '@tanstack/react-query';
 import { AllProjectsLoader } from '@/components';
 
-const AllProjectsPage = () => {
-  const { data, isPending, isError } = useQuery({
-    queryKey: ['projects'],
+const allProjectsQuery = (params: ParamsData) => {
+  const { search, status, sort, limit, currentPage } = params;
+  return {
+    queryKey: [
+      'projects',
+      search ?? '',
+      status ?? 'all',
+      sort ?? 'newest',
+      limit ?? '3',
+      currentPage ?? '1',
+    ],
     queryFn: async () => {
-      const { data } = await customFetch.get('/all-projects');
+      const { data } = await customFetch.get('/all-projects', { params });
       return data;
     },
-  });
+  };
+};
+
+export const loader =
+  (queryClient: QueryClient): LoaderFunction =>
+  async ({ request }): Promise<Response | ParamsData | null> => {
+    const params = Object.fromEntries([
+      ...new URL(request.url).searchParams.entries(),
+    ]);
+    await queryClient.ensureQueryData(allProjectsQuery(params));
+    return { params };
+  };
+
+const AllProjectsPage = () => {
+  const { params } = useLoaderData() as ParamsData;
+
+  const { data, isPending, isError } = useQuery(
+    allProjectsQuery(params as ParamsData)
+  );
+
   if (isPending) {
     return <AllProjectsLoader />;
   }
   if (isError) {
-    return <h1>Somthing went wrong...</h1>;
+    return <h1>Something went wrong...</h1>;
   }
 
   const {
-    countAllProjects,
-    // currentPage,
+    numOfAllProjects,
+    numOfFilteredProjects,
     // numOfPages,
+    // currentPage,
     allProjects,
   } = data as AllProjectsResponse;
 
@@ -45,7 +73,10 @@ const AllProjectsPage = () => {
         </Link>
       </Button>
 
-      <AllProjectsFilter countAllProjects={countAllProjects} />
+      <AllProjectsFilter
+        numOfAllProjects={numOfAllProjects}
+        numOfFilteredProjects={numOfFilteredProjects}
+      />
       <AllProjectsContainer allProjects={allProjects} />
       <ComplexPagination />
     </div>

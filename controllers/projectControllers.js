@@ -36,14 +36,14 @@ const getAllProjects = async (req, res) => {
     .limit(limit);
 
   const filteredProjects = await projectModel.find(queryObject);
-  const numOfProjects = filteredProjects.length;
-  const numOfPages = Math.ceil(numOfProjects / limit);
+  const numOfFilteredProjects = filteredProjects.length;
+  const numOfPages = Math.ceil(numOfFilteredProjects / limit);
 
   const findAllProjects = await projectModel.find({});
-  const countAllProjects = findAllProjects.length;
+  const numOfAllProjects = findAllProjects.length;
   res.status(StatusCodes.OK).json({
-    countAllProjects,
-    numOfProjects,
+    numOfAllProjects,
+    numOfFilteredProjects,
     numOfPages,
     currentPage: page,
     allProjects,

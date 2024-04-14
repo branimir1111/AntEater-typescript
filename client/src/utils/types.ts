@@ -40,19 +40,32 @@ export type AllUsersResponse = {
 };
 
 export type AllProjectsResponse = {
-  countAllProjects: number;
-  currentPage: number;
+  numOfAllProjects: number;
+  numOfFilteredProjects: number;
   numOfPages: number;
+  currentPage: number;
   allProjects: ProjectResponse[];
 };
 
 export type AllProjectsAndUsersResponse = {
   currentDevs: User[];
   pms: User[];
-  countAllProjects: number;
+  numOfAllProjects: number;
   currentPage: number;
   numOfPages: number;
   projectList: ProjectResponse[];
+};
+
+export type SearchParams = {
+  search?: string;
+  status?: string;
+  sort?: string;
+  limit?: string;
+  currentPage?: string;
+};
+
+export type ParamsData = {
+  [k: string]: SearchParams | string;
 };
 
 export type MainLink = {
