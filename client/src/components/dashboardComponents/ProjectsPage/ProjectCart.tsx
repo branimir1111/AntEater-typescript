@@ -1,27 +1,24 @@
 import day from 'dayjs';
-import { Link } from 'react-router-dom';
-import { type ProjectUser } from '@/utils';
+import { useNavigate } from 'react-router-dom';
+import { type ProjectResponse, useAppDispatch } from '@/utils';
 import { UserCog, CalendarPlus, CalendarDays } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-
-type ProjectCartState = {
-  _id: string;
-  projectName: string;
-  projectManager: ProjectUser;
-  createdBy: ProjectUser;
-  createdAt: string;
-  status: string;
-};
+import { createProject } from '@/features/project/projectSlice';
 
 const ProjectCart = ({
-  // _id,
+  _id,
   projectName,
+  description,
   projectManager,
+  teamMembers,
+  status,
   createdBy,
   createdAt,
-  status,
-}: ProjectCartState) => {
+}: ProjectResponse) => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   let badgeBg = 'bg-primary';
   let badgeTxt = 'text-primary-content';
 
@@ -55,6 +52,22 @@ const ProjectCart = ({
       badgeTxt = 'text-cyan-500';
       break;
   }
+
+  const handleProjectDetails = () => {
+    dispatch(
+      createProject({
+        _id,
+        projectName,
+        description,
+        projectManager,
+        teamMembers,
+        status,
+        createdBy,
+        createdAt,
+      })
+    );
+    navigate('/dashboard/projects/single-project');
+  };
 
   const date = day(createdAt).format('D MMM YYYY');
 
@@ -97,16 +110,11 @@ const ProjectCart = ({
       <hr className="w-full border-t-[1px] my-2 border-base-300" />
       <footer className="w-full flex gap-4 justify-end mt-4">
         <Button
-          asChild
           variant="outline"
           className="bg-gray-500 text-white hover:bg-gray-600 hover:text-white"
+          onClick={handleProjectDetails}
         >
-          <Link
-            to="/dashboard/projects"
-            className="btn btn-sm btn-secondary text-secondary-content rounded-md"
-          >
-            Details
-          </Link>
+          Details
         </Button>
       </footer>
     </article>

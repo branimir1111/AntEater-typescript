@@ -1,7 +1,5 @@
 import { PanelLeftClose, PanelLeftOpen, Menu } from 'lucide-react';
 import { ProfileLogoutDropdown, ThemeToggle } from '@/components';
-// import ThemeToggle from '../../ThemeToggle';
-// import { Button } from '../../ui/button';
 import { Button } from '@/components/ui/button';
 
 type NavBarProps = {

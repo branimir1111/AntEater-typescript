@@ -24,7 +24,6 @@ const projectSlice = createSlice({
       const createdProject = action.payload;
       state.createdProject = createdProject;
       localStorage.setItem('createdProject', JSON.stringify(createdProject));
-      toast({ description: 'Login successful' });
     },
   },
 });

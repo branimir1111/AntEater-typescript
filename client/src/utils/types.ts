@@ -25,13 +25,13 @@ export type ProjectResponse = {
   createdAt: string;
   createdBy: ProjectUser;
   description: string;
-  projectBugs: ProjectBugs;
+  projectBugs?: ProjectBugs;
   projectManager: ProjectUser;
   projectName: string;
-  projectTasks: ProjectTasks;
+  projectTasks?: ProjectTasks;
   status: string;
   teamMembers: ProjectUser[];
-  updatedAt: string;
+  updatedAt?: string;
 };
 
 export type AllUsersResponse = {

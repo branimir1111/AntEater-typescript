@@ -59,7 +59,7 @@ export const action =
       const createdProject = response.data.project;
       store.dispatch(createProject(createdProject));
       toast({ description: response.data.msg });
-      return redirect('/dashboard/projects');
+      return redirect('/dashboard/projects/single-project');
     } catch (error) {
       const errorMsg =
         error instanceof AxiosError

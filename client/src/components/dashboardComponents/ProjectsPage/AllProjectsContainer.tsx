@@ -12,20 +12,24 @@ const AllProjectsContainer = ({
         const {
           _id,
           projectName,
+          description,
           projectManager,
+          teamMembers,
+          status,
           createdBy,
           createdAt,
-          status,
         } = project;
         return (
           <ProjectCart
             key={_id}
             _id={_id}
             projectName={projectName}
+            description={description}
             projectManager={projectManager}
+            teamMembers={teamMembers}
+            status={status}
             createdBy={createdBy}
             createdAt={createdAt}
-            status={status}
           />
         );
       })}
