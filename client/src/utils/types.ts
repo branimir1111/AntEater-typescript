@@ -64,6 +64,10 @@ export type SearchParams = {
   currentPage?: string;
 };
 
+export type AllProjectsResponseWithParams = AllProjectsResponse & {
+  params: SearchParams;
+};
+
 export type ParamsData = {
   [k: string]: SearchParams | string;
 };

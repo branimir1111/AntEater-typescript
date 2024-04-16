@@ -5,13 +5,16 @@ import {
 } from '@/components';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
-import { Link, LoaderFunction, useLoaderData } from 'react-router-dom';
-import { customFetch, AllProjectsResponse, type ParamsData } from '@/utils';
-import { useQuery, type QueryClient } from '@tanstack/react-query';
-import { AllProjectsLoader } from '@/components';
+import { Link, LoaderFunction } from 'react-router-dom';
+import {
+  customFetch,
+  type ParamsData,
+  type AllProjectsResponseWithParams,
+} from '@/utils';
+import { type QueryClient } from '@tanstack/react-query';
 
 const allProjectsQuery = (params: ParamsData) => {
-  const { search, status, sort, limit, currentPage } = params;
+  const { search, status, sort, limit, page } = params;
   return {
     queryKey: [
       'projects',
@@ -19,7 +22,7 @@ const allProjectsQuery = (params: ParamsData) => {
       status ?? 'all',
       sort ?? 'newest',
       limit ?? '3',
-      currentPage ?? '1',
+      page ?? '1',
     ],
     queryFn: async () => {
       const { data } = await customFetch.get('/all-projects', { params });
@@ -30,36 +33,17 @@ const allProjectsQuery = (params: ParamsData) => {
 
 export const loader =
   (queryClient: QueryClient): LoaderFunction =>
-  async ({ request }): Promise<Response | ParamsData | null> => {
+  async ({ request }): Promise<AllProjectsResponseWithParams> => {
     const params = Object.fromEntries([
       ...new URL(request.url).searchParams.entries(),
     ]);
-    await queryClient.ensureQueryData(allProjectsQuery(params));
-    return { params };
+    const response = await queryClient.ensureQueryData(
+      allProjectsQuery(params)
+    );
+    return { params, ...response };
   };
 
 const AllProjectsPage = () => {
-  const { params } = useLoaderData() as ParamsData;
-
-  const { data, isPending, isError } = useQuery(
-    allProjectsQuery(params as ParamsData)
-  );
-
-  if (isPending) {
-    return <AllProjectsLoader />;
-  }
-  if (isError) {
-    return <h1>Something went wrong...</h1>;
-  }
-
-  const {
-    numOfAllProjects,
-    numOfFilteredProjects,
-    numOfPages,
-    currentPage,
-    allProjects,
-  } = data as AllProjectsResponse;
-
   return (
     <div className="w-full p-4">
       <Button
@@ -72,13 +56,9 @@ const AllProjectsPage = () => {
           Add New Project
         </Link>
       </Button>
-
-      <AllProjectsFilter
-        numOfAllProjects={numOfAllProjects}
-        numOfFilteredProjects={numOfFilteredProjects}
-      />
-      <AllProjectsContainer allProjects={allProjects} />
-      <ComplexPagination numOfPages={numOfPages} currentPage={currentPage} />
+      <AllProjectsFilter />
+      <AllProjectsContainer />
+      <ComplexPagination />
     </div>
   );
 };

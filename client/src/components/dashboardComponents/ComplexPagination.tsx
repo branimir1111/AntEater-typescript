@@ -8,14 +8,13 @@ import {
   PaginationEllipsis,
 } from '../ui/pagination';
 import { constructUrl, constructPrevOrNextUrl } from '@/utils';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useLoaderData } from 'react-router-dom';
+import { type AllProjectsResponseWithParams } from '@/utils';
 
-type PaginationParams = {
-  numOfPages: number;
-  currentPage: number;
-};
+const ComplexPagination = () => {
+  const { ...response } = useLoaderData() as AllProjectsResponseWithParams;
+  const { currentPage, numOfPages } = response;
 
-const ComplexPagination = ({ numOfPages, currentPage }: PaginationParams) => {
   const { search, pathname } = useLocation();
 
   if (numOfPages < 2) return null;
@@ -30,7 +29,7 @@ const ComplexPagination = ({ numOfPages, currentPage }: PaginationParams) => {
     const url = constructUrl({ pageNumber, search, pathname });
     return (
       <PaginationItem key={pageNumber}>
-        <PaginationLink href={url} isActive={isActive}>
+        <PaginationLink to={url} isActive={isActive}>
           {pageNumber}
         </PaginationLink>
       </PaginationItem>
@@ -82,11 +81,11 @@ const ComplexPagination = ({ numOfPages, currentPage }: PaginationParams) => {
     <Pagination className="mt-8">
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href={prevUrl} />
+          <PaginationPrevious to={prevUrl} />
         </PaginationItem>
         {renderPagination()}
         <PaginationItem>
-          <PaginationNext href={nextUrl} />
+          <PaginationNext to={nextUrl} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

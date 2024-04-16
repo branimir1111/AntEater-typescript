@@ -4,7 +4,8 @@ import { BadRequest } from '../errors/customErrors.js';
 
 const getAllProjects = async (req, res) => {
   // Sorting
-  const { search, status, sort } = req.query;
+  const { search, status, sort, page: currPag } = req.query;
+
   const queryObject = {};
 
   if (search) {
@@ -25,7 +26,7 @@ const getAllProjects = async (req, res) => {
   const sortKey = sortOptions[sort] || sortOptions.newest;
 
   // Pagination
-  const page = Number(req.query.page) || 1;
+  const page = Number(currPag) || 1;
   const limit = Number(req.query.limit) || 3;
   const skip = (page - 1) * limit;
 

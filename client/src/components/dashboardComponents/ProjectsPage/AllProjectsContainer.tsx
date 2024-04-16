@@ -1,12 +1,11 @@
-import { type ProjectResponse } from '@/utils';
+import { type AllProjectsResponseWithParams } from '@/utils';
 import { ProjectCart } from '@/components';
 import planList from '@/images/planList.svg';
+import { useLoaderData } from 'react-router-dom';
 
-const AllProjectsContainer = ({
-  allProjects,
-}: {
-  allProjects: ProjectResponse[];
-}) => {
+const AllProjectsContainer = () => {
+  const { ...response } = useLoaderData() as AllProjectsResponseWithParams;
+  const { allProjects } = response;
   return (
     <>
       {allProjects.length > 0 ? (
