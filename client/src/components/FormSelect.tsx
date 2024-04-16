@@ -37,7 +37,7 @@ const FormSelect = ({
         <SelectContent className="bg-input">
           {options.map((item) => {
             return (
-              <SelectItem key={item} value={item}>
+              <SelectItem key={item} value={item} className="cursor-pointer">
                 {item}
               </SelectItem>
             );

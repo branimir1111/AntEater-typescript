@@ -24,16 +24,15 @@ const AllProjectsFilter = ({
     <div className="w-full p-4 bg-background border rounded-md mb-4">
       <div className="w-full mb-2 break7:flex gap-4">
         <h1>
-          Total:{' '}
+          Total projects:{' '}
           <span className="font-bold text-cyan-vivid-600">
-            {numOfAllProjects} project{numOfAllProjects > 1 ? 's' : null}
+            {numOfAllProjects}
           </span>
         </h1>
         <h1>
-          Filtered:{' '}
+          Filtered projects:{' '}
           <span className="font-bold text-cyan-vivid-600">
-            {numOfFilteredProjects} project
-            {numOfFilteredProjects > 1 ? 's' : null}
+            {numOfFilteredProjects}
           </span>
         </h1>
       </div>
@@ -69,7 +68,7 @@ const AllProjectsFilter = ({
         />
         {/* <Button
           variant="outline"
-          className="w-full mt-4 break13:mt-0 mb-2 uppercase"
+          className="w-full text-md mt-4 break13:mt-0 mb-2"
         >
           <Link to={'/dashboard/projects'}>Reset search values</Link>
         </Button> */}

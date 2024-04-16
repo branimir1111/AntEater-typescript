@@ -35,8 +35,6 @@ export const loader =
       ...new URL(request.url).searchParams.entries(),
     ]);
     await queryClient.ensureQueryData(allProjectsQuery(params));
-    console.log(params);
-
     return { params };
   };
 
@@ -57,8 +55,8 @@ const AllProjectsPage = () => {
   const {
     numOfAllProjects,
     numOfFilteredProjects,
-    // numOfPages,
-    // currentPage,
+    numOfPages,
+    currentPage,
     allProjects,
   } = data as AllProjectsResponse;
 
@@ -80,7 +78,7 @@ const AllProjectsPage = () => {
         numOfFilteredProjects={numOfFilteredProjects}
       />
       <AllProjectsContainer allProjects={allProjects} />
-      <ComplexPagination />
+      <ComplexPagination numOfPages={numOfPages} currentPage={currentPage} />
     </div>
   );
 };
