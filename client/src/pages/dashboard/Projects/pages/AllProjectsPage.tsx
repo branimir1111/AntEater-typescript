@@ -2,10 +2,12 @@ import {
   AllProjectsFilter,
   AllProjectsContainer,
   ComplexPagination,
+  // AllProjectsLoader,
+  // AllProjectsFilterLoader,
 } from '@/components';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
-import { Link, LoaderFunction } from 'react-router-dom';
+import { Link, LoaderFunction, useNavigation } from 'react-router-dom';
 import {
   customFetch,
   type ParamsData,
@@ -44,6 +46,10 @@ export const loader =
   };
 
 const AllProjectsPage = () => {
+  const navigation = useNavigation();
+  console.log(navigation);
+
+  // const isContentLoading = navigation.state === 'loading';
   return (
     <div className="w-full p-4">
       <Button

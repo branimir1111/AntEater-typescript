@@ -28,7 +28,10 @@ const ComplexPagination = () => {
   }): React.ReactNode => {
     const url = constructUrl({ pageNumber, search, pathname });
     return (
-      <PaginationItem key={pageNumber}>
+      <PaginationItem
+        key={pageNumber}
+        className={`${isActive ? '' : 'max-break5:hidden'}`}
+      >
         <PaginationLink to={url} isActive={isActive}>
           {pageNumber}
         </PaginationLink>
@@ -38,7 +41,7 @@ const ComplexPagination = () => {
 
   const constructEllipsis = (key: string): React.ReactNode => {
     return (
-      <PaginationItem key={key}>
+      <PaginationItem key={key} className="max-break5:hidden">
         <PaginationEllipsis />
       </PaginationItem>
     );

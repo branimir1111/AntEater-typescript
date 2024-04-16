@@ -38,7 +38,7 @@ const AllProjectsContainer = () => {
         </div>
       ) : (
         <div className="w-full grid place-items-center pt-8">
-          <h1 className="text-xl sm:text-2xl text-center">
+          <h1 className="text-lg sm:text-xl text-center">
             There are no projects matching your search, please try something
             else.
           </h1>
