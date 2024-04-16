@@ -20,3 +20,4 @@ export { default as FormCheckboxDevelopers } from './dashboardComponents/Project
 export { default as FormSelectManagers } from './dashboardComponents/ProjectsPage/FormSelectManagers';
 export { default as ProjectCart } from './dashboardComponents/ProjectsPage/ProjectCart';
 export { default as AllProjectsLoader } from './dashboardComponents/ProjectsPage/AllProjectsLoader';
+export { default as StatusChart } from './dashboardComponents/ProjectsPage/StatusChart';

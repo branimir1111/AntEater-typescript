@@ -39,12 +39,23 @@ export type AllUsersResponse = {
   pms: User[];
 };
 
+export type StatusResponse = {
+  statusActive: number;
+  statusInactive: number;
+  statusCompleted: number;
+  statusTesting: number;
+  statusPending: number;
+  statusCanceled: number;
+  statusDelayed: number;
+};
+
 export type AllProjectsResponse = {
   numOfAllProjects: number;
   numOfFilteredProjects: number;
   numOfPages: number;
   currentPage: number;
   allProjects: ProjectResponse[];
+  statusData: StatusResponse;
 };
 
 export type AllProjectsAndUsersResponse = {

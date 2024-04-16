@@ -2,8 +2,8 @@ import {
   AllProjectsFilter,
   AllProjectsContainer,
   ComplexPagination,
-  // AllProjectsLoader,
-  // AllProjectsFilterLoader,
+  AllProjectsLoader,
+  StatusChart,
 } from '@/components';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
@@ -47,25 +47,32 @@ export const loader =
 
 const AllProjectsPage = () => {
   const navigation = useNavigation();
-  console.log(navigation);
 
-  // const isContentLoading = navigation.state === 'loading';
+  const isContentLoading = navigation.state === 'loading';
   return (
-    <div className="w-full p-4">
-      <Button
-        variant="secondary"
-        className="bg-btn-primary hover:bg-btn-primary-hover text-white mb-8"
-        asChild
-      >
-        <Link to="/dashboard/projects/create">
-          <Plus className="w-5 mr-2" />
-          Add New Project
-        </Link>
-      </Button>
-      <AllProjectsFilter />
-      <AllProjectsContainer />
-      <ComplexPagination />
-    </div>
+    <>
+      {isContentLoading ? (
+        <AllProjectsLoader />
+      ) : (
+        <div className="w-full p-4">
+          <Button
+            variant="secondary"
+            className="bg-btn-primary hover:bg-btn-primary-hover text-white mb-8"
+            asChild
+          >
+            <Link to="/dashboard/projects/create">
+              <Plus className="w-5 mr-2" />
+              Add New Project
+            </Link>
+          </Button>
+          <AllProjectsFilter />
+          <AllProjectsContainer />
+          <ComplexPagination />
+          <hr className="my-4" />
+          <StatusChart />
+        </div>
+      )}
+    </>
   );
 };
 export default AllProjectsPage;
