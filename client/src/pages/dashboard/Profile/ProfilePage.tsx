@@ -72,7 +72,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <section className="w-full outlet-hight p-4 bg-background-first grid place-items-center">
+    <section className="w-full outlet-hight p-4 bg-background-third grid place-items-center">
       <div
         id="main-container"
         className="w-full max-w-5xl bg-background p-8 pb-4 rounded-md border-[1px]"
