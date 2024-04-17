@@ -20,6 +20,7 @@ import {
   AllProjectPage,
   AddNewProjectForm,
   SingleProjectInfo,
+  MyProjectsPage,
 } from './pages';
 import { ErrorElement } from './components';
 
@@ -93,6 +94,11 @@ const router = createBrowserRouter([
             element: <SingleProjectInfo />,
           },
         ],
+      },
+      {
+        path: 'my-projects',
+        element: <MyProjectsPage />,
+        errorElement: <ErrorElement />,
       },
       {
         path: 'tasks',

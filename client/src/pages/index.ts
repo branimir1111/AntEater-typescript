@@ -14,3 +14,4 @@ export { default as ProfilePage } from './dashboard/Profile/ProfilePage';
 export { default as AllProjectPage } from './dashboard/Projects/pages/AllProjectsPage';
 export { default as AddNewProjectForm } from './dashboard/Projects/pages/AddNewProjectForm';
 export { default as SingleProjectInfo } from './dashboard/Projects/pages/SingleProjectInfo';
+export { default as MyProjectsPage } from './dashboard/MyProjects/MyProjectsPage';

@@ -7,6 +7,7 @@ import {
   UserRoundCog,
   Shield,
   Palette,
+  Minus,
 } from 'lucide-react';
 import { type MainLink } from '.';
 
@@ -25,36 +26,42 @@ export const mainLinks: MainLink[] = [
   },
   {
     id: 3,
+    text: 'My Projects',
+    path: 'my-projects',
+    icon: <Minus />,
+  },
+  {
+    id: 4,
     text: 'Tasks and activities',
     path: 'tasks',
     icon: <ListChecks />,
   },
   {
-    id: 4,
+    id: 5,
     text: 'Tickets',
     path: 'tickets',
     icon: <TicketCheck />,
   },
   {
-    id: 5,
+    id: 6,
     text: 'Bug categorization',
     path: 'bugs',
     icon: <Bug />,
   },
   {
-    id: 6,
+    id: 7,
     text: 'PM Panel',
     path: 'manager',
     icon: <UserRoundCog />,
   },
   {
-    id: 7,
+    id: 8,
     text: 'Admin Panel',
     path: 'admin',
     icon: <Shield />,
   },
   {
-    id: 8,
+    id: 9,
     text: 'Colors Pallete',
     path: 'colors',
     icon: <Palette />,
