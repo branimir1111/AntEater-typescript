@@ -13,7 +13,6 @@ import {
 const StatusChart = () => {
   const { ...response } = useLoaderData() as AllProjectsResponseWithParams;
   const { statusData } = response;
-  console.log(statusData);
 
   return (
     <>

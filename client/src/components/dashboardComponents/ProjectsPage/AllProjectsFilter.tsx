@@ -8,10 +8,16 @@ import {
 } from '@/utils';
 import { Button } from '@/components/ui/button';
 
-const AllProjectsFilter = () => {
-  const { params, ...response } =
-    useLoaderData() as AllProjectsResponseWithParams;
-  const { numOfAllProjects, numOfFilteredProjects } = response;
+type FIlterProps = {
+  numOfAllProjects: number;
+  numOfFilteredProjects: number;
+};
+
+const AllProjectsFilter = ({
+  numOfAllProjects,
+  numOfFilteredProjects,
+}: FIlterProps) => {
+  const { params } = useLoaderData() as AllProjectsResponseWithParams;
   const { search, status, sort, limit } = params;
 
   return (

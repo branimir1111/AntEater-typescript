@@ -3,17 +3,23 @@ import {
   AllProjectsContainer,
   ComplexPagination,
   AllProjectsLoader,
-  StatusChart,
+  // StatusChart,
+  ErrorElement,
 } from '@/components';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
-import { Link, LoaderFunction, useNavigation } from 'react-router-dom';
+import {
+  Link,
+  LoaderFunction,
+  useNavigation,
+  useLoaderData,
+} from 'react-router-dom';
 import {
   customFetch,
   type ParamsData,
   type AllProjectsResponseWithParams,
 } from '@/utils';
-import { type QueryClient } from '@tanstack/react-query';
+import { useQuery, type QueryClient } from '@tanstack/react-query';
 
 const allProjectsQuery = (params: ParamsData) => {
   const { search, status, sort, limit, page } = params;
@@ -46,9 +52,26 @@ export const loader =
   };
 
 const AllProjectsPage = () => {
+  const { params } = useLoaderData() as AllProjectsResponseWithParams;
   const navigation = useNavigation();
-
   const isContentLoading = navigation.state === 'loading';
+  const { data: res, isPending, isError } = useQuery(allProjectsQuery(params));
+
+  if (isPending) {
+    return <AllProjectsLoader />;
+  }
+  if (isError) {
+    return <ErrorElement />;
+  }
+
+  const {
+    numOfAllProjects,
+    numOfFilteredProjects,
+    allProjects,
+    currentPage,
+    numOfPages,
+  } = res;
+
   return (
     <>
       {isContentLoading ? (
@@ -65,11 +88,17 @@ const AllProjectsPage = () => {
               Add New Project
             </Link>
           </Button>
-          <AllProjectsFilter />
-          <AllProjectsContainer />
-          <ComplexPagination />
-          <hr className="my-4" />
-          <StatusChart />
+          <AllProjectsFilter
+            numOfAllProjects={numOfAllProjects}
+            numOfFilteredProjects={numOfFilteredProjects}
+          />
+          <AllProjectsContainer allProjects={allProjects} />
+          <ComplexPagination
+            currentPage={currentPage}
+            numOfPages={numOfPages}
+          />
+          {/* <hr className="my-4" /> */}
+          {/* <StatusChart /> */}
         </div>
       )}
     </>

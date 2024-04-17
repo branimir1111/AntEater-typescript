@@ -25,7 +25,7 @@ const ProjectsPage = () => {
   const { currentDevs, pms } = useLoaderData() as AllUsersResponse;
 
   return (
-    <section className="w-full outlet-hight p-4 bg-background-first">
+    <section className="w-full outlet-hight p-4 bg-background-third">
       <Outlet
         context={{
           currentDevs,

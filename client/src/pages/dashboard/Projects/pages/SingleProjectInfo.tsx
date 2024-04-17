@@ -85,7 +85,7 @@ const SingleProjectInfo = () => {
             project details
           </h1>
         </div>
-        <hr className="w-full my-4" />
+        <hr className="w-full my-4 border-background" />
         {/* Project Name */}
         <div className="w-full max-w-2xl pl-2">
           <h3 className="font-light text-sm break5:text-lg">Project Name</h3>
@@ -94,10 +94,10 @@ const SingleProjectInfo = () => {
           </h1>
         </div>
         {/* Project Description */}
-        <div className="w-full max-w-2xl mt-4">
+        <div className="w-full max-w-2xl mt-4 border-b border-b-background">
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
-              <AccordionTrigger className="font-light text-sm break5:text-lg pl-2 border-t">
+              <AccordionTrigger className="font-light text-sm break5:text-lg pl-2 border-t border-t-background">
                 Project Description
               </AccordionTrigger>
               <AccordionContent className="pl-2 bg-background pt-4">

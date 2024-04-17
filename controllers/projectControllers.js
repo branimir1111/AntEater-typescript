@@ -26,35 +26,34 @@ const getAllProjects = async (req, res) => {
   const sortKey = sortOptions[sort] || sortOptions.newest;
 
   // Status data for chart
-  const statusActive = await projectModel.countDocuments({ status: 'active' });
-  const statusInactive = await projectModel.countDocuments({
-    status: 'inactive',
-  });
-  const statusCompleted = await projectModel.countDocuments({
-    status: 'completed',
-  });
-  const statusTesting = await projectModel.countDocuments({
-    status: 'testing',
-  });
-  const statusPending = await projectModel.countDocuments({
-    status: 'pending',
-  });
-  const statusCanceled = await projectModel.countDocuments({
-    status: 'canceled',
-  });
-  const statusDelayed = await projectModel.countDocuments({
-    status: 'delayed',
-  });
-
-  const statusData = [
-    { name: 'active', projects: statusActive },
-    { name: 'inactive', projects: statusInactive },
-    { name: 'completed', projects: statusCompleted },
-    { name: 'testing', projects: statusTesting },
-    { name: 'pending', projects: statusPending },
-    { name: 'canceled', projects: statusCanceled },
-    { name: 'delayed', projects: statusDelayed },
-  ];
+  // const statusActive = await projectModel.countDocuments({ status: 'active' });
+  // const statusInactive = await projectModel.countDocuments({
+  //   status: 'inactive',
+  // });
+  // const statusCompleted = await projectModel.countDocuments({
+  //   status: 'completed',
+  // });
+  // const statusTesting = await projectModel.countDocuments({
+  //   status: 'testing',
+  // });
+  // const statusPending = await projectModel.countDocuments({
+  //   status: 'pending',
+  // });
+  // const statusCanceled = await projectModel.countDocuments({
+  //   status: 'canceled',
+  // });
+  // const statusDelayed = await projectModel.countDocuments({
+  //   status: 'delayed',
+  // });
+  // const statusData = [
+  //   { name: 'active', projects: statusActive },
+  //   { name: 'inactive', projects: statusInactive },
+  //   { name: 'completed', projects: statusCompleted },
+  //   { name: 'testing', projects: statusTesting },
+  //   { name: 'pending', projects: statusPending },
+  //   { name: 'canceled', projects: statusCanceled },
+  //   { name: 'delayed', projects: statusDelayed },
+  // ];
 
   // Pagination
   const page = Number(currPag) || 1;
@@ -79,7 +78,7 @@ const getAllProjects = async (req, res) => {
     numOfPages,
     currentPage: page,
     allProjects,
-    statusData,
+    // statusData,
   });
 };
 

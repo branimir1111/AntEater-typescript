@@ -8,13 +8,17 @@ import {
   PaginationEllipsis,
 } from '../ui/pagination';
 import { constructUrl, constructPrevOrNextUrl } from '@/utils';
-import { useLocation, useLoaderData } from 'react-router-dom';
-import { type AllProjectsResponseWithParams } from '@/utils';
+import { useLocation } from 'react-router-dom';
 
-const ComplexPagination = () => {
-  const { ...response } = useLoaderData() as AllProjectsResponseWithParams;
-  const { currentPage, numOfPages } = response;
+type ComplexPaginationProps = {
+  currentPage: number;
+  numOfPages: number;
+};
 
+const ComplexPagination = ({
+  currentPage,
+  numOfPages,
+}: ComplexPaginationProps) => {
   const { search, pathname } = useLocation();
 
   if (numOfPages < 2) return null;
