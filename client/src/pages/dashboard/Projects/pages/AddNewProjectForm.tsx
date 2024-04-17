@@ -99,11 +99,18 @@ const AddNewProjectForm = () => {
         </Link>
       </Button>
       {/* Heading */}
-      <div className="w-full flex flex-col items-start sm:flex-row sm:items-end gap-4">
-        <img src={createProjects} alt="create project" className="w-12" />
-        <h1 className="text-3xl font-bold capitalize max-sm:text-center">
-          create new project
-        </h1>
+      {/* <div className="w-full flex flex-col items-start sm:flex-row sm:items-end gap-4"> */}
+      <div className="w-full grid place-items-center gap-4">
+        <div className="flex flex-col justify-center items-start sm:flex-row sm:items-end  gap-4">
+          <img
+            src={createProjects}
+            alt="create project"
+            className="w-12 self-center"
+          />
+          <h1 className="text-3xl font-bold capitalize max-sm:text-center">
+            create new project
+          </h1>
+        </div>
       </div>
       <hr className="my-4" />
       <Form method="post" className="w-full grid place-items-center px-2 py-8">
