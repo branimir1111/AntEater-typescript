@@ -126,7 +126,7 @@ const SingleProjectInfo = () => {
           </ScrollArea>
         </div>
         {/* Project Status */}
-        <div className="w-full max-w-2xl mt-4 px-2 flex gap-4">
+        <div className="w-full max-w-2xl mt-4 px-2 flex gap-4 items-center">
           <h3 className="font-light text-sm break5:text-lg">Status</h3>
           <Badge
             variant="outline"

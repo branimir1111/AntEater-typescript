@@ -21,6 +21,15 @@ import {
   AddNewProjectForm,
   SingleProjectInfo,
   MyProjectsPage,
+  MyTasksPage,
+  MyTicketsPage,
+  AddTicketPage,
+  PMAssignTaskPage,
+  PMAssignTicketPage,
+  AdminManageRolesPage,
+  AdminAssignTaskPage,
+  AdminAssignTicketPage,
+  AdminMemberProfilesPage,
 } from './pages';
 import { ErrorElement } from './components';
 
@@ -106,8 +115,23 @@ const router = createBrowserRouter([
         errorElement: <ErrorElement />,
       },
       {
+        path: 'my-tasks',
+        element: <MyTasksPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
         path: 'tickets',
         element: <TicketsPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'my-tickets',
+        element: <MyTicketsPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'add-tickets',
+        element: <AddTicketPage />,
         errorElement: <ErrorElement />,
       },
       {
@@ -121,8 +145,38 @@ const router = createBrowserRouter([
         errorElement: <ErrorElement />,
       },
       {
+        path: 'manager-assign-task',
+        element: <PMAssignTaskPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'manager-assign-ticket',
+        element: <PMAssignTicketPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
         path: 'admin',
         element: <AdminPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'admin-manage-roles',
+        element: <AdminManageRolesPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'admin-assign-task',
+        element: <AdminAssignTaskPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'admin-assign-ticket',
+        element: <AdminAssignTicketPage />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'admin-member-profiles',
+        element: <AdminMemberProfilesPage />,
         errorElement: <ErrorElement />,
       },
       {

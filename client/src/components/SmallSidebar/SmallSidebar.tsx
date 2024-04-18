@@ -9,7 +9,7 @@ type SmallSidebarProps = {
 
 const SmallSidebar = ({ setOpenSmallSidebar }: SmallSidebarProps) => {
   return (
-    <section className="bg-[url('./images/SmallSidebarBG.svg')] w-full absolute flex flex-col items-center top-0 min-h-screen z-20 p-8 lg:hidden">
+    <section className="w-full bg-[url('./images/SmallSidebarBG.svg')] absolute flex flex-col items-center top-0 min-h-screen z-20 p-8 lg:hidden bg-no-repeat bg-cover">
       <header className="w-full flex items-center text-[2rem] text-base-content justify-end">
         <Button
           type="button"
