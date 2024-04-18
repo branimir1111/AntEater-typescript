@@ -9,9 +9,9 @@ const BigSidebar = ({ openBigSidebar }: { openBigSidebar: boolean }) => {
   return (
     <aside
       className={twMerge(
-        `-ml-80 lg:ml-0 border-r-[1px] ${
-          openBigSidebar ? 'lg:ml-0' : 'lg:-ml-80'
-        } w-80 transition-all duration-300 min-h-screen`
+        `-ml-[21rem] lg:ml-0 border-r-[1px] ${
+          openBigSidebar ? 'lg:ml-0' : 'lg:-ml-[21rem]'
+        } w-[21rem] transition-all duration-300 min-h-screen`
       )}
     >
       <BigSidebarLogo />
