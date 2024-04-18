@@ -3,13 +3,12 @@ import { StatusCodes } from 'http-status-codes';
 import { BadRequest } from '../errors/customErrors.js';
 
 const getAllProjects = async (req, res) => {
-  // Sorting
-  const { search, status, sort, page: currPag } = req.query;
+  const { search, status, sort, page: currPage } = req.query;
 
-  const queryObject = {};
+  let queryObject = {};
 
   if (search) {
-    queryObject.$or = [{ projectName: { $regex: search, $options: 'i' } }];
+    queryObject.projectName = { $regex: search, $options: 'i' };
   }
 
   if (status && status !== 'all') {
@@ -17,88 +16,180 @@ const getAllProjects = async (req, res) => {
   }
 
   const sortOptions = {
-    newest: '-createdAt',
-    oldest: 'createdAt',
-    'a-z': 'projectName',
-    'z-a': '-projectName',
+    newest: { createdAt: -1 },
+    oldest: { createdAt: 1 },
+    'a-z': { projectName: 1 },
+    'z-a': { projectName: -1 },
   };
-
   const sortKey = sortOptions[sort] || sortOptions.newest;
 
-  // Status data for chart
-  // const statusActive = await projectModel.countDocuments({ status: 'active' });
-  // const statusInactive = await projectModel.countDocuments({
-  //   status: 'inactive',
-  // });
-  // const statusCompleted = await projectModel.countDocuments({
-  //   status: 'completed',
-  // });
-  // const statusTesting = await projectModel.countDocuments({
-  //   status: 'testing',
-  // });
-  // const statusPending = await projectModel.countDocuments({
-  //   status: 'pending',
-  // });
-  // const statusCanceled = await projectModel.countDocuments({
-  //   status: 'canceled',
-  // });
-  // const statusDelayed = await projectModel.countDocuments({
-  //   status: 'delayed',
-  // });
-  // const statusData = [
-  //   { name: 'active', projects: statusActive },
-  //   { name: 'inactive', projects: statusInactive },
-  //   { name: 'completed', projects: statusCompleted },
-  //   { name: 'testing', projects: statusTesting },
-  //   { name: 'pending', projects: statusPending },
-  //   { name: 'canceled', projects: statusCanceled },
-  //   { name: 'delayed', projects: statusDelayed },
-  // ];
-
-  // Pagination
-  const page = Number(currPag) || 1;
+  // pagination
   const limit = Number(req.query.limit) || 3;
+  const page = Number(currPage) || 1;
   const skip = (page - 1) * limit;
 
-  const allProjects = await projectModel
-    .find(queryObject)
-    .sort(sortKey)
-    .skip(skip)
-    .limit(limit);
+  // Izvršavanje agregacije
+  const allProjects = await projectModel.aggregate([
+    {
+      $match: queryObject,
+    },
 
-  const filteredProjects = await projectModel.find(queryObject);
-  const numOfFilteredProjects = filteredProjects.length;
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'createdBy',
+        foreignField: '_id',
+        as: 'createdByUser',
+      },
+    },
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'projectManager',
+        foreignField: '_id',
+        as: 'projectManagerUser',
+      },
+    },
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'teamMembers',
+        foreignField: '_id',
+        as: 'teamMembersUser',
+      },
+    },
+    {
+      $addFields: {
+        createdBy: {
+          $arrayElemAt: ['$createdByUser', 0],
+        },
+        projectManager: {
+          $arrayElemAt: ['$projectManagerUser', 0],
+        },
+        teamMembers: '$teamMembersUser',
+      },
+    },
+
+    {
+      $project: {
+        projectName: 1,
+        description: 1,
+        createdBy: { _id: 1, firstName: 1, lastName: 1 },
+        projectManager: { _id: 1, firstName: 1, lastName: 1 },
+        teamMembers: {
+          $map: {
+            input: '$teamMembers',
+            as: 'member',
+            in: {
+              _id: '$$member._id',
+              firstName: '$$member.firstName',
+              lastName: '$$member.lastName',
+            },
+          },
+        },
+        status: 1,
+        projectBugs: 1,
+        projectTasks: 1,
+        createdAt: 1,
+        updatedAt: 1,
+      },
+    },
+    {
+      $sort: sortKey,
+    },
+    {
+      $skip: skip,
+    },
+    {
+      $limit: limit,
+    },
+  ]);
+
+  //  Number of All and Filtered projects and numOfPages
+  const filteredProjects = [
+    { $match: queryObject },
+    { $count: 'totalProjects' },
+  ];
+  const totalCountResult = await projectModel.aggregate(filteredProjects);
+  const numOfFilteredProjects =
+    totalCountResult.length > 0 ? totalCountResult[0].totalProjects : 0;
+  const numOfAllProjects = await projectModel.countDocuments();
   const numOfPages = Math.ceil(numOfFilteredProjects / limit);
 
-  const findAllProjects = await projectModel.find({});
-  const numOfAllProjects = findAllProjects.length;
   res.status(StatusCodes.OK).json({
     numOfAllProjects,
     numOfFilteredProjects,
     numOfPages,
     currentPage: page,
     allProjects,
-    // statusData,
   });
 };
 
+// const getAllProjects = async (req, res) => {
+//   // Sorting
+//   const { search, status, sort, page: currPag } = req.query;
+
+//   let queryObject = {};
+
+//   // Search
+//   if (search) {
+//     queryObject.$or = [{ projectName: { $regex: search, $options: 'i' } }];
+//   }
+//   // Status
+//   if (status && status !== 'all') {
+//     queryObject.status = status;
+//   }
+//   // Sort
+//   const sortOptions = {
+//     newest: '-createdAt',
+//     oldest: 'createdAt',
+//     'a-z': 'projectName',
+//     'z-a': '-projectName',
+//   };
+//   const sortKey = sortOptions[sort] || sortOptions.newest;
+
+//   // Pagination
+//   const page = Number(currPag) || 1;
+//   const limit = Number(req.query.limit) || 3;
+//   const skip = (page - 1) * limit;
+
+//   const allProjects = await projectModel
+//     .find(queryObject)
+//     .sort(sortKey)
+//     .skip(skip)
+//     .limit(limit);
+
+//   const filteredProjects = await projectModel.find(queryObject);
+//   const numOfFilteredProjects = filteredProjects.length;
+//   const numOfPages = Math.ceil(numOfFilteredProjects / limit);
+
+//   const findAllProjects = await projectModel.find({});
+//   const numOfAllProjects = findAllProjects.length;
+//   res.status(StatusCodes.OK).json({
+//     numOfAllProjects,
+//     numOfFilteredProjects,
+//     numOfPages,
+//     currentPage: page,
+//     allProjects,
+//   });
+// };
+
 const getSingleProject = async (req, res) => {
   const singleProjectId = req.params;
-  res
-    .status(StatusCodes.OK)
-    .json({ msg: `This is single project with id: ${singleProjectId}` });
+  const singleProject = await projectModel.findById({
+    _id: singleProjectId.id,
+  });
+  res.status(StatusCodes.OK).json({ singleProject });
 };
 
 const createProject = async (req, res) => {
-  req.body.createdBy = {
-    _id: req.user.userId,
-    firstName: req.user.firstName,
-    lastName: req.user.lastName,
-  };
-  req.body.teamMembers = req.body.teamMembers.map((member) =>
-    JSON.parse(member)
-  );
-  req.body.projectManager = JSON.parse(req.body.projectManager);
+  req.body.createdBy = { _id: req.user.userId };
+
+  //   req.body.projectManager = JSON.parse(req.body.projectManager);
+  //   req.body.teamMembers = req.body.teamMembers.map((member) =>
+  //   JSON.parse(member)
+  // );
+
   const newProject = req.body;
 
   if (newProject.teamMembers.length < 1) {
