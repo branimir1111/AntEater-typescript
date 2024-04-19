@@ -18,7 +18,7 @@ const FormCheckboxDevelopers = ({
   label,
   defaultValue,
 }: FormCheckboxProps) => {
-  const devData = JSON.stringify({ _id, firstName, lastName });
+  const devData = _id;
   const devName = firstName + ' ' + lastName;
   const defaultChecked = defaultValue === 'on' ? true : false;
 

@@ -99,7 +99,6 @@ const AddNewProjectForm = () => {
         </Link>
       </Button>
       {/* Heading */}
-      {/* <div className="w-full flex flex-col items-start sm:flex-row sm:items-end gap-4"> */}
       <div className="w-full grid place-items-center gap-4">
         <div className="flex flex-col justify-center items-start sm:flex-row sm:items-end  gap-4">
           <img

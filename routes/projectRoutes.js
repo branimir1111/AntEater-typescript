@@ -1,10 +1,8 @@
 import { Router } from 'express';
-import {
-  getAllProjects,
-  createProject,
-  getSingleProject,
-  deleteProject,
-} from '../controllers/projectControllers.js';
+import { getAllProjects } from '../controllers/projectControllers/getAllProjects.js';
+import { createProject } from '../controllers/projectControllers/createProject.js';
+import { deleteProject } from '../controllers/projectControllers/deleteProject.js';
+import { getSingleProject } from '../controllers/projectControllers/getSingleProject.js';
 import { validateNewProject } from '../middleware/validationMiddleware.js';
 
 const router = Router();

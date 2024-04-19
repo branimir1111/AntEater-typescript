@@ -22,6 +22,7 @@ const AllProjectsContainer = ({ allProjects }: AllProjectsProps) => {
               createdBy,
               createdAt,
             } = project;
+
             return (
               <ProjectCart
                 key={_id}

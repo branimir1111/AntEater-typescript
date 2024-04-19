@@ -1,6 +1,5 @@
 import UserModel from '../models/userModel.js';
 import { StatusCodes } from 'http-status-codes';
-// import { promises as fs } from "fs";
 import { formatImage } from '../middleware/multerMiddleware.js';
 import cloudinary from 'cloudinary';
 

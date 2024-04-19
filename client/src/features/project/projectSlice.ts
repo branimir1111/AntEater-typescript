@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { toast } from '@/components/ui/use-toast';
 import { type ProjectResponse } from '../../utils';
 
 type ProjectState = {

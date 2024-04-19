@@ -28,7 +28,7 @@ const FormSelectManagers = ({
   options,
   layoutClass,
 }: SelectInputProps) => {
-  const firstPms = JSON.stringify(options[0]);
+  const firstPms = options[0]._id;
 
   return (
     <div className={twMerge(`mb-2 ${layoutClass}`)}>
@@ -37,13 +37,13 @@ const FormSelectManagers = ({
       </Label>
       <Select defaultValue={firstPms} name={name}>
         <SelectTrigger id={name} className="bg-input mt-1">
-          <SelectValue />
+          <SelectValue placeholder={'Pick one...'} />
         </SelectTrigger>
         <SelectContent className="bg-input">
           {options.map((item) => {
             const { _id, firstName, lastName } = item;
             const pmsName = firstName + ' ' + lastName;
-            const selectedPms = JSON.stringify({ _id, firstName, lastName });
+            const selectedPms = _id;
             return (
               <SelectItem key={_id} value={selectedPms}>
                 {pmsName}
