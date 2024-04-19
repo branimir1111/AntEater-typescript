@@ -3,11 +3,13 @@ import { getAllProjects } from '../controllers/projectControllers/getAllProjects
 import { createProject } from '../controllers/projectControllers/createProject.js';
 import { deleteProject } from '../controllers/projectControllers/deleteProject.js';
 import { getSingleProject } from '../controllers/projectControllers/getSingleProject.js';
+import { getMyAllProjectsDev } from '../controllers/projectControllers/getMyAllProjectsDev.js';
 import { validateNewProject } from '../middleware/validationMiddleware.js';
 
 const router = Router();
 
 router.route('/all-projects').get(getAllProjects);
+router.route('/all-projects-dev').get(getMyAllProjectsDev);
 router.route('/create-project').post(validateNewProject, createProject);
 router.route('/single-project/:id').get(getSingleProject);
 router.route('/delete-project/:id').delete(deleteProject);
