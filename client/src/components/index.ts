@@ -21,3 +21,5 @@ export { default as FormSelectManagers } from './dashboardComponents/ProjectsPag
 export { default as ProjectCart } from './dashboardComponents/ProjectsPage/ProjectCart';
 export { default as AllProjectsLoader } from './dashboardComponents/ProjectsPage/AllProjectsLoader';
 export { default as StatusChart } from './dashboardComponents/ProjectsPage/StatusChart';
+export { default as DevProjectsFilter } from './dashboardComponents/DeveloperMyProjectsPage/DevProjectsFilter';
+export { default as DevProjects } from './dashboardComponents/DeveloperMyProjectsPage/DevProjects';

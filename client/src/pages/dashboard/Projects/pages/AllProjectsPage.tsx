@@ -45,6 +45,7 @@ export const loader =
     const params = Object.fromEntries([
       ...new URL(request.url).searchParams.entries(),
     ]);
+
     const response = await queryClient.ensureQueryData(
       allProjectsQuery(params)
     );

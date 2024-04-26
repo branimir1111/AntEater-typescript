@@ -39,6 +39,7 @@ import ColorPalettePage from './colorPalette/ColorPalettePage';
 import { loader as dashboardLayoutLoader } from './pages/dashboard/DashboardLayout';
 import { loader as AllUsersAndProjectsLoader } from './pages/dashboard/Projects/ProjectsPage';
 import { loader as AllProjectsLoader } from '@/pages/dashboard/Projects/pages/AllProjectsPage';
+import { loader as MyProjectsDevLoader } from '@/pages/dashboard/DeveloperMyProjects/MyProjectsPage';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -107,6 +108,7 @@ const router = createBrowserRouter([
       {
         path: 'my-projects',
         element: <MyProjectsPage />,
+        loader: MyProjectsDevLoader(queryClient),
         errorElement: <ErrorElement />,
       },
       {

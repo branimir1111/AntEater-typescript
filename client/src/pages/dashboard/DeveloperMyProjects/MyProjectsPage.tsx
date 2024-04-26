@@ -1,14 +1,28 @@
 import { customFetch } from '@/utils';
-import { useQuery } from '@tanstack/react-query';
+import { QueryClient, useQuery } from '@tanstack/react-query';
+import {
+  DevProjectsFilter,
+  DevProjects,
+  ComplexPagination,
+} from '@/components';
+import { Separator } from '@/components/ui/separator';
+
+const myProjectsQuery = {
+  queryKey: ['dev-projects'],
+  queryFn: async () => {
+    const { data } = await customFetch('/all-projects-dev');
+    return data;
+  },
+};
+export const loader = (queryClient: QueryClient) => async () => {
+  await queryClient.invalidateQueries({
+    queryKey: ['dev-projects'],
+  });
+  return null;
+};
 
 const MyProjectsPage = () => {
-  const { data, isPending, isError } = useQuery({
-    queryKey: ['dev-projects'],
-    queryFn: async () => {
-      const { data } = await customFetch('/all-projects-dev');
-      return data;
-    },
-  });
+  const { data: myProjects, isPending, isError } = useQuery(myProjectsQuery);
 
   if (isPending) {
     return <h1>Loading...</h1>;
@@ -16,22 +30,28 @@ const MyProjectsPage = () => {
   if (isError) {
     return <h1>Error...</h1>;
   }
+  console.log(myProjects);
 
   const {
     numOfAllProjects,
     numOfFilteredProjects,
     numOfPages,
     currentPage,
-    // allProjects,
-  } = data;
+    allProjects,
+  } = myProjects;
 
   return (
-    <section className="w-full outlet-hight p-4 bg-background-first">
-      <h1 className="text-3xl">Total projects: {numOfAllProjects}</h1>
-      <h1 className="text-3xl">Filtered projects: {numOfFilteredProjects}</h1>
-      <h1 className="text-3xl">Num of pages: {numOfPages}</h1>
-      <h1 className="text-3xl">Current Page: {currentPage}</h1>
-      {/* <h1 className="text-3xl">{allProjects}</h1> */}
+    <section className="w-full outlet-hight p-8 bg-background-first">
+      <h2 className="text-3xl font-medium tracking-wider capitalize text-center mb-8">
+        Your projects
+      </h2>
+      <Separator />
+      <DevProjectsFilter
+        numOfAllProjects={numOfAllProjects}
+        numOfFilteredProjects={numOfFilteredProjects}
+      />
+      <DevProjects allProjects={allProjects} />
+      <ComplexPagination numOfPages={numOfPages} currentPage={currentPage} />
     </section>
   );
 };
