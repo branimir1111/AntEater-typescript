@@ -45,6 +45,7 @@ import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
 import { action as editProfileAction } from './pages/dashboard/Profile/ProfilePage';
 import { action as AddNewProjectAction } from './pages/dashboard/Projects/pages/AddNewProjectForm';
+// import { action as MyProjectsDevAction } from '@/pages/dashboard/DeveloperMyProjects/MyProjectsPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -109,6 +110,7 @@ const router = createBrowserRouter([
         path: 'my-projects',
         element: <MyProjectsPage />,
         loader: MyProjectsDevLoader(queryClient),
+        // action: MyProjectsDevAction(queryClient),
         errorElement: <ErrorElement />,
       },
       {

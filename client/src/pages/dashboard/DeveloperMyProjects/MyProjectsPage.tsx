@@ -1,4 +1,9 @@
-import { customFetch } from '@/utils';
+import {
+  AllProjectsResponseWithParams,
+  customFetch,
+  type ParamsData,
+  type SearchParams,
+} from '@/utils';
 import { QueryClient, useQuery } from '@tanstack/react-query';
 import {
   DevProjectsFilter,
@@ -6,23 +11,80 @@ import {
   ComplexPagination,
 } from '@/components';
 import { Separator } from '@/components/ui/separator';
+import {
+  ActionFunction,
+  LoaderFunction,
+  redirect,
+  useLoaderData,
+} from 'react-router-dom';
 
-const myProjectsQuery = {
-  queryKey: ['dev-projects'],
-  queryFn: async () => {
-    const { data } = await customFetch('/all-projects-dev');
-    return data;
-  },
+const myProjectsQuery = (params: ParamsData) => {
+  const { search, status, sort, page } = params;
+  return {
+    queryKey: [
+      'dev-projects',
+      search ?? '',
+      status ?? 'all',
+      sort ?? 'newest',
+      page ?? '1',
+    ],
+    queryFn: async () => {
+      const { data } = await customFetch('/all-projects-dev', { params });
+      return data;
+    },
+  };
 };
-export const loader = (queryClient: QueryClient) => async () => {
-  await queryClient.invalidateQueries({
-    queryKey: ['dev-projects'],
-  });
-  return null;
+
+// export const loader =
+//   (queryClient: QueryClient): LoaderFunction =>
+//   async ({ request }): Promise<AllProjectsResponseWithParams> => {
+//     const params = Object.fromEntries([
+//       ...new URL(request.url).searchParams.entries(),
+//     ]);
+
+//     const response = await queryClient.ensureQueryData(myProjectsQuery(params));
+//     await queryClient.invalidateQueries({
+//       queryKey: ['dev-projects'],
+//     });
+
+//     return { params, ...response };
+//   };
+
+type SearchParamsLoader = {
+  params: SearchParams;
 };
+
+export const loader =
+  (queryClient: QueryClient): LoaderFunction =>
+  async ({ request }): Promise<SearchParamsLoader> => {
+    const params = Object.fromEntries([
+      ...new URL(request.url).searchParams.entries(),
+    ]);
+
+    await queryClient.invalidateQueries({
+      queryKey: ['dev-projects'],
+    });
+
+    return { params };
+  };
+
+export const action =
+  (queryClient: QueryClient): ActionFunction =>
+  async ({ request }) => {
+    const params = Object.fromEntries([
+      ...new URL(request.url).searchParams.entries(),
+    ]);
+    await queryClient.ensureQueryData(myProjectsQuery(params));
+    return redirect('/dashboard/my-projects');
+  };
 
 const MyProjectsPage = () => {
-  const { data: myProjects, isPending, isError } = useQuery(myProjectsQuery);
+  const { params } = useLoaderData() as AllProjectsResponseWithParams;
+  const {
+    data: myProjects,
+    isPending,
+    isError,
+  } = useQuery(myProjectsQuery(params));
 
   if (isPending) {
     return <h1>Loading...</h1>;
