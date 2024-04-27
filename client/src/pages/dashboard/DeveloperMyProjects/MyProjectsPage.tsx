@@ -30,7 +30,6 @@ const MyProjectsPage = () => {
   if (isError) {
     return <h1>Error...</h1>;
   }
-  console.log(myProjects);
 
   const {
     numOfAllProjects,

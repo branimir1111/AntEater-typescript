@@ -8,6 +8,7 @@ import {
   TableRow,
   TableCell,
 } from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
 
 type DevProjectsProps = {
   allProjects: ProjectResponse[];
@@ -38,13 +39,52 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
               projectTasks,
               projectBugs,
             } = project;
+
+            let badgeBg = 'bg-primary';
+            let badgeTxt = 'text-primary-content';
+
+            switch (status) {
+              case 'active':
+                badgeBg = 'bg-blue-200';
+                badgeTxt = 'text-blue-800';
+                break;
+              case 'inactive':
+                badgeBg = 'badge-ghost';
+                badgeTxt = '';
+                break;
+              case 'completed':
+                badgeBg = 'bg-emerald-200';
+                badgeTxt = 'text-emerald-800';
+                break;
+              case 'testing':
+                badgeBg = 'bg-purple-200';
+                badgeTxt = 'text-purple-800';
+                break;
+              case 'pending':
+                badgeBg = 'bg-yellow-100';
+                badgeTxt = 'text-yellow-700';
+                break;
+              case 'canceled':
+                badgeBg = 'bg-rose-100';
+                badgeTxt = 'text-rose-700';
+                break;
+              case 'delayed':
+                badgeBg = 'bg-cyan-100';
+                badgeTxt = 'text-cyan-500';
+                break;
+            }
+
             return (
               <TableRow key={_id}>
                 <TableCell>{projectName}</TableCell>
                 <TableCell>
                   {projectManager.firstName + ' ' + projectManager.lastName}
                 </TableCell>
-                <TableCell>{status}</TableCell>
+                <TableCell>
+                  <Badge variant="outline" className={`${badgeBg} ${badgeTxt}`}>
+                    {status}
+                  </Badge>
+                </TableCell>
                 <TableCell>{projectTasks?.length}</TableCell>
                 <TableCell>{projectBugs?.length}</TableCell>
                 <TableCell>Edit</TableCell>
