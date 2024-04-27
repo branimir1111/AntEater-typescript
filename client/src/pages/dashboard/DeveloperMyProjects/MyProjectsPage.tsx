@@ -1,9 +1,4 @@
-import {
-  AllProjectsResponseWithParams,
-  customFetch,
-  type ParamsData,
-  type SearchParams,
-} from '@/utils';
+import { customFetch, type ParamsData, type SearchParams } from '@/utils';
 import { QueryClient, useQuery } from '@tanstack/react-query';
 import {
   DevProjectsFilter,
@@ -35,21 +30,6 @@ const myProjectsQuery = (params: ParamsData) => {
   };
 };
 
-// export const loader =
-//   (queryClient: QueryClient): LoaderFunction =>
-//   async ({ request }): Promise<AllProjectsResponseWithParams> => {
-//     const params = Object.fromEntries([
-//       ...new URL(request.url).searchParams.entries(),
-//     ]);
-
-//     const response = await queryClient.ensureQueryData(myProjectsQuery(params));
-//     await queryClient.invalidateQueries({
-//       queryKey: ['dev-projects'],
-//     });
-
-//     return { params, ...response };
-//   };
-
 type SearchParamsLoader = {
   params: SearchParams;
 };
@@ -79,7 +59,7 @@ export const action =
   };
 
 const MyProjectsPage = () => {
-  const { params } = useLoaderData() as AllProjectsResponseWithParams;
+  const { params } = useLoaderData() as SearchParamsLoader;
   const {
     data: myProjects,
     isPending,
