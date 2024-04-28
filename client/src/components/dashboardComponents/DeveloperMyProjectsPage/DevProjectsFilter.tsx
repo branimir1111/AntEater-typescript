@@ -3,6 +3,7 @@ import FormInput from '@/components/FormInput';
 import {
   projectStatusFilter,
   projectSortFilter,
+  projectLimitFilter,
   type AllProjectsResponseWithParams,
 } from '@/utils';
 import FormSelect from '@/components/FormSelect';
@@ -19,12 +20,24 @@ const DevProjectsFilter = ({
   numOfFilteredProjects,
 }: DevProjectsFilterProps) => {
   const { params } = useLoaderData() as AllProjectsResponseWithParams;
-  const { search, status, sort } = params;
+  const { search, status, sort, limit } = params;
   return (
     <section className="w-full mt-8">
-      <h1>Total projects: {numOfAllProjects}</h1>
-      <h1>My projects: {numOfFilteredProjects}</h1>
-      <Form>
+      <div className="w-full mb-2 break7:flex gap-4">
+        <h1>
+          Total projects:{' '}
+          <span className="font-bold text-cyan-vivid-600">
+            {numOfAllProjects}
+          </span>
+        </h1>
+        <h1>
+          Your projects:{' '}
+          <span className="font-bold text-cyan-vivid-600">
+            {numOfFilteredProjects}
+          </span>
+        </h1>
+      </div>
+      <Form className="w-full grid break6:gap-x-4 items-end break6:grid-cols-2 break13:grid-cols-3 bg-background p-4 rounded-md border">
         <FormInput
           type="search"
           name="search"
@@ -43,6 +56,12 @@ const DevProjectsFilter = ({
           options={projectSortFilter}
           layoutClass="mt-4"
           defaultValue={sort}
+        />
+        <FormSelect
+          name="limit"
+          options={projectLimitFilter}
+          layoutClass="mt-4"
+          defaultValue={limit}
         />
         <Link to={'/dashboard/my-projects'}>
           <Button

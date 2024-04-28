@@ -187,7 +187,7 @@ const router = createBrowserRouter([
         path: 'profile',
         element: <ProfilePage />,
         errorElement: <ErrorElement />,
-        action: editProfileAction(store),
+        action: editProfileAction(store, queryClient),
       },
       {
         path: 'colors',

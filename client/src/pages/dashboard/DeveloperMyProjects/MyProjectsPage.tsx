@@ -14,13 +14,14 @@ import {
 } from 'react-router-dom';
 
 const myProjectsQuery = (params: ParamsData) => {
-  const { search, status, sort, page } = params;
+  const { search, status, sort, page, limit } = params;
   return {
     queryKey: [
       'dev-projects',
       search ?? '',
       status ?? 'all',
       sort ?? 'newest',
+      limit ?? '3',
       page ?? '1',
     ],
     queryFn: async () => {
@@ -29,6 +30,18 @@ const myProjectsQuery = (params: ParamsData) => {
     },
   };
 };
+
+export const action =
+  (queryClient: QueryClient): ActionFunction =>
+  async ({ request }) => {
+    const params = Object.fromEntries([
+      ...new URL(request.url).searchParams.entries(),
+    ]);
+
+    await queryClient.ensureQueryData(myProjectsQuery(params));
+
+    return redirect('/dashboard/my-projects');
+  };
 
 type SearchParamsLoader = {
   params: SearchParams;
@@ -46,16 +59,6 @@ export const loader =
     });
 
     return { params };
-  };
-
-export const action =
-  (queryClient: QueryClient): ActionFunction =>
-  async ({ request }) => {
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
-    await queryClient.ensureQueryData(myProjectsQuery(params));
-    return redirect('/dashboard/my-projects');
   };
 
 const MyProjectsPage = () => {

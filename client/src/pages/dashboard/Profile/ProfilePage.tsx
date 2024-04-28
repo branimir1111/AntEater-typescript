@@ -22,9 +22,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { QueryClient } from '@tanstack/react-query';
 
 export const action =
-  (store: ReduxStore): ActionFunction =>
+  (store: ReduxStore, queryClient: QueryClient): ActionFunction =>
   async ({ request }): Promise<Response | null> => {
     const formData = await request.formData();
     const file = formData.get('avatar') as FormDataEntryValue & {
@@ -40,6 +41,9 @@ export const action =
         formData
       );
       store.dispatch(updateUser(response.data.user));
+      await queryClient.invalidateQueries({
+        queryKey: ['projects'],
+      });
       toast({ description: response.data.msg });
       return redirect('/dashboard/profile');
     } catch (error) {
