@@ -23,3 +23,4 @@ export { default as AllProjectsLoader } from './dashboardComponents/ProjectsPage
 export { default as StatusChart } from './dashboardComponents/ProjectsPage/StatusChart';
 export { default as DevProjectsFilter } from './dashboardComponents/DeveloperMyProjectsPage/DevProjectsFilter';
 export { default as DevProjects } from './dashboardComponents/DeveloperMyProjectsPage/DevProjects';
+export { default as DevProjectsLoader } from './dashboardComponents/DeveloperMyProjectsPage/DevProjectsLoader';

@@ -4,6 +4,7 @@ import {
   DevProjectsFilter,
   DevProjects,
   ComplexPagination,
+  DevProjectsLoader,
 } from '@/components';
 import { Separator } from '@/components/ui/separator';
 import {
@@ -70,7 +71,7 @@ const MyProjectsPage = () => {
   } = useQuery(myProjectsQuery(params));
 
   if (isPending) {
-    return <h1>Loading...</h1>;
+    return <DevProjectsLoader />;
   }
   if (isError) {
     return <h1>Error...</h1>;
