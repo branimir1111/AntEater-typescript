@@ -12,6 +12,7 @@ import {
   LoaderFunction,
   redirect,
   useLoaderData,
+  useNavigation,
 } from 'react-router-dom';
 
 const myProjectsQuery = (params: ParamsData) => {
@@ -64,6 +65,8 @@ export const loader =
 
 const MyProjectsPage = () => {
   const { params } = useLoaderData() as SearchParamsLoader;
+  const navigation = useNavigation();
+  const isContentLoading = navigation.state === 'loading';
   const {
     data: myProjects,
     isPending,
@@ -71,7 +74,11 @@ const MyProjectsPage = () => {
   } = useQuery(myProjectsQuery(params));
 
   if (isPending) {
-    return <DevProjectsLoader />;
+    return (
+      <section className="w-full outlet-hight p-8 bg-background-first">
+        <DevProjectsLoader />
+      </section>
+    );
   }
   if (isError) {
     return <h1>Error...</h1>;
@@ -87,16 +94,25 @@ const MyProjectsPage = () => {
 
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
-      <h2 className="text-3xl font-medium tracking-wider capitalize text-center mb-8">
-        Your projects
-      </h2>
-      <Separator />
-      <DevProjectsFilter
-        numOfAllProjects={numOfAllProjects}
-        numOfFilteredProjects={numOfFilteredProjects}
-      />
-      <DevProjects allProjects={allProjects} />
-      <ComplexPagination numOfPages={numOfPages} currentPage={currentPage} />
+      {isContentLoading ? (
+        <DevProjectsLoader />
+      ) : (
+        <div className="w-full">
+          <h2 className="text-3xl font-medium tracking-wider capitalize text-center mb-8">
+            Your projects
+          </h2>
+          <Separator />
+          <DevProjectsFilter
+            numOfAllProjects={numOfAllProjects}
+            numOfFilteredProjects={numOfFilteredProjects}
+          />
+          <DevProjects allProjects={allProjects} />
+          <ComplexPagination
+            numOfPages={numOfPages}
+            currentPage={currentPage}
+          />
+        </div>
+      )}
     </section>
   );
 };
