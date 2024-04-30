@@ -1,4 +1,4 @@
-import { type ProjectResponse } from '@/utils';
+import { type ProjectResponse, useAppDispatch } from '@/utils';
 import {
   Table,
   TableCaption,
@@ -9,12 +9,18 @@ import {
   TableCell,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
+import { createProject } from '@/features/project/projectSlice';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 type DevProjectsProps = {
   allProjects: ProjectResponse[];
 };
 
 const DevProjects = ({ allProjects }: DevProjectsProps) => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   return (
     <div className="mt-8">
       <Table>
@@ -34,10 +40,14 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
             const {
               _id,
               projectName,
+              description,
               projectManager,
+              teamMembers,
               status,
               projectTasks,
               projectBugs,
+              createdBy,
+              createdAt,
             } = project;
 
             let badgeBg = 'bg-primary';
@@ -74,6 +84,22 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
                 break;
             }
 
+            const handleProjectDetails = () => {
+              dispatch(
+                createProject({
+                  _id,
+                  projectName,
+                  description,
+                  projectManager,
+                  teamMembers,
+                  status,
+                  createdBy,
+                  createdAt,
+                })
+              );
+              navigate('/dashboard/projects/single-project');
+            };
+
             return (
               <TableRow key={_id}>
                 <TableCell>{projectName}</TableCell>
@@ -87,7 +113,15 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
                 </TableCell>
                 <TableCell>{projectTasks?.length}</TableCell>
                 <TableCell>{projectBugs?.length}</TableCell>
-                <TableCell>Edit</TableCell>
+                <TableCell>
+                  <Button
+                    variant="outline"
+                    className="bg-gray-500 text-white hover:bg-gray-600 hover:text-white"
+                    onClick={handleProjectDetails}
+                  >
+                    Details
+                  </Button>
+                </TableCell>
               </TableRow>
             );
           })}
