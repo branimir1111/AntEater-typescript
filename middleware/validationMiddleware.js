@@ -1,13 +1,13 @@
-import mongoose from "mongoose";
-import UserModel from "../models/userModel.js";
-import { body, validationResult } from "express-validator";
+import mongoose from 'mongoose';
+import UserModel from '../models/userModel.js';
+import { body, validationResult } from 'express-validator';
 import {
   BadRequest,
   Unauthorized,
   Unauthenticated,
   NotFound,
-} from "../errors/customErrors.js";
-import projectModel from "../models/projectModel.js";
+} from '../errors/customErrors.js';
+import ProjectModel from '../models/ProjectModel.js';
 
 const validationWithErrors = (validationValues) => {
   return [
@@ -25,66 +25,66 @@ const validationWithErrors = (validationValues) => {
 };
 
 export const validateRegistration = validationWithErrors([
-  body("firstName").notEmpty().withMessage("First Name is required"),
-  body("lastName"),
-  body("email")
+  body('firstName').notEmpty().withMessage('First Name is required'),
+  body('lastName'),
+  body('email')
     .notEmpty()
-    .withMessage("Email is required")
+    .withMessage('Email is required')
     .isEmail()
-    .withMessage("Invalid email format")
+    .withMessage('Invalid email format')
     .custom(async (email) => {
       const user = await UserModel.findOne({ email });
       if (user) {
-        throw new BadRequest("User already exists");
+        throw new BadRequest('User already exists');
       }
     }),
-  body("password")
+  body('password')
     .notEmpty()
-    .withMessage("Password is required")
+    .withMessage('Password is required')
     .isLength({ min: 6 })
-    .withMessage("Password must be at least 6 characters long"),
+    .withMessage('Password must be at least 6 characters long'),
 ]);
 
 export const validateLogin = validationWithErrors([
-  body("email")
+  body('email')
     .notEmpty()
-    .withMessage("Email is required")
+    .withMessage('Email is required')
     .isEmail()
-    .withMessage("Invalid email format"),
-  body("password").notEmpty().withMessage("Password is required"),
+    .withMessage('Invalid email format'),
+  body('password').notEmpty().withMessage('Password is required'),
 ]);
 
 export const validateUpdateUser = validationWithErrors([
-  body("firstName").notEmpty().withMessage("First Name is required"),
-  body("lastName").notEmpty().withMessage("Last Name is required"),
-  body("email")
+  body('firstName').notEmpty().withMessage('First Name is required'),
+  body('lastName').notEmpty().withMessage('Last Name is required'),
+  body('email')
     .notEmpty()
-    .withMessage("Email is required")
+    .withMessage('Email is required')
     .isEmail()
-    .withMessage("Invalid email format")
+    .withMessage('Invalid email format')
     .custom(async (email, { req }) => {
       const user = await UserModel.findOne({ email });
       if (user && user._id.toString() !== req.user.userId) {
-        throw new BadRequest("User already exists");
+        throw new BadRequest('User already exists');
       }
     }),
 ]);
 
 export const validateNewProject = validationWithErrors([
-  body("projectName")
+  body('projectName')
     .notEmpty()
-    .withMessage("Project Name is required")
+    .withMessage('Project Name is required')
     .custom(async (projectName, { req }) => {
-      const project = await projectModel.findOne({ projectName });
+      const project = await ProjectModel.findOne({ projectName });
       if (project) {
-        throw new BadRequest("Project with this name already exists");
+        throw new BadRequest('Project with this name already exists');
       }
     }),
-  body("description").notEmpty().withMessage("Description is required"),
-  body("projectManager")
+  body('description').notEmpty().withMessage('Description is required'),
+  body('projectManager')
     .notEmpty()
-    .withMessage("You must choose Project manager"),
-  body("teamMembers")
+    .withMessage('You must choose Project manager'),
+  body('teamMembers')
     .notEmpty()
-    .withMessage("You must select at least one developer"),
+    .withMessage('You must select at least one developer'),
 ]);

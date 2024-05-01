@@ -1,4 +1,4 @@
-import projectModel from '../../models/projectModel.js';
+import ProjectModel from '../../models/ProjectModel.js';
 import { StatusCodes } from 'http-status-codes';
 import { usersFromPosts } from '../../utils/aggregations.js';
 import mongoose from 'mongoose';
@@ -29,7 +29,7 @@ const getMyAllProjectsDev = async (req, res) => {
   const page = Number(currPage) || 1;
   const skip = (page - 1) * limit;
 
-  const allProjects = await projectModel.aggregate([
+  const allProjects = await ProjectModel.aggregate([
     {
       $match: queryObject,
     },
@@ -49,10 +49,10 @@ const getMyAllProjectsDev = async (req, res) => {
     { $match: queryObject },
     { $count: 'totalProjects' },
   ];
-  const totalCountResult = await projectModel.aggregate(filteredProjects);
+  const totalCountResult = await ProjectModel.aggregate(filteredProjects);
   const numOfFilteredProjects =
     totalCountResult.length > 0 ? totalCountResult[0].totalProjects : 0;
-  const numOfAllProjects = await projectModel.countDocuments();
+  const numOfAllProjects = await ProjectModel.countDocuments();
   const numOfPages = Math.ceil(numOfFilteredProjects / limit);
 
   res.status(StatusCodes.OK).json({

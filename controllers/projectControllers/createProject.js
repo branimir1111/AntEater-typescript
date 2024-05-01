@@ -1,4 +1,4 @@
-import projectModel from '../../models/projectModel.js';
+import ProjectModel from '../../models/ProjectModel.js';
 import { StatusCodes } from 'http-status-codes';
 import { BadRequest } from '../../errors/customErrors.js';
 import { usersFromPosts } from '../../utils/aggregations.js';
@@ -12,9 +12,9 @@ const createProject = async (req, res) => {
     throw new BadRequest('You must select at least one developer');
   }
 
-  const newProjectCreated = await projectModel.create(newProject);
+  const newProjectCreated = await ProjectModel.create(newProject);
 
-  const [createdProject] = await projectModel.aggregate([
+  const [createdProject] = await ProjectModel.aggregate([
     {
       $match: { _id: new mongoose.Types.ObjectId(newProjectCreated._id) },
     },
