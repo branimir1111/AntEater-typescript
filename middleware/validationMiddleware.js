@@ -88,3 +88,22 @@ export const validateNewProject = validationWithErrors([
     .notEmpty()
     .withMessage('You must select at least one developer'),
 ]);
+
+export const validateNewTask = validationWithErrors([
+  body('title').notEmpty().withMessage('Title is required'),
+  body('description').notEmpty().withMessage('Description is required'),
+  body('assignedTo')
+    .notEmpty()
+    .withMessage('You need to assign a task to someone'),
+  body('projectId')
+    .notEmpty()
+    .withMessage('The project assigned task is missing.')
+    .custom(async (_id, { req }) => {
+      const project = await ProjectModel.findById({
+        _id: new mongoose.Types.ObjectId(_id),
+      });
+      if (!project) {
+        throw new BadRequest('Project does not exists');
+      }
+    }),
+]);

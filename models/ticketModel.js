@@ -11,8 +11,13 @@ const TicketModel = new Schema(
     ticketType: {
       type: String,
       enum: ['feature', 'improvement', 'security', 'bug'],
+      default: 'feature',
     },
-    priority: { type: String, enum: ['urgent', 'high', 'medium', 'low'] },
+    priority: {
+      type: String,
+      enum: ['urgent', 'high', 'medium', 'low'],
+      default: 'low',
+    },
     status: {
       type: String,
       enum: [
@@ -23,6 +28,7 @@ const TicketModel = new Schema(
         'cancelled',
         'completed',
       ],
+      default: 'new',
     },
   },
   {
