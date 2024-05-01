@@ -11,6 +11,7 @@ import cookieParser from 'cookie-parser';
 import AuthRouter from './routes/authRoutes.js';
 import UserRouter from './routes/userRoutes.js';
 import ProjectRouter from './routes/projectRoutes.js';
+import TaskRouter from './routes/taskRoutes.js';
 import errorMiddleware from './middleware/errorMiddleware.js';
 import {
   authenticateUser,
@@ -39,6 +40,7 @@ app.use(cookieParser());
 app.use('/api/v1', AuthRouter);
 app.use('/api/v1', authenticateUser, UserRouter);
 app.use('/api/v1', authenticateUser, ProjectRouter);
+app.use('/api/v1', authenticateUser, TaskRouter);
 
 app.use('*', (req, res) => {
   res.status(404).json({ msg: 'Route Not Found' });
