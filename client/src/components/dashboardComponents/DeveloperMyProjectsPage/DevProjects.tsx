@@ -45,7 +45,7 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
               teamMembers,
               status,
               projectTasks,
-              projectBugs,
+              projectTickets,
               createdBy,
               createdAt,
             } = project;
@@ -112,7 +112,7 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
                   </Badge>
                 </TableCell>
                 <TableCell>{projectTasks?.length}</TableCell>
-                <TableCell>{projectBugs?.length}</TableCell>
+                <TableCell>{projectTickets?.length}</TableCell>
                 <TableCell>
                   <Button
                     variant="outline"

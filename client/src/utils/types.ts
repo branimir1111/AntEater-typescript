@@ -9,7 +9,7 @@ export type User = {
 };
 
 //TODO basic type setup - need refactoring
-export type ProjectBugs = [];
+export type projectTickets = [];
 
 //TODO basic type setup - need refactoring
 export type ProjectTasks = [];
@@ -25,7 +25,7 @@ export type ProjectResponse = {
   createdAt: string;
   createdBy: ProjectUser;
   description: string;
-  projectBugs?: ProjectBugs;
+  projectTickets?: projectTickets;
   projectManager: ProjectUser;
   projectName: string;
   projectTasks?: ProjectTasks;

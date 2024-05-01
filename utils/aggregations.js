@@ -52,7 +52,7 @@ export const usersFromPosts = [
         },
       },
       status: 1,
-      projectBugs: 1,
+      projectTickets: 1,
       projectTasks: 1,
       createdAt: 1,
       updatedAt: 1,

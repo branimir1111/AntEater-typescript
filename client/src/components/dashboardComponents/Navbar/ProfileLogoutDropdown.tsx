@@ -52,6 +52,7 @@ const ProfileLogoutDropdown = () => {
               <CircleUserRound />
             </AvatarFallback>
           </Avatar>
+          <p className="mt-2 capitalize">{user?.role}</p>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>

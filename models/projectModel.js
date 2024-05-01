@@ -20,7 +20,7 @@ const ProjectModel = new Schema(
       ],
       default: 'active',
     },
-    projectBugs: [{ type: mongoose.Types.ObjectId, ref: 'Bug' }],
+    projectTickets: [{ type: mongoose.Types.ObjectId, ref: 'Bug' }],
     projectTasks: [{ type: mongoose.Types.ObjectId, ref: 'Task' }],
   },
   { timestamps: true }
