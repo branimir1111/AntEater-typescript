@@ -24,3 +24,5 @@ export { default as StatusChart } from './dashboardComponents/ProjectsPage/Statu
 export { default as DevProjectsFilter } from './dashboardComponents/DeveloperMyProjectsPage/DevProjectsFilter';
 export { default as DevProjects } from './dashboardComponents/DeveloperMyProjectsPage/DevProjects';
 export { default as DevProjectsLoader } from './dashboardComponents/DeveloperMyProjectsPage/DevProjectsLoader';
+export { default as TasksAndActivitiesFilter } from './dashboardComponents/TasksAndActivitiesPage/TasksAndActivitiesFilter';
+export { default as TasksAndActivitiesContainer } from './dashboardComponents/TasksAndActivitiesPage/TasksAndActivitiesContainer';

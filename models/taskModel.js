@@ -16,14 +16,7 @@ const TaskModel = new Schema(
     priority: { type: String, enum: ['high', 'medium', 'low'], default: 'low' },
     status: {
       type: String,
-      enum: [
-        'new',
-        'inProgress',
-        'underReview',
-        'rejected',
-        'cancelled',
-        'completed',
-      ],
+      enum: ['new', 'in progress', 'under review', 'refactor', 'completed'],
       default: 'new',
     },
   },
