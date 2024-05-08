@@ -26,7 +26,7 @@ const FormInput = ({
   return (
     <div className={twMerge(`w-full mb-2 ${layoutClass}`)}>
       <Label htmlFor={name} className={`capitalize ${labelClass}`}>
-        {label || name}
+        {label}
       </Label>
       <Input
         id={name}

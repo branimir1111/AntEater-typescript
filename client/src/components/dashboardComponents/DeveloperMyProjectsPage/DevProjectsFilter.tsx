@@ -41,6 +41,7 @@ const DevProjectsFilter = ({
         <FormInput
           type="search"
           name="search"
+          label="Seach"
           placeholder="Project name..."
           inputClass="bg-input mt-1"
           defaultValue={search}

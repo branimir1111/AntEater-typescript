@@ -11,6 +11,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from '@/components/ui/command';
 import {
   Popover,
@@ -28,30 +29,6 @@ const TasksAndActivitiesFilter = ({
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
 
-  const frameworks = [
-    {
-      value: 'next.js',
-      label: 'Next.js',
-    },
-    {
-      value: 'sveltekit',
-      label: 'SvelteKit',
-    },
-    {
-      value: 'nuxt.js',
-      label: 'Nuxt.js',
-    },
-    {
-      value: 'remix',
-      label: 'Remix',
-    },
-    {
-      value: 'astro',
-      label: 'Astro',
-    },
-  ];
-
-  console.log(projectsList);
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -59,38 +36,48 @@ const TasksAndActivitiesFilter = ({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className=" w-60 justify-between"
         >
           {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : 'Select framework...'}
+            ? projectsList.find(
+                (project) => project.projectName.toLowerCase() === value
+              )?.projectName
+            : 'Select project...'}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-60 p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandGroup>
-            {frameworks.map((framework) => (
-              <CommandItem
-                key={framework.value}
-                value={framework.value}
-                onSelect={(currentValue) => {
-                  setValue(currentValue === value ? '' : currentValue);
-                  setOpen(false);
-                }}
-              >
-                <Check
-                  className={cn(
-                    'mr-2 h-4 w-4',
-                    value === framework.value ? 'opacity-100' : 'opacity-0'
-                  )}
-                />
-                {framework.label}
-              </CommandItem>
-            ))}
-          </CommandGroup>
+          <CommandInput placeholder="Search projects..." />
+          <CommandEmpty>No project found.</CommandEmpty>
+          <CommandList>
+            <CommandGroup>
+              {projectsList.map((project) => {
+                const { _id, projectName } = project;
+
+                return (
+                  <CommandItem
+                    key={_id}
+                    value={projectName}
+                    onSelect={(currentValue) => {
+                      setValue(currentValue === value ? '' : currentValue);
+                      setOpen(false);
+                    }}
+                  >
+                    <Check
+                      className={cn(
+                        'mr-2 h-4 w-4',
+                        value === projectName.toLowerCase()
+                          ? 'opacity-100'
+                          : 'opacity-0'
+                      )}
+                    />
+                    {projectName}
+                  </CommandItem>
+                );
+              })}
+            </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>

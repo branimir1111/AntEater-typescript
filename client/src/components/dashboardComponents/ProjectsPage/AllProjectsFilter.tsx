@@ -40,6 +40,7 @@ const AllProjectsFilter = ({
         <FormInput
           name="search"
           type="search"
+          label="Search"
           layoutClass="w-full"
           inputClass="bg-input mt-1"
           placeholder="Project name..."
