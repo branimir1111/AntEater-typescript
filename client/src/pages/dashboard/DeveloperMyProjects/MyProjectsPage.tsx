@@ -98,7 +98,7 @@ const MyProjectsPage = () => {
         <DevProjectsLoader />
       ) : (
         <div className="w-full">
-          <h2 className="text-3xl font-medium tracking-wider capitalize text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-8">
             Your projects
           </h2>
           <Separator />

@@ -21,13 +21,18 @@ import {
 
 type TasksAndActivitiesFilterParams = {
   projectsList: ProjectResponse[];
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  setProjectId: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const TasksAndActivitiesFilter = ({
   projectsList,
+  value,
+  setValue,
+  setProjectId,
 }: TasksAndActivitiesFilterParams) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -36,7 +41,7 @@ const TasksAndActivitiesFilter = ({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className=" w-60 justify-between"
+          className="w-48 justify-between"
         >
           {value
             ? projectsList.find(
@@ -46,7 +51,7 @@ const TasksAndActivitiesFilter = ({
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-60 p-0">
+      <PopoverContent className="w-48 p-0">
         <Command>
           <CommandInput placeholder="Search projects..." />
           <CommandEmpty>No project found.</CommandEmpty>
@@ -61,6 +66,7 @@ const TasksAndActivitiesFilter = ({
                     value={projectName}
                     onSelect={(currentValue) => {
                       setValue(currentValue === value ? '' : currentValue);
+                      setProjectId(_id);
                       setOpen(false);
                     }}
                   >

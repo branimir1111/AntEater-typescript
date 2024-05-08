@@ -9,19 +9,22 @@ export type User = {
 };
 
 //TODO basic type setup - need refactoring
+export type ProjectTasks = [];
+
+//TODO basic type setup - need refactoring
 export type projectTickets = [];
 
 //TODO basic type setup - need refactoring
-export type ProjectTasks = [];
+export type projectComments = [];
 
 export type ProjectUser = {
-  _id: string;
+  readonly _id: string;
   firstName: string;
   lastName: string;
 };
 
 export type ProjectResponse = {
-  _id: string;
+  readonly _id: string;
   createdAt: string;
   createdBy: ProjectUser;
   description: string;
@@ -91,3 +94,16 @@ export type MainLink = {
 };
 
 export type Theme = 'dark' | 'light' | 'system';
+
+export type TaskResponse = {
+  readonly _id: string;
+  title: string;
+  description: string;
+  assignedTo: ProjectUser;
+  projectId: ProjectResponse;
+  tickets: projectTickets;
+  comments: projectComments;
+  taskType: string;
+  priority: string;
+  status: string;
+};
