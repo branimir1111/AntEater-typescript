@@ -28,3 +28,4 @@ export { default as TasksAndActivitiesFilter } from './dashboardComponents/Tasks
 export { default as TasksAndActivitiesContainer } from './dashboardComponents/TasksAndActivitiesPage/TasksAndActivitiesContainer';
 export { default as TaskStatusPillar } from './dashboardComponents/TasksAndActivitiesPage/TaskStatusPillar';
 export { default as SingleTaskCart } from './dashboardComponents/TasksAndActivitiesPage/SingleTaskCart';
+export { default as DeveloperTasks } from './dashboardComponents/DeveloperMyTasksPage/DeveloperTasks';
