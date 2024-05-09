@@ -26,3 +26,5 @@ export { default as DevProjects } from './dashboardComponents/DeveloperMyProject
 export { default as DevProjectsLoader } from './dashboardComponents/DeveloperMyProjectsPage/DevProjectsLoader';
 export { default as TasksAndActivitiesFilter } from './dashboardComponents/TasksAndActivitiesPage/TasksAndActivitiesFilter';
 export { default as TasksAndActivitiesContainer } from './dashboardComponents/TasksAndActivitiesPage/TasksAndActivitiesContainer';
+export { default as TaskStatusPillar } from './dashboardComponents/TasksAndActivitiesPage/TaskStatusPillar';
+export { default as SingleTaskCart } from './dashboardComponents/TasksAndActivitiesPage/SingleTaskCart';

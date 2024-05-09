@@ -78,13 +78,13 @@ const TasksAndActivitiesPage = () => {
       <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-8">
         Tasks
       </h2>
-      <Separator className="mb-4" />
       <TasksAndActivitiesFilter
         projectsList={projectsList}
         value={value}
         setValue={setValue}
         setProjectId={setProjectId}
       />
+      <Separator className="mt-4" />
       <TasksAndActivitiesContainer tasks={tasks} />
     </section>
   );

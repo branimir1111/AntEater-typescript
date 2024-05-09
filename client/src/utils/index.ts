@@ -4,4 +4,5 @@ export * from './types';
 export * from './mainLinks.tsx';
 export * from './applyTheme.ts';
 export * from './projectStatus.ts';
+export * from './taskStatus.ts';
 export * from './pagination.ts';
