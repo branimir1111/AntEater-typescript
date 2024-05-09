@@ -31,7 +31,7 @@ const TaskStatusPillar = ({ status, filteredTasks }: TaskStatusPillar) => {
   }
 
   return (
-    <div className="w-full rounded-md bg-background px-1 py-2">
+    <div className="w-full rounded-md bg-background px-1 py-2 border">
       <div className="rounded-t-sm pb-4 pl-4">
         <h1 className={twMerge(`text-sm uppercase ${textColor}`)}>
           {status} ({numOfTasks})

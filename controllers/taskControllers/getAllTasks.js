@@ -7,11 +7,8 @@ const getAllTasks = async (req, res) => {
   const { projectId } = req.query;
 
   if (!projectId) {
-    const allTasks = await TaskModel.aggregate([...userAndProjectFromTask]);
-
-    const numOfTasks = await TaskModel.countDocuments();
-
-    res.status(StatusCodes.OK).json({ numOfTasks, allTasks });
+    const allTasks = [];
+    res.status(StatusCodes.OK).json({ allTasks });
     return;
   } else {
     let queryObject = { projectId: new mongoose.Types.ObjectId(projectId) };
@@ -23,9 +20,7 @@ const getAllTasks = async (req, res) => {
       ...userAndProjectFromTask,
     ]);
 
-    const numOfTasks = await TaskModel.countDocuments();
-
-    res.status(StatusCodes.OK).json({ numOfTasks, allTasks });
+    res.status(StatusCodes.OK).json({ allTasks });
     return;
   }
 };

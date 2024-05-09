@@ -75,9 +75,10 @@ const TasksAndActivitiesPage = () => {
 
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
-      <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-8">
+      <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
         Tasks
       </h2>
+      <div className="m-auto w-28 h-1 bg-gray-500 mb-8 rounded-sm"></div>
       <TasksAndActivitiesFilter
         projectsList={projectsList}
         value={value}

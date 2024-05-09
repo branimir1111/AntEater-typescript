@@ -36,7 +36,9 @@ const TasksAndActivitiesFilter = ({
 
   return (
     <>
-      <p className="py-1 px-4 text-sm">Projects</p>
+      <p className="py-1 px-4 text-sm">
+        Select a project to see the tasks associated with it.
+      </p>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -49,7 +51,7 @@ const TasksAndActivitiesFilter = ({
               ? projectsList.find(
                   (project) => project.projectName.toLowerCase() === value
                 )?.projectName
-              : 'All projects'}
+              : 'Select project'}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
