@@ -1,6 +1,6 @@
 import ProjectModel from '../../models/ProjectModel.js';
 import { StatusCodes } from 'http-status-codes';
-import { usersFromPosts } from '../../utils/aggregations.js';
+import { usersFromProject } from '../../utils/aggregations.js';
 import mongoose from 'mongoose';
 
 const getSingleProject = async (req, res) => {
@@ -10,7 +10,7 @@ const getSingleProject = async (req, res) => {
     {
       $match: { _id: new mongoose.Types.ObjectId(singleProjectId) },
     },
-    ...usersFromPosts,
+    ...usersFromProject,
   ]);
 
   res.status(StatusCodes.OK).json({ singleProject });

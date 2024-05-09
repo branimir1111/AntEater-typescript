@@ -1,6 +1,6 @@
 import ProjectModel from '../../models/ProjectModel.js';
 import { StatusCodes } from 'http-status-codes';
-import { usersFromPosts } from '../../utils/aggregations.js';
+import { usersFromProject } from '../../utils/aggregations.js';
 
 const getAllProjects = async (req, res) => {
   const {
@@ -38,7 +38,7 @@ const getAllProjects = async (req, res) => {
       {
         $match: queryObject,
       },
-      ...usersFromPosts,
+      ...usersFromProject,
       {
         $sort: sortKey,
       },
@@ -71,7 +71,7 @@ const getAllProjects = async (req, res) => {
       {
         $match: queryObject,
       },
-      ...usersFromPosts,
+      ...usersFromProject,
       {
         $sort: sortKey,
       },

@@ -106,7 +106,6 @@ const ProjectCart = ({
           <p className="pl-7 text-xs">(created at)</p>
         </div>
       </section>
-
       <hr className="w-full border-t-[1px] my-2 border-base-300" />
       <footer className="w-full flex gap-4 justify-end mt-4">
         <Button

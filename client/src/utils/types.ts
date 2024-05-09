@@ -21,6 +21,7 @@ export type ProjectUser = {
   readonly _id: string;
   firstName: string;
   lastName: string;
+  avatar?: string;
 };
 
 export type ProjectResponse = {
@@ -106,4 +107,6 @@ export type TaskResponse = {
   taskType: string;
   priority: string;
   status: string;
+  createdAt?: string;
+  updatedAt?: string;
 };

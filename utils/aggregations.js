@@ -1,4 +1,4 @@
-export const usersFromPosts = [
+export const usersFromProject = [
   {
     $lookup: {
       from: 'users',
@@ -54,6 +54,55 @@ export const usersFromPosts = [
       status: 1,
       projectTickets: 1,
       projectTasks: 1,
+      createdAt: 1,
+      updatedAt: 1,
+    },
+  },
+];
+
+export const userAndProjectFromTask = [
+  {
+    $lookup: {
+      from: 'users',
+      localField: 'assignedTo',
+      foreignField: '_id',
+      as: 'assignedToUser',
+    },
+  },
+  {
+    $lookup: {
+      from: 'projects',
+      localField: 'projectId',
+      foreignField: '_id',
+      as: 'projectIdProject',
+    },
+  },
+  {
+    $addFields: {
+      assignedTo: {
+        $arrayElemAt: ['$assignedToUser', 0],
+      },
+      projectId: {
+        $arrayElemAt: ['$projectIdProject', 0],
+      },
+    },
+  },
+  {
+    $project: {
+      title: 1,
+      description: 1,
+      assignedTo: { _id: 1, firstName: 1, lastName: 1, avatar: 1 },
+      projectId: {
+        _id: 1,
+        projectName: 1,
+        description: 1,
+        status: 1,
+      },
+      tickets: 1,
+      comments: 1,
+      taskType: 1,
+      priority: 1,
+      status: 1,
       createdAt: 1,
       updatedAt: 1,
     },

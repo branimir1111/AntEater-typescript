@@ -37,7 +37,7 @@ const TaskStatusPillar = ({ status, filteredTasks }: TaskStatusPillar) => {
           {status} ({numOfTasks})
         </h1>
       </div>
-      <div className="w-full grid place-items-center gap-2">
+      <div className="w-full grid place-items-center gap-3">
         {filteredTasks.map((task) => {
           return <SingleTaskCart key={task._id} task={task} />;
         })}
