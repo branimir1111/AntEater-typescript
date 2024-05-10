@@ -2,12 +2,12 @@ import { type TaskResponse } from '@/utils';
 import SingleTaskCart from './SingleTaskCart';
 import { twMerge } from 'tailwind-merge';
 
-type TaskStatusPillar = {
+type TaskStatusPillarProps = {
   status: string;
   filteredTasks: TaskResponse[];
 };
 
-const TaskStatusPillar = ({ status, filteredTasks }: TaskStatusPillar) => {
+const TaskStatusPillar = ({ status, filteredTasks }: TaskStatusPillarProps) => {
   const numOfTasks = filteredTasks.length;
 
   let textColor = '';
