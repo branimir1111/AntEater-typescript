@@ -4,25 +4,18 @@ import mongoose from 'mongoose';
 import { userAndProjectFromTask } from '../../utils/aggregations.js';
 
 const getAllMyTasksDev = async (req, res) => {
-  const { projectId } = req.query;
+  const { userId } = req.user;
 
-  if (!projectId) {
-    const allTasks = [];
-    res.status(StatusCodes.OK).json({ allTasks });
-    return;
-  } else {
-    let queryObject = { projectId: new mongoose.Types.ObjectId(projectId) };
+  let queryObject = { assignedTo: new mongoose.Types.ObjectId(userId) };
 
-    const allTasks = await TaskModel.aggregate([
-      {
-        $match: queryObject,
-      },
-      ...userAndProjectFromTask,
-    ]);
-
-    res.status(StatusCodes.OK).json({ allTasks });
-    return;
-  }
+  const allTasks = await TaskModel.aggregate([
+    {
+      $match: queryObject,
+    },
+    ...userAndProjectFromTask,
+  ]);
+  const numOfTasks = allTasks.length;
+  res.status(StatusCodes.OK).json({ numOfTasks, allTasks });
 };
 
 export { getAllMyTasksDev };
