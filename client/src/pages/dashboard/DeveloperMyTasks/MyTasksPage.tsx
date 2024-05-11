@@ -1,6 +1,7 @@
 import { DevTasksFilter, DevTasksContainer } from '@/components';
 import { useQuery } from '@tanstack/react-query';
 import { customFetch } from '@/utils';
+import { useState } from 'react';
 
 const allProjectsQuery = () => {
   const params = {
@@ -27,8 +28,32 @@ const allProjectsQuery = () => {
   };
 };
 
+const allTasksDevQuery = (projectId: string) => {
+  const params = {
+    projectId: projectId,
+  };
+  return {
+    queryKey: ['all-tasks-dev', projectId],
+    queryFn: async () => {
+      const { data } = await customFetch.get('/all-tasks-dev', { params });
+      return data;
+    },
+  };
+};
+
 const MyTasksPage = () => {
-  const { data: projects, isPending, isError } = useQuery(allProjectsQuery());
+  const [projectId, setProjectId] = useState('');
+
+  const {
+    data: projectsDev,
+    isPending,
+    isError,
+  } = useQuery(allProjectsQuery());
+  const {
+    data: tasksResponse,
+    isPending: isTasksPending,
+    isError: isTasksError,
+  } = useQuery(allTasksDevQuery(projectId));
 
   if (isPending) {
     return <h1>Loading...</h1>;
@@ -36,7 +61,14 @@ const MyTasksPage = () => {
   if (isError) {
     return <h1>Error...</h1>;
   }
-  console.log(projects);
+  console.log(projectsDev);
+  if (isTasksPending) {
+    return <h1>Loading...</h1>;
+  }
+  if (isTasksError) {
+    return <h1>Error...</h1>;
+  }
+  console.log(tasksResponse);
 
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">

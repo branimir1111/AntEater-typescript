@@ -5,8 +5,13 @@ import { userAndProjectFromTask } from '../../utils/aggregations.js';
 
 const getAllMyTasksDev = async (req, res) => {
   const { userId } = req.user;
+  const { projectId } = req.query;
 
   let queryObject = { assignedTo: new mongoose.Types.ObjectId(userId) };
+
+  if (projectId) {
+    queryObject.projectId = new mongoose.Types.ObjectId(projectId);
+  }
 
   const allTasks = await TaskModel.aggregate([
     {
