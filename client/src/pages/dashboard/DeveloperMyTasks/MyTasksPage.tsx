@@ -14,7 +14,7 @@ const allProjectsQuery = () => {
   const { search, status, sort, limit, page } = params;
   return {
     queryKey: [
-      'projectsForTasks',
+      'projectsForTasksDev',
       search ?? '',
       status ?? 'all',
       sort ?? 'newest',
@@ -42,6 +42,7 @@ const allTasksDevQuery = (projectId: string) => {
 };
 
 const MyTasksPage = () => {
+  const [value, setValue] = useState('');
   const [projectId, setProjectId] = useState('');
 
   const {
@@ -62,6 +63,8 @@ const MyTasksPage = () => {
     return <h1>Error...</h1>;
   }
   console.log(projectsDev);
+  const projectsList = projectsDev.allProjects;
+
   if (isTasksPending) {
     return <h1>Loading...</h1>;
   }
@@ -76,7 +79,12 @@ const MyTasksPage = () => {
         Your Tasks
       </h2>
       <div className="m-auto w-40 h-1 bg-gray-500 mb-8 rounded-sm"></div>
-      <DevTasksFilter />
+      <DevTasksFilter
+        projectsList={projectsList}
+        value={value}
+        setValue={setValue}
+        setProjectId={setProjectId}
+      />
       <DevTasksContainer />
     </section>
   );
