@@ -2,6 +2,7 @@ import { DevTasksFilter, DevTasksContainer } from '@/components';
 import { useQuery } from '@tanstack/react-query';
 import { customFetch } from '@/utils';
 import { useState } from 'react';
+import { Separator } from '@/components/ui/separator';
 
 const allProjectsQuery = () => {
   const params = {
@@ -62,7 +63,6 @@ const MyTasksPage = () => {
   if (isError) {
     return <h1>Error...</h1>;
   }
-  console.log(projectsDev);
   const projectsList = projectsDev.allProjects;
 
   if (isTasksPending) {
@@ -71,7 +71,6 @@ const MyTasksPage = () => {
   if (isTasksError) {
     return <h1>Error...</h1>;
   }
-  console.log(tasksResponse);
 
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
@@ -85,7 +84,8 @@ const MyTasksPage = () => {
         setValue={setValue}
         setProjectId={setProjectId}
       />
-      <DevTasksContainer />
+      <Separator className="mt-4" />
+      <DevTasksContainer tasksResponse={tasksResponse} />
     </section>
   );
 };

@@ -37,7 +37,7 @@ const DevTasksFilter = ({
   return (
     <>
       <p className="py-1 px-4 text-sm">
-        Select your a project to see the tasks associated with it.
+        Select your project to see the tasks associated with it.
       </p>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>

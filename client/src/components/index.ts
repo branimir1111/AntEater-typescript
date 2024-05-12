@@ -30,3 +30,4 @@ export { default as TaskStatusPillar } from './dashboardComponents/TasksAndActiv
 export { default as SingleTaskCart } from './dashboardComponents/TasksAndActivitiesPage/SingleTaskCart';
 export { default as DevTasksFilter } from './dashboardComponents/DeveloperMyTasksPage/DevTasksFilter';
 export { default as DevTasksContainer } from './dashboardComponents/DeveloperMyTasksPage/DevTasksContainer';
+export { default as DevTasksTable } from './dashboardComponents/DeveloperMyTasksPage/DevTasksTable';
