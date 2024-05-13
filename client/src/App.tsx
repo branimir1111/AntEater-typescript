@@ -45,6 +45,9 @@ import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
 import { action as editProfileAction } from './pages/dashboard/Profile/ProfilePage';
 import { action as AddNewProjectAction } from './pages/dashboard/Projects/pages/AddNewProjectForm';
+import { action as AddNewDevTaskAction } from '@/pages/dashboard/DeveloperMyTasks/AddTask';
+import { action as AddNewCommentAction } from '@/pages/dashboard/DeveloperMyTasks/AddComment';
+import { action as EditTaskAction } from '@/pages/dashboard/DeveloperMyTasks/EditTask';
 // import { action as MyProjectsDevAction } from '@/pages/dashboard/DeveloperMyProjects/MyProjectsPage';
 
 const queryClient = new QueryClient({
@@ -123,6 +126,9 @@ const router = createBrowserRouter([
         element: <MyTasksPage />,
         errorElement: <ErrorElement />,
       },
+      { path: 'my-tasks/add-task', action: AddNewDevTaskAction },
+      { path: 'my-tasks/edit-task', action: EditTaskAction },
+      { path: 'my-tasks/add-comment', action: AddNewCommentAction },
       {
         path: 'tickets',
         element: <TicketsPage />,

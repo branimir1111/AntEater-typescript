@@ -31,3 +31,6 @@ export { default as SingleTaskCart } from './dashboardComponents/TasksAndActivit
 export { default as DevTasksFilter } from './dashboardComponents/DeveloperMyTasksPage/DevTasksFilter';
 export { default as DevTasksContainer } from './dashboardComponents/DeveloperMyTasksPage/DevTasksContainer';
 export { default as DevTasksTable } from './dashboardComponents/DeveloperMyTasksPage/DevTasksTable';
+export { default as AddNewDevTask } from './dashboardComponents/DeveloperMyTasksPage/AddNewDevTask';
+export { default as EditDevTask } from './dashboardComponents/DeveloperMyTasksPage/EditDevTask';
+export { default as AddDevComment } from './dashboardComponents/DeveloperMyTasksPage/AddDevComment';

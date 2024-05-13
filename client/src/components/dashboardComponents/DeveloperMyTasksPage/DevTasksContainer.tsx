@@ -16,7 +16,7 @@ const DevTasksContainer = ({ tasksResponse }: DevTasksContainerProps) => {
 
   return (
     <section className="w-full py-6">
-      <h1 className="text-xl mb-4">
+      <h1 className="text-xl my-4">
         You are assigned to {numOfTasks} task{numOfTasks > 1 ? 's' : null}
       </h1>
       {taskStatus.map((singleStatus) => {
