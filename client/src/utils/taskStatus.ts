@@ -5,3 +5,13 @@ export const taskStatus: string[] = [
   'refactor',
   'completed',
 ];
+
+export const taskType: string[] = [
+  'planning',
+  'design',
+  'coding',
+  'testing',
+  'administration',
+];
+
+export const taskPriority: string[] = ['low', 'medium', 'high'];

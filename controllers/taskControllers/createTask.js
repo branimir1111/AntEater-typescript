@@ -6,6 +6,7 @@ const createTask = async (req, res) => {
   res
     .status(StatusCodes.OK)
     .json({ msg: 'Task successfully created!', newTaskCreated });
+  // res.status(StatusCodes.OK).json({ msg: 'Task successfully created!' });
 };
 
 export { createTask };

@@ -1,5 +1,4 @@
-import { TaskResponse } from '@/utils';
-import { taskStatus } from '@/utils';
+import { type TaskResponse, type ProjectResponse, taskStatus } from '@/utils';
 import DevTasksTable from './DevTasksTable';
 
 type DevTasksResponse = {
@@ -9,14 +8,18 @@ type DevTasksResponse = {
 
 type DevTasksContainerProps = {
   tasksResponse: DevTasksResponse;
+  projectsList: ProjectResponse[];
 };
 
-const DevTasksContainer = ({ tasksResponse }: DevTasksContainerProps) => {
+const DevTasksContainer = ({
+  tasksResponse,
+  projectsList,
+}: DevTasksContainerProps) => {
   const { numOfTasks, allTasks } = tasksResponse;
 
   return (
     <section className="w-full py-6">
-      <h1 className="text-xl my-4">
+      <h1 className="text-lg mb-4 text-muted-foreground">
         You are assigned to {numOfTasks} task{numOfTasks > 1 ? 's' : null}
       </h1>
       {taskStatus.map((singleStatus) => {
@@ -28,6 +31,7 @@ const DevTasksContainer = ({ tasksResponse }: DevTasksContainerProps) => {
             key={singleStatus}
             status={singleStatus}
             filteredTasks={filteredTasks}
+            projectsList={projectsList}
           />
         );
       })}

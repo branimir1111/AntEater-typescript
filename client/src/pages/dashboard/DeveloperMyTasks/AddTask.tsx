@@ -1,6 +1,26 @@
-import { redirect } from 'react-router-dom';
+import { redirect, ActionFunction } from 'react-router-dom';
+import { customFetch } from '@/utils';
+import { AxiosError } from 'axios';
+import { toast } from '@/components/ui/use-toast';
+import { QueryClient } from '@tanstack/react-query';
 
-export const action = () => {
-  console.log('This is ADD TASK action!!!');
-  return redirect('/dashboard/my-tasks');
-};
+export const action =
+  (queryClient: QueryClient): ActionFunction =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    console.log(data);
+
+    try {
+      const response = await customFetch.post('/create-task', data);
+      queryClient.invalidateQueries({ queryKey: ['all-tasks-dev'] });
+      toast({ description: response.data.msg });
+    } catch (error) {
+      const errorMsg =
+        error instanceof AxiosError
+          ? error.response?.data.msg
+          : 'Create Task Failed';
+      toast({ description: errorMsg });
+    }
+    return redirect('/dashboard/my-tasks');
+  };

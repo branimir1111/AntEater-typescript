@@ -1,4 +1,8 @@
-import { type TaskResponse } from '@/utils';
+import {
+  type TaskResponse,
+  useAppSelector,
+  type ProjectResponse,
+} from '@/utils';
 import {
   Table,
   TableCaption,
@@ -16,9 +20,17 @@ import AddDevComment from './AddDevComment';
 type TaskStatusPillarProps = {
   status: string;
   filteredTasks: TaskResponse[];
+  projectsList: ProjectResponse[];
 };
 
-const DevTasksTable = ({ status, filteredTasks }: TaskStatusPillarProps) => {
+const DevTasksTable = ({
+  status,
+  filteredTasks,
+  projectsList,
+}: TaskStatusPillarProps) => {
+  const user = useAppSelector((state) => state.userState.user);
+  const assignedToUser = user?._id;
+
   const numOfTasks = filteredTasks.length;
 
   let textColor = '';
@@ -57,7 +69,12 @@ const DevTasksTable = ({ status, filteredTasks }: TaskStatusPillarProps) => {
     <div
       className={`w-full ${bgColor} bg-opacity-10 py-2 px-2 mt-2 rounded-md`}
     >
-      {status === 'new' && <AddNewDevTask />}
+      {status === 'new' && (
+        <AddNewDevTask
+          assignedToUser={assignedToUser}
+          projectsList={projectsList}
+        />
+      )}
       <h1 className={`${textColor} mt-4 uppercase text-md font-bold`}>
         {status} ({numOfTasks})
       </h1>

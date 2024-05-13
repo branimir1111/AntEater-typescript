@@ -1,6 +1,6 @@
 import { DevTasksFilter, DevTasksContainer } from '@/components';
 import { useQuery } from '@tanstack/react-query';
-import { customFetch } from '@/utils';
+import { customFetch, type ProjectResponse } from '@/utils';
 import { useState } from 'react';
 import { Separator } from '@/components/ui/separator';
 
@@ -72,6 +72,14 @@ const MyTasksPage = () => {
     return <h1>Error...</h1>;
   }
 
+  let projectName = '';
+  if (projectId) {
+    const foundedProject = projectsDev.allProjects.find(
+      (project: ProjectResponse) => project._id === projectId
+    );
+    projectName = foundedProject.projectName;
+  }
+
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
       <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
@@ -85,7 +93,22 @@ const MyTasksPage = () => {
         setProjectId={setProjectId}
       />
       <Separator className="mt-4" />
-      <DevTasksContainer tasksResponse={tasksResponse} />
+
+      {projectId ? (
+        <h1 className="text-xl mt-6 font-bold">
+          Tasks for project{' '}
+          <span className="text-indigo-500">{projectName}</span>.
+        </h1>
+      ) : (
+        <h1 className="text-xl mt-6 font-bold">
+          Tasks for <span className="text-indigo-500">all projects.</span>
+        </h1>
+      )}
+
+      <DevTasksContainer
+        tasksResponse={tasksResponse}
+        projectsList={projectsList}
+      />
     </section>
   );
 };
