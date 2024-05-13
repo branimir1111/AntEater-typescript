@@ -36,9 +36,6 @@ const DevTasksFilter = ({
 
   return (
     <>
-      <p className="py-1 px-4 text-sm">
-        Select your project to see the tasks associated with it.
-      </p>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -55,6 +52,9 @@ const DevTasksFilter = ({
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
+        <p className="py-1 px-4 text-sm text-muted-foreground">
+          ( Select your project to see the tasks associated with it. )
+        </p>
         <PopoverContent className="w-48 p-0">
           <Command>
             <CommandInput placeholder="Search project..." />

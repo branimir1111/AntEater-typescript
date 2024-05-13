@@ -24,13 +24,11 @@ const DevTasksContainer = ({ tasksResponse }: DevTasksContainerProps) => {
           (singleTask) => singleTask.status === singleStatus
         );
         return (
-          <>
-            <DevTasksTable
-              key={singleStatus}
-              status={singleStatus}
-              filteredTasks={filteredTasks}
-            />
-          </>
+          <DevTasksTable
+            key={singleStatus}
+            status={singleStatus}
+            filteredTasks={filteredTasks}
+          />
         );
       })}
     </section>

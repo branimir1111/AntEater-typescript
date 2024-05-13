@@ -35,63 +35,61 @@ const TasksAndActivitiesFilter = ({
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <p className="py-1 px-4 text-sm">
-        Select a project to see the tasks associated with it.
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          role="combobox"
+          aria-expanded={open}
+          className="w-48 justify-between"
+        >
+          {value
+            ? projectsList.find(
+                (project) => project.projectName.toLowerCase() === value
+              )?.projectName
+            : 'Select project'}
+          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+        </Button>
+      </PopoverTrigger>
+      <p className="py-1 px-4 text-sm text-muted-foreground">
+        ( Select a project to see the tasks associated with it. )
       </p>
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            variant="outline"
-            role="combobox"
-            aria-expanded={open}
-            className="w-48 justify-between"
-          >
-            {value
-              ? projectsList.find(
-                  (project) => project.projectName.toLowerCase() === value
-                )?.projectName
-              : 'Select project'}
-            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-48 p-0">
-          <Command>
-            <CommandInput placeholder="Search project..." />
-            <CommandEmpty>No project found.</CommandEmpty>
-            <CommandList>
-              <CommandGroup>
-                {projectsList.map((project) => {
-                  const { _id, projectName } = project;
+      <PopoverContent className="w-48 p-0">
+        <Command>
+          <CommandInput placeholder="Search project..." />
+          <CommandEmpty>No project found.</CommandEmpty>
+          <CommandList>
+            <CommandGroup>
+              {projectsList.map((project) => {
+                const { _id, projectName } = project;
 
-                  return (
-                    <CommandItem
-                      key={_id}
-                      value={projectName}
-                      onSelect={(currentValue) => {
-                        setValue(currentValue === value ? '' : currentValue);
-                        setProjectId(_id);
-                        setOpen(false);
-                      }}
-                    >
-                      <Check
-                        className={cn(
-                          'mr-2 h-4 w-4',
-                          value === projectName.toLowerCase()
-                            ? 'opacity-100'
-                            : 'opacity-0'
-                        )}
-                      />
-                      {projectName}
-                    </CommandItem>
-                  );
-                })}
-              </CommandGroup>
-            </CommandList>
-          </Command>
-        </PopoverContent>
-      </Popover>
-    </>
+                return (
+                  <CommandItem
+                    key={_id}
+                    value={projectName}
+                    onSelect={(currentValue) => {
+                      setValue(currentValue === value ? '' : currentValue);
+                      setProjectId(_id);
+                      setOpen(false);
+                    }}
+                  >
+                    <Check
+                      className={cn(
+                        'mr-2 h-4 w-4',
+                        value === projectName.toLowerCase()
+                          ? 'opacity-100'
+                          : 'opacity-0'
+                      )}
+                    />
+                    {projectName}
+                  </CommandItem>
+                );
+              })}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   );
 };
 export default TasksAndActivitiesFilter;

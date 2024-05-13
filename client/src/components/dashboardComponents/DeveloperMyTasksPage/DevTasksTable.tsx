@@ -19,26 +19,34 @@ const DevTasksTable = ({ status, filteredTasks }: TaskStatusPillarProps) => {
   console.log(filteredTasks);
 
   let textColor = '';
+  let bgColor = '';
 
   switch (status) {
     case 'new':
       textColor = 'text-indigo-500';
+      bgColor = 'bg-indigo-500';
       break;
     case 'in progress':
       textColor = 'text-[#1CD4D4]';
+      bgColor = 'bg-[#1CD4D4]';
       break;
     case 'under review':
       textColor = 'text-[#F0B429]';
+      bgColor = 'bg-[#F0B429]';
       break;
     case 'refactor':
       textColor = 'text-[#EF4E4E]';
+      bgColor = 'bg-[#EF4E4E]';
       break;
     case 'completed':
       textColor = 'text-[#51CA58]';
+      bgColor = 'bg-[#51CA58]';
       break;
   }
   return (
-    <div className="w-full">
+    <div
+      className={`w-full ${bgColor} bg-opacity-10 py-1 px-2 mt-2 rounded-md`}
+    >
       <h1 className={`${textColor} mt-6 uppercase text-md`}>
         {status} ({numOfTasks})
       </h1>
@@ -51,19 +59,20 @@ const DevTasksTable = ({ status, filteredTasks }: TaskStatusPillarProps) => {
           <TableRow>
             <TableHead className={`${textColor}`}>Task</TableHead>
             <TableHead className={`${textColor}`}>Project name</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Type</TableHead>
-            <TableHead>Priority</TableHead>
-            <TableHead>Actions</TableHead>
+            <TableHead className={`${textColor}`}>Type</TableHead>
+            <TableHead className={`${textColor}`}>Priority</TableHead>
+            <TableHead className={`${textColor}`}>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {filteredTasks.map((filteredTask) => {
-            const { _id, title, projectId } = filteredTask;
+            const { _id, title, projectId, taskType, priority } = filteredTask;
             return (
               <TableRow key={_id}>
                 <TableCell>{title}</TableCell>
                 <TableCell>{projectId.projectName}</TableCell>
+                <TableCell>{taskType}</TableCell>
+                <TableCell>{priority}</TableCell>
               </TableRow>
             );
           })}
