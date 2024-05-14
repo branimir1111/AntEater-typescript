@@ -2,7 +2,7 @@ import {
   TasksAndActivitiesFilter,
   TasksAndActivitiesContainer,
 } from '@/components';
-import { customFetch } from '@/utils';
+import { customFetch, type ProjectResponse } from '@/utils';
 import { Separator } from '@/components/ui/separator';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -73,6 +73,14 @@ const TasksAndActivitiesPage = () => {
 
   const tasks = tasksResponse.allTasks;
 
+  let projectName = '';
+  if (projectId) {
+    const foundedProject = data.allProjects.find(
+      (project: ProjectResponse) => project._id === projectId
+    );
+    projectName = foundedProject.projectName;
+  }
+
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
       <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
@@ -86,6 +94,18 @@ const TasksAndActivitiesPage = () => {
         setProjectId={setProjectId}
       />
       <Separator className="mt-4" />
+
+      {projectId ? (
+        <h1 className="text-xl mt-6 font-bold">
+          Tasks for project{' '}
+          <span className="text-indigo-500">{projectName}</span>.
+        </h1>
+      ) : (
+        <h1 className="text-xl mt-6 font-bold">
+          Tasks for <span className="text-indigo-500">all projects.</span>
+        </h1>
+      )}
+
       <TasksAndActivitiesContainer tasks={tasks} />
     </section>
   );

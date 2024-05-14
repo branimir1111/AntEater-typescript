@@ -8,6 +8,7 @@ import {
   NotFound,
 } from '../errors/customErrors.js';
 import ProjectModel from '../models/ProjectModel.js';
+import TaskModel from '../models/taskModel.js';
 
 const validationWithErrors = (validationValues) => {
   return [
@@ -104,6 +105,25 @@ export const validateNewTask = validationWithErrors([
       });
       if (!project) {
         throw new BadRequest('Project does not exists');
+      }
+    }),
+]);
+
+export const validateNewTicket = validationWithErrors([
+  body('title').notEmpty().withMessage('Title is required'),
+  body('description').notEmpty().withMessage('Description is required'),
+  body('assignedTo')
+    .notEmpty()
+    .withMessage('You need to assign a ticket to someone'),
+  body('taskId')
+    .notEmpty()
+    .withMessage('The task assigned ticket is missing.')
+    .custom(async (_id, { req }) => {
+      const task = await TaskModel.findById({
+        _id: new mongoose.Types.ObjectId(_id),
+      });
+      if (!task) {
+        throw new BadRequest('Task does not exists');
       }
     }),
 ]);

@@ -12,16 +12,12 @@ import AuthRouter from './routes/authRoutes.js';
 import UserRouter from './routes/userRoutes.js';
 import ProjectRouter from './routes/projectRoutes.js';
 import TaskRouter from './routes/taskRoutes.js';
+import TicketRouter from './routes/ticketRoutes.js';
 import errorMiddleware from './middleware/errorMiddleware.js';
 import {
   authenticateUser,
   authorizePermissions,
 } from './middleware/authMiddleware.js';
-
-//public
-// import { fileURLToPath } from "url";
-// import { dirname } from "path";
-// import path from "path";
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -29,18 +25,16 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-// const __dirname = dirname(fileURLToPath(import.meta.url));
-
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
-// app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(cookieParser());
 
 app.use('/api/v1', AuthRouter);
 app.use('/api/v1', authenticateUser, UserRouter);
 app.use('/api/v1', authenticateUser, ProjectRouter);
 app.use('/api/v1', authenticateUser, TaskRouter);
+app.use('/api/v1', authenticateUser, TicketRouter);
 
 app.use('*', (req, res) => {
   res.status(404).json({ msg: 'Route Not Found' });
@@ -48,7 +42,6 @@ app.use('*', (req, res) => {
 
 app.use(errorMiddleware);
 
-// Connection to DB
 const port = process.env.PORT || 5100;
 try {
   await mongoose.connect(process.env.MONGO_URL);
