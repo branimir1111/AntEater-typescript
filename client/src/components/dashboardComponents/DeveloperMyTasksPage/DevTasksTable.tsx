@@ -141,7 +141,7 @@ const DevTasksTable = ({
                   </Badge>
                 </TableCell>
                 <TableCell className="flex items-center gap-3">
-                  <EditDevTask />
+                  <EditDevTask filteredTask={filteredTask} />
                   <AddDevComment />
                   <DeleteDevTask id={_id} />
                 </TableCell>

@@ -127,7 +127,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorElement />,
       },
       { path: 'my-tasks/add-task', action: AddNewDevTaskAction(queryClient) },
-      { path: 'my-tasks/edit-task', action: EditTaskAction },
+      { path: 'my-tasks/edit-task/:id', action: EditTaskAction(queryClient) },
       { path: 'my-tasks/add-comment', action: AddNewCommentAction },
       {
         path: 'tickets',
