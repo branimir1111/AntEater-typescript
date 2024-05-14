@@ -16,6 +16,7 @@ export const action =
         data
       );
       queryClient.invalidateQueries({ queryKey: ['all-tasks-dev'] });
+      queryClient.invalidateQueries({ queryKey: ['all-tasks'] });
       toast({ description: response.data.msg });
     } catch (error) {
       const errorMsg =
