@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/popover';
 
 type DevTasksFilterParams = {
+  text: string;
   projectsList: ProjectResponse[];
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
@@ -27,6 +28,7 @@ type DevTasksFilterParams = {
 };
 
 const DevTasksFilter = ({
+  text,
   projectsList,
   value,
   setValue,
@@ -52,9 +54,7 @@ const DevTasksFilter = ({
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <p className="py-1 px-4 text-sm text-muted-foreground">
-          ( Select your project to see the tasks associated with it. )
-        </p>
+        <p className="py-1 px-4 text-sm text-muted-foreground">( {text} )</p>
         <PopoverContent className="w-48 p-0">
           <Command>
             <CommandInput placeholder="Search project..." />

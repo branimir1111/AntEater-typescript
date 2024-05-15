@@ -87,6 +87,7 @@ const MyTasksPage = () => {
       </h2>
       <div className="m-auto w-40 h-1 bg-gray-500 mb-8 rounded-sm"></div>
       <DevTasksFilter
+        text="Select your project to see the tasks associated with it."
         projectsList={projectsList}
         value={value}
         setValue={setValue}

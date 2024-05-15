@@ -6,8 +6,7 @@ const TicketModel = new Schema(
     description: String,
     assignedTo: { type: mongoose.Types.ObjectId, ref: 'User' },
     projectId: { type: mongoose.Types.ObjectId, ref: 'Project' },
-    taskId: { type: mongoose.Types.ObjectId, ref: 'Task' },
-    comments: [{ type: mongoose.Types.ObjectId, ref: 'Comment' }],
+    // comments: [{ type: mongoose.Types.ObjectId, ref: 'Comment' }],
     ticketType: {
       type: String,
       enum: ['feature', 'improvement', 'security', 'bug'],
@@ -22,8 +21,8 @@ const TicketModel = new Schema(
       type: String,
       enum: [
         'new',
-        'inProgress',
-        'underReview',
+        'in progress',
+        'under review',
         'rejected',
         'cancelled',
         'completed',

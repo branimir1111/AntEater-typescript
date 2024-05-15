@@ -115,15 +115,15 @@ export const validateNewTicket = validationWithErrors([
   body('assignedTo')
     .notEmpty()
     .withMessage('You need to assign a ticket to someone'),
-  body('taskId')
+  body('projectId')
     .notEmpty()
-    .withMessage('The task assigned ticket is missing.')
+    .withMessage('The project assigned ticket is missing.')
     .custom(async (_id, { req }) => {
-      const task = await TaskModel.findById({
+      const project = await ProjectModel.findById({
         _id: new mongoose.Types.ObjectId(_id),
       });
-      if (!task) {
-        throw new BadRequest('Task does not exists');
+      if (!project) {
+        throw new BadRequest('Project does not exists');
       }
     }),
 ]);

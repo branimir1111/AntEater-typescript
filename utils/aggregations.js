@@ -108,3 +108,55 @@ export const userAndProjectFromTask = [
     },
   },
 ];
+
+export const userProjectAndTaskFromTicket = [
+  {
+    $lookup: {
+      from: 'users',
+      localField: 'assignedTo',
+      foreignField: '_id',
+      as: 'assignedToUser',
+    },
+  },
+  {
+    $lookup: {
+      from: 'projects',
+      localField: 'projectId',
+      foreignField: '_id',
+      as: 'projectIdTickets',
+    },
+  },
+  {
+    $addFields: {
+      assignedTo: {
+        $arrayElemAt: ['$assignedToUser', 0],
+      },
+      projectId: {
+        $arrayElemAt: ['$projectIdTickets', 0],
+      },
+    },
+  },
+  {
+    $project: {
+      title: 1,
+      description: 1,
+      assignedTo: {
+        _id: 1,
+        firstName: 1,
+        lastName: 1,
+        avatar: 1,
+      },
+      projectId: {
+        _id: 1,
+        projectName: 1,
+        description: 1,
+        status: 1,
+      },
+      ticketType: 1,
+      priority: 1,
+      status: 1,
+      createdAt: 1,
+      updatedAt: 1,
+    },
+  },
+];
