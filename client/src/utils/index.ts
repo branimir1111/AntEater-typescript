@@ -6,3 +6,4 @@ export * from './applyTheme.ts';
 export * from './projectStatus.ts';
 export * from './taskStatus.ts';
 export * from './pagination.ts';
+export * from './ticketStatus.ts';

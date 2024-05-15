@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { customFetch } from '@/utils';
+import { customFetch, type ProjectResponse } from '@/utils';
 import { useState } from 'react';
 import { DevTasksFilter } from '@/components';
 import { Separator } from '@/components/ui/separator';
+import { DevTicketsContainer } from '@/components';
 
 const allProjectsQuery = () => {
   const params = {
@@ -74,11 +75,16 @@ const MyTicketsPage = () => {
 
   const projectsList = projectsDev.allProjects;
 
-  console.log(projectsList);
-  console.log(ticketsResponse);
+  let projectName = '';
+  if (projectId) {
+    const foundedProject = projectsDev.allProjects.find(
+      (project: ProjectResponse) => project._id === projectId
+    );
+    projectName = foundedProject.projectName;
+  }
 
   return (
-    <section className="w-full outlet-hight p-4 bg-background-first">
+    <section className="w-full outlet-hight p-8 bg-background-first">
       <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
         Your Tickets
       </h2>
@@ -91,6 +97,20 @@ const MyTicketsPage = () => {
         setProjectId={setProjectId}
       />
       <Separator className="mt-4" />
+      {projectId ? (
+        <h1 className="text-xl mt-6 font-bold">
+          Tickets for project{' '}
+          <span className="text-indigo-500">{projectName}</span>.
+        </h1>
+      ) : (
+        <h1 className="text-xl mt-6 font-bold">
+          Tickets for <span className="text-indigo-500">all projects.</span>
+        </h1>
+      )}
+      <DevTicketsContainer
+        ticketsResponse={ticketsResponse}
+        projectsList={projectsList}
+      />
     </section>
   );
 };

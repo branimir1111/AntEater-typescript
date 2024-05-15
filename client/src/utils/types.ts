@@ -110,3 +110,16 @@ export type TaskResponse = {
   createdAt?: string;
   updatedAt?: string;
 };
+
+export type TicketResponse = {
+  readonly _id: string;
+  title: string;
+  description: string;
+  assignedTo: ProjectUser;
+  projectId: ProjectResponse;
+  ticketType: string;
+  priority: string;
+  status: string;
+  createdAt?: string;
+  updatedAt?: string;
+};

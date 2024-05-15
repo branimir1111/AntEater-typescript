@@ -18,7 +18,9 @@ const getAllDevTickets = async (req, res) => {
     ...userProjectAndTaskFromTicket,
   ]);
 
-  res.status(StatusCodes.OK).json({ devTickets });
+  const numOfTickets = devTickets.length;
+
+  res.status(StatusCodes.OK).json({ numOfTickets, devTickets });
 };
 
 export { getAllDevTickets };
