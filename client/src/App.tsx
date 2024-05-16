@@ -47,7 +47,9 @@ import { action as editProfileAction } from './pages/dashboard/Profile/ProfilePa
 import { action as AddNewProjectAction } from './pages/dashboard/Projects/pages/AddNewProjectForm';
 import { action as AddNewDevTaskAction } from '@/pages/dashboard/DeveloperMyTasks/AddTask';
 import { action as AddNewCommentAction } from '@/pages/dashboard/DeveloperMyTasks/AddComment';
-import { action as EditTaskAction } from '@/pages/dashboard/DeveloperMyTasks/EditTask';
+import { action as EditDevTaskAction } from '@/pages/dashboard/DeveloperMyTasks/EditTask';
+import { action as AddNewDevTicketAction } from '@/pages/dashboard/DeveloperMyTickets/AddTicket';
+import { action as EditDevTicketAction } from '@/pages/dashboard/DeveloperMyTickets/EditTicket';
 // import { action as MyProjectsDevAction } from '@/pages/dashboard/DeveloperMyProjects/MyProjectsPage';
 
 const queryClient = new QueryClient({
@@ -125,10 +127,18 @@ const router = createBrowserRouter([
         path: 'my-tasks',
         element: <MyTasksPage />,
         errorElement: <ErrorElement />,
+        children: [
+          {
+            path: 'add-task',
+            action: AddNewDevTaskAction(queryClient),
+          },
+          {
+            path: 'edit-task/:id',
+            action: EditDevTaskAction(queryClient),
+          },
+          { path: 'add-comment', action: AddNewCommentAction },
+        ],
       },
-      { path: 'my-tasks/add-task', action: AddNewDevTaskAction(queryClient) },
-      { path: 'my-tasks/edit-task/:id', action: EditTaskAction(queryClient) },
-      { path: 'my-tasks/add-comment', action: AddNewCommentAction },
       {
         path: 'tickets',
         element: <TicketsPage />,
@@ -138,6 +148,16 @@ const router = createBrowserRouter([
         path: 'my-tickets',
         element: <MyTicketsPage />,
         errorElement: <ErrorElement />,
+        children: [
+          {
+            path: 'add-ticket',
+            action: AddNewDevTicketAction(queryClient),
+          },
+          {
+            path: 'edit-ticket/:id',
+            action: EditDevTicketAction(queryClient),
+          },
+        ],
       },
       {
         path: 'add-tickets',

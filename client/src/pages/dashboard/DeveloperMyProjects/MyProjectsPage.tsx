@@ -8,9 +8,9 @@ import {
 } from '@/components';
 import { Separator } from '@/components/ui/separator';
 import {
-  ActionFunction,
+  // ActionFunction,
   LoaderFunction,
-  redirect,
+  // redirect,
   useLoaderData,
   useNavigation,
 } from 'react-router-dom';
@@ -33,17 +33,17 @@ const myProjectsQuery = (params: ParamsData) => {
   };
 };
 
-export const action =
-  (queryClient: QueryClient): ActionFunction =>
-  async ({ request }) => {
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
+// export const action =
+//   (queryClient: QueryClient): ActionFunction =>
+//   async ({ request }) => {
+//     const params = Object.fromEntries([
+//       ...new URL(request.url).searchParams.entries(),
+//     ]);
 
-    await queryClient.ensureQueryData(myProjectsQuery(params));
+//     await queryClient.ensureQueryData(myProjectsQuery(params));
 
-    return redirect('/dashboard/my-projects');
-  };
+//     return redirect('/dashboard/my-projects');
+//   };
 
 type SearchParamsLoader = {
   params: SearchParams;

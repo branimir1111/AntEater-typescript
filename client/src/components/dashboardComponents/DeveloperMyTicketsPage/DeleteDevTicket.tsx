@@ -1,11 +1,4 @@
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
-import { Eraser } from 'lucide-react';
-import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -20,17 +13,28 @@ import { customFetch } from '@/utils';
 import { AxiosResponse, AxiosError } from 'axios';
 import { toast } from '@/components/ui/use-toast';
 import { useQueryClient } from '@tanstack/react-query';
+import { Button } from '@/components/ui/button';
 
-const DeleteDevTask = ({ id }: { id: string }) => {
+type DeleteDevTicketProps = {
+  id: string;
+  bgColor: string;
+  secondTextColor: string;
+};
+
+const DeleteDevTicket = ({
+  id,
+  bgColor,
+  secondTextColor,
+}: DeleteDevTicketProps) => {
   const queryClient = useQueryClient();
 
-  const handleDeleteTask = async () => {
+  const handleDeleteTicket = async () => {
     try {
       const response: AxiosResponse = await customFetch.delete(
-        `/delete-task/${id}`
+        `/delete-ticket/${id}`
       );
-      queryClient.invalidateQueries({ queryKey: ['all-tasks-dev'] });
-      queryClient.invalidateQueries({ queryKey: ['all-tasks'] });
+      queryClient.invalidateQueries({ queryKey: ['all-dev-tickets'] });
+      queryClient.invalidateQueries({ queryKey: ['all-tickets'] });
       toast({ description: response.data.msg });
     } catch (error) {
       const errorMsg =
@@ -41,35 +45,30 @@ const DeleteDevTask = ({ id }: { id: string }) => {
       return null;
     }
   };
+
   return (
     <AlertDialog>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <AlertDialogTrigger
-              asChild
-              className="cursor-pointer w-5 text-[#E12D39]"
-            >
-              <Eraser />
-            </AlertDialogTrigger>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Delete Task</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <AlertDialogTrigger asChild>
+        <Button
+          variant="ghost"
+          size="sm"
+          className={`${bgColor} bg-opacity-10 hover:${bgColor} hover:bg-opacity-15 ${secondTextColor} hover:${secondTextColor}`}
+        >
+          Delete
+        </Button>
+      </AlertDialogTrigger>
 
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your
-            task.
+            ticket.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleDeleteTask}>
+          <AlertDialogAction onClick={handleDeleteTicket}>
             Confirm
           </AlertDialogAction>
         </AlertDialogFooter>
@@ -77,4 +76,4 @@ const DeleteDevTask = ({ id }: { id: string }) => {
     </AlertDialog>
   );
 };
-export default DeleteDevTask;
+export default DeleteDevTicket;
