@@ -37,3 +37,4 @@ export { default as AddDevComment } from './dashboardComponents/DeveloperMyTasks
 export { default as DevTicketsContainer } from './dashboardComponents/DeveloperMyTicketsPage/DevTicketsContainer';
 export { default as TicketTypePillar } from './dashboardComponents/DeveloperMyTicketsPage/TicketTypePillar';
 export { default as TicketTypeCart } from './dashboardComponents/DeveloperMyTicketsPage/TicketTypeCart';
+export { default as GlobalLoader } from './GlobalLoader';

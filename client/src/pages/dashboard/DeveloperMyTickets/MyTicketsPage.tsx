@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { DevTasksFilter } from '@/components';
 import { Separator } from '@/components/ui/separator';
 import { DevTicketsContainer } from '@/components';
+import { GlobalLoader } from '@/components';
 
 const allProjectsQuery = () => {
   const params = {
@@ -60,14 +61,14 @@ const MyTicketsPage = () => {
   } = useQuery(allTicketsDevQuery(projectId));
 
   if (isPending) {
-    return <h1>Loading...</h1>;
+    return <GlobalLoader />;
   }
   if (isError) {
     return <h1>Error...</h1>;
   }
 
   if (isTicketsPending) {
-    return <h1>Loading...</h1>;
+    return <GlobalLoader />;
   }
   if (isTicketsError) {
     return <h1>Error...</h1>;
