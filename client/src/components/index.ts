@@ -39,3 +39,4 @@ export { default as TicketTypeCart } from './dashboardComponents/DeveloperMyTick
 export { default as GlobalLoader } from './GlobalLoader';
 export { default as DeleteDevTicket } from './dashboardComponents/DeveloperMyTicketsPage/DeleteDevTicket';
 export { default as TicketDetails } from './dashboardComponents/DeveloperMyTicketsPage/TicketDetails';
+export { default as DevTicketsFilter } from './dashboardComponents/DeveloperMyTicketsPage/DevTicketsFilter';
