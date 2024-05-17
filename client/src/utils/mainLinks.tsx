@@ -56,19 +56,13 @@ export const mainLinksDeveloper: MainLink[] = [
   },
   {
     id: 8,
-    text: 'Add ticket',
-    path: 'add-tickets',
-    icon: <Minus className="pl-3" />,
-  },
-  {
-    id: 9,
     text: 'Bugs categorization',
     path: 'bugs',
     icon: <Bug />,
   },
   //! DELETE this link when you finished!!!
   {
-    id: 10,
+    id: 9,
     text: 'Colors Palette',
     path: 'colors',
     icon: <Palette />,

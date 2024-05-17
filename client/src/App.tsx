@@ -23,7 +23,6 @@ import {
   MyProjectsPage,
   MyTasksPage,
   MyTicketsPage,
-  AddTicketPage,
   PMAssignTaskPage,
   PMAssignTicketPage,
   AdminManageRolesPage,
@@ -46,7 +45,6 @@ import { action as registerAction } from './pages/RegisterPage';
 import { action as editProfileAction } from './pages/dashboard/Profile/ProfilePage';
 import { action as AddNewProjectAction } from './pages/dashboard/Projects/pages/AddNewProjectForm';
 import { action as AddNewDevTaskAction } from '@/pages/dashboard/DeveloperMyTasks/AddTask';
-import { action as AddNewCommentAction } from '@/pages/dashboard/DeveloperMyTasks/AddComment';
 import { action as EditDevTaskAction } from '@/pages/dashboard/DeveloperMyTasks/EditTask';
 import { action as AddNewDevTicketAction } from '@/pages/dashboard/DeveloperMyTickets/AddTicket';
 import { action as EditDevTicketAction } from '@/pages/dashboard/DeveloperMyTickets/EditTicket';
@@ -136,7 +134,6 @@ const router = createBrowserRouter([
             path: 'edit-task/:id',
             action: EditDevTaskAction(queryClient),
           },
-          { path: 'add-comment', action: AddNewCommentAction },
         ],
       },
       {
@@ -158,11 +155,6 @@ const router = createBrowserRouter([
             action: EditDevTicketAction(queryClient),
           },
         ],
-      },
-      {
-        path: 'add-tickets',
-        element: <AddTicketPage />,
-        errorElement: <ErrorElement />,
       },
       {
         path: 'bugs',

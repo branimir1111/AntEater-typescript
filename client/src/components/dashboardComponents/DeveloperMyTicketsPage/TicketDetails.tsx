@@ -80,7 +80,7 @@ const TicketDetails = ({
           Details
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="bg-background-first">
         <AlertDialogHeader>
           <AlertDialogTitle className={`capitalize ${secondTextColor}`}>
             {title}

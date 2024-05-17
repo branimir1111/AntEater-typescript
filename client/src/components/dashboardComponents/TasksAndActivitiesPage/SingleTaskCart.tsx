@@ -146,7 +146,7 @@ const SingleTaskCart = ({ task }: SingleTaskCartProps) => {
           <AlertDialogTrigger asChild>
             <Button variant="outline">Details</Button>
           </AlertDialogTrigger>
-          <AlertDialogContent>
+          <AlertDialogContent className="bg-background-first">
             <AlertDialogHeader>
               <AlertDialogTitle className={`capitalize ${textColor}`}>
                 {title}

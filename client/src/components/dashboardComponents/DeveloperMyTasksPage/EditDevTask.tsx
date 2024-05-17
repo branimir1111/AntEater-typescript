@@ -24,9 +24,15 @@ import { type TaskResponse } from '@/utils';
 
 type EditDevTaskProps = {
   filteredTask: TaskResponse;
+  bgColor: string;
+  textColor: string;
 };
 
-const EditDevTask = ({ filteredTask }: EditDevTaskProps) => {
+const EditDevTask = ({
+  filteredTask,
+  bgColor,
+  textColor,
+}: EditDevTaskProps) => {
   const { _id, title, description } = filteredTask;
 
   return (
@@ -47,9 +53,9 @@ const EditDevTask = ({ filteredTask }: EditDevTaskProps) => {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-background-first">
         <DialogHeader>
-          <DialogTitle>Edit Task</DialogTitle>
+          <DialogTitle className={`${textColor}`}>Edit Task</DialogTitle>
           <DialogDescription>
             Edit task here. Click save when you're done.
           </DialogDescription>
@@ -92,7 +98,7 @@ const EditDevTask = ({ filteredTask }: EditDevTaskProps) => {
             defaultValue={filteredTask.status}
           />
           <DialogFooter className="mt-4">
-            <SubmitBtn text="Save"></SubmitBtn>
+            <SubmitBtn text="Save" className={`${bgColor}`}></SubmitBtn>
           </DialogFooter>
         </Form>
       </DialogContent>

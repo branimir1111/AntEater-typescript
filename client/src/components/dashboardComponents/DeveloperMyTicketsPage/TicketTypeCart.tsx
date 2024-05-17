@@ -102,6 +102,7 @@ const TicketTypeCart = ({ ticket }: TicketTypeCartProps) => {
           ticket={ticket}
           textColor={textColor}
           bgColor={bgColor}
+          secondTextColor={secondTextColor}
         />
         <DeleteDevTicket
           id={_id}

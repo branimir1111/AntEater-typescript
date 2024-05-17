@@ -21,9 +21,15 @@ type EditDevTicketProps = {
   ticket: TicketResponse;
   textColor: string;
   bgColor: string;
+  secondTextColor: string;
 };
 
-const EditDevTicket = ({ ticket, textColor, bgColor }: EditDevTicketProps) => {
+const EditDevTicket = ({
+  ticket,
+  textColor,
+  bgColor,
+  secondTextColor,
+}: EditDevTicketProps) => {
   const { _id, title, description, updatedAt } = ticket;
 
   const date = day(updatedAt).format('D MMM YYYY');
@@ -40,9 +46,11 @@ const EditDevTicket = ({ ticket, textColor, bgColor }: EditDevTicketProps) => {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-background-first">
         <DialogHeader>
-          <DialogTitle>Edit Ticket</DialogTitle>
+          <DialogTitle className={`${secondTextColor} font-bold`}>
+            Edit Ticket
+          </DialogTitle>
           <DialogDescription>
             Edit ticket here. Click save when you're done.
           </DialogDescription>
@@ -82,7 +90,7 @@ const EditDevTicket = ({ ticket, textColor, bgColor }: EditDevTicketProps) => {
             defaultValue={ticket.status}
           />
           <DialogFooter className="mt-4">
-            <SubmitBtn text="Save"></SubmitBtn>
+            <SubmitBtn text="Save" className={`${bgColor}`}></SubmitBtn>
           </DialogFooter>
         </Form>
       </DialogContent>

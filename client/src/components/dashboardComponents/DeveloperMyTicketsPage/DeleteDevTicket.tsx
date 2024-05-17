@@ -58,7 +58,7 @@ const DeleteDevTicket = ({
         </Button>
       </AlertDialogTrigger>
 
-      <AlertDialogContent>
+      <AlertDialogContent className="bg-background-first">
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
@@ -68,8 +68,11 @@ const DeleteDevTicket = ({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleDeleteTicket}>
-            Confirm
+          <AlertDialogAction
+            onClick={handleDeleteTicket}
+            className={`${bgColor}`}
+          >
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

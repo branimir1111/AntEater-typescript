@@ -39,7 +39,7 @@ const AddNewDevTask = ({
           Add New Task
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-background-first">
         <DialogHeader>
           <DialogTitle className="text-indigo-500">Create New Task</DialogTitle>
           <DialogDescription>

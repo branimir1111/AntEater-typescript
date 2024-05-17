@@ -92,7 +92,7 @@ const TicketTypePillar = ({
                 Add New
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[425px] bg-background-first">
               <DialogHeader>
                 <DialogTitle>
                   Create{' '}

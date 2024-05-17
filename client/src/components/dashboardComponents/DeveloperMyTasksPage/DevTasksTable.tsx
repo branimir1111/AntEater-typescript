@@ -15,7 +15,6 @@ import {
 import { Badge } from '@/components/ui/badge';
 import AddNewDevTask from './AddNewDevTask';
 import EditDevTask from './EditDevTask';
-import AddDevComment from './AddDevComment';
 import DeleteDevTask from './DeleteDevTask';
 
 type TaskStatusPillarProps = {
@@ -141,9 +140,12 @@ const DevTasksTable = ({
                   </Badge>
                 </TableCell>
                 <TableCell className="flex items-center gap-3">
-                  <EditDevTask filteredTask={filteredTask} />
-                  <AddDevComment />
-                  <DeleteDevTask id={_id} />
+                  <EditDevTask
+                    filteredTask={filteredTask}
+                    bgColor={bgColor}
+                    textColor={textColor}
+                  />
+                  <DeleteDevTask id={_id} bgColor={bgColor} />
                 </TableCell>
               </TableRow>
             );

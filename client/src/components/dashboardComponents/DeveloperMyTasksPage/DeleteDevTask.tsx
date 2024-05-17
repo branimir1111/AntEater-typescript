@@ -21,7 +21,12 @@ import { AxiosResponse, AxiosError } from 'axios';
 import { toast } from '@/components/ui/use-toast';
 import { useQueryClient } from '@tanstack/react-query';
 
-const DeleteDevTask = ({ id }: { id: string }) => {
+type DeleteDevTaskProps = {
+  id: string;
+  bgColor: string;
+};
+
+const DeleteDevTask = ({ id, bgColor }: DeleteDevTaskProps) => {
   const queryClient = useQueryClient();
 
   const handleDeleteTask = async () => {
@@ -59,7 +64,7 @@ const DeleteDevTask = ({ id }: { id: string }) => {
         </Tooltip>
       </TooltipProvider>
 
-      <AlertDialogContent>
+      <AlertDialogContent className="bg-background-first">
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
@@ -69,8 +74,11 @@ const DeleteDevTask = ({ id }: { id: string }) => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleDeleteTask}>
-            Confirm
+          <AlertDialogAction
+            onClick={handleDeleteTask}
+            className={`${bgColor}`}
+          >
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

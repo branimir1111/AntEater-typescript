@@ -33,7 +33,6 @@ export { default as DevTasksContainer } from './dashboardComponents/DeveloperMyT
 export { default as DevTasksTable } from './dashboardComponents/DeveloperMyTasksPage/DevTasksTable';
 export { default as AddNewDevTask } from './dashboardComponents/DeveloperMyTasksPage/AddNewDevTask';
 export { default as EditDevTask } from './dashboardComponents/DeveloperMyTasksPage/EditDevTask';
-export { default as AddDevComment } from './dashboardComponents/DeveloperMyTasksPage/AddDevComment';
 export { default as DevTicketsContainer } from './dashboardComponents/DeveloperMyTicketsPage/DevTicketsContainer';
 export { default as TicketTypePillar } from './dashboardComponents/DeveloperMyTicketsPage/TicketTypePillar';
 export { default as TicketTypeCart } from './dashboardComponents/DeveloperMyTicketsPage/TicketTypeCart';
