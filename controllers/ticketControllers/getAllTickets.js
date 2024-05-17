@@ -1,25 +1,55 @@
 import { StatusCodes } from 'http-status-codes';
 import TicketModel from '../../models/ticketModel.js';
-import mongoose from 'mongoose';
 import { userProjectAndTaskFromTicket } from '../../utils/aggregations.js';
 
 const getAllTickets = async (req, res) => {
-  const { projectId } = req.query;
+  const { ticketType, priority, status, page: currPage } = req.query;
 
   let queryObject = {};
-
-  if (projectId) {
-    queryObject.projectId = new mongoose.Types.ObjectId(projectId);
+  if (ticketType && ticketType !== 'all') {
+    queryObject.ticketType = ticketType;
+  }
+  if (priority && priority !== 'all') {
+    queryObject.priority = priority;
+  }
+  if (status && status !== 'all') {
+    queryObject.status = status;
   }
 
-  const devTickets = await TicketModel.aggregate([
+  const page = Number(currPage) || 1;
+  const limit = 5;
+  const skip = (page - 1) * limit;
+
+  const filteredTickets = await TicketModel.aggregate([
     { $match: queryObject },
     ...userProjectAndTaskFromTicket,
+    {
+      $skip: skip,
+    },
+    {
+      $limit: limit,
+    },
   ]);
 
-  const numOfTickets = devTickets.length;
+  const filteredTicketsNum = [
+    { $match: queryObject },
+    { $count: 'totalTickets' },
+  ];
 
-  res.status(StatusCodes.OK).json({ numOfTickets, devTickets });
+  const totalCountResult = await TicketModel.aggregate(filteredTicketsNum);
+  const numOfFilteredTickets =
+    totalCountResult.length > 0 ? totalCountResult[0].totalTickets : 0;
+
+  const numOfPages = Math.ceil(numOfFilteredTickets / limit);
+
+  res
+    .status(StatusCodes.OK)
+    .json({
+      numOfPages,
+      numOfTickets: numOfFilteredTickets,
+      currentPage: page,
+      filteredTickets,
+    });
 };
 
 export { getAllTickets };
