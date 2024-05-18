@@ -17,7 +17,7 @@ const getAllTickets = async (req, res) => {
   }
 
   const page = Number(currPage) || 1;
-  const limit = 5;
+  const limit = 4;
   const skip = (page - 1) * limit;
 
   const filteredTickets = await TicketModel.aggregate([
