@@ -59,6 +59,7 @@ const TicketsPage = () => {
   const allTickets = tickets.filteredTickets;
   const numOfPages = tickets.numOfPages;
   const currentPage = tickets.currentPage;
+  const numOfTickets = tickets.numOfTickets;
 
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
@@ -72,6 +73,7 @@ const TicketsPage = () => {
           allTickets={allTickets}
           numOfPages={numOfPages}
           currentPage={currentPage}
+          numOfTickets={numOfTickets}
         />
       </div>
     </section>

@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { customFetch, type ProjectResponse } from '@/utils';
 import { useState } from 'react';
 import { Separator } from '@/components/ui/separator';
+import { GlobalLoader } from '@/components';
 
 const allProjectsQuery = () => {
   const params = {
@@ -58,7 +59,7 @@ const MyTasksPage = () => {
   } = useQuery(allTasksDevQuery(projectId));
 
   if (isPending) {
-    return <h1>Loading...</h1>;
+    return <GlobalLoader />;
   }
   if (isError) {
     return <h1>Error...</h1>;
@@ -66,7 +67,7 @@ const MyTasksPage = () => {
   const projectsList = projectsDev.allProjects;
 
   if (isTasksPending) {
-    return <h1>Loading...</h1>;
+    return <GlobalLoader />;
   }
   if (isTasksError) {
     return <h1>Error...</h1>;

@@ -1,31 +1,38 @@
 import { type TicketResponse } from '@/utils';
 import {
   Table,
-  TableCaption,
   TableHeader,
   TableHead,
   TableBody,
   TableRow,
   TableCell,
 } from '@/components/ui/table';
+import ComplexPagination from '../ComplexPagination';
+import { Button } from '@/components/ui/button';
+import { SingleTicketDetails } from '@/components';
+import { useState } from 'react';
 
 type TicketsContainerProps = {
   allTickets: TicketResponse[];
   numOfPages: number;
   currentPage: number;
+  numOfTickets: number;
 };
-import ComplexPagination from '../ComplexPagination';
 
 const TicketsContainer = ({
   allTickets,
   numOfPages,
   currentPage,
+  numOfTickets,
 }: TicketsContainerProps) => {
+  const [ticketDetails, setTicketDetails] = useState(allTickets[0]);
+  console.log(ticketDetails);
+
+  // const singleTicket = allTickets.find((ticket) => ticket._id === ticketId);
   return (
     <div className="w-full bg-background grid p-4">
-      <h1>tickets founded</h1>
+      <h1>{numOfTickets} tickets founded</h1>
       <Table>
-        <TableCaption>A list of your tickets</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Title</TableHead>
@@ -47,13 +54,22 @@ const TicketsContainer = ({
                 </TableCell>
                 <TableCell className="max-break8:hidden">{priority}</TableCell>
                 <TableCell className="max-break14:hidden">{status}</TableCell>
-                <TableCell>Details</TableCell>
+                <TableCell>
+                  <Button
+                    onClick={() => {
+                      setTicketDetails(ticket);
+                    }}
+                  >
+                    Details
+                  </Button>
+                </TableCell>
               </TableRow>
             );
           })}
         </TableBody>
       </Table>
       <ComplexPagination numOfPages={numOfPages} currentPage={currentPage} />
+      <SingleTicketDetails ticketDetails={ticketDetails} />
     </div>
   );
 };

@@ -42,14 +42,12 @@ const getAllTickets = async (req, res) => {
 
   const numOfPages = Math.ceil(numOfFilteredTickets / limit);
 
-  res
-    .status(StatusCodes.OK)
-    .json({
-      numOfPages,
-      numOfTickets: numOfFilteredTickets,
-      currentPage: page,
-      filteredTickets,
-    });
+  res.status(StatusCodes.OK).json({
+    numOfPages,
+    numOfTickets: numOfFilteredTickets,
+    currentPage: page,
+    filteredTickets,
+  });
 };
 
 export { getAllTickets };

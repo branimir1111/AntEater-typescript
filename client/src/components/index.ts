@@ -41,3 +41,4 @@ export { default as DeleteDevTicket } from './dashboardComponents/DeveloperMyTic
 export { default as TicketDetails } from './dashboardComponents/DeveloperMyTicketsPage/TicketDetails';
 export { default as TicketsFilter } from './dashboardComponents/TicketsPage/TicketsFilter';
 export { default as TicketsContainer } from './dashboardComponents/TicketsPage/TicketsContainer';
+export { default as SingleTicketDetails } from './dashboardComponents/TicketsPage/SingleTicketDetails';
