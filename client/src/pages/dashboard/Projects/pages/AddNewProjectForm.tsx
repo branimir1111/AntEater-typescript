@@ -146,7 +146,7 @@ const AddNewProjectForm = () => {
             {/* right side form */}
             <div className="w-full">
               <Label>Developers ( {numOfDevs} available )</Label>
-              <ScrollArea className="w-full h-60 rounded-md border pr-16 mt-1">
+              <ScrollArea className="w-full h-60 rounded-md border py-2 pr-16 mt-1">
                 {firstNameDevsArray.map((developer) => {
                   const { _id, firstName, lastName } = developer;
                   const name = 'teamMembers' + _id;

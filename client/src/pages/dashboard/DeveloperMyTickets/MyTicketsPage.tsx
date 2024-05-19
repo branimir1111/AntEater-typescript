@@ -108,7 +108,7 @@ const MyTicketsPage = () => {
           Tickets for <span className="text-indigo-500">all projects.</span>
         </h1>
       )}
-      {projectsList > 0 ? (
+      {projectsList.length > 0 ? (
         <DevTicketsContainer
           ticketsResponse={ticketsResponse}
           projectsList={projectsList}

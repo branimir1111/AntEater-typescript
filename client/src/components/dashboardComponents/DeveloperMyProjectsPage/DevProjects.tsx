@@ -27,14 +27,19 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
       {allProjects.length > 0 ? (
         <Table>
           <TableCaption>A list of your projects</TableCaption>
-          <TableHeader>
+          <TableHeader className="border-t border-indigo-500">
             <TableRow>
-              <TableHead>Project name</TableHead>
-              <TableHead>Project manager</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Tasks</TableHead>
-              <TableHead>Tickets</TableHead>
-              <TableHead>Actions</TableHead>
+              <TableHead className="text-indigo-500">Project name</TableHead>
+              <TableHead className="max-break5:hidden text-indigo-500">
+                Project manager
+              </TableHead>
+              <TableHead className="max-break6:hidden text-indigo-500">
+                Status
+              </TableHead>
+              <TableHead className="max-break7:hidden text-indigo-500">
+                Team Members
+              </TableHead>
+              <TableHead className="text-indigo-500">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -46,8 +51,6 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
                 projectManager,
                 teamMembers,
                 status,
-                projectTasks,
-                projectTickets,
                 createdBy,
                 createdAt,
               } = project;
@@ -105,10 +108,10 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
               return (
                 <TableRow key={_id}>
                   <TableCell>{projectName}</TableCell>
-                  <TableCell>
+                  <TableCell className="max-break5:hidden">
                     {projectManager.firstName + ' ' + projectManager.lastName}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="max-break6:hidden">
                     <Badge
                       variant="outline"
                       className={`${badgeBg} ${badgeTxt}`}
@@ -116,8 +119,9 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
                       {status}
                     </Badge>
                   </TableCell>
-                  <TableCell>{projectTasks?.length}</TableCell>
-                  <TableCell>{projectTickets?.length}</TableCell>
+                  <TableCell className="max-break7:hidden">
+                    {teamMembers?.length}
+                  </TableCell>
                   <TableCell>
                     <Button
                       variant="outline"

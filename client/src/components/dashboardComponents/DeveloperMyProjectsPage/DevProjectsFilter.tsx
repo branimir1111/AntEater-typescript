@@ -64,6 +64,7 @@ const DevProjectsFilter = ({
           layoutClass="mt-4"
           defaultValue={limit}
         />
+        <SubmitBtn text="search" className="w-full uppercase mb-2"></SubmitBtn>
         <Link to={'/dashboard/my-projects'}>
           <Button
             variant="outline"
@@ -72,7 +73,6 @@ const DevProjectsFilter = ({
             Reset search values
           </Button>
         </Link>
-        <SubmitBtn text="search" className="w-full uppercase mb-2"></SubmitBtn>
       </Form>
     </section>
   );

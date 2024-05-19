@@ -41,9 +41,7 @@ export const action =
         formData
       );
       store.dispatch(updateUser(response.data.user));
-      await queryClient.invalidateQueries({
-        queryKey: ['projects'],
-      });
+      await queryClient.invalidateQueries();
       toast({ description: response.data.msg });
       return redirect('/dashboard/profile');
     } catch (error) {
