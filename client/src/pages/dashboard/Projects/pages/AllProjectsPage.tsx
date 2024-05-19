@@ -3,7 +3,6 @@ import {
   AllProjectsContainer,
   ComplexPagination,
   AllProjectsLoader,
-  // StatusChart,
   ErrorElement,
 } from '@/components';
 import { Button } from '@/components/ui/button';
@@ -98,8 +97,6 @@ const AllProjectsPage = () => {
             currentPage={currentPage}
             numOfPages={numOfPages}
           />
-          {/* <hr className="my-4" /> */}
-          {/* <StatusChart /> */}
         </div>
       )}
     </>

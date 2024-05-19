@@ -20,8 +20,6 @@ const ProjectModel = new Schema(
       ],
       default: 'active',
     },
-    projectTickets: [{ type: mongoose.Types.ObjectId, ref: 'Ticket' }],
-    projectTasks: [{ type: mongoose.Types.ObjectId, ref: 'Task' }],
   },
   { timestamps: true }
 );

@@ -108,10 +108,17 @@ const MyTicketsPage = () => {
           Tickets for <span className="text-indigo-500">all projects.</span>
         </h1>
       )}
-      <DevTicketsContainer
-        ticketsResponse={ticketsResponse}
-        projectsList={projectsList}
-      />
+      {projectsList > 0 ? (
+        <DevTicketsContainer
+          ticketsResponse={ticketsResponse}
+          projectsList={projectsList}
+        />
+      ) : (
+        <h1 className="mt-4">
+          There are still no projects created yet. You must first create at
+          least one project in order to assign a ticket to it.
+        </h1>
+      )}
     </section>
   );
 };

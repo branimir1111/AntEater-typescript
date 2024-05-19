@@ -6,7 +6,6 @@ const TicketModel = new Schema(
     description: String,
     assignedTo: { type: mongoose.Types.ObjectId, ref: 'User' },
     projectId: { type: mongoose.Types.ObjectId, ref: 'Project' },
-    // comments: [{ type: mongoose.Types.ObjectId, ref: 'Comment' }],
     ticketType: {
       type: String,
       enum: ['feature', 'improvement', 'security', 'bug'],

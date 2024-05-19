@@ -55,9 +55,7 @@ export const action =
         '/create-project',
         data
       );
-      queryClient.invalidateQueries({ queryKey: ['projects'] });
-      queryClient.invalidateQueries({ queryKey: ['all-projects-dev'] });
-      queryClient.invalidateQueries({ queryKey: ['all-projects'] });
+      queryClient.invalidateQueries();
       const createdProject = response.data.project;
       store.dispatch(createProject(createdProject));
       toast({ description: response.data.msg });

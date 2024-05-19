@@ -35,109 +35,118 @@ const TicketsContainer = ({
         {numOfTickets} tickets founded
       </h1>
       <Separator className="bg-[#0FB5BA]" />
-      <Table>
-        <TableCaption>A list of your tickets</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="text-[#0FB5BA] font-bold">Title</TableHead>
-            <TableHead className="max-break5:hidden text-[#0FB5BA] font-bold">
-              Type
-            </TableHead>
-            <TableHead className="max-break8:hidden text-[#0FB5BA] font-bold">
-              Priority
-            </TableHead>
-            <TableHead className="max-break14:hidden text-[#0FB5BA] font-bold">
-              Status
-            </TableHead>
-            <TableHead className="text-[#0FB5BA] font-bold">Actions</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {allTickets.map((ticket) => {
-            const { _id, title, ticketType, priority, status } = ticket;
+      {allTickets.length > 0 ? (
+        <Table>
+          <TableCaption>A list of your tickets</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="text-[#0FB5BA] font-bold">Title</TableHead>
+              <TableHead className="max-break5:hidden text-[#0FB5BA] font-bold">
+                Type
+              </TableHead>
+              <TableHead className="max-break8:hidden text-[#0FB5BA] font-bold">
+                Priority
+              </TableHead>
+              <TableHead className="max-break14:hidden text-[#0FB5BA] font-bold">
+                Status
+              </TableHead>
+              <TableHead className="text-[#0FB5BA] font-bold">
+                Actions
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {allTickets.map((ticket) => {
+              const { _id, title, ticketType, priority, status } = ticket;
 
-            let secondTextColor = '';
-            switch (ticketType) {
-              case 'feature':
-                secondTextColor = 'text-indigo-700';
-                break;
-              case 'improvement':
-                secondTextColor = 'text-[#099AA4]';
-                break;
-              case 'security':
-                secondTextColor = 'text-[#DE911D]';
-                break;
-              case 'bug':
-                secondTextColor = 'text-[#AB091E]';
-                break;
-            }
+              let secondTextColor = '';
+              switch (ticketType) {
+                case 'feature':
+                  secondTextColor = 'text-indigo-700';
+                  break;
+                case 'improvement':
+                  secondTextColor = 'text-[#099AA4]';
+                  break;
+                case 'security':
+                  secondTextColor = 'text-[#DE911D]';
+                  break;
+                case 'bug':
+                  secondTextColor = 'text-[#AB091E]';
+                  break;
+              }
 
-            let badgeBg = '';
-            let badgeText = '';
-            switch (priority) {
-              case 'low':
-                badgeBg = 'bg-[#C1FEF6]';
-                badgeText = 'text-[#07818F]';
-                break;
-              case 'medium':
-                badgeBg = 'bg-[#FFF3C4]';
-                badgeText = 'text-[#B44D12]';
-                break;
-              case 'high':
-                badgeBg = 'bg-[#FFB8D2]';
-                badgeText = 'text-[#870557]';
-                break;
-              case 'urgent':
-                badgeBg = 'bg-[#A30664]';
-                badgeText = 'text-[#FFE3EC]';
-                break;
-            }
+              let badgeBg = '';
+              let badgeText = '';
+              switch (priority) {
+                case 'low':
+                  badgeBg = 'bg-[#C1FEF6]';
+                  badgeText = 'text-[#07818F]';
+                  break;
+                case 'medium':
+                  badgeBg = 'bg-[#FFF3C4]';
+                  badgeText = 'text-[#B44D12]';
+                  break;
+                case 'high':
+                  badgeBg = 'bg-[#FFB8D2]';
+                  badgeText = 'text-[#870557]';
+                  break;
+                case 'urgent':
+                  badgeBg = 'bg-[#A30664]';
+                  badgeText = 'text-[#FFE3EC]';
+                  break;
+              }
 
-            return (
-              <TableRow
-                key={_id}
-                className={`${
-                  ticketDetails._id === _id
-                    ? 'bg-[#51CA58] bg-opacity-15 hover:bg-[#51CA58] hover:bg-opacity-20'
-                    : ''
-                } `}
-              >
-                <TableCell
-                  className={`capitalize ${
-                    ticketDetails._id === _id ? 'text-[#51CA58]' : ''
-                  }`}
+              return (
+                <TableRow
+                  key={_id}
+                  className={`${
+                    ticketDetails._id === _id
+                      ? 'bg-[#51CA58] bg-opacity-15 hover:bg-[#51CA58] hover:bg-opacity-20'
+                      : ''
+                  } `}
                 >
-                  {title}
-                </TableCell>
-                <TableCell className={`max-break5:hidden ${secondTextColor}`}>
-                  {ticketType}
-                </TableCell>
-                <TableCell className="max-break8:hidden">
-                  <Badge
-                    className={`${badgeBg} ${badgeText} hover:${badgeBg} rounded-md`}
+                  <TableCell
+                    className={`capitalize ${
+                      ticketDetails._id === _id ? 'text-[#51CA58]' : ''
+                    }`}
                   >
-                    {priority}
-                  </Badge>
-                </TableCell>
-                <TableCell className="max-break14:hidden">{status}</TableCell>
-                <TableCell>
-                  <Button
-                    onClick={() => {
-                      setTicketDetails(ticket);
-                    }}
-                    className="bg-[#0FB5BA] hover:bg-[#0FB5BA] hover:bg-opacity-90"
-                  >
-                    Details
-                  </Button>
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+                    {title}
+                  </TableCell>
+                  <TableCell className={`max-break5:hidden ${secondTextColor}`}>
+                    {ticketType}
+                  </TableCell>
+                  <TableCell className="max-break8:hidden">
+                    <Badge
+                      className={`${badgeBg} ${badgeText} hover:${badgeBg} rounded-md`}
+                    >
+                      {priority}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="max-break14:hidden">{status}</TableCell>
+                  <TableCell>
+                    <Button
+                      onClick={() => {
+                        setTicketDetails(ticket);
+                      }}
+                      className="bg-[#0FB5BA] hover:bg-[#0FB5BA] hover:bg-opacity-90"
+                    >
+                      Details
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      ) : (
+        <h1>There are still no tickets created yet.!</h1>
+      )}
+
       <Separator className="bg-[#0FB5BA] mt-2" />
       <ComplexPagination numOfPages={numOfPages} currentPage={currentPage} />
-      <SingleTicketDetails ticketDetails={ticketDetails} />
+      {allTickets.length > 0 ? (
+        <SingleTicketDetails ticketDetails={ticketDetails} />
+      ) : null}
     </div>
   );
 };

@@ -39,54 +39,70 @@ const AddNewDevTask = ({
           Add New Task
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-background-first">
-        <DialogHeader>
-          <DialogTitle className="text-indigo-500">Create New Task</DialogTitle>
-          <DialogDescription>
-            Create new task here. Click save when you're done.
-          </DialogDescription>
-        </DialogHeader>
-        <Form method="post" action="/dashboard/my-tasks/add-task">
-          <FormInput
-            name="title"
-            type="text"
-            label="Title"
-            inputClass="bg-input mt-2"
-            placeholder="Type here..."
-          />
-          <Label className="mt-6 mb-1">Description</Label>
-          <Textarea
-            name="description"
-            className="mt-1 bg-input"
-            placeholder="Type here..."
-          />
-          <FormInput
-            name="assignedTo"
-            type="hidden"
-            defaultValue={`${assignedToUser}`}
-          />
-          <FormSelectProjects
-            name="projectId"
-            label="Select project"
-            options={projectsList}
-          />
-          <FormSelect
-            name="taskType"
-            label="Task Type"
-            options={taskType}
-            layoutClass="mt-4"
-          />
-          <FormSelect
-            name="priority"
-            label="Priority"
-            options={taskPriority}
-            layoutClass="mt-4"
-          />
-          <DialogFooter className="mt-4">
-            <SubmitBtn text="Save"></SubmitBtn>
-          </DialogFooter>
-        </Form>
-      </DialogContent>
+      {projectsList.length > 0 ? (
+        <DialogContent className="sm:max-w-[425px] bg-background-first">
+          <DialogHeader>
+            <DialogTitle className="text-indigo-500">
+              Create New Task
+            </DialogTitle>
+            <DialogDescription>
+              Create new task here. Click save when you're done.
+            </DialogDescription>
+          </DialogHeader>
+          <Form method="post" action="/dashboard/my-tasks/add-task">
+            <FormInput
+              name="title"
+              type="text"
+              label="Title"
+              inputClass="bg-input mt-2"
+              placeholder="Type here..."
+            />
+            <Label className="mt-6 mb-1">Description</Label>
+            <Textarea
+              name="description"
+              className="mt-1 bg-input"
+              placeholder="Type here..."
+            />
+            <FormInput
+              name="assignedTo"
+              type="hidden"
+              defaultValue={`${assignedToUser}`}
+            />
+            <FormSelectProjects
+              name="projectId"
+              label="Select project"
+              options={projectsList}
+            />
+            <FormSelect
+              name="taskType"
+              label="Task Type"
+              options={taskType}
+              layoutClass="mt-4"
+            />
+            <FormSelect
+              name="priority"
+              label="Priority"
+              options={taskPriority}
+              layoutClass="mt-4"
+            />
+            <DialogFooter className="mt-4">
+              <SubmitBtn text="Save"></SubmitBtn>
+            </DialogFooter>
+          </Form>
+        </DialogContent>
+      ) : (
+        <DialogContent className="sm:max-w-[425px] bg-background-first">
+          <DialogHeader>
+            <DialogTitle className="text-indigo-500">
+              No projects created!
+            </DialogTitle>
+            <DialogDescription>
+              There are still no projects created yet. You must first create at
+              least one project in order to assign a task to it.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      )}
     </Dialog>
   );
 };
