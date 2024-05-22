@@ -2,22 +2,11 @@ import {
   AllProjectsFilter,
   AllProjectsContainer,
   ComplexPagination,
-  AllProjectsLoader,
-  ErrorElement,
 } from '@/components';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
-import {
-  Link,
-  LoaderFunction,
-  useNavigation,
-  useLoaderData,
-} from 'react-router-dom';
-import {
-  customFetch,
-  type ParamsData,
-  type AllProjectsResponseWithParams,
-} from '@/utils';
+import { Link, LoaderFunction, useLoaderData } from 'react-router-dom';
+import { customFetch, type ParamsData, type SearchParams } from '@/utils';
 import { useQuery, type QueryClient } from '@tanstack/react-query';
 
 const allProjectsQuery = (params: ParamsData) => {
@@ -38,31 +27,25 @@ const allProjectsQuery = (params: ParamsData) => {
   };
 };
 
+type SearchParamsProp = {
+  searchValues: SearchParams;
+};
+
 export const loader =
   (queryClient: QueryClient): LoaderFunction =>
-  async ({ request }): Promise<AllProjectsResponseWithParams> => {
+  async ({ request }) => {
     const params = Object.fromEntries([
       ...new URL(request.url).searchParams.entries(),
     ]);
 
-    const response = await queryClient.ensureQueryData(
-      allProjectsQuery(params)
-    );
-    return { params, ...response };
+    await queryClient.ensureQueryData(allProjectsQuery(params));
+    return { searchValues: { ...params } };
   };
 
 const AllProjectsPage = () => {
-  const { params } = useLoaderData() as AllProjectsResponseWithParams;
-  const navigation = useNavigation();
-  const isContentLoading = navigation.state === 'loading';
-  const { data: res, isPending, isError } = useQuery(allProjectsQuery(params));
+  const { searchValues } = useLoaderData() as SearchParamsProp;
 
-  if (isPending) {
-    return <AllProjectsLoader />;
-  }
-  if (isError) {
-    return <ErrorElement />;
-  }
+  const { data: res } = useQuery(allProjectsQuery(searchValues));
 
   const {
     numOfAllProjects,
@@ -73,33 +56,24 @@ const AllProjectsPage = () => {
   } = res;
 
   return (
-    <>
-      {isContentLoading ? (
-        <AllProjectsLoader />
-      ) : (
-        <div className="w-full p-4">
-          <Button
-            variant="secondary"
-            className="bg-btn-primary hover:bg-btn-primary-hover text-white mb-8"
-            asChild
-          >
-            <Link to="/dashboard/projects/create">
-              <Plus className="w-5 mr-2" />
-              Add New Project
-            </Link>
-          </Button>
-          <AllProjectsFilter
-            numOfAllProjects={numOfAllProjects}
-            numOfFilteredProjects={numOfFilteredProjects}
-          />
-          <AllProjectsContainer allProjects={allProjects} />
-          <ComplexPagination
-            currentPage={currentPage}
-            numOfPages={numOfPages}
-          />
-        </div>
-      )}
-    </>
+    <div className="w-full outlet-hight p-8 bg-background-first">
+      <Button
+        variant="secondary"
+        className="bg-btn-primary hover:bg-btn-primary-hover text-white mb-8"
+        asChild
+      >
+        <Link to="/dashboard/projects/create">
+          <Plus className="w-5 mr-2" />
+          Add New Project
+        </Link>
+      </Button>
+      <AllProjectsFilter
+        numOfAllProjects={numOfAllProjects}
+        numOfFilteredProjects={numOfFilteredProjects}
+      />
+      <AllProjectsContainer allProjects={allProjects} />
+      <ComplexPagination currentPage={currentPage} numOfPages={numOfPages} />
+    </div>
   );
 };
 export default AllProjectsPage;

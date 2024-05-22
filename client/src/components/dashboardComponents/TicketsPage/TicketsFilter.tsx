@@ -1,9 +1,19 @@
 import { ticketTypeAll, ticketPriorityAll, ticketStatusAll } from '@/utils';
-import { Form, useSubmit } from 'react-router-dom';
+import { Form, useSubmit, useLoaderData, Link } from 'react-router-dom';
 import { FormSelect } from '@/components';
 import { Separator } from '@/components/ui/separator';
 
+type allTicketsDevQueryProps = {
+  ticketType: string;
+  priority: string;
+  status: string;
+  page: string;
+};
+
 const TicketsFilter = () => {
+  const searchParams = useLoaderData() as allTicketsDevQueryProps;
+  const { ticketType, priority, status } = searchParams;
+
   const submit = useSubmit();
 
   return (
@@ -19,13 +29,25 @@ const TicketsFilter = () => {
         }}
         className="w-full mt-2"
       >
-        <FormSelect name="ticketType" label="Type" options={ticketTypeAll} />
+        <FormSelect
+          name="ticketType"
+          label="Type"
+          options={ticketTypeAll}
+          defaultValue={ticketType}
+        />
         <FormSelect
           name="priority"
           label="Priority"
           options={ticketPriorityAll}
+          defaultValue={priority}
         />
-        <FormSelect name="status" label="Status" options={ticketStatusAll} />
+        <FormSelect
+          name="status"
+          label="Status"
+          options={ticketStatusAll}
+          defaultValue={status}
+        />
+        <Link to="/dashboard/tickets">Reset</Link>
       </Form>
       <div className="w-full mt-4">
         <h1 className="mb-2 font-bold text-muted-foreground">Ticket types</h1>

@@ -36,7 +36,8 @@ import { ErrorElement } from './components';
 import ColorPalettePage from './colorPalette/ColorPalettePage';
 
 import { loader as dashboardLayoutLoader } from './pages/dashboard/DashboardLayout';
-import { loader as AllUsersAndProjectsLoader } from './pages/dashboard/Projects/ProjectsPage';
+// import { loader as AllUsersAndProjectsLoader } from './pages/dashboard/Projects/ProjectsPage';
+import { loader as AllDevLoader } from '@/pages/dashboard/Projects/pages/AddNewProjectForm';
 import { loader as AllProjectsLoader } from '@/pages/dashboard/Projects/pages/AllProjectsPage';
 import { loader as MyProjectsDevLoader } from '@/pages/dashboard/DeveloperMyProjects/MyProjectsPage';
 import { loader as AllTicketsLoader } from '@/pages/dashboard/Tickets/TicketsPage';
@@ -92,7 +93,6 @@ const router = createBrowserRouter([
         path: 'projects',
         element: <ProjectsPage />,
         errorElement: <ErrorElement />,
-        loader: AllUsersAndProjectsLoader(queryClient),
         children: [
           {
             index: true,
@@ -102,6 +102,7 @@ const router = createBrowserRouter([
           {
             path: 'create',
             element: <AddNewProjectForm />,
+            loader: AllDevLoader(queryClient),
             action: AddNewProjectAction(store, queryClient),
           },
           {

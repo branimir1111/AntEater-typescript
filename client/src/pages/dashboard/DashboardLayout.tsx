@@ -1,5 +1,10 @@
-import { Navbar, SmallSidebar, BigSidebar } from '@/components';
-import { LoaderFunction, Outlet, redirect } from 'react-router-dom';
+import { Navbar, SmallSidebar, BigSidebar, GlobalLoader } from '@/components';
+import {
+  LoaderFunction,
+  Outlet,
+  redirect,
+  useNavigation,
+} from 'react-router-dom';
 import { useState } from 'react';
 import { customFetch } from '@/utils';
 import { ReduxStore } from '@/features/store';
@@ -21,6 +26,8 @@ export const loader =
 const DashboardLayout = () => {
   const [openBigSidebar, setOpenBigSidebar] = useState(true);
   const [openSmallSidebar, setOpenSmallSidebar] = useState(false);
+  const navigation = useNavigation();
+  const isPageLoading = navigation.state === 'loading';
 
   return (
     <main className="w-full">
@@ -35,6 +42,7 @@ const DashboardLayout = () => {
             setOpenBigSidebar={setOpenBigSidebar}
             setOpenSmallSidebar={setOpenSmallSidebar}
           />
+          {/* {isPageLoading ? <GlobalLoader /> : <Outlet />} */}
           <Outlet />
         </div>
       </div>

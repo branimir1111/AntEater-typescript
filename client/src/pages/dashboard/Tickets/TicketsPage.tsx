@@ -1,6 +1,6 @@
 import { QueryClient, useQuery } from '@tanstack/react-query';
 import { customFetch } from '@/utils';
-import { GlobalLoader, TicketsFilter, TicketsContainer } from '@/components';
+import { TicketsFilter, TicketsContainer } from '@/components';
 import { LoaderFunction, useLoaderData } from 'react-router-dom';
 
 type allTicketsDevQueryProps = {
@@ -43,18 +43,7 @@ export const loader =
 const TicketsPage = () => {
   const searchParams = useLoaderData() as allTicketsDevQueryProps;
 
-  const {
-    data: tickets,
-    isPending: isPendingTickets,
-    isError: isErrorTickets,
-  } = useQuery(allTicketsDevQuery(searchParams));
-
-  if (isPendingTickets) {
-    return <GlobalLoader />;
-  }
-  if (isErrorTickets) {
-    return <h1>Error...</h1>;
-  }
+  const { data: tickets } = useQuery(allTicketsDevQuery(searchParams));
 
   const allTickets = tickets.filteredTickets;
   const numOfPages = tickets.numOfPages;

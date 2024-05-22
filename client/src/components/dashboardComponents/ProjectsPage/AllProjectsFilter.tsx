@@ -4,7 +4,7 @@ import {
   projectStatusFilter,
   projectSortFilter,
   projectLimitFilter,
-  type AllProjectsResponseWithParams,
+  type SearchParams,
 } from '@/utils';
 import { Button } from '@/components/ui/button';
 
@@ -13,12 +13,16 @@ type FIlterProps = {
   numOfFilteredProjects: number;
 };
 
+type SearchParamsProp = {
+  searchValues: SearchParams;
+};
+
 const AllProjectsFilter = ({
   numOfAllProjects,
   numOfFilteredProjects,
 }: FIlterProps) => {
-  const { params } = useLoaderData() as AllProjectsResponseWithParams;
-  const { search, status, sort, limit } = params;
+  const { searchValues } = useLoaderData() as SearchParamsProp;
+  const { search, status, sort, limit } = searchValues;
 
   return (
     <div className="w-full p-4 bg-background border rounded-md mb-4">
@@ -68,7 +72,7 @@ const AllProjectsFilter = ({
           defaultValue={limit}
         />
         <SubmitBtn text="search" className="w-full uppercase mb-2"></SubmitBtn>
-        <Link to={'/dashboard/projects'}>
+        <Link to="/dashboard/projects">
           <Button
             variant="outline"
             className="w-full text-md mt-4 break13:mt-0 mb-2"
