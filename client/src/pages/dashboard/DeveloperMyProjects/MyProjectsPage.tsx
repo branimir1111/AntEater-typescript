@@ -57,27 +57,29 @@ const MyProjectsPage = () => {
   } = myProjects;
 
   return (
-    <section className="w-full outlet-hight p-8 bg-background-first">
+    <>
       {isPageLoading ? (
         <GlobalLoader />
       ) : (
-        <div className="w-full">
-          <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
-            Your projects
-          </h2>
-          <div className="m-auto w-52 h-[2px] bg-gray-500 mb-2 rounded-sm"></div>
-          <DevProjectsFilter
-            numOfAllProjects={numOfAllProjects}
-            numOfFilteredProjects={numOfFilteredProjects}
-          />
-          <DevProjects allProjects={allProjects} />
-          <ComplexPagination
-            numOfPages={numOfPages}
-            currentPage={currentPage}
-          />
-        </div>
+        <section className="w-full outlet-hight p-8 bg-background-first">
+          <div className="w-full">
+            <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
+              Your projects
+            </h2>
+            <div className="m-auto w-52 h-[2px] bg-gray-500 mb-2 rounded-sm"></div>
+            <DevProjectsFilter
+              numOfAllProjects={numOfAllProjects}
+              numOfFilteredProjects={numOfFilteredProjects}
+            />
+            <DevProjects allProjects={allProjects} />
+            <ComplexPagination
+              numOfPages={numOfPages}
+              currentPage={currentPage}
+            />
+          </div>
+        </section>
       )}
-    </section>
+    </>
   );
 };
 export default MyProjectsPage;

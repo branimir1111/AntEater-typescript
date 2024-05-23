@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import CommentModel from '../../models/commentTaskModel.js';
+import CommentTaskModel from '../../models/commentTaskModel.js';
 
 const getAllTaskComments = async (req, res) => {
   res

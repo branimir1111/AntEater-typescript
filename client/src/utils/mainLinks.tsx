@@ -8,6 +8,7 @@ import {
   Shield,
   Palette,
   Minus,
+  MessageSquareText,
 } from 'lucide-react';
 import { type MainLink } from '.';
 
@@ -56,13 +57,19 @@ export const mainLinksDeveloper: MainLink[] = [
   },
   {
     id: 8,
+    text: 'My comments',
+    path: 'my-comments',
+    icon: <MessageSquareText />,
+  },
+  {
+    id: 9,
     text: 'Bugs categorization',
     path: 'bugs',
     icon: <Bug />,
   },
   //! DELETE this link when you finished!!!
   {
-    id: 9,
+    id: 10,
     text: 'Colors Palette',
     path: 'colors',
     icon: <Palette />,

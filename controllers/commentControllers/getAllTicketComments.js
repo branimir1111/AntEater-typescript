@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import CommentModel from '../../models/commentTicketModel.js';
+import CommentTicketModel from '../../models/commentTicketModel.js';
 
 const getAllTicketComments = async (req, res) => {
   res

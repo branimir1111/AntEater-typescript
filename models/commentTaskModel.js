@@ -4,6 +4,7 @@ const CommentTaskModel = new Schema(
   {
     createdBy: { type: mongoose.Types.ObjectId },
     taskId: { type: mongoose.Types.ObjectId },
+    projectId: { type: mongoose.Types.ObjectId },
     text: String,
   },
   {

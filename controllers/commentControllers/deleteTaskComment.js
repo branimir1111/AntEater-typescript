@@ -1,9 +1,9 @@
 import { StatusCodes } from 'http-status-codes';
 import CommentTaskModel from '../../models/commentTaskModel.js';
 
-const updateTaskComment = async (req, res) => {
+const deleteTaskComment = async (req, res) => {
   res
     .status(StatusCodes.OK)
-    .json({ msg: 'This is updateTaskCOMMENT controller!' });
+    .json({ msg: 'This is deleteTaskCOMMENT controller!' });
 };
-export { updateTaskComment };
+export { deleteTaskComment };

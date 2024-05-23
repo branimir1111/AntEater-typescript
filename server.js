@@ -13,6 +13,7 @@ import UserRouter from './routes/userRoutes.js';
 import ProjectRouter from './routes/projectRoutes.js';
 import TaskRouter from './routes/taskRoutes.js';
 import TicketRouter from './routes/ticketRoutes.js';
+import CommentRouter from './routes/commentRoutes.js';
 import errorMiddleware from './middleware/errorMiddleware.js';
 import {
   authenticateUser,
@@ -35,6 +36,7 @@ app.use('/api/v1', authenticateUser, UserRouter);
 app.use('/api/v1', authenticateUser, ProjectRouter);
 app.use('/api/v1', authenticateUser, TaskRouter);
 app.use('/api/v1', authenticateUser, TicketRouter);
+app.use('/api/v1', authenticateUser, CommentRouter);
 
 app.use('*', (req, res) => {
   res.status(404).json({ msg: 'Route Not Found' });

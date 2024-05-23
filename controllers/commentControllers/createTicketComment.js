@@ -1,9 +1,9 @@
 import { StatusCodes } from 'http-status-codes';
 import CommentTicketModel from '../../models/commentTicketModel.js';
 
-const updateTicketComment = async (req, res) => {
+const createTicketComment = async (req, res) => {
   res
     .status(StatusCodes.OK)
-    .json({ msg: 'This is updateTicketCOMMENT controller!' });
+    .json({ msg: 'This is createTicketCOMMENT controller!' });
 };
-export { updateTicketComment };
+export { createTicketComment };

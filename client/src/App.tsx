@@ -29,6 +29,7 @@ import {
   AdminAssignTaskPage,
   AdminAssignTicketPage,
   AdminMemberProfilesPage,
+  CommentsPage,
 } from './pages';
 import { ErrorElement } from './components';
 
@@ -155,6 +156,11 @@ const router = createBrowserRouter([
             action: EditDevTicketAction(queryClient),
           },
         ],
+      },
+      {
+        path: 'my-comments',
+        element: <CommentsPage />,
+        errorElement: <ErrorElement />,
       },
       {
         path: 'bugs',

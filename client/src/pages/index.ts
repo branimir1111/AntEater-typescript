@@ -23,3 +23,4 @@ export { default as AdminManageRolesPage } from './dashboard/AdminManageRoles/Ad
 export { default as AdminAssignTaskPage } from './dashboard/AdminAssignTask/AdminAssignTaskPage';
 export { default as AdminAssignTicketPage } from './dashboard/AdminAssignTicket/AdminAssignTicketPage';
 export { default as AdminMemberProfilesPage } from './dashboard/AdminMemberProfiles/AdminMemberProfilesPage';
+export { default as CommentsPage } from './dashboard/Comments/CommentsPage';

@@ -4,6 +4,7 @@ const CommentTicketModel = new Schema(
   {
     createdBy: { type: mongoose.Types.ObjectId },
     ticketId: { type: mongoose.Types.ObjectId },
+    projectId: { type: mongoose.Types.ObjectId },
     text: String,
   },
   {
