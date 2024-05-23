@@ -163,8 +163,11 @@ const ProfilePage = () => {
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={handleDeleteUser}>
-                  Confirm
+                <AlertDialogAction
+                  onClick={handleDeleteUser}
+                  className=" bg-red-700 hover:bg-red-700 hover:bg-opacity-80"
+                >
+                  Delete
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>

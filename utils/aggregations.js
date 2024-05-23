@@ -160,3 +160,72 @@ export const userProjectAndTaskFromTicket = [
     },
   },
 ];
+
+export const userProjectAndTaskFromTaskComment = [
+  {
+    $lookup: {
+      from: 'users',
+      localField: 'createdBy',
+      foreignField: '_id',
+      as: 'createdByUser',
+    },
+  },
+  {
+    $lookup: {
+      from: 'tasks',
+      localField: 'taskId',
+      foreignField: '_id',
+      as: 'forTask',
+    },
+  },
+  {
+    $lookup: {
+      from: 'projects',
+      localField: 'projectId',
+      foreignField: '_id',
+      as: 'forProject',
+    },
+  },
+  {
+    $addFields: {
+      createdBy: {
+        $arrayElemAt: ['$createdByUser', 0],
+      },
+      taskId: {
+        $arrayElemAt: ['$forTask', 0],
+      },
+      projectId: {
+        $arrayElemAt: ['$forProject', 0],
+      },
+    },
+  },
+  {
+    $project: {
+      title: 1,
+      description: 1,
+      createdBy: {
+        _id: 1,
+        firstName: 1,
+        lastName: 1,
+        avatar: 1,
+      },
+      taskId: {
+        _id: 1,
+        title: 1,
+        description: 1,
+        taskType: 1,
+        priority: 1,
+        status: 1,
+      },
+      projectId: {
+        _id: 1,
+        projectName: 1,
+        description: 1,
+        status: 1,
+      },
+      text: 1,
+      createdAt: 1,
+      updatedAt: 1,
+    },
+  },
+];

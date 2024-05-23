@@ -127,3 +127,10 @@ export const validateNewTicket = validationWithErrors([
       }
     }),
 ]);
+
+export const validateNewTaskComment = validationWithErrors([
+  body('createdBy').notEmpty().withMessage('Missing task creator'),
+  body('taskId').notEmpty().withMessage('Task ID is required'),
+  body('projectId').notEmpty().withMessage('Project ID is required'),
+  body('text').notEmpty().withMessage("You can't send empty comment"),
+]);
