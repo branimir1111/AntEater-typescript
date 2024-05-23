@@ -33,8 +33,7 @@ const DeleteDevTicket = ({
       const response: AxiosResponse = await customFetch.delete(
         `/delete-ticket/${id}`
       );
-      queryClient.invalidateQueries({ queryKey: ['all-dev-tickets'] });
-      queryClient.invalidateQueries({ queryKey: ['all-tickets'] });
+      queryClient.invalidateQueries();
       toast({ description: response.data.msg });
     } catch (error) {
       const errorMsg =
@@ -70,7 +69,7 @@ const DeleteDevTicket = ({
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDeleteTicket}
-            className={`${bgColor}`}
+            className={`${bgColor} hover:${bgColor} hover:bg-opacity-80`}
           >
             Delete
           </AlertDialogAction>

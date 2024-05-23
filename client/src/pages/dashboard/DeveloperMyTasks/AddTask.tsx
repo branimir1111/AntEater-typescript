@@ -12,8 +12,7 @@ export const action =
 
     try {
       const response = await customFetch.post('/create-task', data);
-      queryClient.invalidateQueries({ queryKey: ['all-tasks-dev'] });
-      queryClient.invalidateQueries({ queryKey: ['all-tasks'] });
+      queryClient.invalidateQueries();
       toast({ description: response.data.msg });
     } catch (error) {
       const errorMsg =

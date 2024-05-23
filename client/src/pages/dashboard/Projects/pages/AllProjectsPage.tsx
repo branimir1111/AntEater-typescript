@@ -56,7 +56,7 @@ const AllProjectsPage = () => {
   } = res;
 
   return (
-    <div className="w-full outlet-hight p-8 bg-background-first">
+    <div className="w-full">
       <Button
         variant="secondary"
         className="bg-btn-primary hover:bg-btn-primary-hover text-white mb-8"

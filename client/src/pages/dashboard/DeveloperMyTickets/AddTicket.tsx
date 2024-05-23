@@ -12,8 +12,7 @@ export const action =
 
     try {
       const response = await customFetch.post('/create-ticket', data);
-      queryClient.invalidateQueries({ queryKey: ['all-dev-tickets'] });
-      queryClient.invalidateQueries({ queryKey: ['all-tickets'] });
+      queryClient.invalidateQueries();
       toast({ description: response.data.msg });
     } catch (error) {
       const errorMsg =

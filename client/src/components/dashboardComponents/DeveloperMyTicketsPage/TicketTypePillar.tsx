@@ -16,13 +16,13 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Plus } from 'lucide-react';
+import { Plus, Mouse } from 'lucide-react';
 import { Form } from 'react-router-dom';
-import { SubmitBtn, FormInput } from '@/components';
+import { SubmitBtn, FormInput, FormSelect } from '@/components';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import FormSelectProjects from '../DeveloperMyTasksPage/FormSelectProjects';
-import { FormSelect } from '@/components';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 type TicketTypePillarProps = {
   type: string;
@@ -80,7 +80,17 @@ const TicketTypePillar = ({
       <div
         className={`w-full min-h-8 h-full p-2 border rounded-tr-sm rounded-b-sm ${borderColor} ${bgColor} bg-opacity-5`}
       >
-        <div className="w-full flex items-start justify-end mb-4">
+        <div
+          className={`w-full flex items-center justify-between mb-2 pb-2 border-b ${borderColor}`}
+        >
+          {numOfTickets > 2 ? (
+            <div className="flex">
+              <Mouse className={`${secondTextColor}`} />
+              <p className={`${secondTextColor}`}>scroll</p>
+            </div>
+          ) : (
+            <div></div>
+          )}
           <Dialog>
             <DialogTrigger
               asChild
@@ -147,17 +157,22 @@ const TicketTypePillar = ({
                   layoutClass="mt-4"
                 />
                 <DialogFooter className="mt-4">
-                  <SubmitBtn text="Save" className={`${bgColor}`}></SubmitBtn>
+                  <SubmitBtn
+                    text="Save"
+                    className={`${bgColor} hover:${bgColor} hover:bg-opacity-80`}
+                  ></SubmitBtn>
                 </DialogFooter>
               </Form>
             </DialogContent>
           </Dialog>
         </div>
-        <div className="w-full grid place-items-center gap-2">
-          {filteredTickets.map((ticket) => {
-            return <TicketTypeCart key={ticket._id} ticket={ticket} />;
-          })}
-        </div>
+        <ScrollArea className="w-full h-96">
+          <div className="w-full grid gap-2">
+            {filteredTickets.map((ticket) => {
+              return <TicketTypeCart key={ticket._id} ticket={ticket} />;
+            })}
+          </div>
+        </ScrollArea>
       </div>
     </div>
   );

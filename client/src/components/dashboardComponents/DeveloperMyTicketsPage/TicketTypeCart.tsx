@@ -69,7 +69,7 @@ const TicketTypeCart = ({ ticket }: TicketTypeCartProps) => {
     <article className={`w-full p-2 rounded-sm ${bgColor} bg-opacity-10`}>
       <header className="flex justify-between items-center">
         <h1 className={`capitalize ${secondTextColor} font-semibold`}>
-          {title}
+          {title.slice(0, 15)} {title.length > 15 ? '...' : null}
         </h1>
         <TicketDetails
           ticket={ticket}

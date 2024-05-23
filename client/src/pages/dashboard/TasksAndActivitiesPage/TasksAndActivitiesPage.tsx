@@ -87,22 +87,22 @@ const TasksAndActivitiesPage = () => {
       <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
         Tasks
       </h2>
-      <div className="m-auto w-28 h-1 bg-gray-500 mb-8 rounded-sm"></div>
+      <div className="m-auto w-28 h-[2px] bg-gray-500 mb-2 rounded-sm"></div>
       <TasksAndActivitiesFilter
         projectsList={projectsList}
         value={value}
         setValue={setValue}
         setProjectId={setProjectId}
       />
-      <Separator className="mt-4" />
+      <Separator className="mt-1" />
 
       {projectId ? (
-        <h1 className="text-xl mt-6 font-bold">
+        <h1 className="text-xl mt-4 font-bold">
           Tasks for project{' '}
           <span className="text-indigo-500">{projectName}</span>.
         </h1>
       ) : (
-        <h1 className="text-xl mt-6 font-bold">
+        <h1 className="text-xl mt-4 font-bold">
           Tasks for <span className="text-indigo-500">all projects.</span>
         </h1>
       )}

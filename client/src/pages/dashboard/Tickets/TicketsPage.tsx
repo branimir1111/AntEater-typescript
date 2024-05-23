@@ -1,7 +1,7 @@
 import { QueryClient, useQuery } from '@tanstack/react-query';
 import { customFetch } from '@/utils';
-import { TicketsFilter, TicketsContainer } from '@/components';
-import { LoaderFunction, useLoaderData } from 'react-router-dom';
+import { TicketsFilter, TicketsContainer, GlobalLoader } from '@/components';
+import { LoaderFunction, useLoaderData, useNavigation } from 'react-router-dom';
 
 type allTicketsDevQueryProps = {
   ticketType: string;
@@ -45,6 +45,9 @@ const TicketsPage = () => {
 
   const { data: tickets } = useQuery(allTicketsDevQuery(searchParams));
 
+  const navigation = useNavigation();
+  const isPageLoading = navigation.state === 'loading';
+
   const allTickets = tickets.filteredTickets;
   const numOfPages = tickets.numOfPages;
   const currentPage = tickets.currentPage;
@@ -52,20 +55,27 @@ const TicketsPage = () => {
 
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
-      <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
-        Tickets
-      </h2>
-      <div className="m-auto w-40 h-1 bg-gray-500 mb-8 rounded-sm"></div>
-      <div className="w-full grid break9:flex gap-4">
-        <TicketsFilter />
-        <TicketsContainer
-          allTickets={allTickets}
-          numOfPages={numOfPages}
-          currentPage={currentPage}
-          numOfTickets={numOfTickets}
-        />
-      </div>
+      {isPageLoading ? (
+        <GlobalLoader />
+      ) : (
+        <div className="w-full">
+          <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
+            Tickets
+          </h2>
+          <div className="m-auto w-40 h-[2px] bg-gray-500 mb-2 rounded-sm"></div>
+          <div className="w-full grid break9:flex gap-4">
+            <TicketsFilter />
+            <TicketsContainer
+              allTickets={allTickets}
+              numOfPages={numOfPages}
+              currentPage={currentPage}
+              numOfTickets={numOfTickets}
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
+
 export default TicketsPage;

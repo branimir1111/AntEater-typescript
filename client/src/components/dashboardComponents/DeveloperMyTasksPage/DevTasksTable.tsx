@@ -125,7 +125,7 @@ const DevTasksTable = ({
                 key={_id}
                 className="grid grid-cols-2 break6:grid-cols-5 justify-center"
               >
-                <TableCell>{title}</TableCell>
+                <TableCell className="capitalize">{title}</TableCell>
                 <TableCell className="hidden break6:block">
                   {projectId.projectName}
                 </TableCell>

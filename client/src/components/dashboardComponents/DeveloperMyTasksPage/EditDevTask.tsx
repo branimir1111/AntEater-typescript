@@ -98,7 +98,10 @@ const EditDevTask = ({
             defaultValue={filteredTask.status}
           />
           <DialogFooter className="mt-4">
-            <SubmitBtn text="Save" className={`${bgColor}`}></SubmitBtn>
+            <SubmitBtn
+              text="Save"
+              className={`${bgColor} hover:${bgColor} hover:bg-opacity-90`}
+            ></SubmitBtn>
           </DialogFooter>
         </Form>
       </DialogContent>

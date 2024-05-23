@@ -25,7 +25,7 @@ const DevProjects = ({ allProjects }: DevProjectsProps) => {
   return (
     <div className="mt-8">
       {allProjects.length > 0 ? (
-        <Table>
+        <Table className="border-b border-indigo-500">
           <TableCaption>A list of your projects</TableCaption>
           <TableHeader className="border-t border-indigo-500">
             <TableRow>

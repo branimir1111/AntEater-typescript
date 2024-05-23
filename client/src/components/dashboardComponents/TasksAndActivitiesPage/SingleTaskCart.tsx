@@ -119,7 +119,7 @@ const SingleTaskCart = ({ task }: SingleTaskCartProps) => {
       <header
         className={`w-full text-gray-900 rounded-t-sm capitalize pl-4 ${bgColor} bg-opacity-70`}
       >
-        {title}
+        {title.slice(0, 15)} {title.length > 15 ? '...' : null}
       </header>
       <div className="w-full pl-2 flex gap-2 py-4">
         <Badge

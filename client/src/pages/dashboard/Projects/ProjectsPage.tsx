@@ -1,9 +1,12 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigation } from 'react-router-dom';
+import { GlobalLoader } from '@/components';
 
 const ProjectsPage = () => {
+  const navigation = useNavigation();
+  const isPageLoading = navigation.state === 'loading';
   return (
-    <section className="w-full outlet-hight p-4 bg-background-first">
-      <Outlet />
+    <section className="w-full outlet-hight p-8 bg-background-first">
+      {isPageLoading ? <GlobalLoader /> : <Outlet />}
     </section>
   );
 };

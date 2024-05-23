@@ -67,7 +67,7 @@ const SingleProjectInfo = () => {
   const time = day(createdAt).format('h:mm A');
 
   return (
-    <div className="w-full p-4">
+    <div className="w-full">
       <Button
         variant="secondary"
         className="bg-btn-primary hover:bg-btn-primary-hover text-white mb-8"

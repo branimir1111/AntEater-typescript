@@ -2,6 +2,7 @@ import { ticketTypeAll, ticketPriorityAll, ticketStatusAll } from '@/utils';
 import { Form, useSubmit, useLoaderData, Link } from 'react-router-dom';
 import { FormSelect } from '@/components';
 import { Separator } from '@/components/ui/separator';
+import { Button } from '@/components/ui/button';
 
 type allTicketsDevQueryProps = {
   ticketType: string;
@@ -12,6 +13,7 @@ type allTicketsDevQueryProps = {
 
 const TicketsFilter = () => {
   const searchParams = useLoaderData() as allTicketsDevQueryProps;
+
   const { ticketType, priority, status } = searchParams;
 
   const submit = useSubmit();
@@ -47,7 +49,9 @@ const TicketsFilter = () => {
           options={ticketStatusAll}
           defaultValue={status}
         />
-        <Link to="/dashboard/tickets">Reset</Link>
+        <Link to="/dashboard/tickets">
+          <Button className="w-full mt-2">Reset</Button>
+        </Link>
       </Form>
       <div className="w-full mt-4">
         <h1 className="mb-2 font-bold text-muted-foreground">Ticket types</h1>

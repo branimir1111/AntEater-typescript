@@ -37,7 +37,7 @@ const TicketsContainer = ({
       <Separator className="bg-[#0FB5BA]" />
       {allTickets.length > 0 ? (
         <Table>
-          <TableCaption>A list of your tickets</TableCaption>
+          <TableCaption>A list of tickets</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead className="text-[#0FB5BA] font-bold">Title</TableHead>
@@ -139,7 +139,7 @@ const TicketsContainer = ({
           </TableBody>
         </Table>
       ) : (
-        <h1>There are still no tickets created yet.!</h1>
+        <h1 className="text-xl text-center">There are no tickets !</h1>
       )}
 
       <Separator className="bg-[#0FB5BA] mt-2" />

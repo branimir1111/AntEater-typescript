@@ -50,7 +50,6 @@ import { action as AddNewDevTaskAction } from '@/pages/dashboard/DeveloperMyTask
 import { action as EditDevTaskAction } from '@/pages/dashboard/DeveloperMyTasks/EditTask';
 import { action as AddNewDevTicketAction } from '@/pages/dashboard/DeveloperMyTickets/AddTicket';
 import { action as EditDevTicketAction } from '@/pages/dashboard/DeveloperMyTickets/EditTicket';
-// import { action as MyProjectsDevAction } from '@/pages/dashboard/DeveloperMyProjects/MyProjectsPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -115,7 +114,6 @@ const router = createBrowserRouter([
         path: 'my-projects',
         element: <MyProjectsPage />,
         loader: MyProjectsDevLoader(queryClient),
-        // action: MyProjectsDevAction(queryClient),
         errorElement: <ErrorElement />,
       },
       {

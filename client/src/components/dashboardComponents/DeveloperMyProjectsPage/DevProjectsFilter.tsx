@@ -22,7 +22,7 @@ const DevProjectsFilter = ({
   const { params } = useLoaderData() as AllProjectsResponseWithParams;
   const { search, status, sort, limit } = params;
   return (
-    <section className="w-full mt-8">
+    <section className="w-full mt-4">
       <div className="w-full mb-2 break7:flex gap-4">
         <h1>
           Total projects:{' '}

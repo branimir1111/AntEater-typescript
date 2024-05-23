@@ -17,11 +17,11 @@ const DevTicketsContainer = ({
 }: DevTicketsContainerProps) => {
   const { numOfTickets, devTickets } = ticketsResponse;
   return (
-    <section className="w-full py-6">
-      <h1 className="text-lg mb-4 text-muted-foreground">
+    <section className="w-full py-4">
+      <h1 className="text-base mb-4 text-muted-foreground">
         You are assigned to {numOfTickets} ticket{numOfTickets > 1 ? 's' : null}
       </h1>
-      <div className="w-full grid gap-3 break6:grid-cols-2 break9:grid-cols-3 break14:grid-cols-4">
+      <div className="w-full grid gap-3 break6:grid-cols-2 break12:grid-cols-3 break15:grid-cols-4">
         {ticketType.map((singleType) => {
           const filteredTickets = devTickets.filter(
             (devTicket) => devTicket.ticketType === singleType

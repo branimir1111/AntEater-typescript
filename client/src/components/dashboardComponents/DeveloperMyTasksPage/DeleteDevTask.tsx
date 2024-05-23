@@ -34,8 +34,7 @@ const DeleteDevTask = ({ id, bgColor }: DeleteDevTaskProps) => {
       const response: AxiosResponse = await customFetch.delete(
         `/delete-task/${id}`
       );
-      queryClient.invalidateQueries({ queryKey: ['all-tasks-dev'] });
-      queryClient.invalidateQueries({ queryKey: ['all-tasks'] });
+      queryClient.invalidateQueries();
       toast({ description: response.data.msg });
     } catch (error) {
       const errorMsg =
@@ -76,7 +75,7 @@ const DeleteDevTask = ({ id, bgColor }: DeleteDevTaskProps) => {
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDeleteTask}
-            className={`${bgColor}`}
+            className={`${bgColor} hover:${bgColor} hover:bg-opacity-80`}
           >
             Delete
           </AlertDialogAction>

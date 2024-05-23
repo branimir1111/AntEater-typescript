@@ -22,6 +22,7 @@ const AllProjectsFilter = ({
   numOfFilteredProjects,
 }: FIlterProps) => {
   const { searchValues } = useLoaderData() as SearchParamsProp;
+
   const { search, status, sort, limit } = searchValues;
 
   return (

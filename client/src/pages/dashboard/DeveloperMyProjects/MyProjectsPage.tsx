@@ -5,8 +5,8 @@ import {
   DevProjects,
   ComplexPagination,
 } from '@/components';
-import { Separator } from '@/components/ui/separator';
-import { LoaderFunction, useLoaderData } from 'react-router-dom';
+import { LoaderFunction, useLoaderData, useNavigation } from 'react-router-dom';
+import { GlobalLoader } from '@/components';
 
 const myProjectsQuery = (params: ParamsData) => {
   const { search, status, sort, page, limit } = params;
@@ -45,6 +45,8 @@ export const loader =
 const MyProjectsPage = () => {
   const { params } = useLoaderData() as SearchParamsLoader;
   const { data: myProjects } = useQuery(myProjectsQuery(params));
+  const navigation = useNavigation();
+  const isPageLoading = navigation.state === 'loading';
 
   const {
     numOfAllProjects,
@@ -56,18 +58,25 @@ const MyProjectsPage = () => {
 
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
-      <div className="w-full">
-        <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-8">
-          Your projects
-        </h2>
-        <Separator />
-        <DevProjectsFilter
-          numOfAllProjects={numOfAllProjects}
-          numOfFilteredProjects={numOfFilteredProjects}
-        />
-        <DevProjects allProjects={allProjects} />
-        <ComplexPagination numOfPages={numOfPages} currentPage={currentPage} />
-      </div>
+      {isPageLoading ? (
+        <GlobalLoader />
+      ) : (
+        <div className="w-full">
+          <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
+            Your projects
+          </h2>
+          <div className="m-auto w-52 h-[2px] bg-gray-500 mb-2 rounded-sm"></div>
+          <DevProjectsFilter
+            numOfAllProjects={numOfAllProjects}
+            numOfFilteredProjects={numOfFilteredProjects}
+          />
+          <DevProjects allProjects={allProjects} />
+          <ComplexPagination
+            numOfPages={numOfPages}
+            currentPage={currentPage}
+          />
+        </div>
+      )}
     </section>
   );
 };
