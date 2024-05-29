@@ -164,68 +164,87 @@ export const userProjectAndTaskFromTicket = [
 export const userProjectAndTaskFromTaskComment = [
   {
     $lookup: {
-      from: 'users',
-      localField: 'createdBy',
-      foreignField: '_id',
-      as: 'createdByUser',
-    },
-  },
-  {
-    $lookup: {
       from: 'tasks',
-      localField: 'taskId',
-      foreignField: '_id',
-      as: 'forTask',
+      localField: '_id',
+      foreignField: 'projectId',
+      as: 'tasks',
+    },
+  },
+  {
+    $unwind: {
+      path: '$tasks',
+      preserveNullAndEmptyArrays: true,
     },
   },
   {
     $lookup: {
-      from: 'projects',
-      localField: 'projectId',
-      foreignField: '_id',
-      as: 'forProject',
+      from: 'commenttasks',
+      let: { taskId: '$tasks._id' },
+      pipeline: [
+        {
+          $match: {
+            $expr: { $eq: ['$taskId', '$$taskId'] },
+          },
+        },
+        {
+          $lookup: {
+            from: 'users',
+            localField: 'createdBy',
+            foreignField: '_id',
+            as: 'user',
+          },
+        },
+        {
+          $unwind: {
+            path: '$user',
+            preserveNullAndEmptyArrays: true,
+          },
+        },
+        {
+          $project: {
+            _id: 1,
+            text: 1,
+            taskId: 1,
+            createdAt: 1,
+            'user._id': 1,
+            'user.firstName': 1,
+            'user.lastName': 1,
+            'user.avatar': 1,
+          },
+        },
+        {
+          $addFields: {
+            user: {
+              _id: '$user._id',
+              firstName: '$user.firstName',
+              lastName: '$user.lastName',
+              avatar: '$user.avatar',
+            },
+          },
+        },
+      ],
+      as: 'tasks.comments',
     },
   },
   {
-    $addFields: {
-      createdBy: {
-        $arrayElemAt: ['$createdByUser', 0],
-      },
-      taskId: {
-        $arrayElemAt: ['$forTask', 0],
-      },
-      projectId: {
-        $arrayElemAt: ['$forProject', 0],
+    $group: {
+      _id: '$_id',
+      projectName: { $first: '$projectName' },
+      status: { $first: '$status' },
+      tasks: {
+        $push: {
+          _id: '$tasks._id',
+          title: '$tasks.title',
+          projectId: '$tasks.projectId',
+          taskType: '$tasks.taskType',
+          priority: '$tasks.priority',
+          status: '$tasks.status',
+          comments: '$tasks.comments',
+        },
       },
     },
   },
   {
-    $project: {
-      title: 1,
-      description: 1,
-      createdBy: {
-        _id: 1,
-        firstName: 1,
-        lastName: 1,
-        avatar: 1,
-      },
-      taskId: {
-        _id: 1,
-        title: 1,
-        description: 1,
-        taskType: 1,
-        priority: 1,
-        status: 1,
-      },
-      projectId: {
-        _id: 1,
-        projectName: 1,
-        description: 1,
-        status: 1,
-      },
-      text: 1,
-      createdAt: 1,
-      updatedAt: 1,
-    },
+    $sort: { _id: 1 },
   },
 ];

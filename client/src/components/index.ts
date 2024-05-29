@@ -39,3 +39,6 @@ export { default as TicketDetails } from './dashboardComponents/DeveloperMyTicke
 export { default as TicketsFilter } from './dashboardComponents/TicketsPage/TicketsFilter';
 export { default as TicketsContainer } from './dashboardComponents/TicketsPage/TicketsContainer';
 export { default as SingleTicketDetails } from './dashboardComponents/TicketsPage/SingleTicketDetails';
+export { default as ProjectCartComments } from './dashboardComponents/CommentsPage/ProjectCartComments';
+export { default as TaskCartComments } from './dashboardComponents/CommentsPage/TaskCartComments';
+export { default as CommentCart } from './dashboardComponents/CommentsPage/CommentCart';

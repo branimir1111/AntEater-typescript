@@ -118,3 +118,27 @@ export type TicketResponse = {
   createdAt?: string;
   updatedAt?: string;
 };
+
+export type CommentForTask = {
+  readonly _id: string;
+  text: string;
+  createdAt: string;
+  user: ProjectUser;
+};
+
+export type TaskForComment = {
+  readonly _id: string;
+  title: string;
+  projectId: string;
+  taskType: string;
+  status: string;
+  priority: string;
+  comments: CommentForTask[];
+};
+
+export type ProjectForComment = {
+  readonly _id: string;
+  projectName: string;
+  status: string;
+  tasks: TaskForComment[];
+};
