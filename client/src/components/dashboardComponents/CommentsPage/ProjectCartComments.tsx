@@ -13,7 +13,7 @@ const ProjectCartComments = ({
 }: ProjectCartCommentsProps) => {
   return (
     <article
-      className={`w-full border cursor-pointer`}
+      className={`w-full border cursor-pointer mb-2 p-2`}
       onClick={() => setSingleProjectId(_id)}
     >
       <h1>{projectName}</h1>

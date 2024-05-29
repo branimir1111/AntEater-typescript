@@ -173,7 +173,7 @@ export const userProjectAndTaskFromTaskComment = [
   {
     $unwind: {
       path: '$tasks',
-      preserveNullAndEmptyArrays: true,
+      preserveNullAndEmptyArrays: false,
     },
   },
   {
