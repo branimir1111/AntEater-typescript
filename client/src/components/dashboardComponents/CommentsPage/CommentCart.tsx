@@ -13,11 +13,11 @@ const CommentCart = ({ selectedTask }: CommentCartProps) => {
   console.log(comments);
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full bg-background p-2 rounded-md">
       {comments.length > 0 ? (
-        <div className="w-full">
+        <div className="w-full grid gap-2">
           {comments.map((comment) => {
-            const { _id, user, createdAt } = comment;
+            const { _id, user, createdAt, text } = comment;
 
             let userRole = '';
             switch (user.role) {
@@ -32,8 +32,8 @@ const CommentCart = ({ selectedTask }: CommentCartProps) => {
             const date = day(createdAt).format('D MMM YYYY');
 
             return (
-              <article key={_id} className="border border-green-500 mb-2 p-2">
-                <header className="break4:flex gap-4 justify-between">
+              <article key={_id} className="bg-background-first rounded-sm">
+                <header className="break4:flex gap-4 justify-between p-2">
                   <div className="break5:flex break5:gap-4">
                     <Avatar className="w-10 h-10">
                       <AvatarImage
@@ -56,12 +56,17 @@ const CommentCart = ({ selectedTask }: CommentCartProps) => {
                   <p className="text-muted-foreground">{date}</p>
                 </header>
                 <Separator className="my-2" />
+                <div className="px-4 pb-2">
+                  <p>{text}</p>
+                </div>
               </article>
             );
           })}
         </div>
       ) : (
-        <h1>There is no comments for this task</h1>
+        <div className="rounded-sm bg-background-first p-2">
+          <h1>There is no comments for this task</h1>
+        </div>
       )}
     </div>
   );
