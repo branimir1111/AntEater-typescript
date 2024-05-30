@@ -13,7 +13,7 @@ import {
 } from '@/components';
 import { useState } from 'react';
 
-const CommentsPage = () => {
+const CommentsTasksPage = () => {
   const [singleProjectId, setSingleProjectId] = useState('');
   const [singleTaskId, setSingleTaskId] = useState('');
 
@@ -33,8 +33,6 @@ const CommentsPage = () => {
   }
 
   const { projectsWithTasksAndComments } = data;
-
-  // console.log(projectsWithTasksAndComments);
 
   let selectedProject;
 
@@ -60,7 +58,7 @@ const CommentsPage = () => {
   }
 
   return (
-    <section className="w-full outlet-hight p-8 bg-background-first">
+    <section>
       {projectsWithTasksAndComments.length < 1 ? (
         <h3 className="text-xl text-center">There is no created project yet</h3>
       ) : (
@@ -112,4 +110,4 @@ const CommentsPage = () => {
     </section>
   );
 };
-export default CommentsPage;
+export default CommentsTasksPage;

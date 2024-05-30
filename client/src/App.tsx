@@ -29,7 +29,7 @@ import {
   AdminAssignTaskPage,
   AdminAssignTicketPage,
   AdminMemberProfilesPage,
-  CommentsPage,
+  CommentsPageLayout,
 } from './pages';
 import { ErrorElement } from './components';
 
@@ -160,7 +160,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'comments',
-        element: <CommentsPage />,
+        element: <CommentsPageLayout />,
         errorElement: <ErrorElement />,
         children: [
           {
