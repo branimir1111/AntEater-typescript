@@ -102,7 +102,10 @@ const CommentsPage = () => {
           </div>
           {/* Comments */}
           <div className="w-full max-break15:hidden">
-            <CommentCart selectedTask={selectedTask} />
+            <CommentCart
+              selectedTask={selectedTask}
+              projectId={selectedProject._id}
+            />
           </div>
         </div>
       )}

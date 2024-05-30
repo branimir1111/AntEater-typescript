@@ -13,7 +13,7 @@ const TaskCartComments = ({
   selectedTask,
   setSingleTaskId,
 }: TaskCartCommentsProps) => {
-  const { tasks } = selectedProject;
+  const { _id: projectId, tasks } = selectedProject;
 
   if (!singleTaskId) {
     singleTaskId = tasks[0]._id;
@@ -39,7 +39,10 @@ const TaskCartComments = ({
             </article>
             {singleTaskId === _id ? (
               <div className="w-full break15:hidden">
-                <CommentCart selectedTask={selectedTask} />
+                <CommentCart
+                  selectedTask={selectedTask}
+                  projectId={projectId}
+                />
               </div>
             ) : null}
           </div>

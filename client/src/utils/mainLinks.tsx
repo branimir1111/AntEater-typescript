@@ -57,8 +57,8 @@ export const mainLinksDeveloper: MainLink[] = [
   },
   {
     id: 8,
-    text: 'My comments',
-    path: 'my-comments',
+    text: 'Comments',
+    path: 'comments',
     icon: <MessageSquareText />,
   },
   {

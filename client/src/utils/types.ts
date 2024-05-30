@@ -125,6 +125,7 @@ export type CommentForTask = {
   readonly _id: string;
   text: string;
   createdAt: string;
+  createdBy: string;
   user: ProjectUser;
 };
 

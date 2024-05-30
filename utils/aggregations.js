@@ -205,6 +205,7 @@ export const userProjectAndTaskFromTaskComment = [
             _id: 1,
             text: 1,
             createdAt: 1,
+            createdBy: 1,
             'user._id': 1,
             'user.firstName': 1,
             'user.lastName': 1,
