@@ -19,6 +19,8 @@ export type ProjectUser = {
   firstName: string;
   lastName: string;
   avatar?: string;
+  email?: string;
+  role?: string;
 };
 
 export type ProjectResponse = {

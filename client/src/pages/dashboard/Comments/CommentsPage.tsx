@@ -1,11 +1,21 @@
-import { customFetch, type ProjectForComment } from '@/utils';
+import {
+  customFetch,
+  type ProjectForComment,
+  type TaskForComment,
+} from '@/utils';
 import { useQuery } from '@tanstack/react-query';
-import { GlobalLoader, ErrorElement } from '@/components';
-import { ProjectCartComments, TaskCartComments } from '@/components';
+import {
+  GlobalLoader,
+  ErrorElement,
+  ProjectCartComments,
+  TaskCartComments,
+  CommentCart,
+} from '@/components';
 import { useState } from 'react';
 
 const CommentsPage = () => {
   const [singleProjectId, setSingleProjectId] = useState('');
+  const [singleTaskId, setSingleTaskId] = useState('');
 
   const { data, isPending, isError } = useQuery({
     queryKey: ['task-comments'],
@@ -38,6 +48,17 @@ const CommentsPage = () => {
     selectedProject = projectsWithTasksAndComments[0];
   }
 
+  let selectedTask;
+  const { tasks } = selectedProject;
+
+  if (singleTaskId) {
+    selectedTask = tasks.find((task: TaskForComment) => {
+      return task._id === singleTaskId;
+    });
+  } else {
+    selectedTask = tasks[0];
+  }
+
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
       {projectsWithTasksAndComments.length < 1 ? (
@@ -47,21 +68,41 @@ const CommentsPage = () => {
           {/* Projects */}
           <div className="w-full">
             {projectsWithTasksAndComments.map((project: ProjectForComment) => {
-              const { _id, projectName, status } = project;
+              const isActive = selectedProject._id === project._id;
               return (
-                <ProjectCartComments
-                  key={_id}
-                  _id={_id}
-                  projectName={projectName}
-                  status={status}
-                  setSingleProjectId={setSingleProjectId}
-                />
+                <div className="w-full" key={project._id}>
+                  <ProjectCartComments
+                    isActive={isActive}
+                    project={project}
+                    setSingleProjectId={setSingleProjectId}
+                    setSingleTaskId={setSingleTaskId}
+                  />
+                  <div className="w-full break15:hidden">
+                    {selectedProject._id === project._id ? (
+                      <TaskCartComments
+                        singleTaskId={singleTaskId}
+                        selectedProject={selectedProject}
+                        setSingleTaskId={setSingleTaskId}
+                        selectedTask={selectedTask}
+                      />
+                    ) : null}
+                  </div>
+                </div>
               );
             })}
           </div>
           {/* Tasks */}
-          <div className="w-full">
-            <TaskCartComments selectedProject={selectedProject} />
+          <div className="w-full max-break15:hidden">
+            <TaskCartComments
+              selectedProject={selectedProject}
+              singleTaskId={singleTaskId}
+              setSingleTaskId={setSingleTaskId}
+              selectedTask={selectedTask}
+            />
+          </div>
+          {/* Comments */}
+          <div className="w-full max-break15:hidden">
+            <CommentCart selectedTask={selectedTask} />
           </div>
         </div>
       )}
