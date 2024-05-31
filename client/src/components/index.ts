@@ -43,3 +43,4 @@ export { default as ProjectCartComments } from './dashboardComponents/CommentsPa
 export { default as TaskCartComments } from './dashboardComponents/CommentsPage/TaskCartComments';
 export { default as CommentCart } from './dashboardComponents/CommentsPage/CommentCart';
 export { default as DeleteCommentTask } from './dashboardComponents/CommentsPage/DeleteCommentTask';
+export { default as EditCommentTask } from './dashboardComponents/CommentsPage/EditCommentTask';

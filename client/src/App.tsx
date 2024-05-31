@@ -51,6 +51,7 @@ import { action as EditDevTaskAction } from '@/pages/dashboard/DeveloperMyTasks/
 import { action as AddNewDevTicketAction } from '@/pages/dashboard/DeveloperMyTickets/AddTicket';
 import { action as EditDevTicketAction } from '@/pages/dashboard/DeveloperMyTickets/EditTicket';
 import { action as AddNewTaskCommentAction } from '@/pages/dashboard/Comments/AddComment';
+import { action as EditTaskCommentAction } from '@/pages/dashboard/Comments/EditComment';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -166,6 +167,10 @@ const router = createBrowserRouter([
           {
             path: 'add-task-comment',
             action: AddNewTaskCommentAction(queryClient),
+          },
+          {
+            path: 'edit-task-comment/:id',
+            action: EditTaskCommentAction(queryClient),
           },
         ],
       },

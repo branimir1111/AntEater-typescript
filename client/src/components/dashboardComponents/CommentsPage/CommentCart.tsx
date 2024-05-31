@@ -5,7 +5,12 @@ import day from 'dayjs';
 import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
 import { Form } from 'react-router-dom';
-import { SubmitBtn, FormInput, DeleteCommentTask } from '@/components';
+import {
+  SubmitBtn,
+  FormInput,
+  DeleteCommentTask,
+  EditCommentTask,
+} from '@/components';
 
 type CommentCartProps = {
   selectedTask: TaskForComment;
@@ -69,6 +74,7 @@ const CommentCart = ({ selectedTask, projectId }: CommentCartProps) => {
                 </div>
                 {loggedUser?._id === createdBy ? (
                   <footer className="w-full flex justify-end p-2">
+                    <EditCommentTask id={_id} text={text} />
                     <DeleteCommentTask id={_id} />
                   </footer>
                 ) : null}
