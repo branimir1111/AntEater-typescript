@@ -42,7 +42,7 @@ const DeleteCommentTask = ({ id }: DeleteCommentTaskProps) => {
     <AlertDialog>
       <AlertDialogTrigger
         asChild
-        className="cursor-pointer w-5 bg-[#CF1124] hover:bg-[#CF1124] hover:bg-opacity-80"
+        className="cursor-pointer w-5 bg-[#CF1124] hover:bg-[#CF1124] hover:bg-opacity-80 text-[#FFE3E3] hover:text-[#FFE3E3]"
       >
         <Button variant="outline" size="lg">
           Delete
@@ -60,7 +60,7 @@ const DeleteCommentTask = ({ id }: DeleteCommentTaskProps) => {
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDeleteCommentTask}
-            className={`bg-[#CF1124] hover:bg-[#CF1124] hover:bg-opacity-80`}
+            className={`bg-[#CF1124] hover:bg-[#CF1124] hover:bg-opacity-80 `}
           >
             Delete
           </AlertDialogAction>

@@ -8,7 +8,7 @@ const CommentsPageLayout = () => {
       defaultValue="Task comments"
       className="w-full outlet-hight p-8 bg-background-first"
     >
-      <div className="w-full grid place-items-center">
+      <div className="w-full grid place-items-center mb-4">
         <TabsList className="h-20 grid break4:inline-flex break4:h-10">
           <TabsTrigger value="Task comments">Task comments</TabsTrigger>
           <TabsTrigger value="Ticket comments">Ticket comments</TabsTrigger>

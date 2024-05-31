@@ -64,30 +64,35 @@ const CommentsTasksPage = () => {
       ) : (
         <div className="w-full grid break15:grid-cols-3 gap-2">
           {/* Projects */}
-          <div className="w-full">
-            {projectsWithTasksAndComments.map((project: ProjectForComment) => {
-              const isActive = selectedProject._id === project._id;
-              return (
-                <div className="w-full" key={project._id}>
-                  <ProjectCartComments
-                    isActive={isActive}
-                    project={project}
-                    setSingleProjectId={setSingleProjectId}
-                    setSingleTaskId={setSingleTaskId}
-                  />
-                  <div className="w-full break15:hidden">
-                    {selectedProject._id === project._id ? (
-                      <TaskCartComments
-                        singleTaskId={singleTaskId}
-                        selectedProject={selectedProject}
+          <div className="w-full bg-background rounded-sm border">
+            <div className="w-full h-full bg-indigo-400 bg-opacity-10 p-2">
+              <h1 className="text-2xl font-semibold mb-4">Projects</h1>
+              {projectsWithTasksAndComments.map(
+                (project: ProjectForComment) => {
+                  const isActive = selectedProject._id === project._id;
+                  return (
+                    <div className="w-full" key={project._id}>
+                      <ProjectCartComments
+                        isActive={isActive}
+                        project={project}
+                        setSingleProjectId={setSingleProjectId}
                         setSingleTaskId={setSingleTaskId}
-                        selectedTask={selectedTask}
                       />
-                    ) : null}
-                  </div>
-                </div>
-              );
-            })}
+                      <div className="w-full break15:hidden">
+                        {selectedProject._id === project._id ? (
+                          <TaskCartComments
+                            singleTaskId={singleTaskId}
+                            selectedProject={selectedProject}
+                            setSingleTaskId={setSingleTaskId}
+                            selectedTask={selectedTask}
+                          />
+                        ) : null}
+                      </div>
+                    </div>
+                  );
+                }
+              )}
+            </div>
           </div>
           {/* Tasks */}
           <div className="w-full max-break15:hidden">

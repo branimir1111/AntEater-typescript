@@ -23,7 +23,7 @@ const EditCommentTask = ({ id, text }: EditCommentTaskProps) => {
       <DialogTrigger
         asChild
         aria-expanded={true}
-        className="cursor-pointer w-5"
+        className="cursor-pointer w-5 bg-[#0FB5BA] hover:bg-[#0FB5BA] hover:bg-opacity-80 text-[#E1FCF8] hover:text-[#E1FCF8]"
       >
         <Button variant="outline" size="lg">
           Edit
@@ -39,7 +39,7 @@ const EditCommentTask = ({ id, text }: EditCommentTaskProps) => {
         <Form
           method="post"
           action={`/dashboard/comments/edit-task-comment/${id}`}
-          className="px-2"
+          className=""
         >
           <Textarea
             name="text"
@@ -48,7 +48,10 @@ const EditCommentTask = ({ id, text }: EditCommentTaskProps) => {
           ></Textarea>
           <DialogFooter className="mt-4">
             <div className="flex justify-end mt-2">
-              <SubmitBtn text="Save" />
+              <SubmitBtn
+                text="Save"
+                className="bg-[#0FB5BA] hover:bg-[#0FB5BA] hover:bg-opacity-80 text-[#E1FCF8] hover:text-[#E1FCF8]"
+              />
             </div>
           </DialogFooter>
         </Form>

@@ -42,5 +42,6 @@ export { default as SingleTicketDetails } from './dashboardComponents/TicketsPag
 export { default as ProjectCartComments } from './dashboardComponents/CommentsPage/ProjectCartComments';
 export { default as TaskCartComments } from './dashboardComponents/CommentsPage/TaskCartComments';
 export { default as CommentCart } from './dashboardComponents/CommentsPage/CommentCart';
-export { default as DeleteCommentTask } from './dashboardComponents/CommentsPage/DeleteCommentTask';
+export { default as AddNewCommentTask } from './dashboardComponents/CommentsPage/AddNewCommentTask';
 export { default as EditCommentTask } from './dashboardComponents/CommentsPage/EditCommentTask';
+export { default as DeleteCommentTask } from './dashboardComponents/CommentsPage/DeleteCommentTask';
