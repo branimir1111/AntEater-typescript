@@ -8,12 +8,6 @@ type TaskCartCommentsProps = {
   selectedTask: TaskForComment;
   setSingleTaskId: React.Dispatch<React.SetStateAction<string>>;
 };
-type TaskCartCommentsProps = {
-  selectedProject: ProjectForComment;
-  singleTaskId: string;
-  selectedTask: TaskForComment;
-  setSingleTaskId: React.Dispatch<React.SetStateAction<string>>;
-};
 
 const TaskCartComments = ({
   selectedProject,
