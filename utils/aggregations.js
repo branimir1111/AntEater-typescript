@@ -254,31 +254,25 @@ export const userProjectAndTaskFromTaskComment = [
 export const userProjectAndTicketFromTicketComment = [
   {
     $lookup: {
-      // from: 'tasks',
       from: 'tickets',
       localField: '_id',
       foreignField: 'projectId',
-      // as: 'tasks',
       as: 'tickets',
     },
   },
   {
     $unwind: {
-      // path: '$tasks',
       path: '$tickets',
       preserveNullAndEmptyArrays: false,
     },
   },
   {
     $lookup: {
-      // from: 'commenttasks',
       from: 'commenttickets',
-      // let: { taskId: '$tasks._id' },
       let: { ticketId: '$tickets._id' },
       pipeline: [
         {
           $match: {
-            // $expr: { $eq: ['$taskId', '$$taskId'] },
             $expr: { $eq: ['$ticketId', '$$ticketId'] },
           },
         },
@@ -323,7 +317,6 @@ export const userProjectAndTicketFromTicketComment = [
           },
         },
       ],
-      // as: 'tasks.comments',
       as: 'tickets.comments',
     },
   },
@@ -332,15 +325,8 @@ export const userProjectAndTicketFromTicketComment = [
       _id: '$_id',
       projectName: { $first: '$projectName' },
       status: { $first: '$status' },
-      // tasks: {
       tickets: {
         $push: {
-          // _id: '$tasks._id',
-          // title: '$tasks.title',
-          // taskType: '$tasks.taskType',
-          // priority: '$tasks.priority',
-          // status: '$tasks.status',
-          // comments: '$tasks.comments',
           _id: '$tickets._id',
           title: '$tickets.title',
           ticketType: '$tickets.ticketType',

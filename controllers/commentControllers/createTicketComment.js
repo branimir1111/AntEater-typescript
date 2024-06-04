@@ -1,6 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
 import CommentTicketModel from '../../models/commentTicketModel.js';
-import { userProjectAndTicketFromTicketComment } from '../../utils/aggregations.js';
 import mongoose from 'mongoose';
 
 const createTicketComment = async (req, res) => {
@@ -8,7 +7,6 @@ const createTicketComment = async (req, res) => {
 
   const [newTicketComment] = await CommentTicketModel.aggregate([
     { $match: { _id: new mongoose.Types.ObjectId(createdTicketComment._id) } },
-    ...userProjectAndTicketFromTicketComment,
   ]);
 
   res
