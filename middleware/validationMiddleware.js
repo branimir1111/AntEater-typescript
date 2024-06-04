@@ -134,3 +134,9 @@ export const validateNewTaskComment = validationWithErrors([
   body('projectId').notEmpty().withMessage('Project ID is required'),
   body('text').notEmpty().withMessage("You can't send empty comment"),
 ]);
+export const validateNewTicketComment = validationWithErrors([
+  body('createdBy').notEmpty().withMessage('Missing ticket creator'),
+  body('ticketId').notEmpty().withMessage('Ticket ID is required'),
+  body('projectId').notEmpty().withMessage('Project ID is required'),
+  body('text').notEmpty().withMessage("You can't send empty comment"),
+]);

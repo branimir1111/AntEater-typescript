@@ -1,9 +1,16 @@
 import { StatusCodes } from 'http-status-codes';
-import CommentTicketModel from '../../models/commentTicketModel.js';
+import { userProjectAndTicketFromTicketComment } from '../../utils/aggregations.js';
+import ProjectModel from '../../models/ProjectModel.js';
 
 const getAllTicketComments = async (req, res) => {
+  const projectsWithTicketsAndComments = await ProjectModel.aggregate([
+    ...userProjectAndTicketFromTicketComment,
+  ]);
+
+  const numOfProjects = projectsWithTicketsAndComments.length;
+
   res
     .status(StatusCodes.OK)
-    .json({ msg: 'This is getAllTicketCOMMENTS controller!' });
+    .json({ numOfProjects, projectsWithTicketsAndComments });
 };
 export { getAllTicketComments };
