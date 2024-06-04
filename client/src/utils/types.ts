@@ -145,3 +145,20 @@ export type ProjectForComment = {
   status: string;
   tasks: TaskForComment[];
 };
+
+export type TicketForComment = {
+  readonly _id: string;
+  title: string;
+  projectId: string;
+  ticketType: string;
+  status: string;
+  priority: string;
+  comments: CommentForTask[];
+};
+
+export type ProjectForTicketComment = {
+  readonly _id: string;
+  projectName: string;
+  status: string;
+  tickets: TicketForComment[];
+};

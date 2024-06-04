@@ -45,3 +45,8 @@ export { default as CommentCart } from './dashboardComponents/CommentsPage/Comme
 export { default as AddNewCommentTask } from './dashboardComponents/CommentsPage/AddNewCommentTask';
 export { default as EditCommentTask } from './dashboardComponents/CommentsPage/EditCommentTask';
 export { default as DeleteCommentTask } from './dashboardComponents/CommentsPage/DeleteCommentTask';
+export { default as TicketCartComments } from './dashboardComponents/CommentsPage/TicketCartComments';
+export { default as ProjectCartTicketComments } from './dashboardComponents/CommentsPage/ProjectCartTicketComments';
+export { default as CommentTicketCart } from './dashboardComponents/CommentsPage/CommentTicketCart';
+export { default as AddNewCommentTicket } from './dashboardComponents/CommentsPage/AddNewCommentTicket';
+export { default as DeleteCommentTicket } from './dashboardComponents/CommentsPage/DeleteCommentTicket';

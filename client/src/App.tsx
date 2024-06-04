@@ -33,7 +33,6 @@ import {
 } from './pages';
 import { ErrorElement } from './components';
 
-//! DELETE this page when you finished!!!
 import ColorPalettePage from './colorPalette/ColorPalettePage';
 
 import { loader as dashboardLayoutLoader } from './pages/dashboard/DashboardLayout';
@@ -52,6 +51,7 @@ import { action as AddNewDevTicketAction } from '@/pages/dashboard/DeveloperMyTi
 import { action as EditDevTicketAction } from '@/pages/dashboard/DeveloperMyTickets/EditTicket';
 import { action as AddNewTaskCommentAction } from '@/pages/dashboard/Comments/AddComment';
 import { action as EditTaskCommentAction } from '@/pages/dashboard/Comments/EditComment';
+import { action as AddNewTicketCommentAction } from '@/pages/dashboard/Comments/AddCommentTicket';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -171,6 +171,10 @@ const router = createBrowserRouter([
           {
             path: 'edit-task-comment/:id',
             action: EditTaskCommentAction(queryClient),
+          },
+          {
+            path: 'add-ticket-comment',
+            action: AddNewTicketCommentAction(queryClient),
           },
         ],
       },
