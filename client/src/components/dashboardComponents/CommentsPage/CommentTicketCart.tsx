@@ -5,7 +5,7 @@ import day from 'dayjs';
 import { Separator } from '@/components/ui/separator';
 import {
   DeleteCommentTicket,
-  EditCommentTask,
+  EditCommentTicket,
   AddNewCommentTicket,
 } from '@/components';
 
@@ -77,7 +77,7 @@ const CommentTicketCart = ({
                   </div>
                   {loggedUser?._id === createdBy ? (
                     <footer className="w-full flex justify-end gap-2 p-2">
-                      <EditCommentTask id={_id} text={text} />
+                      <EditCommentTicket id={_id} text={text} />
                       <DeleteCommentTicket id={_id} />
                     </footer>
                   ) : null}

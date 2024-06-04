@@ -52,6 +52,7 @@ import { action as EditDevTicketAction } from '@/pages/dashboard/DeveloperMyTick
 import { action as AddNewTaskCommentAction } from '@/pages/dashboard/Comments/AddComment';
 import { action as EditTaskCommentAction } from '@/pages/dashboard/Comments/EditComment';
 import { action as AddNewTicketCommentAction } from '@/pages/dashboard/Comments/AddCommentTicket';
+import { action as EditTicketCommentAction } from '@/pages/dashboard/Comments/EditCommentTicket';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -175,6 +176,10 @@ const router = createBrowserRouter([
           {
             path: 'add-ticket-comment',
             action: AddNewTicketCommentAction(queryClient),
+          },
+          {
+            path: 'edit-ticket-comment/:id',
+            action: EditTicketCommentAction(queryClient),
           },
         ],
       },

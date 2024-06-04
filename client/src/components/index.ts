@@ -50,3 +50,4 @@ export { default as ProjectCartTicketComments } from './dashboardComponents/Comm
 export { default as CommentTicketCart } from './dashboardComponents/CommentsPage/CommentTicketCart';
 export { default as AddNewCommentTicket } from './dashboardComponents/CommentsPage/AddNewCommentTicket';
 export { default as DeleteCommentTicket } from './dashboardComponents/CommentsPage/DeleteCommentTicket';
+export { default as EditCommentTicket } from './dashboardComponents/CommentsPage/EditCommentTicket';
