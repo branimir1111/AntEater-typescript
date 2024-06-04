@@ -30,22 +30,24 @@ const TicketCartComments = ({
             const { _id, title, ticketType, status, priority } = ticket;
             const isActive = singleTicketId === _id;
 
+            let textColor = '';
             let bgColor = '';
-            switch (status) {
-              case 'new':
-                bgColor = 'bg-indigo-500';
+            switch (ticketType) {
+              case 'feature':
+                textColor = 'text-indigo-50';
+                bgColor = 'bg-indigo-700';
                 break;
-              case 'in progress':
-                bgColor = 'bg-[#1CD4D4]';
+              case 'improvement':
+                textColor = 'text-[#E1FCF8]';
+                bgColor = 'bg-[#099AA4]';
                 break;
-              case 'under review':
-                bgColor = 'bg-[#F0B429]';
+              case 'security':
+                textColor = 'text-[#FFFBEA]';
+                bgColor = 'bg-[#DE911D]';
                 break;
-              case 'refactor':
-                bgColor = 'bg-[#EF4E4E]';
-                break;
-              case 'completed':
-                bgColor = 'bg-[#51CA58]';
+              case 'bug':
+                textColor = 'text-[#FFE3E3]';
+                bgColor = 'bg-[#AB091E]';
                 break;
             }
 
@@ -64,6 +66,10 @@ const TicketCartComments = ({
                 badgeBg = 'bg-[#FFB8D2]';
                 badgeText = 'text-[#870557]';
                 break;
+              case 'urgent':
+                badgeBg = 'bg-[#A30664]';
+                badgeText = 'text-[#FFE3EC]';
+                break;
             }
 
             return (
@@ -78,20 +84,20 @@ const TicketCartComments = ({
                 >
                   <h1 className="text-lg font-medium mb-2">{title}</h1>
                   <Badge
-                    className={`rounded-sm ${bgColor} hover:${bgColor} mr-1`}
+                    className={`rounded-sm mr-1 ${badgeBg} ${badgeText} hover:${badgeBg} hover:${badgeText}`}
+                  >
+                    {priority}
+                  </Badge>
+                  <Badge
+                    className={`rounded-sm bg-[#51CA58] hover:bg-[#51CA58] bg-opacity-15 hover:bg-opacity-15 mr-1`}
                   >
                     {status}
                   </Badge>
                   <Badge
                     variant="outline"
-                    className="rounded-sm mr-1 bg-[#51CA58] bg-opacity-15"
+                    className={`rounded-sm ${textColor} ${bgColor}`}
                   >
                     {ticketType}
-                  </Badge>
-                  <Badge
-                    className={`rounded-sm ${badgeBg} ${badgeText} hover:${badgeBg} hover:${badgeText}`}
-                  >
-                    {priority}
                   </Badge>
                 </article>
                 {singleTicketId === _id ? (
