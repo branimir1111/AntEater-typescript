@@ -248,7 +248,7 @@ export const userProjectAndTaskFromTaskComment = [
     },
   },
   {
-    $sort: { _id: 1 },
+    $sort: { createdAt: -1 },
   },
 ];
 export const userProjectAndTicketFromTicketComment = [
@@ -338,6 +338,6 @@ export const userProjectAndTicketFromTicketComment = [
     },
   },
   {
-    $sort: { _id: 1 },
+    $sort: { createdAt: -1 },
   },
 ];
