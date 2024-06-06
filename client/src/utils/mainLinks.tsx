@@ -9,6 +9,8 @@ import {
   Palette,
   Minus,
   MessageSquareText,
+  BookOpenCheck,
+  Sticker,
 } from 'lucide-react';
 import { type MainLink } from '.';
 
@@ -67,7 +69,6 @@ export const mainLinksDeveloper: MainLink[] = [
     path: 'bugs',
     icon: <Bug />,
   },
-  //! DELETE this link when you finished!!!
   {
     id: 10,
     text: 'Colors Palette',
@@ -103,31 +104,36 @@ export const mainLinksPM: MainLink[] = [
   },
   {
     id: 5,
+    text: 'Comments',
+    path: 'comments',
+    icon: <MessageSquareText />,
+  },
+  {
+    id: 6,
     text: 'Bugs categorization',
     path: 'bugs',
     icon: <Bug />,
   },
   {
-    id: 6,
-    text: 'PM panel',
+    id: 7,
+    text: 'PM projects',
     path: 'manager',
     icon: <UserRoundCog />,
   },
   {
-    id: 7,
-    text: 'Assign task',
-    path: 'manager-assign-task',
-    icon: <Minus className="pl-3" />,
-  },
-  {
     id: 8,
-    text: 'Assign ticket',
-    path: 'manager-assign-ticket',
-    icon: <Minus className="pl-3" />,
+    text: 'PM tasks',
+    path: 'manager-task',
+    icon: <BookOpenCheck />,
   },
-  //! DELETE this link when you finished!!!
   {
     id: 9,
+    text: 'PM tickets',
+    path: 'manager-ticket',
+    icon: <Sticker />,
+  },
+  {
+    id: 10,
     text: 'Colors Palette',
     path: 'colors',
     icon: <Palette />,
@@ -195,7 +201,6 @@ export const mainLinksAdmin: MainLink[] = [
     path: 'admin-member-profiles',
     icon: <Minus className="pl-3" />,
   },
-  //! DELETE this link when you finished!!!
   {
     id: 11,
     text: 'Colors Palette',

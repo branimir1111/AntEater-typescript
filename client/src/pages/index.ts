@@ -17,8 +17,8 @@ export { default as SingleProjectInfo } from './dashboard/Projects/pages/SingleP
 export { default as MyProjectsPage } from './dashboard/DeveloperMyProjects/MyProjectsPage';
 export { default as MyTasksPage } from './dashboard/DeveloperMyTasks/MyTasksPage';
 export { default as MyTicketsPage } from './dashboard/DeveloperMyTickets/MyTicketsPage';
-export { default as PMAssignTaskPage } from './dashboard/PMAssignTask/PMAssignTaskPage';
-export { default as PMAssignTicketPage } from './dashboard/PMAssignTicket/PMAssignTicketPage';
+export { default as PMTasksPage } from './dashboard/PMTasks/PMTasksPage';
+export { default as PMTicketsPage } from './dashboard/PMTickets/PMTicketsPage';
 export { default as AdminManageRolesPage } from './dashboard/AdminManageRoles/AdminManageRolesPage';
 export { default as AdminAssignTaskPage } from './dashboard/AdminAssignTask/AdminAssignTaskPage';
 export { default as AdminAssignTicketPage } from './dashboard/AdminAssignTicket/AdminAssignTicketPage';

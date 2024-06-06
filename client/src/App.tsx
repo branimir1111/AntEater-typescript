@@ -23,8 +23,8 @@ import {
   MyProjectsPage,
   MyTasksPage,
   MyTicketsPage,
-  PMAssignTaskPage,
-  PMAssignTicketPage,
+  PMTasksPage,
+  PMTicketsPage,
   AdminManageRolesPage,
   AdminAssignTaskPage,
   AdminAssignTicketPage,
@@ -194,13 +194,13 @@ const router = createBrowserRouter([
         errorElement: <ErrorElement />,
       },
       {
-        path: 'manager-assign-task',
-        element: <PMAssignTaskPage />,
+        path: 'manager-task',
+        element: <PMTasksPage />,
         errorElement: <ErrorElement />,
       },
       {
-        path: 'manager-assign-ticket',
-        element: <PMAssignTicketPage />,
+        path: 'manager-ticket',
+        element: <PMTicketsPage />,
         errorElement: <ErrorElement />,
       },
       {
