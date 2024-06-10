@@ -16,7 +16,7 @@ const authenticateUser = (req, res, next) => {
 };
 
 const authorizePermissions = (...roles) => {
-  return (req, next) => {
+  return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
       throw new Unauthorized("You don't have access to this route");
     }
