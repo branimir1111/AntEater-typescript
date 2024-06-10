@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { usersFromProject } from '../../utils/aggregations.js';
 import mongoose from 'mongoose';
 
-const getAllMyProjects = async (req, res) => {
+const getAllDevProjects = async (req, res) => {
   const developerId = req.user.userId;
   const {
     search,
@@ -89,4 +89,4 @@ const getAllMyProjects = async (req, res) => {
   }
 };
 
-export { getAllMyProjects };
+export { getAllDevProjects };
