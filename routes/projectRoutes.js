@@ -6,6 +6,7 @@ import { getSingleProject } from '../controllers/projectControllers/getSinglePro
 import { getAllDevProjects } from '../controllers/projectControllers/getAllDevProjects.js';
 import { validateNewProject } from '../middleware/validationMiddleware.js';
 import { getAllPMProjects } from '../controllers/projectControllers/getAllPMProjects.js';
+import { updateProject } from '../controllers/projectControllers/updateProject.js';
 import { authorizePermissions } from '../middleware/authMiddleware.js';
 
 const router = Router();
@@ -17,6 +18,11 @@ router
   .get(authorizePermissions('projectmanager', 'admin'), getAllPMProjects);
 router.route('/create-project').post(validateNewProject, createProject);
 router.route('/single-project/:id').get(getSingleProject);
-router.route('/delete-project/:id').delete(deleteProject);
+router
+  .route('/update-project/:id')
+  .patch(authorizePermissions('projectmanager', 'admin'), updateProject);
+router
+  .route('/delete-project/:id')
+  .delete(authorizePermissions('projectmanager', 'admin'), deleteProject);
 
 export default router;
