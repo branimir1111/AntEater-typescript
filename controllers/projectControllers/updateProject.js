@@ -4,14 +4,17 @@ import { usersFromProject } from '../../utils/aggregations.js';
 import mongoose from 'mongoose';
 
 const updateProject = async (req, res) => {
-  //   const singleProjectId = req.params;
+  const { id } = req.params;
+  console.log(id);
+  //   const data = req.body;
 
-  //   const [singleProject] = await ProjectModel.aggregate([
-  //     {
-  //       $match: { _id: new mongoose.Types.ObjectId(singleProjectId) },
-  //     },
-  //     ...usersFromProject,
-  //   ]);
+  //   const updatedProject = await ProjectModel.findByIdAndUpdate(id, data, {
+  //     new: true,
+  //   });
+
+  //   res
+  //     .status(StatusCodes.OK)
+  //     .json({ msg: 'Project successfully updated', updatedProject });
 
   res.status(StatusCodes.OK).json({ msg: 'This is updateProject' });
 };
