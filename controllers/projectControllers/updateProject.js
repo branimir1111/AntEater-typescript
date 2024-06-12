@@ -5,18 +5,16 @@ import mongoose from 'mongoose';
 
 const updateProject = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
-  //   const data = req.body;
 
-  //   const updatedProject = await ProjectModel.findByIdAndUpdate(id, data, {
-  //     new: true,
-  //   });
+  const data = req.body;
 
-  //   res
-  //     .status(StatusCodes.OK)
-  //     .json({ msg: 'Project successfully updated', updatedProject });
+  const updatedProject = await ProjectModel.findByIdAndUpdate(id, data, {
+    new: true,
+  });
 
-  res.status(StatusCodes.OK).json({ msg: 'This is updateProject' });
+  res
+    .status(StatusCodes.OK)
+    .json({ msg: 'Project successfully updated', updatedProject });
 };
 
 export { updateProject };

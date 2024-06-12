@@ -13,8 +13,12 @@ type PMProjectsFilterProps = {
   numOfPMProjects: number;
 };
 
+type SearchParamsProps = {
+  searchParams: allPMProjectsQueryProps;
+};
+
 const PMProjectsFilter = ({ numOfPMProjects }: PMProjectsFilterProps) => {
-  const searchParams = useLoaderData() as allPMProjectsQueryProps;
+  const { searchParams } = useLoaderData() as SearchParamsProps;
   const submit = useSubmit();
   const { status, sort } = searchParams;
 

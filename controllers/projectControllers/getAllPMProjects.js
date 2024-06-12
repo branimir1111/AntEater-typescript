@@ -23,7 +23,7 @@ const getAllPMProjects = async (req, res) => {
   };
   const sortKey = sortOptions[sort] || sortOptions.newest;
 
-  const limit = 1;
+  const limit = 5;
   const page = Number(currPage) || 1;
   const skip = (page - 1) * limit;
 

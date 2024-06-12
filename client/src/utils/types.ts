@@ -8,12 +8,6 @@ export type User = {
   avatarPublicId?: string;
 };
 
-//TODO basic type setup - need refactoring
-export type projectTickets = [];
-
-//TODO basic type setup - need refactoring
-export type projectComments = [];
-
 export type ProjectUser = {
   readonly _id: string;
   firstName: string;
@@ -99,8 +93,6 @@ export type TaskResponse = {
   description: string;
   assignedTo: ProjectUser;
   projectId: ProjectResponse;
-  tickets: projectTickets;
-  comments: projectComments;
   taskType: string;
   priority: string;
   status: string;

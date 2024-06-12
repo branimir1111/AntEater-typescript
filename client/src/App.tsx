@@ -54,6 +54,7 @@ import { action as AddNewTaskCommentAction } from '@/pages/dashboard/Comments/Ad
 import { action as EditTaskCommentAction } from '@/pages/dashboard/Comments/EditComment';
 import { action as AddNewTicketCommentAction } from '@/pages/dashboard/Comments/AddCommentTicket';
 import { action as EditTicketCommentAction } from '@/pages/dashboard/Comments/EditCommentTicket';
+import { action as EditPMProjectAction } from '@/pages/dashboard/PM/EditProject';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -194,6 +195,12 @@ const router = createBrowserRouter([
         element: <ProjectManagerPage />,
         errorElement: <ErrorElement />,
         loader: AllPMProjectsLoader(queryClient),
+        children: [
+          {
+            path: 'edit-pm-project/:id',
+            action: EditPMProjectAction(queryClient),
+          },
+        ],
       },
       {
         path: 'manager-task',

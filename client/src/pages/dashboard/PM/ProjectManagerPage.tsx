@@ -1,5 +1,5 @@
 import { QueryClient, useQuery } from '@tanstack/react-query';
-import { customFetch } from '@/utils';
+import { customFetch, type ProjectUser } from '@/utils';
 import { GlobalLoader, ComplexPagination } from '@/components';
 import PMProjectsFilter from './PMProjectsFilter';
 import PMProjectsContainer from './PMProjectsContainer';
@@ -22,6 +22,13 @@ const allPMProjectsQuery = (params: allPMProjectsQueryProps) => {
   };
 };
 
+const allDevsQuery = () => {
+  return {
+    queryKey: ['developer'],
+    queryFn: () => customFetch('/all-users'),
+  };
+};
+
 export const loader =
   (queryClient: QueryClient): LoaderFunction =>
   async ({ request }) => {
@@ -33,14 +40,24 @@ export const loader =
       allPMProjectsQuery(params as allPMProjectsQueryProps)
     );
 
-    return { ...params };
+    const allDevelopers = await queryClient.ensureQueryData(allDevsQuery());
+    const currentDevs = allDevelopers.data.devs;
+
+    return { searchParams: { ...params }, currentDevs };
   };
 
+type SearchParamsProps = {
+  searchParams: allPMProjectsQueryProps;
+  currentDevs: ProjectUser[];
+};
+
 const ProjectManagerPage = () => {
-  const searchParams = useLoaderData() as allPMProjectsQueryProps;
+  const { searchParams, currentDevs } = useLoaderData() as SearchParamsProps;
   const navigation = useNavigation();
   const isPageLoading = navigation.state === 'loading';
   const { data: PMData } = useQuery(allPMProjectsQuery(searchParams));
+
+  console.log(currentDevs);
 
   const { numOfPMProjects, numOfPages, currentPage, allPMProjects } = PMData;
   return (
