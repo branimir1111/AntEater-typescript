@@ -8,7 +8,6 @@ export { default as ProjectsPage } from './dashboard/Projects/ProjectsPage';
 export { default as TasksAndActivitiesPage } from './dashboard/TasksAndActivitiesPage/TasksAndActivitiesPage';
 export { default as TicketsPage } from './dashboard/Tickets/TicketsPage';
 export { default as BugCategorizationPage } from './dashboard/BugCategorization/BugCategorizationPage';
-export { default as ProjectManagerPage } from './dashboard/PM/ProjectManagerPage';
 export { default as AdminPage } from './dashboard/Admin/AdminPage';
 export { default as ProfilePage } from './dashboard/Profile/ProfilePage';
 export { default as AllProjectPage } from './dashboard/Projects/pages/AllProjectsPage';
@@ -17,6 +16,9 @@ export { default as SingleProjectInfo } from './dashboard/Projects/pages/SingleP
 export { default as MyProjectsPage } from './dashboard/DeveloperMyProjects/MyProjectsPage';
 export { default as MyTasksPage } from './dashboard/DeveloperMyTasks/MyTasksPage';
 export { default as MyTicketsPage } from './dashboard/DeveloperMyTickets/MyTicketsPage';
+export { default as ProjectManagerPage } from './dashboard/PM/ProjectManagerPage';
+export { default as PMProjectsFilter } from './dashboard/PM/PMProjectsFilter';
+export { default as PMProjectsContainer } from './dashboard/PM/PMProjectsContainer';
 export { default as PMTasksPage } from './dashboard/PMTasks/PMTasksPage';
 export { default as PMTicketsPage } from './dashboard/PMTickets/PMTicketsPage';
 export { default as AdminManageRolesPage } from './dashboard/AdminManageRoles/AdminManageRolesPage';
