@@ -1,6 +1,3 @@
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import { ChevronsLeft } from 'lucide-react';
 import { ProjectResponse, useAppSelector } from '@/utils';
 import {
   Accordion,
@@ -68,16 +65,6 @@ const SingleProjectInfo = () => {
 
   return (
     <div className="w-full">
-      <Button
-        variant="secondary"
-        className="bg-btn-primary hover:bg-btn-primary-hover text-white mb-8"
-        asChild
-      >
-        <Link to="/dashboard/projects">
-          <ChevronsLeft className="w-5 mr-2" />
-          Back To All Projects
-        </Link>
-      </Button>
       <section className="w-full grid place-items-center">
         <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
           <img src={checkedIcon} alt="checked-icon" className="w-10" />

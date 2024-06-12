@@ -2,7 +2,6 @@ import {
   ActionFunction,
   Form,
   redirect,
-  Link,
   LoaderFunction,
   useLoaderData,
 } from 'react-router-dom';
@@ -28,8 +27,6 @@ import { AxiosError, AxiosResponse } from 'axios';
 import createProjects from '@/images/createProject.svg';
 import { ReduxStore } from '@/features/store';
 import { createProject } from '@/features/project/projectSlice';
-import { Button } from '@/components/ui/button';
-import { ChevronsLeft } from 'lucide-react';
 import { type QueryClient } from '@tanstack/react-query';
 
 const allDevsQuery = () => {
@@ -109,17 +106,6 @@ const AddNewProjectForm = () => {
 
   return (
     <div className="w-full p-4 rounded-md bg-background">
-      <Button
-        variant="secondary"
-        className="bg-btn-primary hover:bg-btn-primary-hover text-white mb-8"
-        asChild
-      >
-        <Link to="/dashboard/projects">
-          <ChevronsLeft className="w-5 mr-2" />
-          Back To All Projects
-        </Link>
-      </Button>
-      {/* Heading */}
       <div className="w-full grid place-items-center gap-4">
         <div className="flex flex-col justify-center items-start sm:flex-row sm:items-end  gap-4">
           <img

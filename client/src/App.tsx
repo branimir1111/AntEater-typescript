@@ -40,6 +40,7 @@ import { loader as AllDevLoader } from '@/pages/dashboard/Projects/pages/AddNewP
 import { loader as AllProjectsLoader } from '@/pages/dashboard/Projects/pages/AllProjectsPage';
 import { loader as MyProjectsDevLoader } from '@/pages/dashboard/DeveloperMyProjects/MyProjectsPage';
 import { loader as AllTicketsLoader } from '@/pages/dashboard/Tickets/TicketsPage';
+import { loader as AllPMProjectsLoader } from '@/pages/dashboard/PM/ProjectManagerPage';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -53,6 +54,7 @@ import { action as AddNewTaskCommentAction } from '@/pages/dashboard/Comments/Ad
 import { action as EditTaskCommentAction } from '@/pages/dashboard/Comments/EditComment';
 import { action as AddNewTicketCommentAction } from '@/pages/dashboard/Comments/AddCommentTicket';
 import { action as EditTicketCommentAction } from '@/pages/dashboard/Comments/EditCommentTicket';
+import { action as EditPMProjectAction } from '@/pages/dashboard/PM/EditProject';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -192,6 +194,13 @@ const router = createBrowserRouter([
         path: 'manager',
         element: <ProjectManagerPage />,
         errorElement: <ErrorElement />,
+        loader: AllPMProjectsLoader(queryClient),
+        children: [
+          {
+            path: 'edit-pm-project/:id',
+            action: EditPMProjectAction(queryClient),
+          },
+        ],
       },
       {
         path: 'manager-task',
