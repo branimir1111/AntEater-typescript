@@ -57,8 +57,6 @@ const ProjectManagerPage = () => {
   const isPageLoading = navigation.state === 'loading';
   const { data: PMData } = useQuery(allPMProjectsQuery(searchParams));
 
-  console.log(currentDevs);
-
   const { numOfPMProjects, numOfPages, currentPage, allPMProjects } = PMData;
   return (
     <>
@@ -72,7 +70,10 @@ const ProjectManagerPage = () => {
             </h2>
             <div className="m-auto w-52 h-[2px] bg-gray-500 mb-2 rounded-sm"></div>
             <PMProjectsFilter numOfPMProjects={numOfPMProjects} />
-            <PMProjectsContainer allPMProjects={allPMProjects} />
+            <PMProjectsContainer
+              allPMProjects={allPMProjects}
+              currentDevs={currentDevs}
+            />
             <ComplexPagination
               numOfPages={numOfPages}
               currentPage={currentPage}
