@@ -1,4 +1,4 @@
-import { type ProjectResponse } from '@/utils';
+import { type ProjectResponse, type ProjectUser } from '@/utils';
 
 import {
   Table,
@@ -18,9 +18,13 @@ import { EditPMProject, DeletePMProject } from '@/components';
 
 type PMProjectsContainerProps = {
   allPMProjects: ProjectResponse[];
+  currentDevs: ProjectUser[];
 };
 
-const PMProjectsContainer = ({ allPMProjects }: PMProjectsContainerProps) => {
+const PMProjectsContainer = ({
+  allPMProjects,
+  currentDevs,
+}: PMProjectsContainerProps) => {
   return (
     <div className="w-full mt-4">
       <Button
@@ -107,7 +111,7 @@ const PMProjectsContainer = ({ allPMProjects }: PMProjectsContainerProps) => {
                   </Badge>
                 </TableCell>
                 <TableCell className="flex items-center gap-3">
-                  <EditPMProject project={project} />
+                  <EditPMProject project={project} currentDevs={currentDevs} />
                   <DeletePMProject id={_id} />
                 </TableCell>
               </TableRow>

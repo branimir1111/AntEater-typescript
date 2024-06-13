@@ -1,4 +1,4 @@
-import { type ProjectResponse } from '@/utils';
+import { type ProjectResponse, type ProjectUser } from '@/utils';
 
 import { Form } from 'react-router-dom';
 import { projectStatus } from '@/utils';
@@ -22,14 +22,20 @@ import { FilePenLine } from 'lucide-react';
 import { FormInput, FormSelect } from '@/components';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { FormCheckboxDevelopers } from '@/components';
 
 type EditPMProjectProps = {
   project: ProjectResponse;
+  currentDevs: ProjectUser[];
 };
 
-const EditPMProject = ({ project }: EditPMProjectProps) => {
+const EditPMProject = ({ project, currentDevs }: EditPMProjectProps) => {
   const { _id, projectName, description, teamMembers, status } = project;
-  //   console.log(teamMembers);
+  const teamMembersIds = teamMembers.map((member) => {
+    const { _id } = member;
+    return _id;
+  });
 
   return (
     <Dialog>
@@ -75,13 +81,30 @@ const EditPMProject = ({ project }: EditPMProjectProps) => {
             placeholder="Type here..."
             defaultValue={description}
           />
-          {/* <FormSelect
-            name="taskType"
-            label="Task Type"
-            options={taskType}
-            layoutClass="mt-4"
-            defaultValue={filteredTask.taskType}
-          /> */}
+          <div className="w-full">
+            <Label>Developers</Label>
+            <ScrollArea className="w-full h-40 rounded-md border py-2 pr-16 mt-1">
+              {currentDevs.map((developer) => {
+                const { _id, firstName, lastName } = developer;
+                const name = 'teamMembers' + _id;
+
+                const defaultValue = teamMembersIds.includes(_id)
+                  ? 'on'
+                  : 'off';
+
+                return (
+                  <FormCheckboxDevelopers
+                    key={_id}
+                    name={name}
+                    _id={_id}
+                    firstName={firstName}
+                    lastName={lastName}
+                    defaultValue={defaultValue}
+                  />
+                );
+              })}
+            </ScrollArea>
+          </div>
           <FormSelect
             name="status"
             label="Status"

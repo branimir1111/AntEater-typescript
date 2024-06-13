@@ -7,7 +7,7 @@ type FormCheckboxProps = {
   lastName: string;
   name: string;
   label?: string;
-  defaultValue?: string;
+  defaultValue?: string | boolean;
 };
 
 const FormCheckboxDevelopers = ({
@@ -21,7 +21,6 @@ const FormCheckboxDevelopers = ({
   const devData = _id;
   const devName = firstName + ' ' + lastName;
   const defaultChecked = defaultValue === 'on' ? true : false;
-
   return (
     <div className="mb-2 flex gap-4 pl-2">
       <Checkbox
