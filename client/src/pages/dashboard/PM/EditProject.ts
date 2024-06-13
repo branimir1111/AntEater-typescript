@@ -23,6 +23,8 @@ export const action =
 
     data['teamMembers'] = newTeamMembers;
 
+    console.log(data);
+
     try {
       const response = await customFetch.patch(
         `/update-project/${params.id}`,
@@ -38,5 +40,5 @@ export const action =
       toast({ description: errorMsg });
     }
 
-    return redirect('/dashboard/manager');
+    return redirect(`/dashboard/manager`);
   };

@@ -341,3 +341,65 @@ export const userProjectAndTicketFromTicketComment = [
     $sort: { createdAt: -1 },
   },
 ];
+
+export const userAndTasksFromProject = [
+  {
+    $lookup: {
+      from: 'tasks',
+      localField: '_id',
+      foreignField: 'projectId',
+      as: 'tasks',
+    },
+  },
+  {
+    $unwind: {
+      path: '$tasks',
+      preserveNullAndEmptyArrays: true,
+    },
+  },
+  {
+    $lookup: {
+      from: 'users',
+      localField: 'tasks.assignedTo',
+      foreignField: '_id',
+      as: 'assignedUser',
+    },
+  },
+  {
+    $unwind: {
+      path: '$assignedUser',
+      preserveNullAndEmptyArrays: true,
+    },
+  },
+  {
+    $group: {
+      _id: '$_id',
+      projectName: { $first: '$projectName' },
+      description: { $first: '$description' },
+      createdBy: { $first: '$createdBy' },
+      projectManager: { $first: '$projectManager' },
+      teamMembers: { $first: '$teamMembers' },
+      status: { $first: '$status' },
+      tasks: {
+        $push: {
+          _id: '$tasks._id',
+          title: '$tasks.title',
+          description: '$tasks.description',
+          assignedTo: {
+            _id: '$assignedUser._id',
+            firstName: '$assignedUser.firstName',
+            lastName: '$assignedUser.lastName',
+            avatar: '$assignedUser.avatar',
+          },
+          taskType: '$tasks.taskType',
+          priority: '$tasks.priority',
+          status: '$tasks.status',
+          createdAt: '$tasks.createdAt',
+          updatedAt: '$tasks.updatedAt',
+        },
+      },
+      createdAt: { $first: '$createdAt' },
+      updatedAt: { $first: '$updatedAt' },
+    },
+  },
+];
