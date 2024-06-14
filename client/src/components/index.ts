@@ -54,3 +54,4 @@ export { default as EditCommentTicket } from './dashboardComponents/CommentsPage
 export { default as EditPMProject } from './dashboardComponents/PM/EditPMProject';
 export { default as DeletePMProject } from './dashboardComponents/PM/DeletePMProject';
 export { default as DeletePMTask } from './dashboardComponents/PM/DeletePMTask';
+export { default as EditPMTask } from './dashboardComponents/PM/EditPMTask';
