@@ -8,6 +8,7 @@ import { validateNewProject } from '../middleware/validationMiddleware.js';
 import { getAllPMProjects } from '../controllers/projectControllers/getAllPMProjects.js';
 import { updateProject } from '../controllers/projectControllers/updateProject.js';
 import { authorizePermissions } from '../middleware/authMiddleware.js';
+import { getAllPMProjectsList } from '../controllers/projectControllers/getAllPMProjectsList.js';
 
 const router = Router();
 
@@ -16,6 +17,9 @@ router.route('/all-projects-dev').get(getAllDevProjects);
 router
   .route('/all-projects-pm')
   .get(authorizePermissions('projectmanager', 'admin'), getAllPMProjects);
+router
+  .route('/all-projects-pm-list')
+  .get(authorizePermissions('projectmanager', 'admin'), getAllPMProjectsList);
 router.route('/create-project').post(validateNewProject, createProject);
 router.route('/single-project/:id').get(getSingleProject);
 router

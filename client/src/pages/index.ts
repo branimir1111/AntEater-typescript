@@ -21,6 +21,7 @@ export { default as PMProjectsFilter } from './dashboard/PM/PMProjectsFilter';
 export { default as PMProjectsContainer } from './dashboard/PM/PMProjectsContainer';
 export { default as PMTasksPage } from './dashboard/PMTasks/PMTasksPage';
 export { default as PMTasksContainer } from './dashboard/PMTasks/PMTasksContainer';
+export { default as PMAddNewTask } from './dashboard/PMTasks/PMAddNewTask';
 export { default as PMTicketsPage } from './dashboard/PMTickets/PMTicketsPage';
 export { default as AdminManageRolesPage } from './dashboard/AdminManageRoles/AdminManageRolesPage';
 export { default as AdminAssignTaskPage } from './dashboard/AdminAssignTask/AdminAssignTaskPage';

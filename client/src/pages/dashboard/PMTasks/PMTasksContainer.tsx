@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import PMAddNewTask from './PMAddNewTask';
+import { DeletePMTask } from '@/components';
 
 type ProjectResponse = {
   _id: string;
@@ -33,13 +35,12 @@ type PMTasksContainerProps = {
   allPMTasks: TaskResponse[];
 };
 const PMTasksContainer = ({ allPMTasks }: PMTasksContainerProps) => {
-  console.log(allPMTasks);
-
   return (
     <div className="w-full">
-      <Separator className="bg-[#0FB5BA]" />
+      <PMAddNewTask />
+      <Separator className="bg-[#0FB5BA] mt-2" />
       <Table>
-        <TableCaption>A list of PM Projects</TableCaption>
+        <TableCaption>A list of PM Tasks</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="text-[#0FB5BA] font-bold">Title</TableHead>
@@ -99,8 +100,8 @@ const PMTasksContainer = ({ allPMTasks }: PMTasksContainerProps) => {
                   </Badge>
                 </TableCell>
                 <TableCell className="flex items-center gap-3">
-                  {/* <EditPMProject project={project} currentDevs={currentDevs} />
-                <DeletePMProject id={_id} /> */}
+                  {/* <EditPMProject project={project} currentDevs={currentDevs} /> */}
+                  <DeletePMTask id={_id} />
                 </TableCell>
               </TableRow>
             );
