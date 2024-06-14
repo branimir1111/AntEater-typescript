@@ -57,6 +57,7 @@ import { action as AddNewTicketCommentAction } from '@/pages/dashboard/Comments/
 import { action as EditTicketCommentAction } from '@/pages/dashboard/Comments/EditCommentTicket';
 import { action as EditPMProjectAction } from '@/pages/dashboard/PM/EditProject';
 import { action as AddNewPMTaskAction } from '@/pages/dashboard/PMTasks/AddPMTask';
+import { action as EditPMTaskAction } from '@/pages/dashboard/PMTasks/EditPMTask';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -202,10 +203,6 @@ const router = createBrowserRouter([
             path: 'edit-pm-project/:id',
             action: EditPMProjectAction(queryClient),
           },
-          {
-            path: 'add-pm-task',
-            action: AddNewPMTaskAction(queryClient),
-          },
         ],
       },
       {
@@ -213,6 +210,16 @@ const router = createBrowserRouter([
         element: <PMTasksPage />,
         errorElement: <ErrorElement />,
         loader: AllPMTasksLoader(queryClient),
+        children: [
+          {
+            path: 'add-pm-task',
+            action: AddNewPMTaskAction(queryClient),
+          },
+          {
+            path: 'edit-pm-task/:id',
+            action: EditPMTaskAction(queryClient),
+          },
+        ],
       },
       {
         path: 'manager-ticket',

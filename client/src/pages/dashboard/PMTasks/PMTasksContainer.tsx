@@ -1,4 +1,4 @@
-import { type ProjectUser } from '@/utils';
+import { type ProjectUser, customFetch } from '@/utils';
 import {
   Table,
   TableHeader,
@@ -11,7 +11,13 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import PMAddNewTask from './PMAddNewTask';
-import { DeletePMTask } from '@/components';
+import {
+  DeletePMTask,
+  EditPMTask,
+  GlobalLoader,
+  ErrorElement,
+} from '@/components';
+import { useQuery } from '@tanstack/react-query';
 
 type ProjectResponse = {
   _id: string;
@@ -34,11 +40,32 @@ export type TaskResponse = {
 type PMTasksContainerProps = {
   allPMTasks: TaskResponse[];
 };
+
+const allProjectsQuery = () => {
+  return {
+    queryKey: ['all-pm-projects-list'],
+    queryFn: async () => {
+      const { data } = await customFetch.get('/all-projects-pm-list');
+      return data;
+    },
+  };
+};
+
 const PMTasksContainer = ({ allPMTasks }: PMTasksContainerProps) => {
+  const { data, isPending, isError } = useQuery(allProjectsQuery());
+  if (isPending) {
+    return <GlobalLoader />;
+  }
+  if (isError) {
+    return <ErrorElement />;
+  }
+
+  const { allPMProjects } = data;
+
   return (
     <div className="w-full">
-      <PMAddNewTask />
-      <Separator className="bg-[#0FB5BA] mt-2" />
+      <PMAddNewTask allPMProjects={allPMProjects} />
+      <Separator className="bg-[#0FB5BA] mt-8" />
       <Table>
         <TableCaption>A list of PM Tasks</TableCaption>
         <TableHeader>
@@ -101,6 +128,7 @@ const PMTasksContainer = ({ allPMTasks }: PMTasksContainerProps) => {
                 </TableCell>
                 <TableCell className="flex items-center gap-3">
                   {/* <EditPMProject project={project} currentDevs={currentDevs} /> */}
+                  <EditPMTask allPMProjects={allPMProjects} task={task} />
                   <DeletePMTask id={_id} />
                 </TableCell>
               </TableRow>

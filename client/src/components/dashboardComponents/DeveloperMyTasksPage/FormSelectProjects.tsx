@@ -22,6 +22,7 @@ const FormSelectProjects = ({
   label,
   options,
   layoutClass,
+  defaultValue,
 }: SelectInputProps) => {
   const firstPms = options[0]._id;
 
@@ -30,7 +31,7 @@ const FormSelectProjects = ({
       <Label htmlFor={name} className="capitalize">
         {label || name}
       </Label>
-      <Select defaultValue={firstPms} name={name}>
+      <Select defaultValue={defaultValue ? defaultValue : firstPms} name={name}>
         <SelectTrigger id={name} className="bg-input mt-1">
           <SelectValue placeholder={'Pick one...'} />
         </SelectTrigger>
