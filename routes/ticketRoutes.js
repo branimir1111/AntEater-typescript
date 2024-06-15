@@ -5,10 +5,12 @@ import { getAllDevTickets } from '../controllers/ticketControllers/getAllDevTick
 import { createTicket } from '../controllers/ticketControllers/createTicket.js';
 import { updateTicket } from '../controllers/ticketControllers/updateTicket.js';
 import { deleteTicket } from '../controllers/ticketControllers/deleteTicket.js';
+import { getAllPMTickets } from '../controllers/ticketControllers/getAllPMTickets.js';
 import { validateNewTicket } from '../middleware/validationMiddleware.js';
 
 router.route('/all-tickets').get(getAllTickets);
 router.route('/all-dev-tickets').get(getAllDevTickets);
+router.route('/all-pm-tickets').get(getAllPMTickets);
 router.route('/create-ticket').post(validateNewTicket, createTicket);
 router.route('/update-ticket/:id').patch(updateTicket);
 router.route('/delete-ticket/:id').delete(deleteTicket);
