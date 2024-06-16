@@ -3,6 +3,7 @@ import {
   type ProjectUser,
   taskType,
   taskPriority,
+  taskStatus,
 } from '@/utils';
 
 import { Form, useLoaderData } from 'react-router-dom';
@@ -67,6 +68,7 @@ const EditPMTask = ({ allPMProjects, task }: EditPMTaskProps) => {
     project,
     taskType: typeTask,
     priority,
+    status,
   } = task;
 
   return (
@@ -143,6 +145,12 @@ const EditPMTask = ({ allPMProjects, task }: EditPMTaskProps) => {
             label="Priority"
             options={taskPriority}
             defaultValue={priority}
+          />
+          <FormSelect
+            name="status"
+            label="Status"
+            options={taskStatus}
+            defaultValue={status}
           />
           <DialogFooter className="mt-4">
             <SubmitBtn text="Save"></SubmitBtn>
