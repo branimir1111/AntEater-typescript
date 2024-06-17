@@ -42,6 +42,7 @@ import { loader as MyProjectsDevLoader } from '@/pages/dashboard/DeveloperMyProj
 import { loader as AllTicketsLoader } from '@/pages/dashboard/Tickets/TicketsPage';
 import { loader as AllPMProjectsLoader } from '@/pages/dashboard/PM/ProjectManagerPage';
 import { loader as AllPMTasksLoader } from '@/pages/dashboard/PMTasks/PMTasksPage';
+import { loader as AllPMTicketsLoader } from '@/pages/dashboard/PMTickets/PMTicketsPage';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -225,6 +226,7 @@ const router = createBrowserRouter([
         path: 'manager-ticket',
         element: <PMTicketsPage />,
         errorElement: <ErrorElement />,
+        loader: AllPMTicketsLoader(queryClient),
       },
       {
         path: 'admin',
