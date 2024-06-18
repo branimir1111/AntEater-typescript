@@ -1,7 +1,7 @@
 import { customFetch, type ProjectUser } from '@/utils';
 import { useQuery, QueryClient } from '@tanstack/react-query';
 import { GlobalLoader, ErrorElement } from '@/components';
-import { LoaderFunction, useLoaderData } from 'react-router-dom';
+import { LoaderFunction, useLoaderData, useNavigation } from 'react-router-dom';
 import PMTasksContainer from './PMTasksContainer';
 import { ComplexPagination } from '@/components';
 
@@ -51,6 +51,8 @@ type SearchParamsProps = {
 
 const PMTasksPage = () => {
   const { searchParams } = useLoaderData() as SearchParamsProps;
+  const navigation = useNavigation();
+  const isPageLoading = navigation.state === 'loading';
   const { data, isPending, isError } = useQuery(allPMTasksQuery(searchParams));
 
   if (isPending) {
@@ -63,20 +65,29 @@ const PMTasksPage = () => {
   const { numOfPMTasks, numOfPages, currentPage, allPMTasks } = data;
 
   return (
-    <section className="w-full outlet-hight p-8 bg-background-first">
-      <div className="w-full">
-        <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
-          Your tasks
-        </h2>
-        <div className="m-auto w-52 h-[2px] bg-gray-500 mb-2 rounded-sm"></div>
-        <h1 className="mb-2">
-          {numOfPMTasks}{' '}
-          <span className="text-muted-foreground">tasks founded</span>{' '}
-        </h1>
-        <PMTasksContainer allPMTasks={allPMTasks} />
-        <ComplexPagination numOfPages={numOfPages} currentPage={currentPage} />
-      </div>
-    </section>
+    <>
+      {isPageLoading ? (
+        <GlobalLoader />
+      ) : (
+        <section className="w-full outlet-hight p-8 bg-background-first">
+          <div className="w-full">
+            <h2 className="text-2xl md:text-3xl font-medium tracking-wider capitalize text-center mb-2">
+              Your tasks
+            </h2>
+            <div className="m-auto w-52 h-[2px] bg-gray-500 mb-2 rounded-sm"></div>
+            <h1 className="mb-2">
+              {numOfPMTasks}{' '}
+              <span className="text-muted-foreground">tasks founded</span>{' '}
+            </h1>
+            <PMTasksContainer allPMTasks={allPMTasks} />
+            <ComplexPagination
+              numOfPages={numOfPages}
+              currentPage={currentPage}
+            />
+          </div>
+        </section>
+      )}
+    </>
   );
 };
 export default PMTasksPage;

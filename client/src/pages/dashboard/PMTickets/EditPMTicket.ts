@@ -11,7 +11,7 @@ export const action =
     const data = Object.fromEntries(formData);
     try {
       const response = await customFetch.patch(
-        `/update-task/${params.id}`,
+        `/update-ticket/${params.id}`,
         data
       );
       queryClient.invalidateQueries();
@@ -20,8 +20,8 @@ export const action =
       const errorMsg =
         error instanceof AxiosError
           ? error.response?.data.msg
-          : 'Edit Task Failed';
+          : 'Edit Ticket Failed';
       toast({ description: errorMsg });
     }
-    return redirect('/dashboard/manager-task');
+    return redirect('/dashboard/manager-ticket');
   };

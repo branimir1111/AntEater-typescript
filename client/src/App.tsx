@@ -59,6 +59,8 @@ import { action as EditTicketCommentAction } from '@/pages/dashboard/Comments/Ed
 import { action as EditPMProjectAction } from '@/pages/dashboard/PM/EditProject';
 import { action as AddNewPMTaskAction } from '@/pages/dashboard/PMTasks/AddPMTask';
 import { action as EditPMTaskAction } from '@/pages/dashboard/PMTasks/EditPMTask';
+import { action as AddNewPMTicketAction } from '@/pages/dashboard/PMTickets/AddPMTicket';
+import { action as EditPMTicketAction } from '@/pages/dashboard/PMTickets/EditPMTicket';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -227,6 +229,16 @@ const router = createBrowserRouter([
         element: <PMTicketsPage />,
         errorElement: <ErrorElement />,
         loader: AllPMTicketsLoader(queryClient),
+        children: [
+          {
+            path: 'add-pm-ticket',
+            action: AddNewPMTicketAction(queryClient),
+          },
+          {
+            path: 'edit-pm-ticket/:id',
+            action: EditPMTicketAction(queryClient),
+          },
+        ],
       },
       {
         path: 'admin',

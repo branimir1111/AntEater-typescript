@@ -6,22 +6,20 @@ import { QueryClient } from '@tanstack/react-query';
 
 export const action =
   (queryClient: QueryClient): ActionFunction =>
-  async ({ request, params }) => {
+  async ({ request }) => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
+
     try {
-      const response = await customFetch.patch(
-        `/update-task/${params.id}`,
-        data
-      );
+      const response = await customFetch.post('/create-ticket', data);
       queryClient.invalidateQueries();
       toast({ description: response.data.msg });
     } catch (error) {
       const errorMsg =
         error instanceof AxiosError
           ? error.response?.data.msg
-          : 'Edit Task Failed';
+          : 'Create Task Failed';
       toast({ description: errorMsg });
     }
-    return redirect('/dashboard/manager-task');
+    return redirect('/dashboard/manager-ticket');
   };

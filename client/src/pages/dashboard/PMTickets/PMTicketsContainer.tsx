@@ -10,10 +10,10 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import PMAddNewTask from './PMAddNewTask';
+import PMAddNewTicket from './PMAddNewTicket';
 import {
-  DeletePMTask,
-  EditPMTask,
+  DeletePMTicket,
+  EditPMTicket,
   GlobalLoader,
   ErrorElement,
 } from '@/components';
@@ -24,21 +24,21 @@ type ProjectResponse = {
   projectName: string;
 };
 
-export type TaskResponse = {
+export type TicketResponse = {
   readonly _id: string;
   title: string;
   description: string;
   assignedTo: ProjectUser;
   project: ProjectResponse;
-  taskType: string;
+  ticketType: string;
   priority: string;
   status: string;
   createdAt?: string;
   updatedAt?: string;
 };
 
-type PMTasksContainerProps = {
-  allPMTasks: TaskResponse[];
+type PMTicketsContainerProps = {
+  allPMTickets: TicketResponse[];
 };
 
 const allProjectsQuery = () => {
@@ -51,7 +51,7 @@ const allProjectsQuery = () => {
   };
 };
 
-const PMTasksContainer = ({ allPMTasks }: PMTasksContainerProps) => {
+const PMTicketsContainer = ({ allPMTickets }: PMTicketsContainerProps) => {
   const { data, isPending, isError } = useQuery(allProjectsQuery());
   if (isPending) {
     return <GlobalLoader />;
@@ -61,13 +61,12 @@ const PMTasksContainer = ({ allPMTasks }: PMTasksContainerProps) => {
   }
 
   const { allPMProjects } = data;
-
   return (
     <div className="w-full">
-      <PMAddNewTask allPMProjects={allPMProjects} />
+      <PMAddNewTicket allPMProjects={allPMProjects} />
       <Separator className="bg-[#0FB5BA] mt-8" />
       <Table>
-        <TableCaption>A list of PM Tasks</TableCaption>
+        <TableCaption>A list of PM Tickets</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="text-[#0FB5BA] font-bold">Title</TableHead>
@@ -84,31 +83,22 @@ const PMTasksContainer = ({ allPMTasks }: PMTasksContainerProps) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {allPMTasks.map((task) => {
-            const { _id, title, project, taskType, status } = task;
-            let textColor = '';
-            let bgColor = '';
+          {allPMTickets.map((ticket) => {
+            const { _id, title, project, ticketType, status } = ticket;
 
-            switch (status) {
-              case 'new':
-                textColor = 'text-indigo-500';
-                bgColor = 'bg-indigo-500';
+            let secondTextColor = '';
+            switch (ticketType) {
+              case 'feature':
+                secondTextColor = 'text-indigo-700';
                 break;
-              case 'in progress':
-                textColor = 'text-[#1CD4D4]';
-                bgColor = 'bg-[#1CD4D4]';
+              case 'improvement':
+                secondTextColor = 'text-[#099AA4]';
                 break;
-              case 'under review':
-                textColor = 'text-[#F0B429]';
-                bgColor = 'bg-[#F0B429]';
+              case 'security':
+                secondTextColor = 'text-[#DE911D]';
                 break;
-              case 'refactor':
-                textColor = 'text-[#EF4E4E]';
-                bgColor = 'bg-[#EF4E4E]';
-                break;
-              case 'completed':
-                textColor = 'text-[#51CA58]';
-                bgColor = 'bg-[#51CA58]';
+              case 'bug':
+                secondTextColor = 'text-[#AB091E]';
                 break;
             }
             return (
@@ -117,18 +107,15 @@ const PMTasksContainer = ({ allPMTasks }: PMTasksContainerProps) => {
                 <TableCell className="max-break5:hidden">
                   {project.projectName}
                 </TableCell>
-                <TableCell className="max-break8:hidden">{taskType}</TableCell>
+                <TableCell className={`max-break8:hidden ${secondTextColor}`}>
+                  {ticketType}
+                </TableCell>
                 <TableCell className="max-break14:hidden">
-                  <Badge
-                    variant="outline"
-                    className={`${bgColor} bg-opacity-10 ${textColor}`}
-                  >
-                    {status}
-                  </Badge>
+                  <Badge variant="outline">{status}</Badge>
                 </TableCell>
                 <TableCell className="flex items-center gap-3">
-                  <EditPMTask allPMProjects={allPMProjects} task={task} />
-                  <DeletePMTask id={_id} />
+                  <EditPMTicket allPMProjects={allPMProjects} ticket={ticket} />
+                  <DeletePMTicket id={_id} />
                 </TableCell>
               </TableRow>
             );
@@ -139,4 +126,4 @@ const PMTasksContainer = ({ allPMTasks }: PMTasksContainerProps) => {
     </div>
   );
 };
-export default PMTasksContainer;
+export default PMTicketsContainer;
