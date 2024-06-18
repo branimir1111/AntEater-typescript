@@ -23,6 +23,8 @@ export { default as PMTasksPage } from './dashboard/PMTasks/PMTasksPage';
 export { default as PMTasksContainer } from './dashboard/PMTasks/PMTasksContainer';
 export { default as PMAddNewTask } from './dashboard/PMTasks/PMAddNewTask';
 export { default as PMTicketsPage } from './dashboard/PMTickets/PMTicketsPage';
+export { default as PMTicketsContainer } from './dashboard/PMTickets/PMTicketsContainer';
+export { default as PMAddNewTicket } from './dashboard/PMTickets/PMAddNewTicket';
 export { default as AdminManageRolesPage } from './dashboard/AdminManageRoles/AdminManageRolesPage';
 export { default as AdminAssignTaskPage } from './dashboard/AdminAssignTask/AdminAssignTaskPage';
 export { default as AdminAssignTicketPage } from './dashboard/AdminAssignTicket/AdminAssignTicketPage';
