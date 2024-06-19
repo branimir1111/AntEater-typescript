@@ -2,8 +2,8 @@ import mongoose, { Schema } from 'mongoose';
 
 const MessageModel = new Schema(
   {
-    sendBy: { type: mongoose.Types.ObjectId },
-    userId: { type: mongoose.Types.ObjectId, ref: 'User' },
+    senderId: { type: mongoose.Types.ObjectId, ref: 'User' },
+    receiverId: { type: mongoose.Types.ObjectId, ref: 'User' },
     text: String,
   },
   {

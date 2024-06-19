@@ -7,7 +7,7 @@ export { default as StatisticsPage } from './dashboard/Statistics/StatisticsPage
 export { default as ProjectsPage } from './dashboard/Projects/ProjectsPage';
 export { default as TasksAndActivitiesPage } from './dashboard/TasksAndActivitiesPage/TasksAndActivitiesPage';
 export { default as TicketsPage } from './dashboard/Tickets/TicketsPage';
-export { default as BugCategorizationPage } from './dashboard/BugCategorization/BugCategorizationPage';
+export { default as MessagesPage } from './dashboard/Messages/MessagesPage';
 export { default as AdminPage } from './dashboard/Admin/AdminPage';
 export { default as ProfilePage } from './dashboard/Profile/ProfilePage';
 export { default as AllProjectPage } from './dashboard/Projects/pages/AllProjectsPage';
