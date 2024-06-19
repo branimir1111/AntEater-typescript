@@ -2,7 +2,7 @@ import {
   ScatterChart,
   SquareKanban,
   ListChecks,
-  Bug,
+  MessageCircleMore,
   TicketCheck,
   UserRoundCog,
   Shield,
@@ -65,9 +65,9 @@ export const mainLinksDeveloper: MainLink[] = [
   },
   {
     id: 9,
-    text: 'Bugs categorization',
-    path: 'bugs',
-    icon: <Bug />,
+    text: 'Messages',
+    path: 'messages',
+    icon: <MessageCircleMore />,
   },
   {
     id: 10,
@@ -110,9 +110,9 @@ export const mainLinksPM: MainLink[] = [
   },
   {
     id: 6,
-    text: 'Bugs categorization',
-    path: 'bugs',
-    icon: <Bug />,
+    text: 'Messages',
+    path: 'messages',
+    icon: <MessageCircleMore />,
   },
   {
     id: 7,
@@ -167,9 +167,9 @@ export const mainLinksAdmin: MainLink[] = [
   },
   {
     id: 5,
-    text: 'Bugs categorization',
-    path: 'bugs',
-    icon: <Bug />,
+    text: 'Messages',
+    path: 'messages',
+    icon: <MessageCircleMore />,
   },
   {
     id: 6,

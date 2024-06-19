@@ -13,7 +13,7 @@ import {
   ProjectsPage,
   TasksAndActivitiesPage,
   TicketsPage,
-  BugCategorizationPage,
+  MessagesPage,
   ProjectManagerPage,
   AdminPage,
   ProfilePage,
@@ -192,8 +192,8 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'bugs',
-        element: <BugCategorizationPage />,
+        path: 'messages',
+        element: <MessagesPage />,
         errorElement: <ErrorElement />,
       },
       {
