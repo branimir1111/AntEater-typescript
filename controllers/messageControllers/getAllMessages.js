@@ -1,16 +1,12 @@
 import { StatusCodes } from 'http-status-codes';
 import UserModel from '../../models/userModel.js';
-// import MessageModel from '../../models/messageModel.js';
 import mongoose from 'mongoose';
 
 const getAllMessages = async (req, res) => {
   const userId = new mongoose.Types.ObjectId(req.user.userId);
 
   const allUsersMessages = await UserModel.aggregate([
-    // Prvi korak: Pronađi sve korisnike
-    { $match: {} },
-
-    // Drugi korak: Pronađi poruke koje su poslali meni ili koje sam ja poslao njima
+    { $match: { _id: { $ne: userId }, role: { $ne: 'admin' } } },
     {
       $lookup: {
         from: 'messages',
@@ -36,32 +32,64 @@ const getAllMessages = async (req, res) => {
               },
             },
           },
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'senderId',
+              foreignField: '_id',
+              as: 'senderDetails',
+            },
+          },
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'receiverId',
+              foreignField: '_id',
+              as: 'receiverDetails',
+            },
+          },
+          {
+            $unwind: {
+              path: '$senderDetails',
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $unwind: {
+              path: '$receiverDetails',
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $project: {
+              _id: 1,
+              senderId: 1,
+              receiverId: 1,
+              text: 1,
+              createdAt: 1,
+              updatedAt: 1,
+              senderDetails: {
+                _id: 1,
+                firstName: 1,
+                lastName: 1,
+                email: 1,
+                role: 1,
+                avatar: 1,
+              },
+              receiverDetails: {
+                _id: 1,
+                firstName: 1,
+                lastName: 1,
+                email: 1,
+                role: 1,
+                avatar: 1,
+              },
+            },
+          },
         ],
         as: 'messages',
       },
     },
-
-    // Treći korak: Pronađi informacije o korisnicima koji su poslali poruke meni
-    {
-      $lookup: {
-        from: 'users',
-        localField: 'messages.senderId',
-        foreignField: '_id',
-        as: 'senders',
-      },
-    },
-
-    // Četvrti korak: Pronađi informacije o korisnicima kojima sam ja poslao poruke
-    {
-      $lookup: {
-        from: 'users',
-        localField: 'messages.receiverId',
-        foreignField: '_id',
-        as: 'receivers',
-      },
-    },
-
-    // Peti korak: Formatiraj rezultat kako bi bio pregledniji
     {
       $project: {
         _id: 1,
@@ -71,26 +99,10 @@ const getAllMessages = async (req, res) => {
         role: 1,
         avatar: 1,
         messages: 1,
-        senders: {
-          _id: 1,
-          firstName: 1,
-          lastName: 1,
-          email: 1,
-          role: 1,
-          avatar: 1,
-        },
-        receivers: {
-          _id: 1,
-          firstName: 1,
-          lastName: 1,
-          email: 1,
-          role: 1,
-          avatar: 1,
-        },
       },
     },
   ]);
-  res.status(StatusCodes.OK).json({ allUsersMessages });
+  res.status(StatusCodes.OK).json({ numOfUsers: allUsersMessages });
 };
 
 export { getAllMessages };
