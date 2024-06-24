@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 const getAllMessages = async (req, res) => {
   const userId = new mongoose.Types.ObjectId(req.user.userId);
 
-  const allUsersMessages = await UserModel.aggregate([
+  const allUserMessages = await UserModel.aggregate([
     { $match: { _id: { $ne: userId }, role: { $ne: 'admin' } } },
     {
       $lookup: {
@@ -102,7 +102,7 @@ const getAllMessages = async (req, res) => {
       },
     },
   ]);
-  res.status(StatusCodes.OK).json({ numOfUsers: allUsersMessages });
+  res.status(StatusCodes.OK).json({ allUserMessages });
 };
 
 export { getAllMessages };
