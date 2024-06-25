@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import { customFetch } from '@/utils';
+import { customFetch, type UserMessagesProps } from '@/utils';
 import { GlobalLoader, ErrorElement } from '@/components';
 import { useState } from 'react';
 import { UserList, UserMessages } from '@/components';
 
 const MessagesPage = () => {
   const [activeUserId, setActiveUserId] = useState('');
+  console.log(activeUserId);
 
   const { data, isPending, isError } = useQuery({
     queryKey: ['all-user-messages'],
@@ -25,14 +26,23 @@ const MessagesPage = () => {
 
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
-      <div className="w-full grid break12:grid-cols-2 gap-2">
+      <div className="w-full break12:flex gap-2">
         {/* Users */}
-        <div className="w-full bg-background rounded-sm border">
-          {allUserMessages.map((userMessages) => {
-            const { _id } = userMessages;
+        <div className="bg-background rounded-sm border p-2">
+          {allUserMessages.map((userMessages: UserMessagesProps) => {
+            const { _id, firstName, lastName, email, role, avatar } =
+              userMessages;
             return (
-              <div key={_id}>
-                <UserList />
+              <div key={_id} className="break12:w-72">
+                <UserList
+                  _id={_id}
+                  firstName={firstName}
+                  lastName={lastName}
+                  email={email}
+                  role={role}
+                  avatar={avatar}
+                  setActiveUserId={setActiveUserId}
+                />
                 <div className="break12:hidden">
                   <UserMessages />
                 </div>
