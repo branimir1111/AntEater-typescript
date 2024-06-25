@@ -154,3 +154,38 @@ export type ProjectForTicketComment = {
   status: string;
   tickets: TicketForComment[];
 };
+export type SenderDetailsMessage = {
+  readonly _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  avatar?: string;
+};
+export type ReceiverDetailsMessage = {
+  readonly _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  avatar?: string;
+};
+export type ReceiveMessages = {
+  readonly _id: string;
+  senderId: string;
+  receiverId: string;
+  text: string;
+  createdAt: string;
+  updatedAt: string;
+  senderDetails: SenderDetailsMessage;
+  receiverDetails: ReceiverDetailsMessage;
+};
+export type UserMessagesProps = {
+  readonly _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  avatar?: string;
+  messages?: ReceiveMessages;
+};
