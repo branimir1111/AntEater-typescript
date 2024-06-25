@@ -3,6 +3,7 @@ import { CircleUserRound } from 'lucide-react';
 
 type UserListProps = {
   _id: string;
+  isActive: boolean;
   firstName: string;
   lastName: string;
   email: string;
@@ -13,6 +14,7 @@ type UserListProps = {
 
 const UserList = ({
   _id,
+  isActive,
   firstName,
   lastName,
   email,
@@ -22,7 +24,9 @@ const UserList = ({
 }: UserListProps) => {
   return (
     <article
-      className="flex gap-2 p-1 cursor-pointer rounded-sm hover:bg-background-first"
+      className={`flex gap-2 p-1 cursor-pointer rounded-sm hover:bg-background-first ${
+        isActive ? 'bg-background-second' : ''
+      }`}
       onClick={() => setActiveUserId(_id)}
     >
       <Avatar className="w-10 h-10">

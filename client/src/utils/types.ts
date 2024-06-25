@@ -187,5 +187,5 @@ export type UserMessagesProps = {
   email: string;
   role: string;
   avatar?: string;
-  messages?: ReceiveMessages;
+  messages?: ReceiveMessages[];
 };

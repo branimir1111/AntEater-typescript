@@ -24,18 +24,30 @@ const MessagesPage = () => {
 
   const { allUserMessages } = data;
 
+  let selectedUser;
+
+  if (activeUserId) {
+    selectedUser = allUserMessages.find((user: UserMessagesProps) => {
+      return user._id === activeUserId;
+    });
+  } else {
+    selectedUser = allUserMessages[0];
+  }
+
   return (
     <section className="w-full outlet-hight p-8 bg-background-first">
       <div className="w-full break12:flex gap-2">
         {/* Users */}
-        <div className="bg-background rounded-sm border p-2">
+        <div className="bg-background rounded-sm border p-2 grid gap-1">
           {allUserMessages.map((userMessages: UserMessagesProps) => {
             const { _id, firstName, lastName, email, role, avatar } =
               userMessages;
+            const isActive = selectedUser._id === _id;
             return (
               <div key={_id} className="break12:w-72">
                 <UserList
                   _id={_id}
+                  isActive={isActive}
                   firstName={firstName}
                   lastName={lastName}
                   email={email}
@@ -44,7 +56,9 @@ const MessagesPage = () => {
                   setActiveUserId={setActiveUserId}
                 />
                 <div className="break12:hidden">
-                  <UserMessages />
+                  {isActive ? (
+                    <UserMessages selectedUser={selectedUser} />
+                  ) : null}
                 </div>
               </div>
             );
@@ -52,7 +66,7 @@ const MessagesPage = () => {
         </div>
         {/* Messages */}
         <div className="w-full max-break12:hidden">
-          <UserMessages />
+          <UserMessages selectedUser={selectedUser} />
         </div>
       </div>
     </section>
