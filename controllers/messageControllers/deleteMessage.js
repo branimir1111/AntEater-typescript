@@ -1,7 +1,10 @@
 import { StatusCodes } from 'http-status-codes';
+import MessageModel from '../../models/messageModel.js';
 
 const deleteMessage = async (req, res) => {
-  res.status(StatusCodes.OK).json({ msg: 'This is deleteMessage controller' });
+  const { id: messageId } = req.params;
+  await MessageModel.findByIdAndDelete({ _id: messageId });
+  res.status(StatusCodes.OK).json({ msg: 'Message deleted successfully' });
 };
 
 export { deleteMessage };

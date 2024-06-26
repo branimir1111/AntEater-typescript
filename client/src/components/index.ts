@@ -59,3 +59,6 @@ export { default as DeletePMTicket } from './dashboardComponents/PM/DeletePMTick
 export { default as EditPMTicket } from './dashboardComponents/PM/EditPMTicket';
 export { default as UserList } from './dashboardComponents/MessagesPage/UserList';
 export { default as UserMessages } from './dashboardComponents/MessagesPage/UserMessages';
+export { default as AddNewMessage } from './dashboardComponents/MessagesPage/AddNewMessage';
+export { default as DeleteMessage } from './dashboardComponents/MessagesPage/DeleteMessage';
+export { default as EditMessage } from './dashboardComponents/MessagesPage/EditMessage';

@@ -61,6 +61,8 @@ import { action as AddNewPMTaskAction } from '@/pages/dashboard/PMTasks/AddPMTas
 import { action as EditPMTaskAction } from '@/pages/dashboard/PMTasks/EditPMTask';
 import { action as AddNewPMTicketAction } from '@/pages/dashboard/PMTickets/AddPMTicket';
 import { action as EditPMTicketAction } from '@/pages/dashboard/PMTickets/EditPMTicket';
+import { action as AddNewMessageAction } from '@/components/dashboardComponents/MessagesPage/AddNewMessage';
+import { action as EditMessageAction } from '@/pages/dashboard/Messages/EditMessage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -195,6 +197,13 @@ const router = createBrowserRouter([
         path: 'messages',
         element: <MessagesPage />,
         errorElement: <ErrorElement />,
+        action: AddNewMessageAction(queryClient),
+        children: [
+          {
+            path: 'edit-message/:id',
+            action: EditMessageAction(queryClient),
+          },
+        ],
       },
       {
         path: 'manager',
