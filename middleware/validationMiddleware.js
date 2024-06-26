@@ -140,3 +140,8 @@ export const validateNewTicketComment = validationWithErrors([
   body('projectId').notEmpty().withMessage('Project ID is required'),
   body('text').notEmpty().withMessage("You can't send empty comment"),
 ]);
+export const validateNewMessage = validationWithErrors([
+  body('senderId').notEmpty().withMessage('Missing message sender'),
+  body('receiverId').notEmpty().withMessage('Missing message receiver'),
+  body('text').notEmpty().withMessage("You can't send empty message"),
+]);
