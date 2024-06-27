@@ -15,7 +15,6 @@ import {
   TicketsPage,
   MessagesPage,
   ProjectManagerPage,
-  AdminPage,
   ProfilePage,
   AllProjectPage,
   AddNewProjectForm,
@@ -25,11 +24,13 @@ import {
   MyTicketsPage,
   PMTasksPage,
   PMTicketsPage,
-  AdminManageRolesPage,
-  AdminAssignTaskPage,
-  AdminAssignTicketPage,
-  AdminMemberProfilesPage,
   CommentsPageLayout,
+  AdminProjects,
+  AdminTasks,
+  AdminTickets,
+  AdminComments,
+  AdminMessages,
+  AdminUsers,
 } from './pages';
 import { ErrorElement } from './components';
 
@@ -251,27 +252,32 @@ const router = createBrowserRouter([
       },
       {
         path: 'admin',
-        element: <AdminPage />,
+        element: <AdminProjects />,
         errorElement: <ErrorElement />,
       },
       {
-        path: 'admin-manage-roles',
-        element: <AdminManageRolesPage />,
+        path: 'admin-tasks',
+        element: <AdminTasks />,
         errorElement: <ErrorElement />,
       },
       {
-        path: 'admin-assign-task',
-        element: <AdminAssignTaskPage />,
+        path: 'admin-tickets',
+        element: <AdminTickets />,
         errorElement: <ErrorElement />,
       },
       {
-        path: 'admin-assign-ticket',
-        element: <AdminAssignTicketPage />,
+        path: 'admin-comments',
+        element: <AdminComments />,
         errorElement: <ErrorElement />,
       },
       {
-        path: 'admin-member-profiles',
-        element: <AdminMemberProfilesPage />,
+        path: 'admin-messages',
+        element: <AdminMessages />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: 'admin-users',
+        element: <AdminUsers />,
         errorElement: <ErrorElement />,
       },
       {
