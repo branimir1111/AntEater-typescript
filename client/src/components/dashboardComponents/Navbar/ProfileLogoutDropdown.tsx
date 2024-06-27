@@ -14,8 +14,11 @@ import { toast } from '../../ui/use-toast';
 import { logoutUser } from '@/features/user/userSlice';
 import { unsetTheme } from '@/features/theme/themeSlice';
 import { User, LogOut, CircleUserRound, ArrowDownUp } from 'lucide-react';
+import { useQueryClient } from '@tanstack/react-query';
 
 const ProfileLogoutDropdown = () => {
+  const queryClient = useQueryClient();
+
   const user = useAppSelector((state) => state.userState.user);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -25,6 +28,7 @@ const ProfileLogoutDropdown = () => {
       await customFetch.get('/logout');
       dispatch(logoutUser());
       dispatch(unsetTheme());
+      queryClient.clear();
       toast({ description: 'Successfully logged out' });
       navigate('/');
     } catch (error) {
