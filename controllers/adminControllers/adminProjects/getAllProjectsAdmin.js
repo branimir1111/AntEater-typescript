@@ -27,7 +27,7 @@ const getAllProjectsAdmin = async (req, res) => {
   };
   const sortKey = sortOptions[sort] || sortOptions.newest;
 
-  const limit = Number(itemsPerPage) || 3;
+  const limit = Number(itemsPerPage) || 5;
   const page = Number(currPage) || 1;
   const skip = (page - 1) * limit;
 
