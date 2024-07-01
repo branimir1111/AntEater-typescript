@@ -17,8 +17,8 @@ const getAllMessagesAdmin = async (req, res) => {
 
   const allAdminMessages = await MessageModel.aggregate([
     { $match: {} },
-    { $sort: sortKey },
     ...allAdminMessagesAggregation,
+    { $sort: sortKey },
     { $skip: skip },
     { $limit: limit },
   ]);
