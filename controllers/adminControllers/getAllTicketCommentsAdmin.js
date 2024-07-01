@@ -8,8 +8,6 @@ const getAllTicketCommentsAdmin = async (req, res) => {
   const sortOptions = {
     newest: { createdAt: -1 },
     oldest: { createdAt: 1 },
-    'a-z': { projectName: 1 },
-    'z-a': { projectName: -1 },
   };
   const sortKey = sortOptions[sort] || sortOptions.newest;
 
@@ -33,14 +31,12 @@ const getAllTicketCommentsAdmin = async (req, res) => {
     totalCountResult.length > 0 ? totalCountResult[0].totalTicketComments : 0;
   const numOfPages = Math.ceil(numOfTicketComments / limit);
 
-  res
-    .status(StatusCodes.OK)
-    .json({
-      numOfTicketComments,
-      numOfPages,
-      currentPage: page,
-      allTicketComments,
-    });
+  res.status(StatusCodes.OK).json({
+    numOfTicketComments,
+    numOfPages,
+    currentPage: page,
+    allTicketComments,
+  });
 };
 
 export { getAllTicketCommentsAdmin };
