@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
-import TaskModel from '../../../models/taskModel.js';
-import { userAndProjectFromTask } from '../../../utils/aggregations.js';
+import TaskModel from '../../models/taskModel.js';
+import { userAndProjectFromTask } from '../../utils/aggregations.js';
 
 const getAllTasksAdmin = async (req, res) => {
   const {

@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
-import ProjectModel from '../../../models/ProjectModel.js';
-import { usersFromProject } from '../../../utils/aggregations.js';
+import ProjectModel from '../../models/ProjectModel.js';
+import { usersFromProject } from '../../utils/aggregations.js';
 
 const getAllProjectsAdmin = async (req, res) => {
   const {
