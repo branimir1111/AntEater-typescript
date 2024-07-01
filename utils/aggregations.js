@@ -59,7 +59,6 @@ export const usersFromProject = [
     },
   },
 ];
-
 export const userAndProjectFromTask = [
   {
     $lookup: {
@@ -108,7 +107,6 @@ export const userAndProjectFromTask = [
     },
   },
 ];
-
 export const userProjectAndTaskFromTicket = [
   {
     $lookup: {
@@ -160,7 +158,6 @@ export const userProjectAndTaskFromTicket = [
     },
   },
 ];
-
 export const userProjectAndTaskFromTaskComment = [
   {
     $lookup: {
@@ -339,5 +336,113 @@ export const userProjectAndTicketFromTicketComment = [
   },
   {
     $sort: { createdAt: -1 },
+  },
+];
+export const allAdminTaskCommentsAggregation = [
+  {
+    $lookup: {
+      from: 'users',
+      localField: 'createdBy',
+      foreignField: '_id',
+      as: 'creatorDetails',
+    },
+  },
+  { $unwind: '$creatorDetails' },
+
+  {
+    $lookup: {
+      from: 'tasks',
+      localField: 'taskId',
+      foreignField: '_id',
+      as: 'taskDetails',
+    },
+  },
+  { $unwind: '$taskDetails' },
+
+  {
+    $lookup: {
+      from: 'projects',
+      localField: 'projectId',
+      foreignField: '_id',
+      as: 'projectDetails',
+    },
+  },
+  { $unwind: '$projectDetails' },
+  {
+    $project: {
+      _id: 1,
+      text: 1,
+      createdAt: 1,
+      updatedAt: 1,
+      'creatorDetails._id': 1,
+      'creatorDetails.firstName': 1,
+      'creatorDetails.lastName': 1,
+      'creatorDetails.role': 1,
+      'creatorDetails.avatar': 1,
+      'taskDetails._id': 1,
+      'taskDetails.title': 1,
+      'taskDetails.taskType': 1,
+      'taskDetails.priority': 1,
+      'taskDetails.status': 1,
+      'projectDetails._id': 1,
+      'projectDetails.projectName': 1,
+      'projectDetails.status': 1,
+    },
+  },
+];
+export const allAdminTicketCommentsAggregation = [
+  {
+    $lookup: {
+      from: 'users',
+      localField: 'createdBy',
+      foreignField: '_id',
+      as: 'creatorDetails',
+    },
+  },
+  { $unwind: '$creatorDetails' },
+
+  {
+    $lookup: {
+      // from: 'tasks',
+      from: 'tickets',
+      // localField: 'taskId',
+      localField: 'ticketId',
+      foreignField: '_id',
+      // as: 'taskDetails',
+      as: 'ticketDetails',
+    },
+  },
+  // { $unwind: '$taskDetails' },
+  { $unwind: '$ticketDetails' },
+
+  {
+    $lookup: {
+      from: 'projects',
+      localField: 'projectId',
+      foreignField: '_id',
+      as: 'projectDetails',
+    },
+  },
+  { $unwind: '$projectDetails' },
+  {
+    $project: {
+      _id: 1,
+      text: 1,
+      createdAt: 1,
+      updatedAt: 1,
+      'creatorDetails._id': 1,
+      'creatorDetails.firstName': 1,
+      'creatorDetails.lastName': 1,
+      'creatorDetails.role': 1,
+      'creatorDetails.avatar': 1,
+      'ticketDetails._id': 1,
+      'ticketDetails.title': 1,
+      'ticketDetails.taskType': 1,
+      'ticketDetails.priority': 1,
+      'ticketDetails.status': 1,
+      'projectDetails._id': 1,
+      'projectDetails.projectName': 1,
+      'projectDetails.status': 1,
+    },
   },
 ];
