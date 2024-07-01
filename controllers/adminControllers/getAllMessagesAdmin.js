@@ -3,7 +3,7 @@ import MessageModel from '../../models/messageModel.js';
 import { allAdminMessagesAggregation } from '../../utils/aggregations.js';
 
 const getAllMessagesAdmin = async (req, res) => {
-  const { sort, page: currPage, limit: itemsPerPage } = req.query;
+  const { sort, limit: itemsPerPage, page: currPage } = req.query;
 
   const sortOptions = {
     newest: { createdAt: -1 },

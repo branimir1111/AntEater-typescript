@@ -4,19 +4,19 @@ import TicketModel from '../../models/ticketModel.js';
 
 const getAllTicketsAdmin = async (req, res) => {
   const {
-    title,
+    search,
     ticketType,
     priority,
     status,
-    page: currPage,
     sort,
     limit: itemsPerPage,
+    page: currPage,
   } = req.query;
 
   let queryObject = {};
 
-  if (title) {
-    queryObject.title = { $regex: title, $options: 'i' };
+  if (search) {
+    queryObject.search = { $regex: search, $options: 'i' };
   }
   if (ticketType && ticketType !== 'all') {
     queryObject.ticketType = ticketType;

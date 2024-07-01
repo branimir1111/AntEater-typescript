@@ -7,8 +7,8 @@ const getAllProjectsAdmin = async (req, res) => {
     search,
     status,
     sort,
-    page: currPage,
     limit: itemsPerPage,
+    page: currPage,
   } = req.query;
 
   let queryObject = {};

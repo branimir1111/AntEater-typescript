@@ -2,7 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import UsersModel from '../../models/userModel.js';
 
 const getAllUsersAdmin = async (req, res) => {
-  const { sort, page: currPage, limit: itemsPerPage } = req.query;
+  const { sort, limit: itemsPerPage, page: currPage } = req.query;
 
   const sortOptions = {
     newest: { createdAt: -1 },
