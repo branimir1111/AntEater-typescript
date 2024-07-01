@@ -2,9 +2,9 @@ import mongoose, { Schema } from 'mongoose';
 
 const CommentTicketModel = new Schema(
   {
-    createdBy: { type: mongoose.Types.ObjectId },
-    ticketId: { type: mongoose.Types.ObjectId },
-    projectId: { type: mongoose.Types.ObjectId },
+    createdBy: { type: mongoose.Types.ObjectId, ref: 'User' },
+    ticketId: { type: mongoose.Types.ObjectId, ref: 'Task' },
+    projectId: { type: mongoose.Types.ObjectId, ref: 'Project' },
     text: String,
   },
   {
