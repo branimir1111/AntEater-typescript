@@ -446,3 +446,41 @@ export const allAdminTicketCommentsAggregation = [
     },
   },
 ];
+export const allAdminMessagesAggregation = [
+  {
+    $lookup: {
+      from: 'users',
+      localField: 'senderId',
+      foreignField: '_id',
+      as: 'senderDetails',
+    },
+  },
+  { $unwind: '$senderDetails' },
+  {
+    $lookup: {
+      from: 'users',
+      localField: 'receiverId',
+      foreignField: '_id',
+      as: 'receiverDetails',
+    },
+  },
+  { $unwind: '$receiverDetails' },
+  {
+    $project: {
+      _id: 1,
+      text: 1,
+      createdAt: 1,
+      updatedAt: 1,
+      'senderDetails._id': 1,
+      'senderDetails.firstName': 1,
+      'senderDetails.lastName': 1,
+      'senderDetails.role': 1,
+      'senderDetails.avatar': 1,
+      'receiverDetails._id': 1,
+      'receiverDetails.firstName': 1,
+      'receiverDetails.lastName': 1,
+      'receiverDetails.role': 1,
+      'receiverDetails.avatar': 1,
+    },
+  },
+];

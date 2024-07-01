@@ -8,8 +8,6 @@ const getAllTaskCommentsAdmin = async (req, res) => {
   const sortOptions = {
     newest: { createdAt: -1 },
     oldest: { createdAt: 1 },
-    'a-z': { projectName: 1 },
-    'z-a': { projectName: -1 },
   };
   const sortKey = sortOptions[sort] || sortOptions.newest;
 
