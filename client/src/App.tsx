@@ -44,6 +44,7 @@ import { loader as AllTicketsLoader } from '@/pages/dashboard/Tickets/TicketsPag
 import { loader as AllPMProjectsLoader } from '@/pages/dashboard/PM/ProjectManagerPage';
 import { loader as AllPMTasksLoader } from '@/pages/dashboard/PMTasks/PMTasksPage';
 import { loader as AllPMTicketsLoader } from '@/pages/dashboard/PMTickets/PMTicketsPage';
+import { loader as AllAdminProjectsLoader } from '@/pages/dashboard/AdminProjects/AdminProjects';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -64,6 +65,7 @@ import { action as AddNewPMTicketAction } from '@/pages/dashboard/PMTickets/AddP
 import { action as EditPMTicketAction } from '@/pages/dashboard/PMTickets/EditPMTicket';
 import { action as AddNewMessageAction } from '@/components/dashboardComponents/MessagesPage/AddNewMessage';
 import { action as EditMessageAction } from '@/pages/dashboard/Messages/EditMessage';
+import { action as EditAdminProjectAction } from '@/pages/dashboard/AdminProjects/EditAdminProject';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -254,6 +256,13 @@ const router = createBrowserRouter([
         path: 'admin',
         element: <AdminProjects />,
         errorElement: <ErrorElement />,
+        loader: AllAdminProjectsLoader(queryClient),
+        children: [
+          {
+            path: 'edit-admin-project/:id',
+            action: EditAdminProjectAction(queryClient),
+          },
+        ],
       },
       {
         path: 'admin-tasks',

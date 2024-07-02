@@ -19,3 +19,4 @@ export const projectStatusFilter: string[] = [
 ];
 export const projectSortFilter: string[] = ['newest', 'oldest', 'a-z', 'z-a'];
 export const projectLimitFilter: string[] = ['3', '6', '9'];
+export const projectLimitFilterSecond: string[] = ['5', '10', '15'];

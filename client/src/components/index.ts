@@ -62,3 +62,6 @@ export { default as UserMessages } from './dashboardComponents/MessagesPage/User
 export { default as AddNewMessage } from './dashboardComponents/MessagesPage/AddNewMessage';
 export { default as DeleteMessage } from './dashboardComponents/MessagesPage/DeleteMessage';
 export { default as EditMessage } from './dashboardComponents/MessagesPage/EditMessage';
+export { default as AdminProjectsFilter } from './dashboardComponents/AdminProjectsPage/AdminProjectsFilter';
+export { default as AdminProjectsContainer } from './dashboardComponents/AdminProjectsPage/AdminProjectsContainer';
+export { default as EditAdminProject } from './dashboardComponents/AdminProjectsPage/EditAdminProject';
