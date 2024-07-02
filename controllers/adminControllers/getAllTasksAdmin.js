@@ -16,7 +16,7 @@ const getAllTasksAdmin = async (req, res) => {
   let queryObject = {};
 
   if (search) {
-    queryObject.search = { $regex: search, $options: 'i' };
+    queryObject.title = { $regex: search, $options: 'i' };
   }
   if (taskType && taskType !== 'all') {
     queryObject.taskType = taskType;

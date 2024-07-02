@@ -65,3 +65,7 @@ export { default as EditMessage } from './dashboardComponents/MessagesPage/EditM
 export { default as AdminProjectsFilter } from './dashboardComponents/AdminProjectsPage/AdminProjectsFilter';
 export { default as AdminProjectsContainer } from './dashboardComponents/AdminProjectsPage/AdminProjectsContainer';
 export { default as EditAdminProject } from './dashboardComponents/AdminProjectsPage/EditAdminProject';
+export { default as AdminTasksFilter } from './dashboardComponents/AdminTasksPage/AdminTasksFilter';
+export { default as AdminTasksContainer } from './dashboardComponents/AdminTasksPage/AdminTasksContainer';
+export { default as AdminAddNewTask } from './dashboardComponents/AdminTasksPage/AdminAddNewTask';
+export { default as AdminEditTask } from './dashboardComponents/AdminTasksPage/AdminEditTask';

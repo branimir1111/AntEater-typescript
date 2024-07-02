@@ -8,8 +8,10 @@ import { getAllTaskCommentsAdmin } from '../controllers/adminControllers/getAllT
 import { getAllTicketCommentsAdmin } from '../controllers/adminControllers/getAllTicketCommentsAdmin.js';
 import { getAllMessagesAdmin } from '../controllers/adminControllers/getAllMessagesAdmin.js';
 import { getAllUsersAdmin } from '../controllers/adminControllers/getAllUsersAdmin.js';
+import { getAllProjectsList } from '../controllers/adminControllers/getAllProjectsList.js';
 
 router.route('/all-admin-projects').get(getAllProjectsAdmin);
+router.route('/all-admin-projects-list').get(getAllProjectsList);
 router.route('/all-admin-tasks').get(getAllTasksAdmin);
 router.route('/all-admin-tickets').get(getAllTicketsAdmin);
 router.route('/all-admin-task-comments').get(getAllTaskCommentsAdmin);
