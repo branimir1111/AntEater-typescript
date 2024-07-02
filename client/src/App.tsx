@@ -45,6 +45,7 @@ import { loader as AllPMProjectsLoader } from '@/pages/dashboard/PM/ProjectManag
 import { loader as AllPMTasksLoader } from '@/pages/dashboard/PMTasks/PMTasksPage';
 import { loader as AllPMTicketsLoader } from '@/pages/dashboard/PMTickets/PMTicketsPage';
 import { loader as AllAdminProjectsLoader } from '@/pages/dashboard/AdminProjects/AdminProjects';
+import { loader as AllAdminTasksLoader } from '@/pages/dashboard/AdminTasks/AdminTasks';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -66,6 +67,8 @@ import { action as EditPMTicketAction } from '@/pages/dashboard/PMTickets/EditPM
 import { action as AddNewMessageAction } from '@/components/dashboardComponents/MessagesPage/AddNewMessage';
 import { action as EditMessageAction } from '@/pages/dashboard/Messages/EditMessage';
 import { action as EditAdminProjectAction } from '@/pages/dashboard/AdminProjects/EditAdminProject';
+import { action as AddNewAdminTaskAction } from '@/pages/dashboard/AdminTasks/AddAdminTask';
+import { action as EditAdminTaskAction } from '@/pages/dashboard/AdminTasks/EditAdminTask';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -268,6 +271,17 @@ const router = createBrowserRouter([
         path: 'admin-tasks',
         element: <AdminTasks />,
         errorElement: <ErrorElement />,
+        loader: AllAdminTasksLoader(queryClient),
+        children: [
+          {
+            path: 'add-admin-task',
+            action: AddNewAdminTaskAction(queryClient),
+          },
+          {
+            path: 'edit-admin-task/:id',
+            action: EditAdminTaskAction(queryClient),
+          },
+        ],
       },
       {
         path: 'admin-tickets',
