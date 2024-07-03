@@ -30,6 +30,7 @@ export { default as CommentTicketsPage } from './dashboard/Comments/CommentTicke
 export { default as AdminProjects } from './dashboard/AdminProjects/AdminProjects';
 export { default as AdminTasks } from './dashboard/AdminTasks/AdminTasks';
 export { default as AdminTickets } from './dashboard/AdminTickets/AdminTickets';
-export { default as AdminComments } from './dashboard/AdminComments/AdminComments';
+export { default as AdminTaskComments } from './dashboard/AdminTaskComments/AdminTaskComments';
+export { default as AdminTicketComments } from './dashboard/AdminTicketComments/AdminTicketComments';
 export { default as AdminMessages } from './dashboard/AdminMessages/AdminMessages';
 export { default as AdminUsers } from './dashboard/AdminUsers/AdminUsers';

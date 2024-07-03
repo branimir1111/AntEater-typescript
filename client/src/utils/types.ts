@@ -189,3 +189,51 @@ export type UserMessagesProps = {
   avatar?: string;
   messages: ReceiveMessages[];
 };
+
+export type CreatorDetailsProps = {
+  readonly _id: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+  avatar?: string;
+};
+
+export type TaskDetailsProps = {
+  readonly _id: string;
+  title: string;
+  taskType: string;
+  status: string;
+  priority: string;
+};
+export type TicketDetailsProps = {
+  readonly _id: string;
+  title: string;
+  ticketType: string;
+  status: string;
+  priority: string;
+};
+
+export type ProjectDetailsProps = {
+  readonly _id: string;
+  projectName: string;
+  status: string;
+};
+
+export type AdminTaskCommentsProps = {
+  readonly _id: string;
+  text: string;
+  createdAt: string;
+  updatedAt: string;
+  creatorDetails: CreatorDetailsProps;
+  taskDetails: TaskDetailsProps;
+  projectDetails: ProjectDetailsProps;
+};
+export type AdminTicketCommentsProps = {
+  readonly _id: string;
+  text: string;
+  createdAt: string;
+  updatedAt: string;
+  creatorDetails: CreatorDetailsProps;
+  ticketDetails: TicketDetailsProps;
+  projectDetails: ProjectDetailsProps;
+};

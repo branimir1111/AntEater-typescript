@@ -28,7 +28,8 @@ import {
   AdminProjects,
   AdminTasks,
   AdminTickets,
-  AdminComments,
+  AdminTaskComments,
+  AdminTicketComments,
   AdminMessages,
   AdminUsers,
 } from './pages';
@@ -47,6 +48,8 @@ import { loader as AllPMTicketsLoader } from '@/pages/dashboard/PMTickets/PMTick
 import { loader as AllAdminProjectsLoader } from '@/pages/dashboard/AdminProjects/AdminProjects';
 import { loader as AllAdminTasksLoader } from '@/pages/dashboard/AdminTasks/AdminTasks';
 import { loader as AllAdminTicketsLoader } from '@/pages/dashboard/AdminTickets/AdminTickets';
+import { loader as AllAdminTaskCommentsLoader } from '@/pages/dashboard/AdminTaskComments/AdminTaskComments';
+import { loader as AllAdminTicketCommentsLoader } from '@/pages/dashboard/AdminTicketComments/AdminTicketComments';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -303,9 +306,16 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'admin-comments',
-        element: <AdminComments />,
+        path: 'admin-task-comments',
+        element: <AdminTaskComments />,
         errorElement: <ErrorElement />,
+        loader: AllAdminTaskCommentsLoader(queryClient),
+      },
+      {
+        path: 'admin-ticket-comments',
+        element: <AdminTicketComments />,
+        errorElement: <ErrorElement />,
+        loader: AllAdminTicketCommentsLoader(queryClient),
       },
       {
         path: 'admin-messages',
