@@ -1,4 +1,4 @@
-import { type TaskResponse } from '@/utils';
+import { type TicketResponse } from '@/utils';
 import { customFetch } from '@/utils';
 import {
   Table,
@@ -14,14 +14,14 @@ import { Separator } from '@/components/ui/separator';
 import {
   GlobalLoader,
   ErrorElement,
-  AdminAddNewTask,
-  AdminEditTask,
-  DeletePMTask,
+  AdminAddNewTicket,
+  AdminEditTicket,
+  DeletePMTicket,
 } from '@/components';
 import { useQuery } from '@tanstack/react-query';
 
-type AdminTasksContainerProps = {
-  allAdminTasks: TaskResponse[];
+type AdminTicketsContainerProps = {
+  allAdminTickets: TicketResponse[];
 };
 
 const allProjectsListQuery = () => {
@@ -34,7 +34,9 @@ const allProjectsListQuery = () => {
   };
 };
 
-const AdminTasksContainer = ({ allAdminTasks }: AdminTasksContainerProps) => {
+const AdminTicketsContainer = ({
+  allAdminTickets,
+}: AdminTicketsContainerProps) => {
   const { data, isPending, isError } = useQuery(allProjectsListQuery());
   if (isPending) {
     return <GlobalLoader />;
@@ -46,10 +48,10 @@ const AdminTasksContainer = ({ allAdminTasks }: AdminTasksContainerProps) => {
   const { allProjectsList } = data;
   return (
     <div className="w-full">
-      <AdminAddNewTask allProjectsList={allProjectsList} />
+      <AdminAddNewTicket allProjectsList={allProjectsList} />
       <Separator className="bg-[#0FB5BA] mt-4" />
       <Table>
-        <TableCaption>A list of All Tasks</TableCaption>
+        <TableCaption>A list of All Tickets</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="text-[#0FB5BA] font-bold">Title</TableHead>
@@ -69,8 +71,9 @@ const AdminTasksContainer = ({ allAdminTasks }: AdminTasksContainerProps) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {allAdminTasks.map((task) => {
-            const { _id, title, projectId, priority, taskType, status } = task;
+          {allAdminTickets.map((ticket) => {
+            const { _id, title, projectId, priority, ticketType, status } =
+              ticket;
             let textColor = '';
             let bgColor = '';
 
@@ -103,7 +106,9 @@ const AdminTasksContainer = ({ allAdminTasks }: AdminTasksContainerProps) => {
                   {projectId.projectName}
                 </TableCell>
                 <TableCell className="max-break14:hidden">{priority}</TableCell>
-                <TableCell className="max-break8:hidden">{taskType}</TableCell>
+                <TableCell className="max-break8:hidden">
+                  {ticketType}
+                </TableCell>
                 <TableCell className="max-break14:hidden">
                   <Badge
                     variant="outline"
@@ -113,11 +118,11 @@ const AdminTasksContainer = ({ allAdminTasks }: AdminTasksContainerProps) => {
                   </Badge>
                 </TableCell>
                 <TableCell className="flex items-center gap-3">
-                  <AdminEditTask
+                  <AdminEditTicket
                     allProjectsList={allProjectsList}
-                    task={task}
+                    ticket={ticket}
                   />
-                  <DeletePMTask id={_id} />
+                  <DeletePMTicket id={_id} />
                 </TableCell>
               </TableRow>
             );
@@ -128,4 +133,4 @@ const AdminTasksContainer = ({ allAdminTasks }: AdminTasksContainerProps) => {
     </div>
   );
 };
-export default AdminTasksContainer;
+export default AdminTicketsContainer;
