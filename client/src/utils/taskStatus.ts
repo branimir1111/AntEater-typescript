@@ -36,4 +36,6 @@ export const taskTypeSecond: string[] = [
 
 export const taskPrioritySecond: string[] = ['all', 'low', 'medium', 'high'];
 export const taskLimitFilterSecond: string[] = ['5', '10', '15'];
+export const taskLimitFilterThird: string[] = ['6', '9', '12'];
 export const taskSortFilter: string[] = ['newest', 'oldest', 'a-z', 'z-a'];
+export const taskSortFilterSecond: string[] = ['newest', 'oldest'];

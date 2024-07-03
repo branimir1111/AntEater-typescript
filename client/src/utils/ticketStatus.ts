@@ -38,3 +38,5 @@ export const ticketStatusAll: string[] = [
 ];
 export const ticketSortFilter: string[] = ['newest', 'oldest', 'a-z', 'z-a'];
 export const ticketLimitFilter: string[] = ['5', '10', '15'];
+export const ticketSortFilterSecond: string[] = ['newest', 'oldest'];
+export const ticketLimitFilterSecond: string[] = ['6', '9', '12'];
