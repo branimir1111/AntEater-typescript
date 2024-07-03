@@ -69,3 +69,7 @@ export { default as AdminTasksFilter } from './dashboardComponents/AdminTasksPag
 export { default as AdminTasksContainer } from './dashboardComponents/AdminTasksPage/AdminTasksContainer';
 export { default as AdminAddNewTask } from './dashboardComponents/AdminTasksPage/AdminAddNewTask';
 export { default as AdminEditTask } from './dashboardComponents/AdminTasksPage/AdminEditTask';
+export { default as AdminTicketsFilter } from './dashboardComponents/AdminTicketsPage/AdminTicketsFilter';
+export { default as AdminTicketsContainer } from './dashboardComponents/AdminTicketsPage/AdminTicketsContainer';
+export { default as AdminAddNewTicket } from './dashboardComponents/AdminTicketsPage/AdminAddNewTicket';
+export { default as AdminEditTicket } from './dashboardComponents/AdminTicketsPage/AdminEditTicket';

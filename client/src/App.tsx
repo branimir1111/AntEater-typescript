@@ -46,6 +46,7 @@ import { loader as AllPMTasksLoader } from '@/pages/dashboard/PMTasks/PMTasksPag
 import { loader as AllPMTicketsLoader } from '@/pages/dashboard/PMTickets/PMTicketsPage';
 import { loader as AllAdminProjectsLoader } from '@/pages/dashboard/AdminProjects/AdminProjects';
 import { loader as AllAdminTasksLoader } from '@/pages/dashboard/AdminTasks/AdminTasks';
+import { loader as AllAdminTicketsLoader } from '@/pages/dashboard/AdminTickets/AdminTickets';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -69,6 +70,8 @@ import { action as EditMessageAction } from '@/pages/dashboard/Messages/EditMess
 import { action as EditAdminProjectAction } from '@/pages/dashboard/AdminProjects/EditAdminProject';
 import { action as AddNewAdminTaskAction } from '@/pages/dashboard/AdminTasks/AddAdminTask';
 import { action as EditAdminTaskAction } from '@/pages/dashboard/AdminTasks/EditAdminTask';
+import { action as AddNewAdminTicketAction } from '@/pages/dashboard/AdminTickets/AddAdminTicket';
+import { action as EditAdminTicketAction } from '@/pages/dashboard/AdminTickets/EditAdminTicket';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -287,6 +290,17 @@ const router = createBrowserRouter([
         path: 'admin-tickets',
         element: <AdminTickets />,
         errorElement: <ErrorElement />,
+        loader: AllAdminTicketsLoader(queryClient),
+        children: [
+          {
+            path: 'add-admin-ticket',
+            action: AddNewAdminTicketAction(queryClient),
+          },
+          {
+            path: 'edit-admin-ticket/:id',
+            action: EditAdminTicketAction(queryClient),
+          },
+        ],
       },
       {
         path: 'admin-comments',

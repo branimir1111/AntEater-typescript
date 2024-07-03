@@ -36,3 +36,5 @@ export const ticketStatusAll: string[] = [
   'cancelled',
   'completed',
 ];
+export const ticketSortFilter: string[] = ['newest', 'oldest', 'a-z', 'z-a'];
+export const ticketLimitFilter: string[] = ['5', '10', '15'];
