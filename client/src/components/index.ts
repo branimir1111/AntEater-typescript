@@ -77,3 +77,5 @@ export { default as AdminTaskCommentFilter } from './dashboardComponents/AdminTa
 export { default as AdminTaskCommentContainer } from './dashboardComponents/AdminTaskCommentsPage/AdminTaskCommentContainer';
 export { default as AdminTicketCommentsFilter } from './dashboardComponents/AdminTicketCommentsPage/AdminTicketCommentsFilter';
 export { default as AdminTicketCommentsContainer } from './dashboardComponents/AdminTicketCommentsPage/AdminTicketCommentsContainer';
+export { default as AdminMessagesFilter } from './dashboardComponents/AdminMessagesPage/AdminMessagesFilter';
+export { default as AdminMessagesContainer } from './dashboardComponents/AdminMessagesPage/AdminMessagesContainer';
