@@ -237,3 +237,11 @@ export type AdminTicketCommentsProps = {
   ticketDetails: TicketDetailsProps;
   projectDetails: ProjectDetailsProps;
 };
+export type AdminMessagesProps = {
+  readonly _id: string;
+  text: string;
+  createdAt: string;
+  updatedAt: string;
+  senderDetails: CreatorDetailsProps;
+  receiverDetails: CreatorDetailsProps;
+};

@@ -50,6 +50,7 @@ import { loader as AllAdminTasksLoader } from '@/pages/dashboard/AdminTasks/Admi
 import { loader as AllAdminTicketsLoader } from '@/pages/dashboard/AdminTickets/AdminTickets';
 import { loader as AllAdminTaskCommentsLoader } from '@/pages/dashboard/AdminTaskComments/AdminTaskComments';
 import { loader as AllAdminTicketCommentsLoader } from '@/pages/dashboard/AdminTicketComments/AdminTicketComments';
+import { loader as AllAdminMessagesLoader } from '@/pages/dashboard/AdminMessages/AdminMessages';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -321,6 +322,7 @@ const router = createBrowserRouter([
         path: 'admin-messages',
         element: <AdminMessages />,
         errorElement: <ErrorElement />,
+        loader: AllAdminMessagesLoader(queryClient),
       },
       {
         path: 'admin-users',

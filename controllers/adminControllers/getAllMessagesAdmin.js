@@ -11,7 +11,7 @@ const getAllMessagesAdmin = async (req, res) => {
   };
   const sortKey = sortOptions[sort] || sortOptions.newest;
 
-  const limit = Number(itemsPerPage) || 5;
+  const limit = Number(itemsPerPage) || 6;
   const page = Number(currPage) || 1;
   const skip = (page - 1) * limit;
 
