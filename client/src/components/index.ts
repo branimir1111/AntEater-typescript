@@ -79,3 +79,8 @@ export { default as AdminTicketCommentsFilter } from './dashboardComponents/Admi
 export { default as AdminTicketCommentsContainer } from './dashboardComponents/AdminTicketCommentsPage/AdminTicketCommentsContainer';
 export { default as AdminMessagesFilter } from './dashboardComponents/AdminMessagesPage/AdminMessagesFilter';
 export { default as AdminMessagesContainer } from './dashboardComponents/AdminMessagesPage/AdminMessagesContainer';
+export { default as AdminUsersFilter } from './dashboardComponents/AdminUsersPage/AdminUsersFilter';
+export { default as AdminUsersContainer } from './dashboardComponents/AdminUsersPage/AdminUsersContainer';
+export { default as AdminAddNewUser } from './dashboardComponents/AdminUsersPage/AdminAddNewUser';
+export { default as AdminDeleteUser } from './dashboardComponents/AdminUsersPage/AdminDeleteUser';
+export { default as AdminEditUser } from './dashboardComponents/AdminUsersPage/AdminEditUser';
