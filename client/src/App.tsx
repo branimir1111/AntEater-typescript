@@ -51,6 +51,7 @@ import { loader as AllAdminTicketsLoader } from '@/pages/dashboard/AdminTickets/
 import { loader as AllAdminTaskCommentsLoader } from '@/pages/dashboard/AdminTaskComments/AdminTaskComments';
 import { loader as AllAdminTicketCommentsLoader } from '@/pages/dashboard/AdminTicketComments/AdminTicketComments';
 import { loader as AllAdminMessagesLoader } from '@/pages/dashboard/AdminMessages/AdminMessages';
+import { loader as AllAdminUsersLoader } from '@/pages/dashboard/AdminUsers/AdminUsers';
 
 import { action as loginAction } from './pages/LoginPage';
 import { action as registerAction } from './pages/RegisterPage';
@@ -76,6 +77,8 @@ import { action as AddNewAdminTaskAction } from '@/pages/dashboard/AdminTasks/Ad
 import { action as EditAdminTaskAction } from '@/pages/dashboard/AdminTasks/EditAdminTask';
 import { action as AddNewAdminTicketAction } from '@/pages/dashboard/AdminTickets/AddAdminTicket';
 import { action as EditAdminTicketAction } from '@/pages/dashboard/AdminTickets/EditAdminTicket';
+import { action as AddNewUserAdminAction } from '@/pages/dashboard/AdminUsers/AddNewAdminUser';
+import { action as EditAdminUserAction } from '@/pages/dashboard/AdminUsers/EditAdminUser';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -328,6 +331,17 @@ const router = createBrowserRouter([
         path: 'admin-users',
         element: <AdminUsers />,
         errorElement: <ErrorElement />,
+        loader: AllAdminUsersLoader(queryClient),
+        children: [
+          {
+            path: 'add-new-user',
+            action: AddNewUserAdminAction(queryClient),
+          },
+          {
+            path: 'edit-user/:id',
+            action: EditAdminUserAction(queryClient),
+          },
+        ],
       },
       {
         path: 'profile',

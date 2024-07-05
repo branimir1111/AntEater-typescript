@@ -8,3 +8,4 @@ export * from './taskStatus.ts';
 export * from './pagination.ts';
 export * from './ticketStatus.ts';
 export * from './messagesFilter.ts';
+export * from './usersFilter.ts';

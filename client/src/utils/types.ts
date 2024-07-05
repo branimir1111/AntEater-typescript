@@ -245,3 +245,13 @@ export type AdminMessagesProps = {
   senderDetails: CreatorDetailsProps;
   receiverDetails: CreatorDetailsProps;
 };
+export type AdminUser = {
+  readonly _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  createdAt: string;
+  updatedAt: string;
+  avatar?: string;
+};
