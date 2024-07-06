@@ -65,7 +65,7 @@ const AdminTicketCommentsContainer = ({
                 <p>{projectDetails.projectName}</p>
                 <Badge variant="outline">{projectDetails.status}</Badge>
               </div>
-              <p>Task</p>
+              <p>Ticket</p>
               <div className="flex gap-2 text-muted-foreground">
                 <p>{ticketDetails.title}</p>
                 <Badge variant="outline">{ticketDetails.priority}</Badge>
