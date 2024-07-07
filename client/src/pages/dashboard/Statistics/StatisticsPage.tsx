@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { customFetch } from '@/utils';
 import { ErrorElement, GlobalLoader } from '@/components';
-import { StatsContainer } from '@/components';
+import { StatsContainer, ProjectStatsContainer } from '@/components';
 
 const StatisticsPage = () => {
   const {
@@ -30,6 +30,7 @@ const StatisticsPage = () => {
     <section className="w-full outlet-hight p-2 bg-background-first">
       <div className="bg-background border rounded-md p-4">
         <StatsContainer allStats={allStats} />
+        <ProjectStatsContainer projectsByStatus={projectsByStatus} />
       </div>
     </section>
   );
