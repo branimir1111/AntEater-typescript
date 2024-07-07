@@ -17,6 +17,7 @@ import CommentTaskRouter from './routes/commentTaskRoutes.js';
 import CommentTicketRouter from './routes/commentTicketRoutes.js';
 import MessageRouter from './routes/messageRoutes.js';
 import AdminRouter from './routes/adminRoutes.js';
+import StatsRouter from './routes/statsRoutes.js';
 import errorMiddleware from './middleware/errorMiddleware.js';
 import {
   authenticateUser,
@@ -42,6 +43,7 @@ app.use('/api/v1', authenticateUser, TicketRouter);
 app.use('/api/v1', authenticateUser, CommentTaskRouter);
 app.use('/api/v1', authenticateUser, CommentTicketRouter);
 app.use('/api/v1', authenticateUser, MessageRouter);
+app.use('/api/v1', authenticateUser, StatsRouter);
 app.use(
   '/api/v1',
   authenticateUser,
