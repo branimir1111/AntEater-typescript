@@ -14,18 +14,18 @@ const StatsContainer = ({ allStats }: StatsContainerProps) => {
       text: 'Projects',
       count: allStats.numOfAllProjects,
       icon: <PieChart className="w-10 h-10" />,
-      bgColor: 'border-indigo-500',
-      textColor: 'text-indigo-500',
+      borderColor: 'border-b-chart-1',
+      textColor: 'text-chart-1',
     },
   ];
   return (
     <div className="grid break7:grid-cols-2 break14:grid-cols-3 break18:grid-cols-6">
       {statsData.map((stat) => {
-        const { _id, text, count, icon, bgColor, textColor } = stat;
+        const { _id, text, count, icon, borderColor, textColor } = stat;
         return (
           <article
             key={_id}
-            className={`border border-b-4 ${bgColor} rounded-sm py-2 px-4`}
+            className={`border border-b-4 ${borderColor} rounded-sm py-2 px-4`}
           >
             <h1 className="text-xl font-semibold text-muted-foreground">
               {text}

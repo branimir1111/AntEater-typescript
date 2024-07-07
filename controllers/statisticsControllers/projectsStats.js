@@ -14,13 +14,13 @@ const getProjectsStats = async (req, res) => {
   }, {});
 
   const projectsByStatus = [
-    { status: 'active', count: projectStats.active || 0 },
-    { status: 'inactive', count: projectStats.inactive || 0 },
-    { status: 'completed', count: projectStats.completed || 0 },
-    { status: 'testing', count: projectStats.testing || 0 },
-    { status: 'pending', count: projectStats.pending || 0 },
-    { status: 'canceled', count: projectStats.canceled || 0 },
-    { status: 'delayed', count: projectStats.delayed || 0 },
+    { status: 'active', projects: projectStats.active || 0 },
+    { status: 'inactive', projects: projectStats.inactive || 0 },
+    { status: 'completed', projects: projectStats.completed || 0 },
+    { status: 'testing', projects: projectStats.testing || 0 },
+    { status: 'pending', projects: projectStats.pending || 0 },
+    { status: 'canceled', projects: projectStats.canceled || 0 },
+    { status: 'delayed', projects: projectStats.delayed || 0 },
   ];
 
   const numOfAllProjects = await ProjectModel.countDocuments();
