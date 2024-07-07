@@ -84,3 +84,4 @@ export { default as AdminUsersContainer } from './dashboardComponents/AdminUsers
 export { default as AdminAddNewUser } from './dashboardComponents/AdminUsersPage/AdminAddNewUser';
 export { default as AdminDeleteUser } from './dashboardComponents/AdminUsersPage/AdminDeleteUser';
 export { default as AdminEditUser } from './dashboardComponents/AdminUsersPage/AdminEditUser';
+export { default as StatsContainer } from './dashboardComponents/StatisticsPage/StatsContainer';
