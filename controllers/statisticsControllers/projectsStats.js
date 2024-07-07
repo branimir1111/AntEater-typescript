@@ -1,6 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
 import ProjectModel from '../../models/ProjectModel.js';
-import TaskModel from '../../models/taskModel.js';
 
 const getProjectsStats = async (req, res) => {
   let projectStats = await ProjectModel.aggregate([
@@ -14,15 +13,15 @@ const getProjectsStats = async (req, res) => {
     return acc;
   }, {});
 
-  const projectsByStatus = {
-    active: projectStats.active || 0,
-    inactive: projectStats.inactive || 0,
-    completed: projectStats.completed || 0,
-    testing: projectStats.testing || 0,
-    pending: projectStats.pending || 0,
-    canceled: projectStats.canceled || 0,
-    delayed: projectStats.delayed || 0,
-  };
+  const projectsByStatus = [
+    { status: 'active', count: projectStats.active || 0 },
+    { status: 'inactive', count: projectStats.inactive || 0 },
+    { status: 'completed', count: projectStats.completed || 0 },
+    { status: 'testing', count: projectStats.testing || 0 },
+    { status: 'pending', count: projectStats.pending || 0 },
+    { status: 'canceled', count: projectStats.canceled || 0 },
+    { status: 'delayed', count: projectStats.delayed || 0 },
+  ];
 
   const numOfAllProjects = await ProjectModel.countDocuments();
 
