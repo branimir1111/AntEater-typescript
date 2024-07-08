@@ -86,3 +86,5 @@ export { default as AdminDeleteUser } from './dashboardComponents/AdminUsersPage
 export { default as AdminEditUser } from './dashboardComponents/AdminUsersPage/AdminEditUser';
 export { default as StatsContainer } from './dashboardComponents/StatisticsPage/StatsContainer';
 export { default as ProjectStatsContainer } from './dashboardComponents/StatisticsPage/ProjectStatsContainer';
+export { default as ProjectsStatsAreaChart } from './dashboardComponents/StatisticsPage/ProjectsStatsAreaChart';
+export { default as ProjectsStatsBarChart } from './dashboardComponents/StatisticsPage/ProjectsStatsBarChart';
