@@ -51,8 +51,8 @@ const getTasksStats = async (req, res) => {
 
   const tasksByStatus = [
     { status: 'new', tasks: taskStatusStats.new || 0 },
-    { status: 'in progress', tasks: taskStatusStats['in progress'] || 0 },
-    { status: 'under review', tasks: taskStatusStats['under review'] || 0 },
+    { status: 'in-progress', tasks: taskStatusStats['in progress'] || 0 },
+    { status: 'under-review', tasks: taskStatusStats['under review'] || 0 },
     { status: 'refactor', tasks: taskStatusStats.refactor || 0 },
     { status: 'completed', tasks: taskStatusStats.completed || 0 },
   ];

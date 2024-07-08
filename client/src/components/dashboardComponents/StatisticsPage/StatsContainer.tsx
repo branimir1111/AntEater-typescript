@@ -1,6 +1,7 @@
-import { PieChart } from 'lucide-react';
+import { PieChart, ClipboardList } from 'lucide-react';
 type allStatsProp = {
   numOfAllProjects: number;
+  numOfAllTasks: number;
 };
 
 type StatsContainerProps = {
@@ -14,12 +15,20 @@ const StatsContainer = ({ allStats }: StatsContainerProps) => {
       text: 'Projects',
       count: allStats.numOfAllProjects,
       icon: <PieChart className="w-10 h-10" />,
-      borderColor: 'border-b-chart-1',
-      textColor: 'text-chart-1',
+      borderColor: 'border-b-indigo-500',
+      textColor: 'text-indigo-500',
+    },
+    {
+      _id: 2,
+      text: 'Tasks',
+      count: allStats.numOfAllTasks,
+      icon: <ClipboardList className="w-10 h-10" />,
+      borderColor: 'border-b-[#18981D]',
+      textColor: 'text-[#18981D]',
     },
   ];
   return (
-    <div className="grid break7:grid-cols-2 break14:grid-cols-3 break18:grid-cols-6">
+    <div className="grid gap-2 break7:grid-cols-2 break14:grid-cols-3 break18:grid-cols-6">
       {statsData.map((stat) => {
         const { _id, text, count, icon, borderColor, textColor } = stat;
         return (

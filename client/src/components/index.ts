@@ -88,3 +88,7 @@ export { default as StatsContainer } from './dashboardComponents/StatisticsPage/
 export { default as ProjectStatsContainer } from './dashboardComponents/StatisticsPage/ProjectStatsContainer';
 export { default as ProjectsStatsAreaChart } from './dashboardComponents/StatisticsPage/ProjectsStatsAreaChart';
 export { default as ProjectsStatsBarChart } from './dashboardComponents/StatisticsPage/ProjectsStatsBarChart';
+export { default as TasksStatsContainer } from './dashboardComponents/StatisticsPage/TasksStatsContainer';
+export { default as TasksStatsTypePieChart } from './dashboardComponents/StatisticsPage/TasksStatsTypePieChart';
+export { default as TasksStatsPriorityPieChart } from './dashboardComponents/StatisticsPage/TasksStatsPriorityPieChart';
+export { default as TasksStatsStatusPieChart } from './dashboardComponents/StatisticsPage/TasksStatsStatusPieChart';
