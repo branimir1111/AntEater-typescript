@@ -93,7 +93,7 @@ const ProjectsStatsBarChart = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Projects - BarChart</CardTitle>
+        <CardTitle>Projects - Bar</CardTitle>
         <CardDescription>Showing number of projects by status</CardDescription>
       </CardHeader>
       <CardContent>
@@ -113,13 +113,16 @@ const ProjectsStatsBarChart = ({
               tickMargin={10}
               axisLine={false}
               tickFormatter={(value) =>
-                chartConfig[value as keyof typeof chartConfig]?.label
+                chartConfig[value as keyof typeof chartConfig]?.label.slice(
+                  0,
+                  3
+                )
               }
             />
             <XAxis dataKey="projects" type="number" hide />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={<ChartTooltipContent indicator="line" />}
             />
             <Bar dataKey="projects" layout="vertical" radius={5} />
           </BarChart>

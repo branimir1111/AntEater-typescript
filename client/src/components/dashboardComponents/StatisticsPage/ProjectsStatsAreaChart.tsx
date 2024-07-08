@@ -35,7 +35,7 @@ const ProjectsStatsAreaChart = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Projects - AreaChart</CardTitle>
+        <CardTitle>Projects - Area</CardTitle>
         <CardDescription>Showing number of projects by status</CardDescription>
       </CardHeader>
       <CardContent>
