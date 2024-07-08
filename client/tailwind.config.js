@@ -26,6 +26,13 @@ module.exports = {
         'chart-3': 'hsl(var(--chart-3))',
         'chart-4': 'hsl(var(--chart-4))',
         'chart-5': 'hsl(var(--chart-5))',
+        'color-active': 'hsl(var(--color-active))',
+        'color-inactive': 'hsl(var(--color-inactive))',
+        'color-completed': 'hsl(var(--color-completed))',
+        'color-testing': 'hsl(var(--color-testing))',
+        'color-pending': 'hsl(var(--color-pending))',
+        'color-canceled': 'hsl(var(--color-canceled))',
+        'color-delayed': 'hsl(var(--color-delayed))',
         background: {
           DEFAULT: 'hsl(var(--background))',
           first: 'hsl(var(--background-first))',

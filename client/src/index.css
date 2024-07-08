@@ -135,6 +135,13 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --color-active: 173 58% 39%;
+    --color-inactive: 12 76% 61%;
+    --color-completed: 197 37% 24%;
+    --color-testing: 43 74% 66%;
+    --color-pending: 27 87% 67%;
+    --color-canceled: 173 58% 39%;
+    --color-delayed: 12 76% 61%;
   }
 
   .dark {
@@ -166,6 +173,13 @@
     --chart-4: 280 65% 60%;
     --chart-3: 30 80% 55%;
     --chart-5: 160 60% 45%;
+    --color-active: 220 70% 50%;
+    --color-inactive: 12 76% 61%;
+    --color-completed: 197 37% 24%;
+    --color-testing: 43 74% 66%;
+    --color-pending: 27 87% 67%;
+    --color-canceled: 173 58% 39%;
+    --color-delayed: 12 76% 61%;
   }
 }
 
