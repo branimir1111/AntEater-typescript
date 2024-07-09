@@ -8,6 +8,9 @@ import {
   TicketsStatsContainer,
   UsersStatsContainer,
 } from '@/components';
+import { useRef } from 'react';
+import generatePDF from 'react-to-pdf';
+import { Button } from '@/components/ui/button';
 
 const projectsStatsQuery = () => {
   return {
@@ -48,6 +51,7 @@ const usersStatsQuery = () => {
 };
 
 const StatisticsPage = () => {
+  const targetRef = useRef<HTMLDivElement>(null);
   const {
     data: projectsStats,
     isPending: isPendingProjectStats,
@@ -116,19 +120,28 @@ const StatisticsPage = () => {
   return (
     <section className="w-full outlet-hight p-2 bg-background-first">
       <div className="bg-background border rounded-md p-4">
-        <StatsContainer allStats={allStats} />
-        <ProjectStatsContainer projectsByStatus={projectsByStatus} />
-        <TasksStatsContainer
-          tasksByType={tasksByType}
-          tasksByPriority={tasksByPriority}
-          tasksByStatus={tasksByStatus}
-        />
-        <TicketsStatsContainer
-          ticketsByType={ticketsByType}
-          ticketsByPriority={ticketsByPriority}
-          ticketsByStatus={ticketsByStatus}
-        />
-        <UsersStatsContainer usersByRole={usersByRole} />
+        <div className="flex items-center justify-end px-2">
+          <Button
+            onClick={() => generatePDF(targetRef, { filename: 'page.pdf' })}
+          >
+            Download PDF
+          </Button>
+        </div>
+        <div ref={targetRef} className="bg-background pt-2 px-2">
+          <StatsContainer allStats={allStats} />
+          <ProjectStatsContainer projectsByStatus={projectsByStatus} />
+          <TasksStatsContainer
+            tasksByType={tasksByType}
+            tasksByPriority={tasksByPriority}
+            tasksByStatus={tasksByStatus}
+          />
+          <TicketsStatsContainer
+            ticketsByType={ticketsByType}
+            ticketsByPriority={ticketsByPriority}
+            ticketsByStatus={ticketsByStatus}
+          />
+          <UsersStatsContainer usersByRole={usersByRole} />
+        </div>
       </div>
     </section>
   );
