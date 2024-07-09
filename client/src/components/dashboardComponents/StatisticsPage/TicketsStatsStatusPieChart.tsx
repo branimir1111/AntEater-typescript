@@ -9,29 +9,26 @@ import {
 import {
   ChartConfig,
   ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
 
-type TaskStatus = {
+type TicketStatus = {
   status: string;
-  tasks: number;
+  tickets: number;
 };
 
-type TasksStatsStatusPieChartProps = {
-  tasksByStatus: TaskStatus[];
+type TicketsStatsStatusPieChartProps = {
+  ticketsByStatus: TicketStatus[];
 };
 
-const TasksStatsStatusPieChart = ({
-  tasksByStatus,
-}: TasksStatsStatusPieChartProps) => {
-  const tasksByStatusWithColor = tasksByStatus.map((task) => {
-    const { status, tasks } = task;
+const TicketsStatsStatusPieChart = ({
+  ticketsByStatus,
+}: TicketsStatsStatusPieChartProps) => {
+  const ticketsByStatusWithColor = ticketsByStatus.map((ticket) => {
+    const { status, tickets } = ticket;
 
     let pieColor = '';
-
     switch (status) {
       case 'new':
         pieColor = 'var(--color-new)';
@@ -42,24 +39,26 @@ const TasksStatsStatusPieChart = ({
       case 'under-review':
         pieColor = 'var(--color-under-review)';
         break;
-      case 'refactor':
-        pieColor = 'var(--color-refactor)';
+      case 'rejected':
+        pieColor = 'var(--color-rejected)';
+        break;
+      case 'cancelled':
+        pieColor = 'var(--color-cancelled)';
         break;
       case 'completed':
         pieColor = 'var(--color-completed)';
         break;
     }
-
     return {
       status,
-      tasks,
+      tickets,
       fill: pieColor,
     };
   });
 
   const chartConfig = {
-    tasks: {
-      label: 'Tasks',
+    tickets: {
+      label: 'Tickets',
     },
     new: {
       label: 'New',
@@ -73,32 +72,38 @@ const TasksStatsStatusPieChart = ({
       label: 'Under review',
       color: 'hsl(var(--chart-3))',
     },
-    refactor: {
-      label: 'Refactor',
+    rejected: {
+      label: 'Rejected',
       color: 'hsl(var(--chart-4))',
+    },
+    cancelled: {
+      label: 'Cancelled',
+      color: 'hsl(var(--chart-5))',
     },
     completed: {
       label: 'Completed',
-      color: 'hsl(var(--chart-5))',
+      color: 'hsl(var(--chart-3))',
     },
   } satisfies ChartConfig;
 
   return (
     <Card className="h-full flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Tasks - Status</CardTitle>
-        <CardDescription>Number of tasks by status</CardDescription>
+        <CardTitle>Tickets - Status</CardTitle>
+        <CardDescription>Number of tickets by status</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
-        <ChartContainer config={chartConfig} className="mx-auto max-h-[300px]">
+        <ChartContainer
+          config={chartConfig}
+          className="mx-auto max-h-[250px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
+        >
           <PieChart>
-            <ChartTooltip
-              content={<ChartTooltipContent nameKey="tasks" hideLabel />}
-            />
-            <Pie data={tasksByStatusWithColor} dataKey="tasks" />
-            <ChartLegend
-              content={<ChartLegendContent nameKey="status" />}
-              className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/4 [&>*]:justify-center"
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <Pie
+              data={ticketsByStatusWithColor}
+              dataKey="tickets"
+              label
+              nameKey="status"
             />
           </PieChart>
         </ChartContainer>
@@ -106,4 +111,4 @@ const TasksStatsStatusPieChart = ({
     </Card>
   );
 };
-export default TasksStatsStatusPieChart;
+export default TicketsStatsStatusPieChart;

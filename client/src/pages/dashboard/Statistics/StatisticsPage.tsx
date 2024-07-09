@@ -5,6 +5,7 @@ import {
   StatsContainer,
   ProjectStatsContainer,
   TasksStatsContainer,
+  TicketsStatsContainer,
 } from '@/components';
 
 const projectsStatsQuery = () => {
@@ -26,6 +27,15 @@ const tasksStatsQuery = () => {
     },
   };
 };
+const ticketsStatsQuery = () => {
+  return {
+    queryKey: ['all-tickets-stats'],
+    queryFn: async () => {
+      const { data } = await customFetch.get('/tickets-stats');
+      return data;
+    },
+  };
+};
 
 const StatisticsPage = () => {
   const {
@@ -40,6 +50,12 @@ const StatisticsPage = () => {
     isError: isErrorTaskStats,
   } = useQuery(tasksStatsQuery());
 
+  const {
+    data: ticketsStats,
+    isPending: isPendingTicketStats,
+    isError: isErrorTicketStats,
+  } = useQuery(ticketsStatsQuery());
+
   if (isPendingProjectStats) {
     return <GlobalLoader />;
   }
@@ -52,12 +68,20 @@ const StatisticsPage = () => {
   if (isErrorTaskStats) {
     return <ErrorElement />;
   }
+  if (isPendingTicketStats) {
+    return <GlobalLoader />;
+  }
+  if (isErrorTicketStats) {
+    return <ErrorElement />;
+  }
 
   const { numOfAllProjects, projectsByStatus } = projectsStats;
   const { numOfAllTasks, tasksByType, tasksByPriority, tasksByStatus } =
     tasksStats;
+  const { numOfAllTickets, ticketsByType, ticketsByPriority, ticketsByStatus } =
+    ticketsStats;
 
-  const allStats = { numOfAllProjects, numOfAllTasks };
+  const allStats = { numOfAllProjects, numOfAllTasks, numOfAllTickets };
 
   return (
     <section className="w-full outlet-hight p-2 bg-background-first">
@@ -68,6 +92,11 @@ const StatisticsPage = () => {
           tasksByType={tasksByType}
           tasksByPriority={tasksByPriority}
           tasksByStatus={tasksByStatus}
+        />
+        <TicketsStatsContainer
+          ticketsByType={ticketsByType}
+          ticketsByPriority={ticketsByPriority}
+          ticketsByStatus={ticketsByStatus}
         />
       </div>
     </section>

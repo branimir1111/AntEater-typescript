@@ -1,7 +1,8 @@
-import { PieChart, ClipboardList } from 'lucide-react';
+import { PieChart, ClipboardList, BookOpenCheck } from 'lucide-react';
 type allStatsProp = {
   numOfAllProjects: number;
   numOfAllTasks: number;
+  numOfAllTickets: number;
 };
 
 type StatsContainerProps = {
@@ -25,6 +26,14 @@ const StatsContainer = ({ allStats }: StatsContainerProps) => {
       icon: <ClipboardList className="w-10 h-10" />,
       borderColor: 'border-b-[#18981D]',
       textColor: 'text-[#18981D]',
+    },
+    {
+      _id: 3,
+      text: 'Tickets',
+      count: allStats.numOfAllTickets,
+      icon: <BookOpenCheck className="w-10 h-10" />,
+      borderColor: 'border-b-[#F0B429]',
+      textColor: 'text-[#F0B429]',
     },
   ];
   return (
