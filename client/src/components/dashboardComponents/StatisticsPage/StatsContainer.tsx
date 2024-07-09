@@ -1,8 +1,18 @@
-import { PieChart, ClipboardList, BookOpenCheck } from 'lucide-react';
+import {
+  PieChart,
+  ClipboardList,
+  BookOpenCheck,
+  MessageSquareQuote,
+  Mail,
+  Users,
+} from 'lucide-react';
 type allStatsProp = {
   numOfAllProjects: number;
   numOfAllTasks: number;
   numOfAllTickets: number;
+  numOfComments: number;
+  numOfMessages: number;
+  numOfUsers: number;
 };
 
 type StatsContainerProps = {
@@ -16,7 +26,7 @@ const StatsContainer = ({ allStats }: StatsContainerProps) => {
       text: 'Projects',
       count: allStats.numOfAllProjects,
       icon: <PieChart className="w-10 h-10" />,
-      borderColor: 'border-b-indigo-500',
+      borderColor: 'border-indigo-500',
       textColor: 'text-indigo-500',
     },
     {
@@ -24,7 +34,7 @@ const StatsContainer = ({ allStats }: StatsContainerProps) => {
       text: 'Tasks',
       count: allStats.numOfAllTasks,
       icon: <ClipboardList className="w-10 h-10" />,
-      borderColor: 'border-b-[#18981D]',
+      borderColor: 'border-[#18981D]',
       textColor: 'text-[#18981D]',
     },
     {
@@ -32,8 +42,32 @@ const StatsContainer = ({ allStats }: StatsContainerProps) => {
       text: 'Tickets',
       count: allStats.numOfAllTickets,
       icon: <BookOpenCheck className="w-10 h-10" />,
-      borderColor: 'border-b-[#F0B429]',
+      borderColor: 'border-[#F0B429]',
       textColor: 'text-[#F0B429]',
+    },
+    {
+      _id: 4,
+      text: 'Comments',
+      count: allStats.numOfComments,
+      icon: <MessageSquareQuote className="w-10 h-10" />,
+      borderColor: 'border-[#8719E0]',
+      textColor: 'text-[#8719E0]',
+    },
+    {
+      _id: 5,
+      text: 'Messages',
+      count: allStats.numOfMessages,
+      icon: <Mail className="w-10 h-10" />,
+      borderColor: 'border-[#DA127D]',
+      textColor: 'text-[#DA127D]',
+    },
+    {
+      _id: 6,
+      text: 'Users',
+      count: allStats.numOfUsers,
+      icon: <Users className="w-10 h-10" />,
+      borderColor: 'border-[#1CD4D4]',
+      textColor: 'text-[#1CD4D4]',
     },
   ];
   return (
@@ -43,7 +77,7 @@ const StatsContainer = ({ allStats }: StatsContainerProps) => {
         return (
           <article
             key={_id}
-            className={`border border-b-4 ${borderColor} rounded-sm py-2 px-4`}
+            className={`border border-b-4 ${borderColor} rounded-md py-2 px-4`}
           >
             <h1 className="text-xl font-semibold text-muted-foreground">
               {text}
