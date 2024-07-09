@@ -92,3 +92,7 @@ export { default as TasksStatsContainer } from './dashboardComponents/Statistics
 export { default as TasksStatsTypePieChart } from './dashboardComponents/StatisticsPage/TasksStatsTypePieChart';
 export { default as TasksStatsPriorityPieChart } from './dashboardComponents/StatisticsPage/TasksStatsPriorityPieChart';
 export { default as TasksStatsStatusPieChart } from './dashboardComponents/StatisticsPage/TasksStatsStatusPieChart';
+export { default as TicketsStatsContainer } from './dashboardComponents/StatisticsPage/TicketsStatsContainer';
+export { default as TicketsStatsTypePieChart } from './dashboardComponents/StatisticsPage/TicketsStatsTypePieChart';
+export { default as TicketsStatsPriorityPieChart } from './dashboardComponents/StatisticsPage/TicketsStatsPriorityPieChart';
+export { default as TicketsStatsStatusPieChart } from './dashboardComponents/StatisticsPage/TicketsStatsStatusPieChart';
