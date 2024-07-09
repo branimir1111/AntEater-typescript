@@ -96,3 +96,5 @@ export { default as TicketsStatsContainer } from './dashboardComponents/Statisti
 export { default as TicketsStatsTypePieChart } from './dashboardComponents/StatisticsPage/TicketsStatsTypePieChart';
 export { default as TicketsStatsPriorityPieChart } from './dashboardComponents/StatisticsPage/TicketsStatsPriorityPieChart';
 export { default as TicketsStatsStatusPieChart } from './dashboardComponents/StatisticsPage/TicketsStatsStatusPieChart';
+export { default as UsersStatsContainer } from './dashboardComponents/StatisticsPage/UsersStatsContainer';
+export { default as UsersStatsRadialChart } from './dashboardComponents/StatisticsPage/UsersStatsRadialChart';

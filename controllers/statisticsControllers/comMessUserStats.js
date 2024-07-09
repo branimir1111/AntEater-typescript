@@ -13,7 +13,7 @@ const getComMessUserStats = async (req, res) => {
   const numOfUsers = allUsers - 1;
   const numOfPms = await UserModel.countDocuments({ role: 'projectmanager' });
   const numOfDevs = await UserModel.countDocuments({ role: 'developer' });
-  const usersByRole = [{ projectmanager: numOfPms, developers: numOfDevs }];
+  const usersByRole = [{ projectmanagers: numOfPms, developers: numOfDevs }];
 
   res
     .status(StatusCodes.OK)
