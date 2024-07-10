@@ -1,4 +1,7 @@
 import 'express-async-errors';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import path from 'path';
 import * as dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors';
@@ -30,6 +33,8 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.resolve(__dirname, './public')));
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
@@ -50,6 +55,10 @@ app.use(
   authorizePermissions('admin'),
   AdminRouter
 );
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './public', 'index.html'));
+});
 
 app.use('*', (req, res) => {
   res.status(404).json({ msg: 'Route Not Found' });
