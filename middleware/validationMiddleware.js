@@ -1,14 +1,8 @@
 import mongoose from 'mongoose';
 import UserModel from '../models/userModel.js';
 import { body, validationResult } from 'express-validator';
-import {
-  BadRequest,
-  Unauthorized,
-  Unauthenticated,
-  NotFound,
-} from '../errors/customErrors.js';
+import { BadRequest } from '../errors/customErrors.js';
 import ProjectModel from '../models/ProjectModel.js';
-import TaskModel from '../models/taskModel.js';
 
 const validationWithErrors = (validationValues) => {
   return [
