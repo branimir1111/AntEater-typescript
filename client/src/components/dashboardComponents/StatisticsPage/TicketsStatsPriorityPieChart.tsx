@@ -87,7 +87,10 @@ const TicketsStatsPriorityPieChart = ({
         <CardDescription>Number of tickets by priority</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
-        <ChartContainer config={chartConfig} className="mx-auto max-h-[250px]">
+        <ChartContainer
+          config={chartConfig}
+          className="mx-auto aspect-square max-h-[250px]"
+        >
           <PieChart>
             <ChartTooltip
               cursor={false}
