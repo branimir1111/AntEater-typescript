@@ -12,7 +12,7 @@ const LandingPage = () => {
         <h1 className="text-3xl mt-2 mb-2 text-white md:text-4xl">
           Ant<span className="text-yellow-400">E</span>ater
         </h1>
-        <h1 className="mb-4 text-white text-xl">Bug Trucker App</h1>
+        <h1 className="mb-4 text-white text-xl">Bug Tracker App</h1>
         <Button
           asChild
           variant="secondary"
