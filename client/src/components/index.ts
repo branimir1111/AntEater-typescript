@@ -6,7 +6,7 @@ export { default as FormInput } from './FormInput';
 export { default as SubmitBtn } from './SubmitBtn';
 export { default as LogoForAuth } from './LogoForAuth';
 export { default as ProfileLogoutDropdown } from './dashboardComponents/Navbar/ProfileLogoutDropdown';
-export { default as BigSidebar3DModel } from './dashboardComponents/BigSidebar/BigSidebar3DModel';
+export { default as BigSidebarChartPic } from './dashboardComponents/BigSidebar/BigSidebarChartPic';
 export { default as BigSidebarLogo } from './dashboardComponents/BigSidebar/BigSidebarLogo';
 export { default as BigSidebarNavLinks } from './dashboardComponents/BigSidebar/BigSidebarNavLinks';
 export { default as SmallSidebarNavLinks } from './SmallSidebar/SmallSidebarNavLinks';

@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge';
 import {
   BigSidebarLogo,
-  BigSidebar3DModel,
+  BigSidebarChartPic,
   BigSidebarNavLinks,
 } from '@/components';
 
@@ -16,7 +16,7 @@ const BigSidebar = ({ openBigSidebar }: { openBigSidebar: boolean }) => {
     >
       <BigSidebarLogo />
       <div className="w-full py-2 px-8 grid place-items-start">
-        <BigSidebar3DModel />
+        <BigSidebarChartPic />
         <BigSidebarNavLinks />
       </div>
     </aside>
