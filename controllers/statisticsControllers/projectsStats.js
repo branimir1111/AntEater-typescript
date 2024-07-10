@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import ProjectModel from '../../models/ProjectModel.js';
+import ProjectModel from '../../models/projectModel.js';
 
 const getProjectsStats = async (req, res) => {
   let projectStats = await ProjectModel.aggregate([

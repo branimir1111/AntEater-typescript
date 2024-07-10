@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import ProjectModel from '../../models/ProjectModel.js';
+import ProjectModel from '../../models/projectModel.js';
 import mongoose from 'mongoose';
 import { usersFromProject } from '../../utils/aggregations.js';
 

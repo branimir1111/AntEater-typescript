@@ -1,4 +1,4 @@
-import ProjectModel from '../../models/ProjectModel.js';
+import ProjectModel from '../../models/projectModel.js';
 import { StatusCodes } from 'http-status-codes';
 import { usersFromProject } from '../../utils/aggregations.js';
 import mongoose from 'mongoose';
