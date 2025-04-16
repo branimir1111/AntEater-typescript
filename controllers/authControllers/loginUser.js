@@ -23,6 +23,7 @@ const login = async (req, res) => {
   });
 
   const oneDay = 1000 * 60 * 60 * 24;
+
   res.cookie('ant_eater', token, {
     httpOnly: true,
     expires: new Date(Date.now() + oneDay),

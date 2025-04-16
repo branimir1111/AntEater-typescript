@@ -156,9 +156,9 @@
   color: #3ae7e1;
   color: #1cd4d4;
   color: #0fb5ba;
-  color: #099aa4;
+  color: rgb(9, 154, 164);
   color: #07818f;
-  color: #05606e;
+  color: hwb(188 2% 57%);
   /* light blue */
   color: #ebf8ff;
   color: #d1eefc;
@@ -181,6 +181,10 @@
   color: #127fbf;
   color: #0b69a3;
   color: #035388;
+  /*  */
+  color: #062056;
+  color: rgba(255, 255, 255, 0.7);
+  /*  */
   /* blue */
   color: #dceefb;
   color: #b6e0fe;
